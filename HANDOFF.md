@@ -82,3 +82,17 @@ All 13 tests pass deterministically (8 offline + 5 live integration):
 2. All offline and live integration tests pass (13/13).
 3. Changes committed and pushed to `feat/orchestrator-v2.2`.
 4. Work is halted for user review before merging to `main` or tagging releases.
+
+---
+
+## 5. Post-v2.2 Development Backlog (v2.3+)
+
+The following architectural enhancements are intentionally deferred to the post-v2.2 backlog:
+1. **Responsive Viewport Breakpoints**:
+   - **1280×800 (Medium Desktop)**: Off-canvas taxonomy drawer or top toolbar filter toggle to reclaim 250px.
+   - **1024×768 (Compact Desktop / Tablet)**: Two-column master-detail layout with tab switching.
+   - **390×844 (Mobile Device)**: Single-column stacked layout with bottom navigation drawer.
+2. **NeedMCP Live Production Activation**:
+   - Status remains `UNVERIFIED_RUNTIME`. Requires active API key authentication and live Stdio/HTTP handshake testing before moving to `VERIFIED`.
+3. **Automated Vector-to-Raster Asset Pipeline**:
+   - Automated conversion and optimization of high-resolution photographic archival media.

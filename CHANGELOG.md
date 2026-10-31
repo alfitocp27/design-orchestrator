@@ -10,6 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.2.0-dev] - 2026-10-31
 
 ### Added
+- **Viewport & Operational Boundaries**:
+  - Validated Viewport: Desktop 1440×900 officially established as the primary validated production viewport.
+  - Deferred to Backlog (v2.3+): Responsive breakpoints (1280px medium desktop, 1024px compact desktop, 390px mobile) deferred per release approval gating.
+  - Media Accuracy & Claim De-escalation: Removed unverified '8K' claim from Archival Plate documentation, updating labels to 'Archival Study' to match vector plate evidence.
 - **Final Visual Quality Remediation & VQA 2.0 Engine Upgrades**:
   - Collapsed Text Height & Line-Height Integrity Check: Added deterministic detection for sub-pixel collapsed text ($H < 0.75 \times \text{fontSize} \times \text{lineCount}$) and invalid unitless `lineHeight` floats ($0 < \text{lineHeight} < 3.0$) in `scripts/verify-canvas.ps1`. Explains and catches the FigCraft MCP quirk where unitless values were treated as literal sub-pixel heights.
   - Sibling Visual Collision & 2D Bounding-Box Overlap Math: Implemented 2D bounding-box intersection auditing between non-absolute siblings in `scripts/verify-canvas.ps1`, reporting P1 blockers with exact coordinates and overlap measurements.
@@ -58,6 +62,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.1.1] - 2026-10-31
 
 ### Added
+- **Viewport & Operational Boundaries**:
+  - Validated Viewport: Desktop 1440×900 officially established as the primary validated production viewport.
+  - Deferred to Backlog (v2.3+): Responsive breakpoints (1280px medium desktop, 1024px compact desktop, 390px mobile) deferred per release approval gating.
+  - Media Accuracy & Claim De-escalation: Removed unverified '8K' claim from Archival Plate documentation, updating labels to 'Archival Study' to match vector plate evidence.
 - **CodebaseMemoryMCP Integration**: Added live Stdio JSON-RPC integration test (`tests/integration/test-codebase-memory-live.ps1`), dynamic registration in `bootstrap.ps1`, and doctor verification in `doctor.ps1`.
 - **Companion Skills Governance**: Added `.agents/skills/{ui-ux-pro-max,impeccable,antislop,anti-slop}` to `.gitignore` ensuring third-party companion tools can be cloned locally for Antigravity discovery without vendoring them into the core repository.
 - **Automated Companion Skill Installer**: Added automated installation/cloning of upstream companion skills (`anti-slop`, `ui-ux-pro-max`, `impeccable`) via `-InstallCompanions` switch or interactive prompt in `bootstrap.ps1`.

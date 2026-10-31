@@ -1,17 +1,17 @@
-# Design Orchestrator 2.1
+# Design Orchestrator 2.2
 
 [![CI](https://github.com/alfitocp27/design-orchestrator/actions/workflows/ci.yml/badge.svg)](https://github.com/alfitocp27/design-orchestrator/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Antigravity](https://img.shields.io/badge/Antigravity-2.0-purple.svg)](https://github.com/alfitocp27/design-orchestrator)
 [![Platform: Windows 11](https://img.shields.io/badge/Platform-Windows%2011-0078D4.svg)](https://github.com/alfitocp27/design-orchestrator)
 
-**Design Orchestrator 2.1** is an open-source, portable meta-skill and architectural framework for end-to-end interface and product design in [Google Antigravity 2.0](https://github.com/alfitocp27/design-orchestrator).
+**Design Orchestrator 2.2** is an open-source, portable meta-skill and architectural framework for end-to-end interface and product design in [Google Antigravity 2.0](https://github.com/alfitocp27/design-orchestrator).
 
 It bridges consultative discovery, visual reference intelligence, creative direction, native FigCraft execution, atomic component hierarchies, 3-tier design token engines, and the **4-Dimensional Visual Quality Assurance (VQA) 2.0** verification system.
 
 ---
 
-## 🌟 Key Highlights in v2.1
+## 🌟 Key Highlights in v2.2
 
 - **Evidence-Based QA & Zero False PASS**: Math bounding boxes ($\Delta x = 0$) alone are not visual proof. Verification requires multi-dimensional visual checks, clean screenshots, and the 8-Point Stress Test.
 - **Native Reusable Components vs Page Layout Shells**: Atomic UI controls (`(Item)` $\rightarrow$ `(Group)` $\rightarrow$ `(Pattern)`) use native linked instances. Page viewports use native frames with auto-layout.
@@ -22,6 +22,20 @@ It bridges consultative discovery, visual reference intelligence, creative direc
 - **🛑 Two Mandatory Hard Stops**: Concept Approval Gate (Stage 4) and Design System Approval Gate (Stage 6). Never builds screens before explicit user sign-off.
 
 ---
+
+---
+
+## 🖥️ Viewport Support & Known Limitations
+
+Design Orchestrator v2.2 officially validates the following production viewport configuration:
+
+- **Officially Validated Viewport**: **Desktop 1440×900** (Full-width, high-density 3-column monograph layout verified across FigCraft live canvas, 8-point component stress testing, and automated VQA 2.0).
+- **Deferred to Backlog (Post-v2.2 / Backlog v2.3+)**:
+  * **Medium Desktop (1280×800)**: Responsive auto-layout breakpoint to collapse the taxonomic sidebar into an off-canvas drawer / top toolbar, preserving 930px+ content width.
+  * **Compact Desktop / Tablet (1024×768)**: Responsive transformation from 3 simultaneous columns to a 2-column master-detail tab toggle.
+  * **Mobile Viewport (390×844)**: Stacked single-column feed layout with bottom navigation sheet.
+
+*Note: Multi-viewport responsive breakpoint adaptation is intentionally deferred to backlog to preserve rock-solid stability for the 1440×900 desktop pilot.*
 
 ## 🚀 Core vs. Full Mode
 

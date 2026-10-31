@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "name": "design-orchestrator",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Unified meta-skill for end-to-end interface and product design in Antigravity",
   "license": "MIT",
   "author": "alfitocp27 & Antigravity Community",
@@ -55,7 +55,7 @@
     "design-orchestrator": {
       "type": "meta-skill",
       "category": "core",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "source": "local",
       "path": ".agents/skills/design-orchestrator",
       "description": "The unified meta-orchestrator skill managing end-to-end UI/UX product design workflows."

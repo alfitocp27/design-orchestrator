@@ -128,10 +128,20 @@ try {
     throw "FAIL: Unable to parse document JSON at '$DocumentPath': $_"
 }
 
+$artifactClassification = if ($DocumentPath -match "tests[\\/]fixtures") {
+    "SYNTHETIC_TEST_FIXTURE"
+} elseif ($DocumentPath -match "projects|exports|test-output") {
+    "NATIVE_DOCUMENT_EXPORT"
+} else {
+    "INDEPENDENT_CANVAS_TREE"
+}
+
 $auditResults = [ordered]@{
     verifierVersion     = "2.2.0"
     evaluatedAt         = (Get-Date).ToString("yyyy-MM-ddTHH:mm:ssZ")
     targetMode          = $Mode
+    artifactType        = $artifactClassification
+    evaluationLevel     = "Tier 1: Deterministic Geometry, Tokens & Structural Alignment"
     documentId          = $(if ($doc.documentId) { $doc.documentId } else { "UNKNOWN_DOC" })
     documentName        = $(if ($doc.documentName) { $doc.documentName } else { (Split-Path $DocumentPath -Leaf) })
     deterministicStatus = "PASS"
@@ -628,6 +638,8 @@ try {
 
 - **Document ID**: ``$($auditResults.documentId)``
 - **Document Name**: $($auditResults.documentName)
+- **Artifact Classification**: ``$($auditResults.artifactType)``
+- **Evaluation Level**: $($auditResults.evaluationLevel)
 - **Evaluated At**: $($auditResults.evaluatedAt)
 - **Execution Mode**: $($auditResults.targetMode)
 - **Deterministic Status**: **$($auditResults.deterministicStatus)**

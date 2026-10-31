@@ -917,7 +917,7 @@ def build_artefacta_screen():
             name="Plate_Caption_Heading",
             parent=caption_box,
             props={
-                "characters": "Plate VII: Obverse View • 8K Multispectral",
+                "characters": "Plate VII: Obverse View • Archival Study",
                 "fontFamily": "Inter",
                 "fontSize": 11,
                 "fontStyle": "Bold",
