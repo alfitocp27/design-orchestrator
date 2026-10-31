@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - **CodebaseMemoryMCP Integration**: Added live Stdio JSON-RPC integration test (`tests/integration/test-codebase-memory-live.ps1`), dynamic registration in `bootstrap.ps1`, and doctor verification in `doctor.ps1`.
 - **Companion Skills Governance**: Added `.agents/skills/{ui-ux-pro-max,impeccable,antislop,anti-slop}` to `.gitignore` ensuring third-party companion tools can be cloned locally for Antigravity discovery without vendoring them into the core repository.
+- **Automated Companion Skill Installer**: Added automated installation/cloning of upstream companion skills (`anti-slop`, `ui-ux-pro-max`, `impeccable`) via `-InstallCompanions` switch or interactive prompt in `bootstrap.ps1`.
 
 ### Fixed
 - **Windows 11 Python Detection**: Eliminated false-positive `DETECTED` status caused by the Microsoft Store `python.exe` App Execution Alias; `doctor.ps1` and `bootstrap.ps1` now scan dynamic user directories (`%LOCALAPPDATA%\Programs\Python\Python3*`, PATH) and verify real execution exit codes.

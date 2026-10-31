@@ -49,12 +49,17 @@ Core Mode sets up the local meta-skill and project templates without requiring e
 Full Mode checks your system for companion tools and guides you through setting them up:
 
 ```powershell
+# Interactive Full Mode (prompts before installing external dependencies):
 .\scripts\bootstrap.ps1 -Mode Full
+
+# Automated Full Mode (automatically configures and clones supported companions):
+.\scripts\bootstrap.ps1 -Mode Full -InstallCompanions
 ```
 
-When prompted:
-- It asks before installing external skills (e.g. Anti-Slop via npx).
-- It dynamically discovers FigCraft (`figcraft-cli.exe`), verifies stdio communication, and offers to register it safely in `~/.gemini/config/mcp_config.json` with an automatic timestamped backup.
+When run:
+- It asks before installing external skills (e.g. Anti-Slop via npx, UI/UX Pro Max, Impeccable) or installs them automatically when `-InstallCompanions` or `-Force` is specified.
+- It dynamically discovers FigCraft (`figcraft-cli.exe`), verifies stdio communication, and registers it safely in `~/.gemini/config/mcp_config.json` with an automatic timestamped backup.
+- It registers `codebase-memory-mcp` with automatic timestamped backup and verifies live Stdio JSON-RPC handshake.
 - It safely preserves any existing project configuration.
 
 ---

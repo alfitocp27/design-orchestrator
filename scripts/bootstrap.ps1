@@ -24,7 +24,8 @@ param(
     [switch]$NonInteractive,
     [switch]$Force,
     [switch]$InstallAntiSlop,
-    [switch]$InstallCodebaseMemory
+    [switch]$InstallCodebaseMemory,
+    [switch]$InstallCompanions
 )
 
 $ErrorActionPreference = "Stop"
@@ -257,16 +258,35 @@ if ($npxCmd) {
         $hasAntislopSettings = Test-Path $antislopSettings -ErrorAction SilentlyContinue
     } catch {}
 
-    if ((Test-Path $antislopSkill) -or $hasAntislopSettings) {
-        Write-Log "CONFIGURED" "Anti-Slop guardrail is already present."
+    if ((Test-Path $antislopSkill) -and $hasAntislopSettings) {
+        Write-Log "CONFIGURED" "Anti-Slop guardrail and workspace skill are active."
+    } elseif ($hasAntislopSettings -and (-not (Test-Path $antislopSkill))) {
+        Write-Log "CONFIGURED" "Anti-Slop global settings found (%APPDATA%\antislop\settings.json)."
+        $shouldCloneAs = $false
+        if ($Force -or $InstallCompanions) {
+            $shouldCloneAs = $true
+        } elseif (-not $NonInteractive) {
+            $resp = Read-Host "Would you like to clone upstream Anti-Slop skill to .agents\skills\antislop? (Y/N)"
+            if ($resp -match "^[yY]") { $shouldCloneAs = $true }
+        }
+        if ($shouldCloneAs -and $gitCmd) {
+            try {
+                Write-Log "INFO" "Cloning upstream Anti-Slop skill..."
+                & git clone --depth 1 https://github.com/miqdadbadjuber/anti-slop.git $antislopSkill
+                $global:LASTEXITCODE = 0
+                Write-Log "VERIFIED" "Anti-Slop skill repository cloned successfully."
+            } catch {
+                Write-Log "WARN" ("Failed to clone Anti-Slop: {0}" -f $_)
+            }
+        }
     } else {
-        Write-Log "DETECTED" "Anti-Slop can be installed via 'npx antislop-ai --mode during'."
+        Write-Log "DETECTED" "Anti-Slop can be installed via 'npx -y antislop-ai --mode during'."
         
         $shouldInstall = $false
-        if ($InstallAntiSlop) {
+        if ($Force -or $InstallAntiSlop -or $InstallCompanions) {
             $shouldInstall = $true
         } elseif (-not $NonInteractive) {
-            $response = Read-Host "Would you like to install Anti-Slop now using 'npx antislop-ai --mode during'? (Y/N)"
+            $response = Read-Host "Would you like to install Anti-Slop now using 'npx -y antislop-ai --mode during'? (Y/N)"
             if ($response -match "^[yY]") {
                 $shouldInstall = $true
             }
@@ -275,15 +295,22 @@ if ($npxCmd) {
         if ($shouldInstall) {
             Write-Log "INFO" "Installing Anti-Slop via official installer..."
             try {
-                & npx antislop-ai --mode during
+                & npx -y antislop-ai --mode during
                 $global:LASTEXITCODE = 0
                 Write-Log "VERIFIED" "Anti-Slop installed and configured successfully."
+                
+                # Also clone skill into .agents/skills/antislop if missing and git is present
+                if ((-not (Test-Path $antislopSkill)) -and $gitCmd) {
+                    Write-Log "INFO" "Cloning upstream Anti-Slop skill..."
+                    & git clone --depth 1 https://github.com/miqdadbadjuber/anti-slop.git $antislopSkill
+                    $global:LASTEXITCODE = 0
+                }
             } catch {
                 Write-Log "WARN" ("Automatic Anti-Slop setup failed: {0}" -f $_)
-                Write-Log "INFO" "Manual installation: npx antislop-ai --mode during"
+                Write-Log "INFO" "Manual installation: npx -y antislop-ai --mode during"
             }
         } else {
-            Write-Log "SKIP" "Anti-Slop installation skipped (Use -InstallAntiSlop or run 'npx antislop-ai --mode during')."
+            Write-Log "SKIP" "Anti-Slop installation skipped (Use -InstallAntiSlop or run 'npx -y antislop-ai --mode during')."
         }
     }
 } else {
@@ -291,7 +318,7 @@ if ($npxCmd) {
     Write-Log "INFO" "Manual installation: winget install --id OpenJS.NodeJS -e --source winget"
 }
 
-# 4.2 UI/UX Pro Max (Manual / Guided Clone)
+# 4.2 UI/UX Pro Max (Automated Clone or Guided Setup)
 $pythonCmd = Get-Command python -ErrorAction SilentlyContinue
 $pyCandidates = @(
     $(if ($pythonCmd) { $pythonCmd.Source }),
@@ -339,14 +366,35 @@ if ((Test-Path $uiuxSkill) -and (Test-Path $uiuxSearch) -and $realPythonPath) {
         Write-Log "INFO" "UI/UX Pro Max requires Python 3.x (Windows Store alias stub or Python missing)."
         Write-Log "INFO" "Install Python 3: winget install --id Python.Python.3.12 -e"
     } else {
-        Write-Log "INFO" "UI/UX Pro Max is not bundled (protecting third-party licenses)."
-        Write-Log "INFO" "Manual setup: git clone https://github.com/nextlevelbuilder/ui-ux-pro-max-skill .agents\skills\ui-ux-pro-max"
+        Write-Log "DETECTED" "UI/UX Pro Max is available from upstream repository."
+        $shouldInstallUiux = $false
+        if ($Force -or $InstallCompanions) {
+            $shouldInstallUiux = $true
+        } elseif (-not $NonInteractive) {
+            $resp = Read-Host "Would you like to install UI/UX Pro Max now from upstream (https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)? (Y/N)"
+            if ($resp -match "^[yY]") {
+                $shouldInstallUiux = $true
+            }
+        }
+        if ($shouldInstallUiux -and $gitCmd) {
+            try {
+                Write-Log "INFO" "Cloning upstream UI/UX Pro Max skill..."
+                & git clone --depth 1 https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git $uiuxSkill
+                $global:LASTEXITCODE = 0
+                Write-Log "VERIFIED" "UI/UX Pro Max skill cloned successfully."
+            } catch {
+                Write-Log "WARN" ("Failed to clone UI/UX Pro Max: {0}" -f $_)
+            }
+        } else {
+            Write-Log "INFO" "Manual setup: git clone https://github.com/nextlevelbuilder/ui-ux-pro-max-skill .agents\skills\ui-ux-pro-max"
+        }
     }
 }
 
-# 4.3 Impeccable (Custom / Global Skill)
+# 4.3 Impeccable (Automated Clone or Guided Setup)
 $impeccableGlobal = Join-Path $env:USERPROFILE ".gemini\config\skills\impeccable\SKILL.md"
-$impeccableLocal = Join-Path $RepoRoot ".agents\skills\impeccable\SKILL.md"
+$impeccableLocalDir = Join-Path $RepoRoot ".agents\skills\impeccable"
+$impeccableLocal = Join-Path $impeccableLocalDir "SKILL.md"
 $hasImpeccableGlobal = $false
 try {
     $hasImpeccableGlobal = Test-Path $impeccableGlobal -ErrorAction SilentlyContinue
@@ -357,7 +405,28 @@ if ($hasImpeccableGlobal) {
 } elseif (Test-Path $impeccableLocal) {
     Write-Log "INSTALLED" "Impeccable craft skill detected in workspace (.agents\skills\impeccable)."
 } else {
-    Write-Log "INFO" "Impeccable craft skill not found. Upstream: https://github.com/pbakaus/impeccable"
+    Write-Log "DETECTED" "Impeccable craft skill available from upstream (pbakaus/impeccable)."
+    $shouldInstallImpeccable = $false
+    if ($Force -or $InstallCompanions) {
+        $shouldInstallImpeccable = $true
+    } elseif (-not $NonInteractive) {
+        $resp = Read-Host "Would you like to install Impeccable now from upstream (https://github.com/pbakaus/impeccable)? (Y/N)"
+        if ($resp -match "^[yY]") {
+            $shouldInstallImpeccable = $true
+        }
+    }
+    if ($shouldInstallImpeccable -and $gitCmd) {
+        try {
+            Write-Log "INFO" "Cloning upstream Impeccable skill..."
+            & git clone --depth 1 https://github.com/pbakaus/impeccable.git $impeccableLocalDir
+            $global:LASTEXITCODE = 0
+            Write-Log "VERIFIED" "Impeccable skill cloned successfully."
+        } catch {
+            Write-Log "WARN" ("Failed to clone Impeccable: {0}" -f $_)
+        }
+    } else {
+        Write-Log "INFO" "Manual setup: git clone https://github.com/pbakaus/impeccable .agents\skills\impeccable"
+    }
 }
 
 # 4.4 Desktop MCP Applications (FigCraft & CodebaseMemory)
@@ -488,7 +557,7 @@ if ($codebaseConfigured) {
 } else {
     Write-Log "DETECTED" "CodebaseMemoryMCP can be registered via npx codebase-memory-mcp."
     $shouldRegisterCodebase = $false
-    if ($Force -or $InstallCodebaseMemory) {
+    if ($Force -or $InstallCodebaseMemory -or $InstallCompanions) {
         $shouldRegisterCodebase = $true
     } elseif (-not $NonInteractive) {
         $resp = Read-Host "Would you like to register CodebaseMemoryMCP in Antigravity mcp_config.json? (Y/N)"
