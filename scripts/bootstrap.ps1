@@ -12,6 +12,8 @@
     Skip interactive confirmation prompts.
 .PARAMETER Force
     Force reinstallation and overwrite existing linked targets with backup.
+.PARAMETER InstallAntiSlop
+    Explicitly allow running 'npx antislop-ai' during automated/non-interactive setup.
 #>
 
 [CmdletBinding()]
@@ -20,7 +22,8 @@ param(
     [string]$Mode = "Core",
 
     [switch]$NonInteractive,
-    [switch]$Force
+    [switch]$Force,
+    [switch]$InstallAntiSlop
 )
 
 $ErrorActionPreference = "Stop"
@@ -45,6 +48,60 @@ function Write-Log {
         "FAIL"       { "Red" }
     }
     Write-Host ("[{0}] [{1,-10}] {2}" -f $timestamp, $Level, $Message) -ForegroundColor $color
+}
+
+function Backup-And-Register-McpServer {
+    param(
+        [string]$ServerName,
+        [string]$CommandPath,
+        [string[]]$ArgsList
+    )
+    $mcpConfigPath = Join-Path $env:USERPROFILE ".gemini\config\mcp_config.json"
+    $configDir = Split-Path $mcpConfigPath -Parent
+    try {
+        if (-not (Test-Path $configDir -ErrorAction SilentlyContinue)) {
+            New-Item -ItemType Directory -Path $configDir -Force | Out-Null
+        }
+        
+        # 1. Timestamped backup
+        if (Test-Path $mcpConfigPath -ErrorAction SilentlyContinue) {
+            $timestamp = (Get-Date).ToString("yyyyMMdd-HHmmss")
+            $backupPath = "$mcpConfigPath.bak-$timestamp"
+            Copy-Item -Path $mcpConfigPath -Destination $backupPath -Force
+            Write-Log "PASS" ("Backed up Antigravity MCP config to: {0}" -f $backupPath)
+        }
+        
+        # 2. Read or initialize
+        $configObj = [PSCustomObject]@{
+            mcpServers = [PSCustomObject]@{}
+        }
+        if (Test-Path $mcpConfigPath -ErrorAction SilentlyContinue) {
+            $raw = Get-Content $mcpConfigPath -Raw -ErrorAction SilentlyContinue
+            if ($raw) {
+                try {
+                    $parsed = $raw | ConvertFrom-Json
+                    if ($parsed -and $parsed.mcpServers) {
+                        $configObj = $parsed
+                    }
+                } catch {}
+            }
+        }
+        
+        # 3. Add or update server
+        $entry = [PSCustomObject]@{
+            command = $CommandPath
+            args    = $ArgsList
+        }
+        $configObj.mcpServers | Add-Member -NotePropertyName $ServerName -NotePropertyValue $entry -Force
+        
+        $jsonStr = $configObj | ConvertTo-Json -Depth 5
+        Set-Content -Path $mcpConfigPath -Value $jsonStr -Encoding UTF8
+        Write-Log "VERIFIED" ("Successfully registered '{0}' MCP server in Antigravity." -f $ServerName)
+        return $true
+    } catch {
+        Write-Log "WARN" ("Unable to write to Antigravity MCP config: {0}" -f $_)
+        return $false
+    }
 }
 
 $RepoRoot = Split-Path -Parent $PSScriptRoot
@@ -101,10 +158,12 @@ $AntigravityPaths = @(
 
 $ActiveAntigravityDir = $null
 foreach ($path in $AntigravityPaths) {
-    if (Test-Path $path) {
-        $ActiveAntigravityDir = $path
-        break
-    }
+    try {
+        if (Test-Path $path -ErrorAction SilentlyContinue) {
+            $ActiveAntigravityDir = $path
+            break
+        }
+    } catch {}
 }
 
 if ($ActiveAntigravityDir) {
@@ -192,13 +251,20 @@ if ($npxCmd) {
     $antislopSkill = Join-Path $RepoRoot ".agents\skills\antislop"
     $antislopSettings = Join-Path $env:APPDATA "antislop\settings.json"
     
-    if ((Test-Path $antislopSkill) -or (Test-Path $antislopSettings)) {
+    $hasAntislopSettings = $false
+    try {
+        $hasAntislopSettings = Test-Path $antislopSettings -ErrorAction SilentlyContinue
+    } catch {}
+
+    if ((Test-Path $antislopSkill) -or $hasAntislopSettings) {
         Write-Log "CONFIGURED" "Anti-Slop guardrail is already present."
     } else {
-        Write-Log "DETECTED" "Anti-Slop can be installed automatically via npx."
+        Write-Log "DETECTED" "Anti-Slop can be installed via 'npx antislop-ai --mode during'."
         
-        $shouldInstall = $NonInteractive
-        if (-not $shouldInstall) {
+        $shouldInstall = $false
+        if ($InstallAntiSlop) {
+            $shouldInstall = $true
+        } elseif (-not $NonInteractive) {
             $response = Read-Host "Would you like to install Anti-Slop now using 'npx antislop-ai --mode during'? (Y/N)"
             if ($response -match "^[yY]") {
                 $shouldInstall = $true
@@ -216,7 +282,7 @@ if ($npxCmd) {
                 Write-Log "INFO" "Manual installation: npx antislop-ai --mode during"
             }
         } else {
-            Write-Log "SKIP" "Skipped Anti-Slop installation by user request."
+            Write-Log "SKIP" "Anti-Slop installation skipped (Use -InstallAntiSlop or run 'npx antislop-ai --mode during')."
         }
     }
 } else {
@@ -229,29 +295,121 @@ $uiuxSkill = Join-Path $RepoRoot ".agents\skills\ui-ux-pro-max"
 if (Test-Path $uiuxSkill) {
     Write-Log "INSTALLED" ("UI/UX Pro Max skill detected at {0}" -f $uiuxSkill)
 } else {
-    Write-Log "INFO" "UI/UX Pro Max is not bundled (protecting third-party licenses)."
-    Write-Log "INFO" "Manual setup: Place or link ui-ux-pro-max into .agents\skills\ui-ux-pro-max."
+    $pythonCmd = Get-Command python -ErrorAction SilentlyContinue
+    $hasRealPython = $false
+    if ($pythonCmd) {
+        try {
+            $pyOut = (& python --version 2>&1 | Out-String).Trim()
+            if ($LASTEXITCODE -eq 0 -and $pyOut -match "Python\s+3") {
+                $hasRealPython = $true
+            }
+        } catch {}
+        $global:LASTEXITCODE = 0
+    }
+
+    if (-not $hasRealPython) {
+        Write-Log "INFO" "UI/UX Pro Max requires Python 3.x (Windows Store alias stub or Python missing)."
+        Write-Log "INFO" "Install Python 3: winget install --id Python.Python.3.12 -e"
+    } else {
+        Write-Log "INFO" "UI/UX Pro Max is not bundled (protecting third-party licenses)."
+        Write-Log "INFO" "Manual setup: git clone https://github.com/nextlevelbuilder/ui-ux-pro-max-skill .agents\skills\ui-ux-pro-max"
+    }
 }
 
 # 4.3 Impeccable (Custom / Global Skill)
 $impeccableGlobal = Join-Path $env:USERPROFILE ".gemini\config\skills\impeccable\SKILL.md"
 $impeccableLocal = Join-Path $RepoRoot ".agents\skills\impeccable\SKILL.md"
-if ((Test-Path $impeccableGlobal) -or (Test-Path $impeccableLocal)) {
+$hasImpeccableGlobal = $false
+try {
+    $hasImpeccableGlobal = Test-Path $impeccableGlobal -ErrorAction SilentlyContinue
+} catch {}
+
+if ($hasImpeccableGlobal -or (Test-Path $impeccableLocal)) {
     Write-Log "CONFIGURED" "Impeccable craft skill verified."
 } else {
-    Write-Log "INFO" "Impeccable craft skill not found. Core Mode fallback active."
+    Write-Log "INFO" "Impeccable craft skill not found. Upstream: https://github.com/pbakaus/impeccable"
 }
 
 # 4.4 Desktop MCP Applications (FigCraft & CodebaseMemory)
-Write-Log "INFO" "Auditing Desktop MCP Application processes..."
+Write-Log "INFO" "Auditing FigCraft and MCP configurations..."
+
+$figcraftCmd = Get-Command figcraft-cli -ErrorAction SilentlyContinue
+$figcraftBinCandidates = @(
+    $(if ($figcraftCmd) { $figcraftCmd.Source }),
+    (Join-Path $env:LOCALAPPDATA "Programs\ArtCraft\FigCraft\figcraft-cli.exe"),
+    (Join-Path $env:LOCALAPPDATA "Programs\ArtCraft\FigCraft\figcraft.exe"),
+    (Join-Path $env:ProgramFiles "ArtCraft\FigCraft\figcraft-cli.exe"),
+    (Join-Path ${env:ProgramFiles(x86)} "ArtCraft\FigCraft\figcraft-cli.exe")
+) | Where-Object { $_ -and (Test-Path $_) }
+$figcraftBin = $figcraftBinCandidates | Select-Object -First 1
 
 $figcraftProc = Get-Process | Where-Object { $_.ProcessName -match "^figcraft" } | Select-Object -First 1
-if ($figcraftProc) {
-    Write-Log "CONNECTED" ("FigCraft MCP process actively running (PID: {0})." -f $figcraftProc.Id)
+
+if ($figcraftBin) {
+    Write-Log "INSTALLED" ("FigCraft binary detected: {0}" -f $figcraftBin)
+    
+    # Check Stdio MCP handshake
+    if ($figcraftBin -match "figcraft-cli\.exe$") {
+        try {
+            $initPayload = '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"bootstrapper","version":"1.0"}}}'
+            $pinfo = New-Object System.Diagnostics.ProcessStartInfo
+            $pinfo.FileName = $figcraftBin
+            $pinfo.Arguments = "mcp"
+            $pinfo.RedirectStandardInput = $true
+            $pinfo.RedirectStandardOutput = $true
+            $pinfo.RedirectStandardError = $true
+            $pinfo.UseShellExecute = $false
+            $p = [System.Diagnostics.Process]::Start($pinfo)
+            $p.StandardInput.WriteLine($initPayload)
+            Start-Sleep -Milliseconds 600
+            $resp = $p.StandardOutput.ReadLine()
+            $p.Kill()
+            if ($resp -match '"name":"figcraft"') {
+                Write-Log "VERIFIED" "FigCraft Stdio MCP communication handshake passed!"
+            }
+        } catch {
+            Write-Log "WARN" ("FigCraft MCP handshake check returned: {0}" -f $_)
+        }
+        $global:LASTEXITCODE = 0
+    }
+    
+    # Check Antigravity MCP registration
+    $mcpConfigPath = Join-Path $env:USERPROFILE ".gemini\config\mcp_config.json"
+    $isRegistered = $false
+    try {
+        if (Test-Path $mcpConfigPath -ErrorAction SilentlyContinue) {
+            $rawMcp = Get-Content $mcpConfigPath -Raw -ErrorAction SilentlyContinue
+            if ($rawMcp -and ($rawMcp | ConvertFrom-Json).mcpServers.figcraft) {
+                $isRegistered = $true
+            }
+        }
+    } catch {}
+
+    if ($isRegistered) {
+        Write-Log "CONFIGURED" "FigCraft MCP is registered in Antigravity mcp_config.json."
+    } else {
+        Write-Log "DETECTED" "FigCraft is installed but not registered in Antigravity mcp_config.json."
+        $shouldRegister = $false
+        if ($Force) {
+            $shouldRegister = $true
+        } elseif (-not $NonInteractive) {
+            $resp = Read-Host "Would you like to register FigCraft in Antigravity mcp_config.json? (Y/N)"
+            if ($resp -match "^[yY]") {
+                $shouldRegister = $true
+            }
+        }
+        if ($shouldRegister) {
+            Backup-And-Register-McpServer -ServerName "figcraft" -CommandPath $figcraftBin -ArgsList @("mcp")
+        }
+    }
 } else {
-    Write-Log "INFO" "FigCraft desktop app is NOT running."
-    Write-Log "INFO" "Manual setup on clean PC: Install FigCraft desktop app and launch it before canvas operations."
+    Write-Log "INFO" "FigCraft binary not found on disk."
+    Write-Log "INFO" "Manual setup: Install FigCraft desktop app before live canvas operations."
     Write-Log "SKIP" "Offline simulation mode will be used for FigCraft canvas calls until connected."
+}
+
+if ($figcraftProc) {
+    Write-Log "CONNECTED" ("FigCraft GUI process actively running (PID: {0})." -f $figcraftProc.Id)
 }
 
 $codebaseProc = Get-Process | Where-Object { $_.ProcessName -match "codebase-memory-mcp" } | Select-Object -First 1

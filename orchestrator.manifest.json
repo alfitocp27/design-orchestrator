@@ -73,31 +73,32 @@
       "type": "skill",
       "category": "external-skill",
       "recommendedVersion": "latest",
-      "upstream": "https://github.com/alfitocp27/ui-ux-pro-max",
+      "upstream": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
       "description": "Design intelligence dataset for palettes, typography scales, and token generation.",
-      "manualInstructions": "Copy or link ui-ux-pro-max into .agents/skills/ui-ux-pro-max or global skills."
+      "manualInstructions": "Requires Python 3.x. Clone into .agents/skills/ui-ux-pro-max via 'git clone https://github.com/nextlevelbuilder/ui-ux-pro-max-skill .agents/skills/ui-ux-pro-max'."
     },
     "impeccable": {
       "type": "skill",
       "category": "external-skill",
       "recommendedVersion": "latest",
-      "upstream": "antigravity-built-in",
-      "description": "Design craft floor, visual polish, and surface mode direction.",
-      "manualInstructions": "Available globally in Antigravity or custom skills."
+      "upstream": "https://github.com/pbakaus/impeccable",
+      "description": "Design craft floor, visual polish, and surface mode direction by Paul Bakaus.",
+      "manualInstructions": "Clone or copy into .agents/skills/impeccable or global skills (~/.gemini/config/skills/impeccable)."
     },
     "figcraft": {
       "type": "mcp",
       "category": "mcp-server",
-      "upstream": "figcraft-mcp",
-      "description": "Native FigCraft canvas execution MCP server for node creation, inspection, and exports.",
-      "manualInstructions": "Ensure FigCraft MCP server is registered and active in Antigravity MCP settings."
+      "upstream": "https://figcraft.app",
+      "command": "figcraft-cli mcp",
+      "description": "Native FigCraft canvas execution Stdio MCP server for node creation, inspection, and exports.",
+      "manualInstructions": "Install FigCraft desktop app or CLI, and register stdio command 'figcraft-cli mcp' in ~/.gemini/config/mcp_config.json."
     },
     "codebase-memory-mcp": {
       "type": "mcp",
       "category": "mcp-server",
-      "upstream": "codebase-memory-mcp",
+      "upstream": "https://github.com/DeusData/codebase-memory-mcp",
       "description": "Codebase memory and graph analysis MCP server.",
-      "manualInstructions": "Ensure codebase-memory-mcp server is registered in Antigravity MCP settings."
+      "manualInstructions": "Install codebase-memory-mcp and register in ~/.gemini/config/mcp_config.json."
     },
     "mobbin_mobbin": {
       "type": "mcp",

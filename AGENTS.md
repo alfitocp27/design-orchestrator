@@ -29,7 +29,7 @@ This repository hosts **Design Orchestrator 2.1**, an open-source meta-skill and
 
 ## 3. Directory Conventions
 
-- `skills/design-orchestrator/`: The core meta-skill definition (`SKILL.md`) and technical references.
+- `.agents/skills/design-orchestrator/`: The core meta-skill definition (`SKILL.md`) and technical references (discovered natively by Antigravity).
 - `templates/`: Blueprint templates for project scaffolding (`templates/project/` and `templates/PROJECT_REGISTRY.md.template`).
 - `scripts/`: Cross-PC PowerShell scripts (`bootstrap.ps1`, `doctor.ps1`, `uninstall.ps1`, `test-runner.ps1`).
 - `tests/`: Divided into `tests/offline/` (zero dependencies, mocked) and `tests/integration/` (requires live MCP).

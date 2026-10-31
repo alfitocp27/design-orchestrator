@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.1.1] - 2026-10-31
+
+### Fixed
+- **Windows 11 Python Detection**: Eliminated false-positive `DETECTED` status caused by the Microsoft Store `python.exe` App Execution Alias; `doctor.ps1` and `bootstrap.ps1` now verify actual execution output and exit codes.
+- **Dynamic FigCraft Discovery**: Expanded detection to scan standard user locations (`%LOCALAPPDATA%\Programs\ArtCraft\FigCraft`, `%ProgramFiles%`, and PATH), recognizing installed desktop app and CLI.
+- **Real MCP Communication Handshake**: Upgraded `test-figcraft-live.ps1`, `doctor.ps1`, and `bootstrap.ps1` to test live JSON-RPC Stdio initialization (`serverInfo`, `tools/list`) with FigCraft MCP, proving actual protocol communication.
+- **Safe Antigravity MCP Registration**: Added `Backup-And-Register-McpServer` helper in `bootstrap.ps1` ensuring existing `~/.gemini/config/mcp_config.json` is safely backed up before any write operations.
+- **Directory Canonicalization**: Harmonized skill paths across `AGENTS.md`, `README.md`, and documentation to `.agents/skills/design-orchestrator/`.
+
+### Changed
+- **Accurate Upstream Manifest**: Corrected upstream URLs and prerequisites in `orchestrator.manifest.json` and `docs/setup-guide.md` for `impeccable` (`pbakaus/impeccable`), `ui-ux-pro-max` (`nextlevelbuilder/ui-ux-pro-max-skill`), `figcraft`, and `codebase-memory-mcp`.
+
+---
+
 ## [2.1.0] - 2026-10-31
 
 ### Added
