@@ -138,6 +138,7 @@ foreach ($concept in $concepts) {
     # WCAG Contrast verification
     if ($concept.color) {
         $fg = $concept.color.textPrimary
+        $fgSec = $concept.color.textSecondary
         $bg = $concept.color.surfaceBase
         $card = $concept.color.cardSurface
         
@@ -146,7 +147,7 @@ foreach ($concept in $concepts) {
             if ($ratioBg -lt 4.5) {
                 $defects += "FAIL [$cName]: Contrast ratio for textPrimary ($fg) on surfaceBase ($bg) is ${ratioBg}:1 (< 4.5:1 required by WCAG AA)."
             } else {
-                $findings += "PASS [$cName]: Text contrast on canvas is ${ratioBg}:1 (WCAG AA compliant)."
+                $findings += "PASS [$cName]: Text contrast for textPrimary ($fg) on surfaceBase ($bg) is ${ratioBg}:1 (WCAG AA compliant)."
             }
         }
         
@@ -155,7 +156,16 @@ foreach ($concept in $concepts) {
             if ($ratioCard -lt 4.5) {
                 $defects += "FAIL [$cName]: Contrast ratio for textPrimary ($fg) on cardSurface ($card) is ${ratioCard}:1 (< 4.5:1 required by WCAG AA)."
             } else {
-                $findings += "PASS [$cName]: Text contrast on card is ${ratioCard}:1 (WCAG AA compliant)."
+                $findings += "PASS [$cName]: Text contrast for textPrimary ($fg) on cardSurface ($card) is ${ratioCard}:1 (WCAG AA compliant)."
+            }
+        }
+
+        if ($fgSec -and $card) {
+            $ratioCardSec = Calculate-WcagContrastRatio $fgSec $card
+            if ($ratioCardSec -lt 4.5) {
+                $warnings += "WARN [$cName]: Contrast ratio for textSecondary ($fgSec) on cardSurface ($card) is ${ratioCardSec}:1 (< 4.5:1 for normal body text)."
+            } else {
+                $findings += "PASS [$cName]: Text contrast for textSecondary ($fgSec) on cardSurface ($card) is ${ratioCardSec}:1 (WCAG AA compliant)."
             }
         }
     }

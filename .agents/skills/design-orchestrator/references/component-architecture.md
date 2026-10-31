@@ -1,4 +1,4 @@
-﻿# FigCraft Native Component Engineering & Stress Testing Protocol
+# FigCraft Native Component Engineering & Stress Testing Protocol
 
 > **Design Orchestrator 2.1 Engineering Reference**  
 > Complete technical specification for building native reusable FigCraft components, managing 3-tier design tokens, central icon libraries, atomic component hierarchies (Item $\rightarrow$ Group $\rightarrow$ Pattern), component properties, adaptive auto-layout, Figma import fidelity awareness, and executing the mandatory **8-Point Component Stress Testing Protocol**.
@@ -346,3 +346,53 @@ A fundamental principle of the Design Orchestrator is the **separation of mechan
 > **Zero False Proclamation Law**:
 > Never declare a design "premium", "production-ready", or "flawless" purely on the basis that component mechanics, variables, or layout commands succeeded (Tier 1 PASS). Technical correctness is a necessary baseline, not proof of aesthetic craft. Full visual quality (Tier 2) must be visually inspected via exported unselected screenshots and signed off by the user at the Approval Gates.
 
+
+
+---
+
+## 10. Verified FigCraft Execution Engine & Recipes (Sprint 3)
+
+In Design Orchestrator 2.2, native component creation is automated through verified command recipes executing over FigCraft MCP via Stdio JSON-RPC (`scripts/figcraft_engine.py` and `scripts/build-native-design-system.ps1`).
+
+### Tool & Command Dispatch Protocol
+FigCraft exposes commands through the MCP `run_command` tool rather than distinct tool endpoints for each primitive:
+- **Direct MCP Tools**: `create_node`, `set_properties`, `inspect_document`, `get_node`, `select`, `export`, `screenshot`, `open_file`, `save_file`, `batch`.
+- **Command Dispatch via `run_command`**:
+  - `variable.createCollection`, `variable.create`, `variable.bind`, `variable.list`
+  - `component.create`, `component.combineVariants`, `component.addProperty`, `component.list`
+  - `instance.create`, `instance.setProperties`, `instance.swap`
+  - `node.find`, `node.delete`, `node.duplicate`
+
+### The 7 Native Execution Recipes:
+
+1. **Recipe 1: 3-Tier Token Generation & Alias Chains**:
+   - `Primitives` collection: Raw values (`Slate/900`, `Blue/600`, `Radius/md`).
+   - `SemanticTokens` collection: Semantically named aliases (`surfaceBase`, `primary`, `textPrimary`) referencing Primitive variable IDs via `{ "alias": "<id>" }`.
+   - `ComponentTokens` collection: Component-level tokens (`btn-primary-bg`, `btn-primary-text`) referencing Semantic variable IDs.
+
+2. **Recipe 2: Central Vector Icon Library**:
+   - Icon frames created inside `01_Foundations/Central_Icon_Library` with `layout: "none"` or fixed $20 \times 20$ / $24 \times 24$ geometry and `props: { fill: "none" }`.
+   - Vector paths drawn via `create_node { type: "vector", path: "M..." }` with `fill: "none"` and explicit `stroke`.
+   - Converted to master component via `component.create`.
+
+3. **Recipe 3: Atomic Master Components**:
+   - Master frames created with auto-layout (`layout: "horizontal"` or `"vertical"`), explicit padding, gap, and fills.
+   - Child text layers created with typography specs and contrasting colors ($\ge 4.5:1$).
+   - Master registered via `component.create`.
+
+4. **Recipe 4: Component Variant Sets**:
+   - Two or more related master components created (e.g. `Button/Default`, `Button/Hover`).
+   - Combined into a unified `COMPONENT_SET` via `component.combineVariants { ids: [id1, id2] }`.
+   - Instances switch states seamlessly via `instance.setProperties { ids: [instId], properties: { "State": "Hover" } }`.
+
+5. **Recipe 5: Linked Instances & Override Isolation**:
+   - Instances instantiated via `instance.create { component: compId, parent: parentFrameId }`.
+   - Text overrides applied directly to the instance's text child nodes without modifying the master component or sibling instances.
+
+6. **Recipe 6: Dynamic Auto Layout & Sizing Constraints**:
+   - Layout containers declare `sizingH: "hug"` or `sizingH: "fill"`.
+   - Text expansion dynamically stretches container frames without boundary clipping or text collision.
+
+7. **Recipe 7: Composite Reusable UI Patterns**:
+   - Patterns (e.g. Telemetry Metric Card, Table Row, Modal Dialog) assembled by embedding linked instances of Badge, Button, and vector icons into a parent Frame.
+   - Master structural elements remain modular; layout wrappers remain `FRAME`.

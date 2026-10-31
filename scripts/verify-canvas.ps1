@@ -178,17 +178,21 @@ function Add-AuditFinding {
     }
 }
 
-# Recursively traverse all nodes
+# Recursively traverse all nodes and build parent map
+$parentMap = @{}
 function Get-AllNodes {
-    param($NodeList)
+    param($NodeList, $ParentNode = $null)
     $all = @()
     foreach ($node in $NodeList) {
         $all += $node
+        if ($ParentNode -and $node.id) {
+            $parentMap[$node.id.ToString()] = $ParentNode
+        }
         if ($node.children -and $node.children.Count -gt 0) {
-            $all += Get-AllNodes -NodeList $node.children
+            $all += Get-AllNodes -NodeList $node.children -ParentNode $node
         }
         if ($node.cells -and $node.cells.Count -gt 0) {
-            $all += Get-AllNodes -NodeList $node.cells
+            $all += Get-AllNodes -NodeList $node.cells -ParentNode $node
         }
     }
     return $all
@@ -348,6 +352,29 @@ foreach ($textNode in $textNodes) {
     }
     
     # 2. Contrast evaluation
+    if (-not $fg -and $textNode.fills -and $textNode.fills.Count -gt 0) {
+        $solidFill = $textNode.fills | Where-Object { $_.type -eq "solid" -and $_.color } | Select-Object -First 1
+        if ($solidFill) { $fg = $solidFill.color }
+    }
+    
+    if (-not $bg -and $textNode.id -and $parentMap.ContainsKey($textNode.id.ToString())) {
+        $currParent = $parentMap[$textNode.id.ToString()]
+        while ($currParent -and -not $bg) {
+            if ($currParent.fills -and $currParent.fills.Count -gt 0) {
+                $pSolid = $currParent.fills | Where-Object { $_.type -eq "solid" -and $_.color } | Select-Object -First 1
+                if ($pSolid) { $bg = $pSolid.color }
+            }
+            if (-not $bg -and $currParent.background) {
+                $bg = $currParent.background
+            }
+            if (-not $bg -and $currParent.id -and $parentMap.ContainsKey($currParent.id.ToString())) {
+                $currParent = $parentMap[$currParent.id.ToString()]
+            } else {
+                $currParent = $null
+            }
+        }
+    }
+
     if (-not $fg -or -not $bg) {
         $auditResults.summary.unverifiableChecks++
         $auditResults.contrastChecks += [ordered]@{

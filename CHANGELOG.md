@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.2.0-dev] - 2026-10-31
 
 ### Added
+- **Native Design System Engine & 8-Point Stress Testing Harness (Sprint 3)**:
+  - Built `scripts/figcraft_engine.py`: Direct Stdio JSON-RPC client for FigCraft MCP executing the 7 core native design system recipes (3-tier variable token hierarchy, central vector icon library, atomic master components, variant sets with `combineVariants`, linked instances with override isolation, adaptive auto-layout with `sizingH: hug|fill`, and composite UI patterns).
+  - Built `scripts/build-native-design-system.ps1`: Automated harness that initializes native design systems, executes the 8-point component stress testing protocol, and links to canvas QA.
+  - Added live integration test `tests/integration/test-native-design-system-live.ps1` to test runner.
+  - Integrated 8-Point Component Stress Testing Protocol (Master propagation, text override isolation, variant switching, icon inheritance, content expansion stress, permutation stress, sizing constraints, and save/reload persistence).
 - **Dynamic Creative Direction Engine (Sprint 2)**:
   - Replaced 5 rigid static archetypes with dynamic archetype seeds synthesized from 7 product intelligence facets and multi-source research (UI/UX Pro Max, Impeccable, Anti-Slop, NeedMCP).
   - Enforced 10 mandatory dimensions per concept: Identity & Rationale, Benchmarks, Typography, Color & WCAG, Layout & Grid, Surface & Elevation, Iconography, Data Visualization, Accessibility, and UX Trade-offs.
@@ -26,6 +31,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Enforced anti-style-locking policy (`getStyle` for exploration; `selectStyle` strictly gated post-approval) and recorded status as `UNVERIFIED_RUNTIME`.
 
 ### Fixed
+- **Canvas QA & Contrast Precision**:
+  - Enhanced `scripts/verify-canvas.ps1` with parent container fill traversal for native FigCraft text nodes lacking inline background properties.
+  - Updated `scripts/evaluate-creative-direction.ps1` to calculate and report both foreground and background hex values for text contrast checks on canvas and card surfaces.
 - **Antigravity Configuration Path Inconsistency**: Standardized Antigravity 2.0 configuration reference strictly to `~/.gemini/config/mcp_config.json`, documenting upstream CLI naming differences.
 
 ---
