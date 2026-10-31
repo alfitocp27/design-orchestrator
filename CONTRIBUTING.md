@@ -41,7 +41,7 @@ All contributions must pass the offline test suite before being merged:
 The test runner validates:
 1. **Manifest Integrity**: `orchestrator.manifest.json` schema and dependency syntax.
 2. **Skill Reference Integrity**: Internal markdown links in `skills/design-orchestrator/` resolve to valid files.
-3. **Zero Secrets / Zero Hardcoded Paths**: No private absolute paths (`C:\Users\...`) or secret tokens.
+3. **Zero Secrets / Zero Hardcoded Paths**: No hardcoded local machine paths or secret tokens.
 4. **Idempotent Bootstrapper**: `bootstrap.ps1` runs non-destructively in dry-run mode.
 
 If you are modifying canvas or MCP integrations, write an offline mock test in `tests/offline/` using JSON fixtures before adding live integration tests.

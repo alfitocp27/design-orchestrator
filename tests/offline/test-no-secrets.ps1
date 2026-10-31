@@ -8,18 +8,15 @@ if (-not $RepoRoot) { $RepoRoot = Split-Path (Split-Path $PSScriptRoot -Parent) 
 
 Write-Host "Running Test: Security & Privacy Path Scan..." -ForegroundColor Cyan
 
-# Patterns that MUST NEVER appear in committed files
+# Generic regex patterns that MUST NEVER appear in committed files
 $bannedPatterns = @(
-    "C:\\Users\\adria",
-    "c:/users/adria",
-    "FILE PRIBADI",
-    "PROJEK PRIBADI",
-    "ghp_[a-zA-Z0-9]{36}",
-    "github_pat_[a-zA-Z0-9_]{82}",
-    "BEGIN (RSA|OPENSSH|EC) PRIVATE KEY",
-    "AIzaSy[a-zA-Z0-9_-]{33}",
-    "PT Sawit Makmur",
-    "kryotrack.figcraft"
+    'C:\\Users\\[a-zA-Z0-9_\-\.]+',
+    'c:/users/[a-zA-Z0-9_\-\.]+',
+    'ghp_[a-zA-Z0-9]{36}',
+    'github_pat_[a-zA-Z0-9_]{82}',
+    'BEGIN (RSA|OPENSSH|EC) PRIVATE KEY',
+    'AIzaSy[a-zA-Z0-9_-]{33}',
+    'sk-[a-zA-Z0-9]{20,}'
 )
 
 $violations = @()

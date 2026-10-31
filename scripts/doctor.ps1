@@ -3,7 +3,8 @@
     Design Orchestrator 2.1 -- System Diagnostic and Health Checker (Doctor).
 .DESCRIPTION
     Audits the current machine environment, Antigravity integration, skills,
-    templates, and MCP dependencies. Distinguishes Core and Full readiness.
+    templates, and MCP dependencies.
+    Distinguishes lifecycle states: DETECTED, INSTALLED, CONFIGURED, CONNECTED, VERIFIED.
     Guarantees Zero False PASS.
 #>
 
@@ -16,26 +17,38 @@ function Write-DoctorItem {
     param(
         [string]$Category,
         [string]$Name,
-        [ValidateSet("PASS", "WARN", "FAIL", "SKIP", "INFO")]
+        [ValidateSet("DETECTED", "INSTALLED", "CONFIGURED", "CONNECTED", "VERIFIED", "PASS", "WARN", "FAIL", "SKIP", "INFO", "NOT_INSTALLED")]
         [string]$Status,
         [string]$Details
     )
     $symbol = switch ($Status) {
-        "PASS" { "[PASS]" }
-        "WARN" { "[WARN]" }
-        "FAIL" { "[FAIL]" }
-        "SKIP" { "[SKIP]" }
-        "INFO" { "[INFO]" }
+        "VERIFIED"      { "[VERIFIED]     " }
+        "CONNECTED"     { "[CONNECTED]    " }
+        "CONFIGURED"    { "[CONFIGURED]   " }
+        "INSTALLED"     { "[INSTALLED]    " }
+        "DETECTED"      { "[DETECTED]     " }
+        "PASS"          { "[PASS]         " }
+        "WARN"          { "[WARN]         " }
+        "FAIL"          { "[FAIL]         " }
+        "SKIP"          { "[SKIP]         " }
+        "INFO"          { "[INFO]         " }
+        "NOT_INSTALLED" { "[NOT_INSTALLED]" }
     }
     $color = switch ($Status) {
-        "PASS" { "Green" }
-        "WARN" { "Yellow" }
-        "FAIL" { "Red" }
-        "SKIP" { "DarkGray" }
-        "INFO" { "Cyan" }
+        "VERIFIED"      { "Green" }
+        "CONNECTED"     { "Green" }
+        "PASS"          { "Green" }
+        "CONFIGURED"    { "Cyan" }
+        "INSTALLED"     { "Cyan" }
+        "DETECTED"      { "Yellow" }
+        "WARN"          { "Yellow" }
+        "FAIL"          { "Red" }
+        "SKIP"          { "DarkGray" }
+        "INFO"          { "DarkGray" }
+        "NOT_INSTALLED" { "DarkGray" }
     }
     
-    $line = ("{0,-15} | {1,-30} | {2,-6} | {3}" -f $Category, $Name, $symbol, $Details)
+    $line = ("{0,-15} | {1,-26} | {2} | {3}" -f $Category, $Name, $symbol, $Details)
     Write-Host $line -ForegroundColor $color
 }
 
@@ -45,13 +58,13 @@ $ManifestPath = Join-Path $RepoRoot "orchestrator.manifest.json"
 Write-Host ""
 Write-Host "================================================================================" -ForegroundColor Cyan
 Write-Host " Design Orchestrator 2.1 -- Diagnostic Health Report (Doctor)" -ForegroundColor Cyan
-Write-Host " Root Directory: $RepoRoot" -ForegroundColor Cyan
+Write-Host (" Root Directory: {0}" -f $RepoRoot) -ForegroundColor Cyan
 Write-Host "================================================================================" -ForegroundColor Cyan
 Write-Host ""
 
-$header = ("{0,-15} | {1,-30} | {2,-6} | {3}" -f "CATEGORY", "COMPONENT", "STATUS", "DETAILS")
+$header = ("{0,-15} | {1,-26} | {2,-15} | {3}" -f "CATEGORY", "COMPONENT", "STATE", "DETAILS")
 Write-Host $header -ForegroundColor White
-$divider = "-" * 80
+$divider = "-" * 85
 Write-Host $divider -ForegroundColor Gray
 
 # 1. Platform & Runtimes
@@ -72,12 +85,13 @@ if ($PSVersionTable.PSVersion.Major -ge 5) {
 $gitCmd = Get-Command git -ErrorAction SilentlyContinue
 if ($gitCmd) {
     $gitVer = (& git --version 2>$null)
-    Write-DoctorItem "Toolchain" "Git" "PASS" "$gitVer"
+    $global:LASTEXITCODE = 0
+    Write-DoctorItem "Toolchain" "Git" "INSTALLED" "$gitVer"
 } else {
-    Write-DoctorItem "Toolchain" "Git" "FAIL" "Git is not installed"
+    Write-DoctorItem "Toolchain" "Git" "NOT_INSTALLED" "Git command not found in PATH"
 }
 
-# GitHub CLI
+# GitHub CLI (gh)
 if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
     if (Test-Path "C:\Program Files\GitHub CLI\gh.exe") {
         $env:Path = "C:\Program Files\GitHub CLI;" + $env:Path
@@ -86,41 +100,44 @@ if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
 $ghCmd = Get-Command gh -ErrorAction SilentlyContinue
 if ($ghCmd) {
     $ghVer = (& gh --version 2>$null | Select-Object -First 1)
-    $authStatus = (& gh auth status 2>&1)
-    if ($LASTEXITCODE -eq 0) {
-        Write-DoctorItem "Toolchain" "GitHub CLI (gh)" "PASS" "$ghVer (Authenticated)"
+    $null = (& gh auth status 2>&1)
+    $isGhAuthed = ($LASTEXITCODE -eq 0)
+    $global:LASTEXITCODE = 0  # Reset so probe failure does not leak to CI runner
+    if ($isGhAuthed) {
+        Write-DoctorItem "Toolchain" "GitHub CLI (gh)" "VERIFIED" "$ghVer (Authenticated)"
     } else {
-        Write-DoctorItem "Toolchain" "GitHub CLI (gh)" "WARN" "$ghVer (Not logged in. Run 'gh auth login')"
+        Write-DoctorItem "Toolchain" "GitHub CLI (gh)" "INSTALLED" "$ghVer (Not logged in. Run 'gh auth login')"
     }
 } else {
-    Write-DoctorItem "Toolchain" "GitHub CLI (gh)" "INFO" "Not installed (Optional for browser auth)"
+    Write-DoctorItem "Toolchain" "GitHub CLI (gh)" "NOT_INSTALLED" "Optional for browser auth"
 }
 
-# Node.js
+# Node.js & npx
 $npxCmd = Get-Command npx -ErrorAction SilentlyContinue
 if ($npxCmd) {
     $nodeVer = (& node --version 2>$null)
-    Write-DoctorItem "Toolchain" "Node.js / npx" "PASS" "$nodeVer (Optional for Anti-Slop)"
+    $global:LASTEXITCODE = 0
+    Write-DoctorItem "Toolchain" "Node.js / npx" "INSTALLED" "$nodeVer (Supports automated Anti-Slop)"
 } else {
-    Write-DoctorItem "Toolchain" "Node.js / npx" "SKIP" "Not found (Optional for Anti-Slop)"
+    Write-DoctorItem "Toolchain" "Node.js / npx" "NOT_INSTALLED" "Optional for Anti-Slop install"
 }
 
 # 2. Manifest & Core Skills
 if (Test-Path $ManifestPath) {
     try {
         $manifest = Get-Content $ManifestPath -Raw | ConvertFrom-Json
-        Write-DoctorItem "Manifest" "orchestrator.manifest.json" "PASS" "v$($manifest.version) (Valid JSON)"
+        Write-DoctorItem "Manifest" "orchestrator.manifest" "VERIFIED" "v$($manifest.version) (Valid JSON)"
     } catch {
-        Write-DoctorItem "Manifest" "orchestrator.manifest.json" "FAIL" "Corrupted JSON"
+        Write-DoctorItem "Manifest" "orchestrator.manifest" "FAIL" "Corrupted JSON"
     }
 } else {
-    Write-DoctorItem "Manifest" "orchestrator.manifest.json" "FAIL" "Missing manifest"
+    Write-DoctorItem "Manifest" "orchestrator.manifest" "FAIL" "Missing manifest file"
 }
 
 # Core Skill
 $skillFile = Join-Path $RepoRoot ".agents\skills\design-orchestrator\SKILL.md"
 if (Test-Path $skillFile) {
-    Write-DoctorItem "Core Skill" "SKILL.md" "PASS" "Meta-skill definition verified"
+    Write-DoctorItem "Core Skill" "SKILL.md" "VERIFIED" "Meta-skill definition verified"
 } else {
     Write-DoctorItem "Core Skill" "SKILL.md" "FAIL" "Missing SKILL.md in .agents/skills"
 }
@@ -144,7 +161,7 @@ foreach ($ref in $expectedRefs) {
 }
 
 if ($missingRefs -eq 0) {
-    Write-DoctorItem "Core Skill" "Technical References" "PASS" "All 6 reference runbooks present"
+    Write-DoctorItem "Core Skill" "Technical References" "VERIFIED" "All 6 reference runbooks present"
 } else {
     Write-DoctorItem "Core Skill" "Technical References" "FAIL" "$missingRefs reference file(s) missing"
 }
@@ -152,77 +169,107 @@ if ($missingRefs -eq 0) {
 # Templates
 $templateDir = Join-Path $RepoRoot "templates\project"
 if (Test-Path $templateDir) {
-    Write-DoctorItem "Templates" "Project Blueprint" "PASS" "templates/project verified"
+    Write-DoctorItem "Templates" "Project Blueprint" "VERIFIED" "templates/project verified"
 } else {
     Write-DoctorItem "Templates" "Project Blueprint" "FAIL" "templates/project missing"
 }
 
-# 3. Companions & Integrations (Full Mode)
+# 3. Companions & Integrations (Full Mode Auditing)
 # Anti-Slop
 $antislopGlobal = Join-Path $env:APPDATA "antislop\settings.json"
 $antislopLocal = Join-Path $RepoRoot ".agents\skills\antislop\SKILL.md"
 
 if (Test-Path $antislopGlobal) {
-    $asContent = Get-Content $antislopGlobal -Raw | ConvertFrom-Json
-    Write-DoctorItem "Companion" "Anti-Slop" "PASS" "Global preference: $($asContent.mode)"
+    try {
+        $asContent = Get-Content $antislopGlobal -Raw | ConvertFrom-Json
+        Write-DoctorItem "Companion" "Anti-Slop" "CONFIGURED" "Global preference: $($asContent.mode)"
+    } catch {
+        Write-DoctorItem "Companion" "Anti-Slop" "INSTALLED" "Settings file present but unparsed"
+    }
 } elseif (Test-Path $antislopLocal) {
-    Write-DoctorItem "Companion" "Anti-Slop" "PASS" "Local skill present"
+    Write-DoctorItem "Companion" "Anti-Slop" "INSTALLED" "Local skill present in .agents/skills"
+} elseif ($npxCmd) {
+    Write-DoctorItem "Companion" "Anti-Slop" "DETECTED" "Node/npx detected; install via 'npx antislop-ai'"
 } else {
-    Write-DoctorItem "Companion" "Anti-Slop" "SKIP" "Not active (Optional for Core Mode)"
+    Write-DoctorItem "Companion" "Anti-Slop" "NOT_INSTALLED" "Requires Node.js for automated install"
 }
 
 # Impeccable
 $impeccableGlobal = Join-Path $env:USERPROFILE ".gemini\config\skills\impeccable\SKILL.md"
+$impeccableLocal = Join-Path $RepoRoot ".agents\skills\impeccable\SKILL.md"
 if (Test-Path $impeccableGlobal) {
-    Write-DoctorItem "Companion" "Impeccable" "PASS" "Discovered in Antigravity global skills"
+    Write-DoctorItem "Companion" "Impeccable" "CONFIGURED" "Discovered in Antigravity global skills"
+} elseif (Test-Path $impeccableLocal) {
+    Write-DoctorItem "Companion" "Impeccable" "INSTALLED" "Discovered in local workspace skills"
 } else {
-    Write-DoctorItem "Companion" "Impeccable" "SKIP" "Not active (Optional)"
+    Write-DoctorItem "Companion" "Impeccable" "NOT_INSTALLED" "Optional craft skill"
 }
 
 # UI/UX Pro Max
 $uiuxLocal = Join-Path $RepoRoot ".agents\skills\ui-ux-pro-max\SKILL.md"
 if (Test-Path $uiuxLocal) {
-    Write-DoctorItem "Companion" "UI/UX Pro Max" "PASS" "Discovered in workspace skills"
+    Write-DoctorItem "Companion" "UI/UX Pro Max" "INSTALLED" "Discovered in workspace skills"
 } else {
-    Write-DoctorItem "Companion" "UI/UX Pro Max" "SKIP" "Not active (Optional)"
+    $pythonCmd = Get-Command python -ErrorAction SilentlyContinue
+    if ($pythonCmd) {
+        Write-DoctorItem "Companion" "UI/UX Pro Max" "DETECTED" "Python available; manual clone required"
+    } else {
+        Write-DoctorItem "Companion" "UI/UX Pro Max" "NOT_INSTALLED" "Requires Python and manual clone"
+    }
 }
 
-# FigCraft MCP
+# FigCraft MCP (Real connection vs Schema on disk)
 $mcpDir = Join-Path $env:USERPROFILE ".gemini\antigravity\mcp"
-$figcraftMcp = Join-Path $mcpDir "figcraft"
-if (Test-Path $figcraftMcp) {
-    Write-DoctorItem "MCP Server" "FigCraft MCP" "PASS" "Schema registered in Antigravity"
+$figcraftSchema = Join-Path $mcpDir "figcraft"
+$figcraftProc = Get-Process | Where-Object { $_.ProcessName -match "^figcraft" } | Select-Object -First 1
+
+if ($figcraftProc) {
+    Write-DoctorItem "MCP Server" "FigCraft MCP" "CONNECTED" "Active process PID: $($figcraftProc.Id)"
+} elseif (Test-Path $figcraftSchema) {
+    Write-DoctorItem "MCP Server" "FigCraft MCP" "CONFIGURED" "Schema registered; Process not running"
 } else {
-    Write-DoctorItem "MCP Server" "FigCraft MCP" "SKIP" "Not registered (Core mode uses mock simulation)"
+    Write-DoctorItem "MCP Server" "FigCraft MCP" "NOT_INSTALLED" "Requires FigCraft desktop app"
 }
 
-# Codebase Memory MCP
-$codebaseMcp = Join-Path $mcpDir "codebase-memory-mcp"
-if (Test-Path $codebaseMcp) {
-    Write-DoctorItem "MCP Server" "CodebaseMemoryMCP" "PASS" "Schema registered in Antigravity"
+# Codebase Memory MCP (Real connection vs Schema on disk)
+$codebaseSchema = Join-Path $mcpDir "codebase-memory-mcp"
+$codebaseProc = Get-Process | Where-Object { $_.ProcessName -match "codebase-memory-mcp" } | Select-Object -First 1
+
+if ($codebaseProc) {
+    Write-DoctorItem "MCP Server" "CodebaseMemoryMCP" "CONNECTED" "Active process PID: $($codebaseProc.Id)"
+} elseif (Test-Path $codebaseSchema) {
+    Write-DoctorItem "MCP Server" "CodebaseMemoryMCP" "CONFIGURED" "Schema registered; Process not running"
 } else {
-    Write-DoctorItem "MCP Server" "CodebaseMemoryMCP" "SKIP" "Not registered (Optional)"
+    Write-DoctorItem "MCP Server" "CodebaseMemoryMCP" "NOT_INSTALLED" "Requires codebase-memory-mcp"
 }
 
-# Summary
+# 4. Summary & Exit Code
 Write-Host $divider -ForegroundColor Gray
 Write-Host ""
 Write-Host "READINESS SUMMARY:" -ForegroundColor Cyan
 
 $coreReady = (Test-Path $skillFile) -and ($missingRefs -eq 0) -and (Test-Path $templateDir) -and (Test-Path $ManifestPath)
 if ($coreReady) {
-    Write-Host "  CORE MODE READINESS: [PASS] Ready for offline discovery, PRD mapping, and template generation." -ForegroundColor Green
+    Write-Host "  CORE MODE READINESS: [PASS] Self-contained; 100% ready for offline discovery, PRD mapping, and templates." -ForegroundColor Green
 } else {
     Write-Host "  CORE MODE READINESS: [FAIL] Missing required core files." -ForegroundColor Red
 }
 
-$hasFigcraft = Test-Path $figcraftMcp
-$hasAntislop = (Test-Path $antislopGlobal) -or (Test-Path $antislopLocal)
-
-if ($coreReady -and $hasFigcraft -and $hasAntislop) {
-    Write-Host "  FULL MODE READINESS: [PASS] Full production orchestration active." -ForegroundColor Green
+$fullConnected = ($figcraftProc -ne $null) -and ((Test-Path $antislopGlobal) -or (Test-Path $antislopLocal))
+if ($coreReady -and $fullConnected) {
+    Write-Host "  FULL MODE READINESS: [CONNECTED] Live FigCraft canvas & Anti-Slop active." -ForegroundColor Green
+} elseif ($coreReady) {
+    Write-Host "  FULL MODE READINESS: [SIMULATED] Core is ready. Real FigCraft MCP not running (offline mock fallback active)." -ForegroundColor Yellow
 } else {
-    Write-Host "  FULL MODE READINESS: [PARTIAL] Core is ready. Optional MCP/skills skipped (Simulation available)." -ForegroundColor Yellow
+    Write-Host "  FULL MODE READINESS: [FAIL] Core prerequisite missing." -ForegroundColor Red
 }
 
 Write-Host ""
+
+# Always return 0 when Core is ready so diagnostic checks succeed cleanly in CI
+$global:LASTEXITCODE = 0
+if ($coreReady) {
+    exit 0
+} else {
+    exit 1
+}

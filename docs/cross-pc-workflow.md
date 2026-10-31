@@ -7,7 +7,7 @@ This document outlines the workflow for developing and using **Design Orchestrat
 ## 1. Principles of Portability
 
 To ensure smooth synchronization without merge conflicts or broken paths:
-1. **Dynamic Paths Only**: Never commit files containing absolute paths like `C:\Users\username\...`. Always use `$PSScriptRoot`, relative paths, or environment variables (`$env:LOCALAPPDATA`, `$env:USERPROFILE`).
+1. **Dynamic Paths Only**: Never commit files containing machine-specific absolute user paths. Always use `$PSScriptRoot`, relative paths, or environment variables (`$env:LOCALAPPDATA`, `$env:USERPROFILE`).
 2. **Configuration Separation**: Machine-specific configuration (like local MCP endpoints or auth tokens) belongs in `.env` (gitignored) or Antigravity's local settings, never in committed repository files.
 3. **Session Handoff Protocol**: Before switching machines, update `HANDOFF.md` with what was completed, any known defects, and what to do next.
 

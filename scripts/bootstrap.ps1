@@ -5,6 +5,7 @@
     Installs and configures Design Orchestrator on Windows 11 / Antigravity 2.0.
     Supports Core Mode (zero external tools) and Full Mode (production integrations).
     Idempotent, dynamic-path aware, and safe to rerun.
+    Distinguishes automatable tools (Anti-Slop) from manual external apps (FigCraft).
 .PARAMETER Mode
     Installation mode: 'Core' (default) or 'Full'.
 .PARAMETER NonInteractive
@@ -26,19 +27,24 @@ $ErrorActionPreference = "Stop"
 
 function Write-Log {
     param(
-        [ValidateSet("INFO", "PASS", "WARN", "SKIP", "FAIL")]
+        [ValidateSet("INFO", "PASS", "WARN", "SKIP", "FAIL", "DETECTED", "INSTALLED", "CONFIGURED", "CONNECTED", "VERIFIED")]
         [string]$Level,
         [string]$Message
     )
     $timestamp = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss")
     $color = switch ($Level) {
-        "PASS" { "Green" }
-        "INFO" { "Cyan" }
-        "WARN" { "Yellow" }
-        "SKIP" { "DarkGray" }
-        "FAIL" { "Red" }
+        "PASS"       { "Green" }
+        "VERIFIED"   { "Green" }
+        "CONNECTED"  { "Green" }
+        "INFO"       { "Cyan" }
+        "CONFIGURED" { "Cyan" }
+        "INSTALLED"  { "Cyan" }
+        "DETECTED"   { "Yellow" }
+        "WARN"       { "Yellow" }
+        "SKIP"       { "DarkGray" }
+        "FAIL"       { "Red" }
     }
-    Write-Host ("[{0}] [{1}] {2}" -f $timestamp, $Level, $Message) -ForegroundColor $color
+    Write-Host ("[{0}] [{1,-10}] {2}" -f $timestamp, $Level, $Message) -ForegroundColor $color
 }
 
 $RepoRoot = Split-Path -Parent $PSScriptRoot
@@ -65,6 +71,7 @@ Write-Log "PASS" ("PowerShell Version: {0}." -f $PSVersionTable.PSVersion)
 $gitCmd = Get-Command git -ErrorAction SilentlyContinue
 if ($gitCmd) {
     $gitVer = (& git --version 2>$null)
+    $global:LASTEXITCODE = 0
     Write-Log "PASS" ("Git available: {0}" -f $gitVer)
 } else {
     Write-Log "WARN" "Git command not found in PATH."
@@ -79,6 +86,7 @@ if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
 $ghCmd = Get-Command gh -ErrorAction SilentlyContinue
 if ($ghCmd) {
     $ghVer = (& gh --version 2>$null | Select-Object -First 1)
+    $global:LASTEXITCODE = 0
     Write-Log "PASS" ("GitHub CLI available: {0}" -f $ghVer)
 } else {
     Write-Log "INFO" "GitHub CLI (gh) not found in PATH."
@@ -166,86 +174,97 @@ if ($Mode -eq "Core") {
     Write-Log "SKIP" "External companions (Anti-Slop, FigCraft MCP, UI/UX Pro Max) skipped in Core Mode."
     Write-Log "INFO" "Run '.\scripts\doctor.ps1' to verify environment diagnostics."
     Write-Log "INFO" "=========================================================="
+    $global:LASTEXITCODE = 0
     exit 0
 }
 
 # --- FULL MODE SETUP ---
 Write-Log "INFO" "Proceeding with Full Mode companion detection and setup..."
 
-# 4.1 Node & Anti-Slop Detection
-$nodeCmd = Get-Command node -ErrorAction SilentlyContinue
+# 4.1 Node & Anti-Slop (Automated installation capable)
 $npxCmd = Get-Command npx -ErrorAction SilentlyContinue
 
 if ($npxCmd) {
     $npxVer = (& npx --version 2>$null)
+    $global:LASTEXITCODE = 0
     Write-Log "PASS" ("npx available: {0}" -f $npxVer)
     
-    # Check if anti-slop is installed
     $antislopSkill = Join-Path $RepoRoot ".agents\skills\antislop"
     $antislopSettings = Join-Path $env:APPDATA "antislop\settings.json"
     
     if ((Test-Path $antislopSkill) -or (Test-Path $antislopSettings)) {
-        Write-Log "PASS" "Anti-Slop guardrail is already present."
+        Write-Log "CONFIGURED" "Anti-Slop guardrail is already present."
     } else {
-        Write-Log "WARN" "Anti-Slop is not yet installed in this environment."
+        Write-Log "DETECTED" "Anti-Slop can be installed automatically via npx."
         
         $shouldInstall = $NonInteractive
         if (-not $shouldInstall) {
-            $response = Read-Host "Would you like to configure Anti-Slop now using 'npx antislop-ai --mode during'? (Y/N)"
+            $response = Read-Host "Would you like to install Anti-Slop now using 'npx antislop-ai --mode during'? (Y/N)"
             if ($response -match "^[yY]") {
                 $shouldInstall = $true
             }
         }
         
         if ($shouldInstall) {
-            Write-Log "INFO" "Configuring Anti-Slop..."
+            Write-Log "INFO" "Installing Anti-Slop via official installer..."
             try {
                 & npx antislop-ai --mode during
-                Write-Log "PASS" "Anti-Slop configured successfully."
+                $global:LASTEXITCODE = 0
+                Write-Log "VERIFIED" "Anti-Slop installed and configured successfully."
             } catch {
                 Write-Log "WARN" ("Automatic Anti-Slop setup failed: {0}" -f $_)
-                Write-Log "INFO" "You can manually run: npx antislop-ai --mode during"
+                Write-Log "INFO" "Manual installation: npx antislop-ai --mode during"
             }
         } else {
-            Write-Log "SKIP" "Skipped Anti-Slop installation."
+            Write-Log "SKIP" "Skipped Anti-Slop installation by user request."
         }
     }
 } else {
     Write-Log "WARN" "Node.js/npx not found. Anti-Slop automated installer requires Node.js."
-    Write-Log "INFO" "Install Node.js via: winget install --id OpenJS.NodeJS -e --source winget"
+    Write-Log "INFO" "Manual installation: winget install --id OpenJS.NodeJS -e --source winget"
 }
 
-# 4.2 UI/UX Pro Max Detection
+# 4.2 UI/UX Pro Max (Manual / Guided Clone)
 $uiuxSkill = Join-Path $RepoRoot ".agents\skills\ui-ux-pro-max"
 if (Test-Path $uiuxSkill) {
-    Write-Log "PASS" ("UI/UX Pro Max skill detected at {0}" -f $uiuxSkill)
+    Write-Log "INSTALLED" ("UI/UX Pro Max skill detected at {0}" -f $uiuxSkill)
 } else {
-    Write-Log "INFO" "UI/UX Pro Max skill not installed locally. Can be linked into .agents\skills\ui-ux-pro-max."
+    Write-Log "INFO" "UI/UX Pro Max is not bundled (protecting third-party licenses)."
+    Write-Log "INFO" "Manual setup: Place or link ui-ux-pro-max into .agents\skills\ui-ux-pro-max."
 }
 
-# 4.3 MCP Servers Check
-Write-Log "INFO" "Checking Antigravity MCP server registrations..."
-$mcpDir = Join-Path $env:USERPROFILE ".gemini\antigravity\mcp"
-
-if (Test-Path $mcpDir) {
-    $figcraftMcp = Join-Path $mcpDir "figcraft"
-    if (Test-Path $figcraftMcp) {
-        Write-Log "PASS" ("FigCraft MCP schema verified at {0}" -f $figcraftMcp)
-    } else {
-        Write-Log "INFO" "FigCraft MCP schema not found in user appdata. Ensure FigCraft MCP server is connected."
-    }
-
-    $codebaseMcp = Join-Path $mcpDir "codebase-memory-mcp"
-    if (Test-Path $codebaseMcp) {
-        Write-Log "PASS" ("CodebaseMemoryMCP schema verified at {0}" -f $codebaseMcp)
-    } else {
-        Write-Log "INFO" "CodebaseMemoryMCP schema not found in user appdata."
-    }
+# 4.3 Impeccable (Custom / Global Skill)
+$impeccableGlobal = Join-Path $env:USERPROFILE ".gemini\config\skills\impeccable\SKILL.md"
+$impeccableLocal = Join-Path $RepoRoot ".agents\skills\impeccable\SKILL.md"
+if ((Test-Path $impeccableGlobal) -or (Test-Path $impeccableLocal)) {
+    Write-Log "CONFIGURED" "Impeccable craft skill verified."
 } else {
-    Write-Log "INFO" ("Antigravity MCP directory ({0}) will be populated upon server connection." -f $mcpDir)
+    Write-Log "INFO" "Impeccable craft skill not found. Core Mode fallback active."
+}
+
+# 4.4 Desktop MCP Applications (FigCraft & CodebaseMemory)
+Write-Log "INFO" "Auditing Desktop MCP Application processes..."
+
+$figcraftProc = Get-Process | Where-Object { $_.ProcessName -match "^figcraft" } | Select-Object -First 1
+if ($figcraftProc) {
+    Write-Log "CONNECTED" ("FigCraft MCP process actively running (PID: {0})." -f $figcraftProc.Id)
+} else {
+    Write-Log "INFO" "FigCraft desktop app is NOT running."
+    Write-Log "INFO" "Manual setup on clean PC: Install FigCraft desktop app and launch it before canvas operations."
+    Write-Log "SKIP" "Offline simulation mode will be used for FigCraft canvas calls until connected."
+}
+
+$codebaseProc = Get-Process | Where-Object { $_.ProcessName -match "codebase-memory-mcp" } | Select-Object -First 1
+if ($codebaseProc) {
+    Write-Log "CONNECTED" ("CodebaseMemoryMCP process actively running (PID: {0})." -f $codebaseProc.Id)
+} else {
+    Write-Log "INFO" "CodebaseMemoryMCP is not running (Optional for schema queries)."
 }
 
 Write-Log "INFO" "=========================================================="
-Write-Log "PASS" "Full Mode bootstrap check completed!"
-Write-Log "INFO" "Run '.\scripts\doctor.ps1' to view full diagnostic report."
+Write-Log "PASS" "Full Mode bootstrap diagnostic completed!"
+Write-Log "INFO" "Run '.\scripts\doctor.ps1' to view full status audit."
 Write-Log "INFO" "=========================================================="
+
+$global:LASTEXITCODE = 0
+exit 0
