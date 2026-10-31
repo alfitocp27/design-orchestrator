@@ -5,7 +5,7 @@
     Audits the current machine environment, Antigravity integration, skills,
     templates, and MCP dependencies.
     Distinguishes lifecycle states: DETECTED, INSTALLED, CONFIGURED, CONNECTED, VERIFIED.
-    Guarantees Zero False PASS.
+    Guarantees Zero False PASS. Compatible with PowerShell 5.1+ and Windows 11.
 #>
 
 [CmdletBinding()]
@@ -122,9 +122,39 @@ $npxCmd = Get-Command npx -ErrorAction SilentlyContinue
 if ($npxCmd) {
     $nodeVer = (& node --version 2>$null)
     $global:LASTEXITCODE = 0
-    Write-DoctorItem "Toolchain" "Node.js / npx" "INSTALLED" "$nodeVer (Supports automated Anti-Slop)"
+    Write-DoctorItem "Toolchain" "Node.js / npx" "INSTALLED" "$nodeVer (Supports Anti-Slop & Codebase MCP)"
 } else {
-    Write-DoctorItem "Toolchain" "Node.js / npx" "NOT_INSTALLED" "Optional for Anti-Slop install"
+    Write-DoctorItem "Toolchain" "Node.js / npx" "NOT_INSTALLED" "Optional for companion tools"
+}
+
+# Python 3
+$pythonCmd = Get-Command python -ErrorAction SilentlyContinue
+$pyCandidates = @(
+    $(if ($pythonCmd) { $pythonCmd.Source }),
+    (Join-Path $env:LOCALAPPDATA "Programs\Python\Python312\python.exe"),
+    (Join-Path $env:LOCALAPPDATA "Programs\Python\Python311\python.exe"),
+    (Join-Path $env:ProgramFiles "Python312\python.exe"),
+    (Join-Path $env:ProgramFiles "Python311\python.exe")
+) | Where-Object { $_ -and (Test-Path $_) }
+
+$realPythonPath = $null
+$realPythonVer = $null
+foreach ($cand in $pyCandidates) {
+    try {
+        $out = (& $cand --version 2>&1 | Out-String).Trim()
+        if ($LASTEXITCODE -eq 0 -and $out -match "Python\s+3\.\d+") {
+            $realPythonPath = $cand
+            $realPythonVer = $out
+            break
+        }
+    } catch {}
+    $global:LASTEXITCODE = 0
+}
+
+if ($realPythonPath) {
+    Write-DoctorItem "Toolchain" "Python 3" "INSTALLED" "$realPythonVer ($realPythonPath)"
+} else {
+    Write-DoctorItem "Toolchain" "Python 3" "NOT_INSTALLED" "Python 3.x required for UI/UX Pro Max"
 }
 
 # 2. Manifest & Core Skills
@@ -184,7 +214,19 @@ if (Test-Path $templateDir) {
 $antislopGlobal = Join-Path $env:APPDATA "antislop\settings.json"
 $antislopLocal = Join-Path $RepoRoot ".agents\skills\antislop\SKILL.md"
 
-if (Test-Path $antislopGlobal) {
+$hasAntislopGlobal = $false
+try {
+    $hasAntislopGlobal = Test-Path $antislopGlobal -ErrorAction SilentlyContinue
+} catch {}
+
+if ($hasAntislopGlobal -and (Test-Path $antislopLocal)) {
+    try {
+        $asContent = Get-Content $antislopGlobal -Raw | ConvertFrom-Json
+        Write-DoctorItem "Companion" "Anti-Slop" "VERIFIED" "Global preference ($($asContent.mode)) & workspace skill loaded"
+    } catch {
+        Write-DoctorItem "Companion" "Anti-Slop" "CONFIGURED" "Global preference & workspace skill active"
+    }
+} elseif ($hasAntislopGlobal) {
     try {
         $asContent = Get-Content $antislopGlobal -Raw | ConvertFrom-Json
         Write-DoctorItem "Companion" "Anti-Slop" "CONFIGURED" "Global preference: $($asContent.mode)"
@@ -202,48 +244,148 @@ if (Test-Path $antislopGlobal) {
 # Impeccable
 $impeccableGlobal = Join-Path $env:USERPROFILE ".gemini\config\skills\impeccable\SKILL.md"
 $impeccableLocal = Join-Path $RepoRoot ".agents\skills\impeccable\SKILL.md"
-if (Test-Path $impeccableGlobal) {
+$hasImpeccableGlobal = $false
+try {
+    $hasImpeccableGlobal = Test-Path $impeccableGlobal -ErrorAction SilentlyContinue
+} catch {}
+
+if ($hasImpeccableGlobal) {
     Write-DoctorItem "Companion" "Impeccable" "CONFIGURED" "Discovered in Antigravity global skills"
 } elseif (Test-Path $impeccableLocal) {
-    Write-DoctorItem "Companion" "Impeccable" "INSTALLED" "Discovered in local workspace skills"
+    Write-DoctorItem "Companion" "Impeccable" "INSTALLED" "Discovered in workspace skills (.agents/skills/impeccable)"
 } else {
-    Write-DoctorItem "Companion" "Impeccable" "NOT_INSTALLED" "Optional craft skill"
+    Write-DoctorItem "Companion" "Impeccable" "NOT_INSTALLED" "Optional craft skill (pbakaus/impeccable)"
 }
 
 # UI/UX Pro Max
 $uiuxLocal = Join-Path $RepoRoot ".agents\skills\ui-ux-pro-max\SKILL.md"
-if (Test-Path $uiuxLocal) {
-    Write-DoctorItem "Companion" "UI/UX Pro Max" "INSTALLED" "Discovered in workspace skills"
-} else {
-    $pythonCmd = Get-Command python -ErrorAction SilentlyContinue
-    if ($pythonCmd) {
-        Write-DoctorItem "Companion" "UI/UX Pro Max" "DETECTED" "Python available; manual clone required"
+$uiuxSearch = Join-Path $RepoRoot ".agents\skills\ui-ux-pro-max\scripts\search.py"
+
+if ((Test-Path $uiuxLocal) -and (Test-Path $uiuxSearch) -and $realPythonPath) {
+    # Test execution
+    $uiuxVerified = $false
+    try {
+        $testOut = (& $realPythonPath $uiuxSearch "test" --json 2>$null | Out-String)
+        if ($LASTEXITCODE -eq 0 -and $testOut -match "design_system") {
+            $uiuxVerified = $true
+        }
+    } catch {}
+    $global:LASTEXITCODE = 0
+
+    if ($uiuxVerified) {
+        Write-DoctorItem "Companion" "UI/UX Pro Max" "VERIFIED" "Skill loaded & search.py CLI tested with Python 3"
     } else {
-        Write-DoctorItem "Companion" "UI/UX Pro Max" "NOT_INSTALLED" "Requires Python and manual clone"
+        Write-DoctorItem "Companion" "UI/UX Pro Max" "INSTALLED" "Skill files present in workspace"
     }
+} elseif (Test-Path $uiuxLocal) {
+    Write-DoctorItem "Companion" "UI/UX Pro Max" "INSTALLED" "Skill files present; requires Python 3 for search CLI"
+} elseif ($realPythonPath) {
+    Write-DoctorItem "Companion" "UI/UX Pro Max" "DETECTED" "Python 3 available; git clone required"
+} else {
+    Write-DoctorItem "Companion" "UI/UX Pro Max" "NOT_INSTALLED" "Requires Python 3.x and skill clone"
 }
 
-# FigCraft MCP (Real connection vs Schema on disk)
-$mcpDir = Join-Path $env:USERPROFILE ".gemini\antigravity\mcp"
-$figcraftSchema = Join-Path $mcpDir "figcraft"
+# Resolve Antigravity MCP configuration
+$mcpConfigPath = Join-Path $env:USERPROFILE ".gemini\config\mcp_config.json"
+$mcpConfig = $null
+try {
+    if (Test-Path $mcpConfigPath -ErrorAction SilentlyContinue) {
+        $rawMcp = Get-Content $mcpConfigPath -Raw -ErrorAction SilentlyContinue
+        if ($rawMcp) {
+            $mcpConfig = $rawMcp | ConvertFrom-Json
+        }
+    }
+} catch {}
+
+# FigCraft MCP (Real connection vs Schema on disk vs Stdio handshake)
+$figcraftCmd = Get-Command figcraft-cli -ErrorAction SilentlyContinue
+$figcraftBinCandidates = @(
+    $(if ($figcraftCmd) { $figcraftCmd.Source }),
+    (Join-Path $env:LOCALAPPDATA "Programs\ArtCraft\FigCraft\figcraft-cli.exe"),
+    (Join-Path $env:LOCALAPPDATA "Programs\ArtCraft\FigCraft\figcraft.exe"),
+    (Join-Path $env:ProgramFiles "ArtCraft\FigCraft\figcraft-cli.exe"),
+    (Join-Path ${env:ProgramFiles(x86)} "ArtCraft\FigCraft\figcraft-cli.exe")
+) | Where-Object { $_ -and (Test-Path $_) }
+$figcraftBin = $figcraftBinCandidates | Select-Object -First 1
+
 $figcraftProc = Get-Process | Where-Object { $_.ProcessName -match "^figcraft" } | Select-Object -First 1
+$figcraftConfigured = ($mcpConfig -ne $null) -and ($mcpConfig.mcpServers.figcraft -ne $null)
+
+$figcraftVerified = $false
+if ($figcraftBin -and ($figcraftBin -match "figcraft-cli\.exe$")) {
+    try {
+        $initPayload = '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"doctor","version":"1.0"}}}'
+        $pinfo = New-Object System.Diagnostics.ProcessStartInfo
+        $pinfo.FileName = $figcraftBin
+        $pinfo.Arguments = "mcp"
+        $pinfo.RedirectStandardInput = $true
+        $pinfo.RedirectStandardOutput = $true
+        $pinfo.RedirectStandardError = $true
+        $pinfo.UseShellExecute = $false
+        $p = [System.Diagnostics.Process]::Start($pinfo)
+        $p.StandardInput.WriteLine($initPayload)
+        Start-Sleep -Milliseconds 600
+        $resp = $p.StandardOutput.ReadLine()
+        $p.Kill()
+        if ($resp -match '"name":"figcraft"') {
+            $figcraftVerified = $true
+        }
+    } catch {}
+    $global:LASTEXITCODE = 0
+}
 
 if ($figcraftProc) {
-    Write-DoctorItem "MCP Server" "FigCraft MCP" "CONNECTED" "Active process PID: $($figcraftProc.Id)"
-} elseif (Test-Path $figcraftSchema) {
-    Write-DoctorItem "MCP Server" "FigCraft MCP" "CONFIGURED" "Schema registered; Process not running"
+    Write-DoctorItem "MCP Server" "FigCraft MCP" "CONNECTED" "Active GUI process (PID: $($figcraftProc.Id))"
+} elseif ($figcraftVerified -and $figcraftConfigured) {
+    Write-DoctorItem "MCP Server" "FigCraft MCP" "VERIFIED" "Stdio MCP handshake passed & configured in Antigravity"
+} elseif ($figcraftVerified) {
+    Write-DoctorItem "MCP Server" "FigCraft MCP" "INSTALLED" "CLI binary verified (stdio functional; not in mcp_config)"
+} elseif ($figcraftConfigured) {
+    Write-DoctorItem "MCP Server" "FigCraft MCP" "CONFIGURED" "Registered in mcp_config.json; process not running"
+} elseif ($figcraftBin) {
+    Write-DoctorItem "MCP Server" "FigCraft MCP" "INSTALLED" "Binary found at $figcraftBin"
 } else {
-    Write-DoctorItem "MCP Server" "FigCraft MCP" "NOT_INSTALLED" "Requires FigCraft desktop app"
+    Write-DoctorItem "MCP Server" "FigCraft MCP" "NOT_INSTALLED" "Requires FigCraft desktop app or CLI"
 }
 
-# Codebase Memory MCP (Real connection vs Schema on disk)
-$codebaseSchema = Join-Path $mcpDir "codebase-memory-mcp"
+# Codebase Memory MCP (Real connection vs Schema on disk vs Stdio handshake)
 $codebaseProc = Get-Process | Where-Object { $_.ProcessName -match "codebase-memory-mcp" } | Select-Object -First 1
+$codebaseConfigured = ($mcpConfig -ne $null) -and (($mcpConfig.mcpServers."codebase-memory-mcp" -ne $null) -or ($mcpConfig.mcpServers."codebase-memory" -ne $null))
+$codebaseCmd = Get-Command codebase-memory-mcp -ErrorAction SilentlyContinue
+
+$codebaseVerified = $false
+if ($npxCmd) {
+    try {
+        $initPayload = '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"doctor","version":"1.0"}}}'
+        $pinfo = New-Object System.Diagnostics.ProcessStartInfo
+        $pinfo.FileName = "cmd.exe"
+        $pinfo.Arguments = "/c npx -y codebase-memory-mcp"
+        $pinfo.RedirectStandardInput = $true
+        $pinfo.RedirectStandardOutput = $true
+        $pinfo.RedirectStandardError = $true
+        $pinfo.UseShellExecute = $false
+        $p = [System.Diagnostics.Process]::Start($pinfo)
+        $p.StandardInput.WriteLine($initPayload)
+        Start-Sleep -Milliseconds 1200
+        $resp = $p.StandardOutput.ReadLine()
+        $p.Kill()
+        if ($resp -match '"name":"codebase-memory-mcp"') {
+            $codebaseVerified = $true
+        }
+    } catch {}
+    $global:LASTEXITCODE = 0
+}
 
 if ($codebaseProc) {
     Write-DoctorItem "MCP Server" "CodebaseMemoryMCP" "CONNECTED" "Active process PID: $($codebaseProc.Id)"
-} elseif (Test-Path $codebaseSchema) {
-    Write-DoctorItem "MCP Server" "CodebaseMemoryMCP" "CONFIGURED" "Schema registered; Process not running"
+} elseif ($codebaseVerified -and $codebaseConfigured) {
+    Write-DoctorItem "MCP Server" "CodebaseMemoryMCP" "VERIFIED" "Stdio MCP handshake passed & configured in Antigravity"
+} elseif ($codebaseVerified) {
+    Write-DoctorItem "MCP Server" "CodebaseMemoryMCP" "INSTALLED" "Stdio MCP functional via npx (not in mcp_config)"
+} elseif ($codebaseConfigured) {
+    Write-DoctorItem "MCP Server" "CodebaseMemoryMCP" "CONFIGURED" "Registered in mcp_config.json"
+} elseif ($codebaseCmd) {
+    Write-DoctorItem "MCP Server" "CodebaseMemoryMCP" "INSTALLED" "Binary available in PATH"
 } else {
     Write-DoctorItem "MCP Server" "CodebaseMemoryMCP" "NOT_INSTALLED" "Requires codebase-memory-mcp"
 }
@@ -260,11 +402,11 @@ if ($coreReady) {
     Write-Host "  CORE MODE READINESS: [FAIL] Missing required core files." -ForegroundColor Red
 }
 
-$fullConnected = ($figcraftProc -ne $null) -and ((Test-Path $antislopGlobal) -or (Test-Path $antislopLocal))
-if ($coreReady -and $fullConnected) {
-    Write-Host "  FULL MODE READINESS: [CONNECTED] Live FigCraft canvas & Anti-Slop active." -ForegroundColor Green
+$fullReady = ($figcraftVerified -or ($figcraftProc -ne $null)) -and ($hasAntislopGlobal -or (Test-Path $antislopLocal))
+if ($coreReady -and $fullReady) {
+    Write-Host "  FULL MODE READINESS: [CONNECTED] Live FigCraft MCP & Anti-Slop active." -ForegroundColor Green
 } elseif ($coreReady) {
-    Write-Host "  FULL MODE READINESS: [SIMULATED] Core is ready. Real FigCraft MCP not running (offline mock fallback active)." -ForegroundColor Yellow
+    Write-Host "  FULL MODE READINESS: [SIMULATED] Core is ready. FigCraft MCP offline mock fallback active." -ForegroundColor Yellow
 } else {
     Write-Host "  FULL MODE READINESS: [FAIL] Core prerequisite missing." -ForegroundColor Red
 }

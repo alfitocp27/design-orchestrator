@@ -32,7 +32,7 @@ Design Orchestrator is designed to be **100% portable** across multiple Windows 
 | **External Dependencies** | **Zero** (100% offline) | FigCraft MCP, Anti-Slop, UI/UX Pro Max |
 | **Prerequisites** | PowerShell 5.1+ & Git | PowerShell 5.1+, Git, Antigravity 2.0, FigCraft MCP |
 | **Project Templates** | ✅ Included (`templates/project/`) | ✅ Included (`templates/project/`) |
-| **Meta-Skill & References** | ✅ Included (`skills/design-orchestrator/`) | ✅ Included (`skills/design-orchestrator/`) |
+| **Meta-Skill & References** | ✅ Included (`.agents/skills/design-orchestrator/`) | ✅ Included (`.agents/skills/design-orchestrator/`) |
 | **Test Suite** | ✅ Offline mocks & fixture tests | ✅ Offline mocks + Live MCP integration |
 | **Canvas Execution** | ⚠️ Simulated via offline mocks | ✅ Real-time FigCraft canvas manipulation |
 | **Anti-Slop Guardrail** | ⚠️ Manual reference guidelines | ✅ Automated rule checks (`npx antislop-ai`) |

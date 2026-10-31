@@ -33,3 +33,9 @@ test-output/
 
 # Backups
 *.backup
+
+# External companion skills (managed dynamically via bootstrap.ps1)
+.agents/skills/ui-ux-pro-max/
+.agents/skills/impeccable/
+.agents/skills/antislop/
+.agents/skills/anti-slop/
