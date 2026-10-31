@@ -10,6 +10,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.2.0-dev] - 2026-10-31
 
 ### Added
+- **Execution Engine Reliability & Context Optimization (Sprint 4)**:
+  - Idempotent FigCraft Execution: Enhanced `scripts/figcraft_engine.py` with `get_or_create_collection`, `get_or_create_variable`, `get_or_create_frame`, `get_or_create_component`, and `get_or_create_instance` preventing duplicate collections, variables, frames, and master components on consecutive runs.
+  - Active Document Safety: Added `ensure_target_document` enforcing document isolation and preventing accidental mutations on active user files.
+  - Context Footprint & Progressive Disclosure: Streamlined `SKILL.md` (45.4% line reduction, 40.4% word reduction, saving ~1,209 tokens per invocation) with a clear Progressive Disclosure Reference Map routing agents to specialized runbooks; streamlined `references/workflow-details.md` (12.9% line reduction).
+  - Added reproducible context measurer `scripts/measure-context.ps1`.
+  - Reliability & Regression Test Suite: Added `tests/integration/test-engine-reliability.ps1` executing 8 comprehensive reliability tests (double-run idempotency, master-instance mutation inheritance, responsive viewport auto layout, state resumption, controlled MCP error trapping, save/reload persistence, Core Mode offline independence, and zero false PASS on NOT_VERIFIABLE).
+  - End-to-End Pilot Preparation: Added synthetic benchmark brief `tests/fixtures/pilot/synthetic-pilot-brief.json` and standard operating procedure `docs/end-to-end-pilot-protocol.md` for post-Sprint 4 pilot execution.
 - **Native Design System Engine & 8-Point Stress Testing Harness (Sprint 3)**:
   - Built `scripts/figcraft_engine.py`: Direct Stdio JSON-RPC client for FigCraft MCP executing the 7 core native design system recipes (3-tier variable token hierarchy, central vector icon library, atomic master components, variant sets with `combineVariants`, linked instances with override isolation, adaptive auto-layout with `sizingH: hug|fill`, and composite UI patterns).
   - Built `scripts/build-native-design-system.ps1`: Automated harness that initializes native design systems, executes the 8-point component stress testing protocol, and links to canvas QA.
@@ -31,9 +38,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Enforced anti-style-locking policy (`getStyle` for exploration; `selectStyle` strictly gated post-approval) and recorded status as `UNVERIFIED_RUNTIME`.
 
 ### Fixed
-- **Canvas QA & Contrast Precision**:
-  - Enhanced `scripts/verify-canvas.ps1` with parent container fill traversal for native FigCraft text nodes lacking inline background properties.
-  - Updated `scripts/evaluate-creative-direction.ps1` to calculate and report both foreground and background hex values for text contrast checks on canvas and card surfaces.
+- **FigCraft MCP Command Verification**: Audited runtime commands and replaced unverified commands (`node.delete`, `node.duplicate`) with verified commands (`edit.delete`, `edit.duplicate`) in documentation and engine.
+- **Canvas QA & Contrast Precision**: Enhanced `scripts/verify-canvas.ps1` with parent container fill traversal for native FigCraft text nodes lacking inline background properties.
+- **WCAG Dual Hex Reporting**: Updated `scripts/evaluate-creative-direction.ps1` to calculate and report both foreground and background hex values for text contrast checks on canvas and card surfaces.
 - **Antigravity Configuration Path Inconsistency**: Standardized Antigravity 2.0 configuration reference strictly to `~/.gemini/config/mcp_config.json`, documenting upstream CLI naming differences.
 
 ---

@@ -133,25 +133,8 @@ Ensure pages or structured canvas sections exist:
 
 ### 3. Constructing Foundations (3-Tier Tokens & Central Icon Library)
 1. **3-Tier Variables Engine**:
-   - Create Collections:
-     ```json
-     call_mcp_tool("figcraft", "run_command", {
-       "command": "variable.createCollection",
-       "params": { "name": "Primitives", "modes": ["Mode 1"] }
-     })
-     call_mcp_tool("figcraft", "run_command", {
-       "command": "variable.createCollection",
-       "params": { "name": "Tokens", "modes": ["Light"] }
-     })
-     call_mcp_tool("figcraft", "run_command", {
-       "command": "variable.createCollection",
-       "params": { "name": "ComponentTokens", "modes": ["Light"] }
-     })
-     ```
-   - Register primitives (`Spacing/0..6`, `Color/Brand/50..900`, `Color/Neutral/50..900`).
-   - Register semantic aliases (`text-primary`, `surface-card`, `border-subtle`, `radius-md`).
-   - Register component token aliases (`btn-primary-bg`, `card-bg`, `table-row-hover`).
-   - Updating Tier 1 primitives cascades automatically across semantic and component aliases to linked instances.
+   - Create Collections (`Primitives`, `SemanticTokens`, `ComponentTokens`) and aliased token variables. Updating Tier 1 primitives automatically cascades across semantic and component aliases to linked instances.
+   - For exact command payloads and idempotent execution recipes, consult [references/component-architecture.md](component-architecture.md#10-verified-figcraft-execution-engine--recipes-sprint-3).
    - If native variable persistence is unsupported in the current session, fall back gracefully to **FigCraft Styles** (`style.create`, `style.apply`) and deterministic token tables in `DESIGN.md`.
 2. **Foundations Specimen Boards on Canvas**:
    - `Typography_Specimen`: Font scale specimens (`H1`–`H5`, `S1`–`S2`, `B1`–`B4`, `C1`–`C3`, Button scale) with px sizes and sample text.
@@ -159,27 +142,17 @@ Ensure pages or structured canvas sections exist:
    - `Shadow_Specimen`: Dual-elevation cards demonstrating ambient blur + key directional shadows.
 3. **Central Vector Icon Library (Zero Emojis)**:
    - Create crisp vector paths (`vector.create`) with standard $20 \times 20\text{px}$ or $24 \times 24\text{px}$ bounds.
-   - **Crucial**: Set `props: { fill: "none" }` on both the icon container frame (`frame.create`) and the vector path (`vector.create`) to prevent FigCraft's default white frame fill and grey polygon fill from creating opaque blocks inside buttons.
-   - Convert icons into individual master components (`component.create {name: "Icon/<name>"}`).
+   - **Crucial**: Set `props: { fill: "none" }` on both the icon container frame (`frame.create`) and the vector path (`vector.create`) to prevent opaque blocks.
+   - Convert icons into individual master components (`component.create {ids: [iconFrameId]}`).
 
 ### 4. Constructing Atomic Components (`02_Components`)
 1. **Atomic Decomposition (Item $\rightarrow$ Group $\rightarrow$ Pattern)**:
-   - Construct atomic items first: `Button`, `Input`, `Checkbox`, `Radio`, `Toggle`, `Avatar`, `Badge/Status`, `Nav/Item`, `List/Left_Item`, `List/Right_Item`.
-   - Assemble composite molecules: `Button Group (Group)`, `Navbar Bottom (Group)`, `Context Menu (5 Rows)`, `List Row (5 Rows)` using linked instances (`instance.create`) of atomic items.
+   - Construct atomic items first (`Button`, `Input`, `Badge`, `Nav/Item`).
+   - Assemble composite molecules using linked instances (`instance.create`) of atomic items.
 2. **Native Component & Variant Construction**:
    - Never use plain frames as components.
-   - Build state frames with explicit auto-layout (`layout: "horizontal"` or `"vertical"`, `padding`, `gap`, `cornerRadius`, `fill`).
-   - Convert to components and combine into component sets:
-     ```json
-     call_mcp_tool("figcraft", "run_command", {
-       "command": "component.createMultiple",
-       "params": { "ids": [var1_id, var2_id, var3_id, var4_id] }
-     })
-     call_mcp_tool("figcraft", "run_command", {
-       "command": "component.combineVariants",
-       "params": { "ids": [var1_id, var2_id, var3_id, var4_id] }
-     })
-     ```
+   - Build state frames with explicit auto-layout (`layout: "horizontal"` or `"vertical"`).
+   - Convert to components (`component.create`) and combine into component sets (`component.combineVariants`).
 3. **Properties & Nested Icons**:
    - Embed linked instances of icon masters into buttons and inputs.
    - Add boolean properties for icon toggles (`component.addProperty {name: "Icon Left", type: "boolean"}`).
@@ -188,15 +161,8 @@ Ensure pages or structured canvas sections exist:
    - Place a standardized Title Header card matching the artboard width at the top of each artboard ($\ge 24\text{px}$ clearance above purple `COMPONENT_SET` bounding boxes).
 
 ### 5. Executing the 8-Point Component Stress Testing Protocol
-Execute and log on canvas:
-1. **Master-to-Instance Propagation**: Modify master radius/fill $\rightarrow$ verify linked instance reflects change $\rightarrow$ revert.
-2. **Instance Overrides Isolation**: Change text on instance $\rightarrow$ verify master and peers untouched.
-3. **Variant Switching**: `instance.setProperties` to Hover/Active $\rightarrow$ verify visual switch.
-4. **Nested Icon Inheritance & Swapping**: Verify child icon stroke matches host state colors; verify `instance.swap`.
-5. **Extreme Content Stress**: Inject long text, short text, empty text $\rightarrow$ verify auto-layout does not break.
-6. **Permutation Stress**: Swap units (`Kg`, `Rp`, `%`) and delta indicators $\rightarrow$ verify layout alignment.
-7. **Sizing Constraints & Overflow**: Test in narrow vs wide parent containers.
-8. **Save & Reload Persistence**: Save file, reopen, execute `component.list` $\rightarrow$ verify 100% components and instances remain connected.
+Execute all 8 points (Propagation, Overrides, Variants, Icons, Content Stress, Permutations, Sizing, Save/Reload) before proceeding.
+Detailed stress testing recipes and verification scripts are specified in [references/component-architecture.md](component-architecture.md#6-the-mandatory-8-point-component-stress-testing-protocol).
 
 ---
 

@@ -361,7 +361,7 @@ FigCraft exposes commands through the MCP `run_command` tool rather than distinc
   - `variable.createCollection`, `variable.create`, `variable.bind`, `variable.list`
   - `component.create`, `component.combineVariants`, `component.addProperty`, `component.list`
   - `instance.create`, `instance.setProperties`, `instance.swap`
-  - `node.find`, `node.delete`, `node.duplicate`
+  - `node.find`, `edit.delete`, `edit.duplicate`
 
 ### The 7 Native Execution Recipes:
 
