@@ -1,0 +1,47 @@
+{
+  "inspect_document": {
+    "status": "success",
+    "document": {
+      "name": "mock-project.figcraft",
+      "path": "projects/mock-project/mock-project.figcraft",
+      "pages": [
+        { "id": "0:1", "name": "01_Foundations" },
+        { "id": "0:2", "name": "02_Components" },
+        { "id": "0:3", "name": "03_Patterns" },
+        { "id": "0:4", "name": "04_Screens" }
+      ]
+    }
+  },
+  "create_frame": {
+    "status": "success",
+    "nodeId": "100:1",
+    "type": "FRAME",
+    "layoutMode": "VERTICAL",
+    "primaryAxisSizingMode": "AUTO",
+    "counterAxisSizingMode": "FIXED"
+  },
+  "create_component": {
+    "status": "success",
+    "nodeId": "200:1",
+    "name": "Button (Item)",
+    "type": "COMPONENT"
+  },
+  "create_instance": {
+    "status": "success",
+    "nodeId": "300:1",
+    "name": "Button (Item)",
+    "type": "INSTANCE",
+    "mainComponentId": "200:1"
+  },
+  "export_layers": {
+    "status": "success",
+    "exports": [
+      {
+        "id": "400:1",
+        "name": "Master_Overview",
+        "format": "PNG",
+        "path": "exports/Master_Overview.png"
+      }
+    ]
+  }
+}

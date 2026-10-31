@@ -1,0 +1,35 @@
+# Environment & Secrets
+.env
+.env.*
+*.local
+*.key
+*.pem
+*.token
+credentials.json
+secrets.json
+
+# Operating System
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# Temporary & Cache
+*.log
+*.tmp
+*.bak
+__pycache__/
+*.py[cod]
+*$py.class
+node_modules/
+
+# Antigravity session artifacts & local runs
+.system_generated/
+*.tmp.ps1
+
+# Test outputs & scratch
+tests/scratch/
+test-output/
+
+# Backups
+*.backup

@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "design-orchestrator",
+  "version": "2.1.0",
+  "description": "Unified meta-skill for end-to-end interface and product design in Antigravity",
+  "license": "MIT",
+  "author": "alfitocp27 & Antigravity Community",
+  "repository": "https://github.com/alfitocp27/design-orchestrator",
+  "homepage": "https://github.com/alfitocp27/design-orchestrator#readme",
+  "engines": {
+    "os": "windows",
+    "powershell": ">=5.1",
+    "antigravity": ">=2.0"
+  },
+  "modes": {
+    "core": {
+      "name": "Core Mode",
+      "description": "Lightweight offline orchestration, project templates, mock validation, zero third-party tool requirement.",
+      "requiredDependencies": ["design-orchestrator"],
+      "capabilities": [
+        "discovery_interview",
+        "prd_mapping",
+        "design_template_generation",
+        "offline_mock_vqa",
+        "project_scaffolding"
+      ]
+    },
+    "full": {
+      "name": "Full Mode",
+      "description": "Full production orchestration with native canvas execution, design intelligence, and codebase memory.",
+      "requiredDependencies": [
+        "design-orchestrator",
+        "anti-slop",
+        "figcraft"
+      ],
+      "optionalDependencies": [
+        "ui-ux-pro-max",
+        "impeccable",
+        "codebase-memory-mcp",
+        "mobbin_mobbin"
+      ],
+      "capabilities": [
+        "discovery_interview",
+        "prd_mapping",
+        "design_intelligence",
+        "anti_slop_guardrails",
+        "figcraft_canvas_execution",
+        "codebase_memory_analysis",
+        "multimodal_vqa_2_0"
+      ]
+    }
+  },
+  "dependencies": {
+    "design-orchestrator": {
+      "type": "meta-skill",
+      "category": "core",
+      "version": "2.1.0",
+      "source": "local",
+      "path": ".agents/skills/design-orchestrator",
+      "description": "The unified meta-orchestrator skill managing end-to-end UI/UX product design workflows."
+    },
+    "anti-slop": {
+      "type": "skill",
+      "category": "external-skill",
+      "recommendedVersion": "latest",
+      "upstream": "https://github.com/miqdadbadjuber/anti-slop",
+      "installCommand": "npx antislop-ai --mode during",
+      "pluginCommand": "agy plugin install https://github.com/miqdadbadjuber/anti-slop",
+      "description": "Quality guardrail stopping generic AI aesthetic defects (R-01 to R-40).",
+      "manualInstructions": "Run 'npx antislop-ai --mode during' in the workspace or install via Antigravity plugin manager."
+    },
+    "ui-ux-pro-max": {
+      "type": "skill",
+      "category": "external-skill",
+      "recommendedVersion": "latest",
+      "upstream": "https://github.com/alfitocp27/ui-ux-pro-max",
+      "description": "Design intelligence dataset for palettes, typography scales, and token generation.",
+      "manualInstructions": "Copy or link ui-ux-pro-max into .agents/skills/ui-ux-pro-max or global skills."
+    },
+    "impeccable": {
+      "type": "skill",
+      "category": "external-skill",
+      "recommendedVersion": "latest",
+      "upstream": "antigravity-built-in",
+      "description": "Design craft floor, visual polish, and surface mode direction.",
+      "manualInstructions": "Available globally in Antigravity or custom skills."
+    },
+    "figcraft": {
+      "type": "mcp",
+      "category": "mcp-server",
+      "upstream": "figcraft-mcp",
+      "description": "Native FigCraft canvas execution MCP server for node creation, inspection, and exports.",
+      "manualInstructions": "Ensure FigCraft MCP server is registered and active in Antigravity MCP settings."
+    },
+    "codebase-memory-mcp": {
+      "type": "mcp",
+      "category": "mcp-server",
+      "upstream": "codebase-memory-mcp",
+      "description": "Codebase memory and graph analysis MCP server.",
+      "manualInstructions": "Ensure codebase-memory-mcp server is registered in Antigravity MCP settings."
+    },
+    "mobbin_mobbin": {
+      "type": "mcp",
+      "category": "mcp-server",
+      "upstream": "mobbin-plugin",
+      "description": "Mobbin visual screen reference and benchmark exploration MCP server.",
+      "manualInstructions": "Install mobbin plugin from Antigravity Plugin Marketplace if real-world mobile/web screenshots are needed."
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "list_projects": {
+    "projects": [
+      {
+        "name": "sample-backend",
+        "description": "Enterprise API & domain schema",
+        "indexedAt": "2026-10-30T10:00:00Z"
+      }
+    ]
+  },
+  "search_graph": {
+    "results": [
+      {
+        "symbol": "ApprovalStatus",
+        "kind": "enum",
+        "values": ["DRAFT", "PENDING_APPROVAL", "APPROVED", "REJECTED"],
+        "file": "src/models/leave.ts"
+      }
+    ]
+  }
+}

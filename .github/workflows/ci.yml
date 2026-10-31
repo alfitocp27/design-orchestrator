@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate-windows:
+    name: Validate & Offline Test Suite (Windows)
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Diagnostics (Doctor)
+        shell: powershell
+        run: |
+          .\scripts\doctor.ps1
+
+      - name: Run Core Bootstrap
+        shell: powershell
+        run: |
+          .\scripts\bootstrap.ps1 -Mode Core -NonInteractive
+
+      - name: Run Offline Test Suite
+        shell: powershell
+        run: |
+          .\scripts\test-runner.ps1
+
+  audit-security:
+    name: Security & Manifest Audit (Linux)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate JSON Manifest
+        run: |
+          python3 -c "import json; data=json.load(open('orchestrator.manifest.json')); assert data['name']=='design-orchestrator'; print('Manifest is valid JSON')"
+
+      - name: Check for Unlicensed Binaries or Large Files
+        run: |
+          find . -type f -size +5M | grep -v '\.git' && echo "Error: Large binary found" && exit 1 || echo "Zero large binaries found"
