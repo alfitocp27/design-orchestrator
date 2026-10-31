@@ -7,9 +7,9 @@
 
 ## 1. Current Project State
 
-- **Current Version**: `v2.2-dev` (Final Visual Quality Remediation & Pilot Verification Complete: Artefacta Collection Catalog & Dossier)
+- **Current Version**: `v2.2.0 (Stable Release)` (Final Visual Quality Remediation & Pilot Verification Complete: Artefacta Collection Catalog & Dossier)
 - **Repository**: `https://github.com/alfitocp27/design-orchestrator.git`
-- **Active Branch**: `feat/orchestrator-v2.2`
+- **Active Branch**: main
 - **Readiness Status**: `REMEDIATION_COMPLETE / 13_OF_13_TESTS_PASS / VQA_541_CHECKS_PASS / ZERO_P1_P2`
 - **Last Sync**: 2026-10-31
 
