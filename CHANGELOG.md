@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.2.0-dev] - 2026-10-31
+
+### Added
+- **Dynamic Creative Direction Engine (Sprint 2)**:
+  - Replaced 5 rigid static archetypes with dynamic archetype seeds synthesized from 7 product intelligence facets and multi-source research (UI/UX Pro Max, Impeccable, Anti-Slop, NeedMCP).
+  - Enforced 10 mandatory dimensions per concept: Identity & Rationale, Benchmarks, Typography, Color & WCAG, Layout & Grid, Surface & Elevation, Iconography, Data Visualization, Accessibility, and UX Trade-offs.
+  - Implemented `scripts/evaluate-creative-direction.ps1` for automated deterministic validation of concept structure, field completeness, divergence, and WCAG 2.2 contrast math.
+  - Added 4 synthetic domain fixtures in `tests/fixtures/creative-direction/` (Enterprise Operations, EdTech, Industrial SCADA, Creative Audio Mastering).
+  - Added `tests/offline/test-creative-direction.ps1` regression test with Zero False PASS verification.
+- **Repository Hygiene & Automated QA Foundation (Sprint 1)**:
+  - Mojibake remediation across documentation and reference runbooks; added `tests/offline/test-encoding-hygiene.ps1`.
+  - Built 6 synthetic FigCraft document fixtures in `tests/fixtures/synthetic/`.
+  - Implemented `scripts/verify-canvas.ps1` automated canvas geometry, column alignment ($\Delta x$), boundary overflow, and WCAG contrast verifier with JSON/Markdown reporting.
+  - Added `tests/offline/test-verify-canvas.ps1`.
+- **Optional NeedMCP Integration Candidate**:
+  - Registered NeedMCP under `integrations/needmcp/` with manifest `needmcp.manifest.json` and guide `README.md`.
+  - Enforced anti-style-locking policy (`getStyle` for exploration; `selectStyle` strictly gated post-approval) and recorded status as `UNVERIFIED_RUNTIME`.
+
+### Fixed
+- **Antigravity Configuration Path Inconsistency**: Standardized Antigravity 2.0 configuration reference strictly to `~/.gemini/config/mcp_config.json`, documenting upstream CLI naming differences.
+
+---
+
 ## [2.1.1] - 2026-10-31
 
 ### Added

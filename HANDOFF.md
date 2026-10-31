@@ -7,81 +7,79 @@
 
 ## 1. Current Project State
 
-- **Current Version**: `v2.1.1` (Clean-Install Verification & Bootstrap Hardening)
+- **Current Version**: `v2.2-dev` (Sprint 2: Creative Direction & Dynamic Archetype Engine)
 - **Repository**: `https://github.com/alfitocp27/design-orchestrator.git`
-- **Active Branch**: `main`
-- **Readiness Status**: `TECHNICAL_RUNTIME_PASS / CLEAN_INSTALL_VERIFIED / MERGED_TO_MAIN`
+- **Active Branch**: `feat/orchestrator-v2.2`
+- **Readiness Status**: `SPRINT_2_COMPLETE / 10_OF_10_TESTS_PASS / ZERO_FALSE_PASS_VERIFIED`
 - **Last Sync**: 2026-10-31
 
 ---
 
-## 2. Clean-Install Verification & Milestones (2026-10-31)
+## 2. Sprint 2 & v2.2 Milestones Achieved (2026-10-31)
 
-1. **Clean Installation & Environment Audit**:
-   - Performed clean-install verification on Windows 11 with fresh Antigravity 2.0.
-   - Core Mode verified 100% offline with zero external dependencies.
-   - All 5 offline tests (`test-manifest.ps1`, `test-mock-orchestration.ps1`, `test-no-secrets.ps1`, `test-skill-integrity.ps1`, `test-templates.ps1`) pass.
-   - Integration test `test-figcraft-live.ps1` upgraded and passes with real Stdio JSON-RPC communication proof.
+1. **CodebaseMemoryMCP Graph Indexing**:
+   - Indexed Design Orchestrator workspace: 784 nodes, 1,022 edges, 4.39 MB database.
+   - Traced architectural relationships across SKILL.md, references, manifests, scripts, and tests.
+   - Identified and documented parser boundaries (AST extracts sections, variables, diagram elements, and functions; direct file reading remains authoritative truth).
 
-2. **Full Mode Dependencies Setup & Runtime Proof**:
-   - **FigCraft MCP**: Status `[CONNECTED]` & `[VERIFIED]`.
-     - Binary detected at `%LOCALAPPDATA%\Programs\ArtCraft\FigCraft\figcraft-cli.exe`.
-     - Active GUI application verified (PID: 32880).
-     - Stdio JSON-RPC initialization handshake passed. Registered in `~/.gemini/config/mcp_config.json`.
-     - Read-only tool call proof: `list_commands(filter: "align")` executed with 15 commands returned.
-   - **CodebaseMemoryMCP**: Status `[VERIFIED]`.
-     - Official npm package `codebase-memory-mcp` registered in `~/.gemini/config/mcp_config.json`.
-     - Stdio JSON-RPC initialization handshake verified via `npx -y codebase-memory-mcp`.
-     - Read-only tool call proof: `list_projects` executed successfully returning graph state.
-   - **Anti-Slop**: Status `[VERIFIED]`.
-     - Installed via official installer `npx -y antislop-ai --mode during`.
-     - Global preference active in `%APPDATA%\antislop\settings.json` (`{"mode":"during"}`).
-     - Workspace skill discovered at `.agents\skills\antislop\SKILL.md`.
-   - **UI/UX Pro Max**: Status `[INSTALLED]` / `[VERIFIED]`.
-     - Real Python 3.12.10 installed via winget (`Python.Python.3.12`).
-     - Cloned from `nextlevelbuilder/ui-ux-pro-max-skill` to `.agents\skills\ui-ux-pro-max\`.
-     - Verified search CLI execution: `python search.py "enterprise operational table" --design-system --json` returned valid design system JSON.
-   - **Impeccable**: Status `[INSTALLED]`.
-     - Cloned from `pbakaus/impeccable` to `.agents\skills\impeccable\`.
-     - Craft floor guidance and playbooks discovered and verified.
+2. **Antigravity Configuration Path Rectification**:
+   - Resolved documentation inconsistency: canonical Antigravity 2.0 configuration is strictly located at `~/.gemini/config/mcp_config.json`.
+   - Updated `integrations/needmcp/README.md` to document the third-party CLI divergence (`.gemini/antigravity/` vs canonical `.gemini/config/`).
 
-3. **Portable Bootstrap & Diagnostics Hardening**:
-   - Fixed Windows 11 App Execution Alias bug in `doctor.ps1` and `bootstrap.ps1` by scanning real Python directories and validating exit codes.
-   - Added automated dynamic CodebaseMemoryMCP detection, registration, and Stdio handshake in `bootstrap.ps1` and `doctor.ps1`.
-   - Added real Stdio MCP JSON-RPC protocol handshake verification into `doctor.ps1`, `bootstrap.ps1`, `test-figcraft-live.ps1`, and `test-codebase-memory-live.ps1`.
-   - Added `Backup-And-Register-McpServer` in `bootstrap.ps1` ensuring zero unbacked Antigravity configuration modifications.
-   - Hardened `test-no-secrets.ps1` to prefer git-tracked files (`git ls-files`) and ignore companion directories.
-   - Added `.agents/skills/{ui-ux-pro-max,impeccable,antislop,anti-slop}` to `.gitignore` to prevent vendoring third-party assets into this open-source repository while enabling native local agent discovery.
+3. **Sprint 1 Foundation (Repository Hygiene & Deterministic QA)**:
+   - Cleaned all UTF-8 mojibake across 52+ repository files; created `tests/offline/test-encoding-hygiene.ps1`.
+   - Built 6 synthetic FigCraft document fixtures in `tests/fixtures/synthetic/` (valid, column misalignment, container boundary overflow, WCAG contrast failure, incomplete/unverifiable, fake component plain frame).
+   - Implemented `scripts/verify-canvas.ps1` deterministic canvas geometry & contrast auditor with Markdown/JSON report emission.
+   - Added `tests/offline/test-verify-canvas.ps1`.
+
+4. **Dynamic Creative Direction Engine (Sprint 2 Core)**:
+   - Overhauled `references/creative-direction.md`: Replaced rigid 5-archetype presets with the 7-facet Product & Domain Intelligence framework and Multi-Source Synthesis (UI/UX Pro Max, Impeccable, Anti-Slop, NeedMCP).
+   - Defined **10 Mandatory Dimensions** per concept: Identity & Rationale, Benchmarks, Typography, Color & WCAG, Layout & Grid, Surface & Elevation, Iconography, Data Visualization, Accessibility, and UX Trade-offs.
+   - Enforced **Structural & Visual Divergence**: Concepts must differ in typography classification, primary brand hue, and density/surface models, not merely cosmetic variations.
+   - Updated `SKILL.md` (Principle 23 & Component Activation Matrix) and `templates/project/DESIGN.md` (10-dimension table & hard gate).
+   - Built `scripts/evaluate-creative-direction.ps1` providing deterministic verification of concept structure, field completeness, divergence, and WCAG 2.2 contrast math.
+   - Synthesized and verified **4 Synthetic Domain Fixtures** in `tests/fixtures/creative-direction/` using real UI/UX Pro Max queries:
+     * *Enterprise Operations*: AeroDispatch Fleet Telemetry (17.06:1 & 18.33:1 contrast; Inter vs Plus Jakarta Sans).
+     * *Education (EdTech)*: SynapseSTEM Adaptive Learning (9.09:1 & 13.89:1 contrast; Outfit vs Newsreader).
+     * *Industrial Engineering*: VoltGrid SCADA Substation Monitor (17.85:1 & 17.74:1 contrast; Roboto vs Inter).
+     * *Creative Tools*: AuraMaster Pro DAW Waveform Suite (17.74:1 & 14.48:1 contrast; Geist Sans vs Space Grotesk).
+   - Added `tests/offline/test-creative-direction.ps1` confirming all 4 synthetic domains pass and deliberate defects are caught (Zero False PASS).
+
+5. **NeedMCP Evaluation & Optional Integration**:
+   - Status formally recorded as `UNVERIFIED_RUNTIME` on clean systems without API keys.
+   - Manifest created at `integrations/needmcp/needmcp.manifest.json` declaring the 6 verified tools (`getStyles`, `getStyle`, `getDesignSystem`, `getComponents`, `selectStyle`, `sendFeedback`).
+   - Anti-style-locking rule established: `getStyle` allowed for Stage 3/4 exploration; `selectStyle` strictly gated post-approval.
 
 ---
 
-## 3. Immediate Next Steps on Fresh / Home PC
+## 3. Test Suite & Health Verification
 
-1. **Clone repository**:
-   ```powershell
-   git clone https://github.com/alfitocp27/design-orchestrator.git
-   cd design-orchestrator
-   ```
-2. **Run bootstrapper**:
-   ```powershell
-   # Core Mode (Zero external tools):
-   .\scripts\bootstrap.ps1 -Mode Core
-
-   # Or Full Production Mode (Audits and configures companions):
-   .\scripts\bootstrap.ps1 -Mode Full
-   ```
-3. **Run doctor diagnostic**:
-   ```powershell
-   .\scripts\doctor.ps1
-   ```
-4. **Run test suite**:
-   ```powershell
-   .\scripts\test-runner.ps1 -IncludeIntegration
-   ```
+All 10 tests pass deterministically:
+```
+==========================================================
+ TEST RUN SUMMARY (scripts/test-runner.ps1 -IncludeIntegration)
+ Total: 10 | Passed: 10 | Failed: 0 | Skipped: 0
+==========================================================
+  [PASS] test-creative-direction.ps1     (4 synthetic domains + defect detection)
+  [PASS] test-encoding-hygiene.ps1       (Clean UTF-8, zero mojibake)
+  [PASS] test-manifest.ps1               (orchestrator + needmcp manifests valid)
+  [PASS] test-mock-orchestration.ps1     (Offline mock pipeline verified)
+  [PASS] test-no-secrets.ps1             (Zero personal paths or credentials)
+  [PASS] test-skill-integrity.ps1        (6 reference runbooks present)
+  [PASS] test-templates.ps1              (Project blueprint verified)
+  [PASS] test-verify-canvas.ps1          (6 synthetic fixtures: deltaX, overflow, contrast, fake-component)
+  [PASS] test-codebase-memory-live.ps1   (Live Stdio protocol handshake)
+  [PASS] test-figcraft-live.ps1          (Live Stdio protocol handshake)
+```
+- **Doctor Diagnostic**: Core Mode `[PASS]`, Full Mode `[CONNECTED]`.
 
 ---
 
-## 4. Known Considerations & Future Backlog
+## 4. Next Steps for Sprint 3 (Native Design System Engine)
 
-- **Python 3.x Prerequisite**: To enable UI/UX Pro Max on a clean Windows 11 PC, install official Python (`winget install --id Python.Python.3.12 -e`) to bypass the Windows Store alias.
-- **Antigravity MCP Registration**: Once approved by the user, register FigCraft in `~/.gemini/config/mcp_config.json` using `bootstrap.ps1 -Mode Full -Force` (with automatic backup).
+1. Review and approve Sprint 2 deliverables on `feat/orchestrator-v2.2`.
+2. Transition to **Sprint 3: Native Design System Engine**:
+   - Native FigCraft 3-tier variable collection generator (`Primitives`, `SemanticTokens`, `ComponentTokens`).
+   - Atomic component templates with variant properties (`Size`, `State`, `Type`).
+   - Central Vector Icon Library builder in `01_Foundations`.
+   - 8-Point Component Stress Testing automated harness.

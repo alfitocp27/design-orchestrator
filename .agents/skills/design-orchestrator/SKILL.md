@@ -108,6 +108,11 @@ Design Orchestrator 2.1 is the unified meta-skill for end-to-end interface and p
       * *Adaptive Sizing*: Utilize `sizingH: "hug"` or responsive flex when container space allows dynamic growth.
       * *Secondary Detail Clues*: When narrow spatial constraints demand a compact badge or truncated control, always provide complete unabbreviated data via detail drawers, modals, or secondary expansion affordances.
       * *Native Ellipsis Truncation*: Setting `textAutoResize: "truncate"` is strictly permitted ONLY on secondary/auxiliary strings (e.g. lengthy URL paths, secondary email handles in compact tables, supplementary log remarks) where truncation does not compromise operational decisions.
+23. **Dynamic Creative Direction & Archetype Synthesis**:
+    - Disallow rigid 5-archetype constraints. Synthesize creative direction from the 7 domain intelligence facets (Product typology, persona, operational environment, cognitive density, visual preference, brand/WCAG constraints, data visualization needs).
+    - Formulate 2 to 3 structurally and visually distinct concepts across 10 mandatory dimensions (Identity, Benchmarks, Typography, Color/WCAG, Layout, Surface, Icons, Data Viz, Accessibility, UX Trade-offs).
+    - Coordinate UI/UX Pro Max, Impeccable, Anti-Slop, and optional NeedMCP (read-only `getStyle` for exploration, never `selectStyle` before approval).
+    - The **🛑 CONCEPT APPROVAL GATE** is a mandatory hard stop before generating design system tokens or canvas nodes.
 
 ---
 
@@ -120,6 +125,7 @@ Design Orchestrator 2.1 is the unified meta-skill for end-to-end interface and p
 | **UI/UX Pro Max** | Design Intelligence, Palettes, Typography Pairings & Tokens | Stage 3 (Research) & Stage 4 (Concepts) | `python .agents/skills/ui-ux-pro-max/scripts/search.py "<query>" --design-system --json` |
 | **CodebaseMemoryMCP** | Codebase Analysis, Schema Truth, Status Enums & Workflows | Stage 2 (Codebase Analysis) | `call_mcp_tool(codebase-memory-mcp, search_graph / get_code_snippet)` |
 | **Mobbin / browser-use** | Visual Reference Research & Real-World UI Benchmarking | Stage 3 (Visual Reference Research) | `call_mcp_tool(mobbin_mobbin, search_screens)` / `browser-use` CLI |
+| **NeedMCP (Optional)** | Secondary Cloud Style Benchmark & Atomic Component Specs | Stage 3/4 Exploration (`getStyle`) | `call_mcp_tool(needmcp, getStyle)` / `UNVERIFIED_RUNTIME` if unconfigured |
 | **FigCraft MCP** | Native Canvas Execution, Geometry Math, Stress Tests & Exports | Stage 5 through Stage 9 | `open_file`, `inspect_document`, `run_command`, `batch`, `file.exportLayers` |
 
 ---

@@ -79,7 +79,9 @@ Based on official documentation and upstream schema verification, NeedMCP expose
 
 ## 4. Antigravity Configuration Guide
 
-NeedMCP can be added to the user's personal Antigravity MCP configuration (`~/.gemini/config/mcp_config.json` or `~/.gemini/antigravity/mcp_config.json`).
+NeedMCP can be added to the user's personal Antigravity MCP configuration (`~/.gemini/config/mcp_config.json`).
+
+> **Configuration Path Note**: In Antigravity 2.0, the canonical MCP configuration file is located strictly at `~/.gemini/config/mcp_config.json`. Although the third-party upstream CLI (`npx needmcp setup`) historically attempts to write to `~/.gemini/antigravity/mcp_config.json`, Antigravity runtime reads exclusively from `~/.gemini/config/mcp_config.json`. Ensure entries are registered in the canonical `~/.gemini/config/mcp_config.json` location.
 
 > **Note**: This configuration is user-managed and optional. Core Mode and local Full Mode remain 100% operational without NeedMCP.
 

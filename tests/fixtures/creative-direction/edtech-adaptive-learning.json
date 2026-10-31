@@ -1,0 +1,125 @@
+{
+  "domain": "Education (EdTech)",
+  "productName": "SynapseSTEM Adaptive Learning & Curriculum Mastery Engine",
+  "productTypology": "Interactive Learning Platform & Academic Progress Tracker",
+  "targetAudience": "Middle and high school STEM students and secondary school teachers tracking curriculum progress",
+  "operationalContext": "Classroom tablets, Chromebooks, home study sessions; mixed lighting and varied student attention spans",
+  "surfaceMode": "Read",
+  "dataVisualizationNeeds": "Curriculum milestone progress donuts, mastery mastery radar charts, interactive problem-solving canvas",
+  "antiSlopCompliance": {
+    "prohibitedPatternsChecked": ["mesh gradient", "glowing card", "neon border", "floating card without anchor"],
+    "verdict": "COMPLIANT"
+  },
+  "concepts": [
+    {
+      "id": "concept-1",
+      "thematicName": "Humanist Scholarly (Recommended)",
+      "identityRationale": "Warm, encouraging, and distraction-free academic environment. Prioritizes comfortable reading ergonomics and clear hierarchical milestones without gamified clutter.",
+      "benchmarks": ["Coursera course workbench", "Notion academic templates", "Khan Academy mastery tree"],
+      "typography": {
+        "headingFont": "Outfit",
+        "bodyFont": "DM Sans",
+        "monoFont": "JetBrains Mono",
+        "scaleRatio": "1.250 (Major Third - Balanced)"
+      },
+      "color": {
+        "surfaceBase": "#F0FDFA",
+        "cardSurface": "#FFFFFF",
+        "primaryBrand": "#0D9488",
+        "secondaryNeutral": "#475569",
+        "textPrimary": "#134E4A",
+        "textSecondary": "#475569",
+        "borderSubtle": "#5EEAD4",
+        "statusSuccess": "#059669",
+        "statusWarning": "#D97706",
+        "statusDanger": "#DC2626"
+      },
+      "layout": {
+        "columnGrid": "Centered reading container capped at 720px max content width with right-hand progress rail",
+        "densityMode": "Comfortable Read (48px item height, 16px base padding)",
+        "gutterPx": 16,
+        "focalPoint": "Active lesson content viewport and mastery progress indicator"
+      },
+      "surface": {
+        "elevationModel": "Soft tonal card surfaces with diffused ambient shadows (0 4px 12px rgba(13,148,136,0.06))",
+        "borderRadii": "10px friendly rounded corners",
+        "borderStrokePx": 1
+      },
+      "iconography": {
+        "style": "Rounded monoline vector icons (Zero Emojis)",
+        "strokeWidth": "1.75px",
+        "geometry": "Soft rounded corners harmonized with Outfit typography"
+      },
+      "dataVisualization": {
+        "primaryCharts": ["Mastery radial donut", "Weekly learning streak sparkline"],
+        "colorRamp": ["#0D9488", "#2DD4BF", "#D97706", "#059669"],
+        "telemetryDensity": "Low-to-moderate (digestible student progress metrics)"
+      },
+      "accessibility": {
+        "wcagLevel": "WCAG 2.2 AAA text contrast (9.8:1 on card, 8.9:1 on canvas)",
+        "focusRing": "Visible 3px teal focus ring with 2px offset",
+        "ambientLightNotes": "Optimized for bright daytime classrooms and low-glare reading"
+      },
+      "uxTradeoffs": {
+        "strengths": "High reading comprehension; minimal cognitive distraction; welcoming emotional tone",
+        "risks": "Less space-efficient for multi-pane administrative grading tables",
+        "operationalFit": "Best for students engaged in focused deep-work learning modules"
+      }
+    },
+    {
+      "id": "concept-2",
+      "thematicName": "Structured Academic Editorial",
+      "identityRationale": "Classic editorial academic aesthetic blending refined typography with modern structured progress grids. Evokes the authority and prestige of scientific publishing.",
+      "benchmarks": ["JSTOR research portal", "The Atlantic educational series", "Nature scientific interactive"],
+      "typography": {
+        "headingFont": "Newsreader",
+        "bodyFont": "Inter",
+        "monoFont": "Fira Code",
+        "scaleRatio": "1.333 (Perfect Fourth - Editorial)"
+      },
+      "color": {
+        "surfaceBase": "#FAF9F5",
+        "cardSurface": "#FFFFFF",
+        "primaryBrand": "#1E3A8A",
+        "secondaryNeutral": "#64748B",
+        "textPrimary": "#1E293B",
+        "textSecondary": "#475569",
+        "borderSubtle": "#E2E8F0",
+        "statusSuccess": "#15803D",
+        "statusWarning": "#B45309",
+        "statusDanger": "#B91C1C"
+      },
+      "layout": {
+        "columnGrid": "Editorial two-column split: 60% structured lecture notes and 40% interactive exercises",
+        "densityMode": "Balanced Editorial (44px item height, 20px padding)",
+        "gutterPx": 20,
+        "focalPoint": "Primary lesson thesis and formula demonstration card"
+      },
+      "surface": {
+        "elevationModel": "Warm paper-like cards with crisp subtle borders (#E2E8F0) and minimal elevation",
+        "borderRadii": "6px restrained corners",
+        "borderStrokePx": 1
+      },
+      "iconography": {
+        "style": "Precise academic outline vector icons",
+        "strokeWidth": "1.5px",
+        "geometry": "Sharp geometric angles with classical proportions"
+      },
+      "dataVisualization": {
+        "primaryCharts": ["Curriculum timeline milestone chart", "Comparative cohort percentile bar"],
+        "colorRamp": ["#1E3A8A", "#3B82F6", "#15803D", "#B45309"],
+        "telemetryDensity": "Moderate (academic benchmarks and grade distributions)"
+      },
+      "accessibility": {
+        "wcagLevel": "WCAG 2.2 AAA text contrast (12.4:1 on warm paper canvas)",
+        "focusRing": "High-contrast 2px solid #1E3A8A",
+        "ambientLightNotes": "High contrast paper-white prevents glare under classroom fluorescent lighting"
+      },
+      "uxTradeoffs": {
+        "strengths": "Elevated academic credibility; exceptional for long-form theoretical explanations",
+        "risks": "May feel overly formal for younger K-8 student cohorts",
+        "operationalFit": "Best for advanced high school, AP/IB courses, and university preparatory tracks"
+      }
+    }
+  ]
+}
