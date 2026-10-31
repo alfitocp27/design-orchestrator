@@ -100,8 +100,13 @@ if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
 $ghCmd = Get-Command gh -ErrorAction SilentlyContinue
 if ($ghCmd) {
     $ghVer = (& gh --version 2>$null | Select-Object -First 1)
-    $null = (& gh auth status 2>&1)
-    $isGhAuthed = ($LASTEXITCODE -eq 0)
+    $isGhAuthed = $false
+    try {
+        cmd.exe /c "gh auth status >nul 2>&1"
+        $isGhAuthed = ($LASTEXITCODE -eq 0)
+    } catch {
+        $isGhAuthed = $false
+    }
     $global:LASTEXITCODE = 0  # Reset so probe failure does not leak to CI runner
     if ($isGhAuthed) {
         Write-DoctorItem "Toolchain" "GitHub CLI (gh)" "VERIFIED" "$ghVer (Authenticated)"
