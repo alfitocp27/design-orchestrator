@@ -54,11 +54,11 @@ Visual concepts must represent **genuinely distinct creative directions**, not m
 | **Canvas & Surface** | Cool slate canvas (`#F8FAFC`), crisp white cards, 1px structural borders (`#E2E8F0`). | Warm ivory canvas (`#FAF9F5`), soft paper cards, warm border (`#E7E5E0`). | Obsidian/slate backdrop (`#0B0F17`), dark cards (`#151D2A`), subtle border (`#243042`). |
 | **Typography Pairing** | `Plus Jakarta Sans` or `Inter` + `JetBrains Mono` for tabular data. | `Newsreader` or `Instrument Serif` (Headings) + `Inter` / `Geist` (Body). | `Geist Sans` + `Geist Mono` (Ultra-sharp tech sans). |
 | **Elevation & Depth** | Border-first with micro-shadows (`0 1px 2px rgba(0,0,0,0.05)`). | Diffused ambient shadows (`0 8px 24px rgba(0,0,0,0.04)`), soft edges. | Pure border definition (`1px solid #243042`), zero ambient glow, sharp contrast. |
-| **Density & Padding** | Base 8px, table row 44px, compact table padding 12â€“16px. | Base 8px, table row 52px, spacious padding 24â€“32px. | Base 4px/8px, table row 40px, dense scanability. |
+| **Density & Padding** | Base 8px, table row 44px, compact table padding 12–16px. | Base 8px, table row 52px, spacious padding 24–32px. | Base 4px/8px, table row 40px, dense scanability. |
 
 ### Presentation Protocol:
 1. Present the concept matrix in chat with clear trade-offs.
 2. Highlight **1 primary recommendation** based on product persona, surface mode, and workflow volume.
 3. Explicitly allow the user to blend features (e.g. *"Use Concept 1 colors with Concept 2 typography"*).
-4. **ðŸ›‘ CONCEPT APPROVAL GATE**: Wait for user sign-off before creating design system tokens or frames.
+4. **🛑 CONCEPT APPROVAL GATE**: Wait for user sign-off before creating design system tokens or frames.
 

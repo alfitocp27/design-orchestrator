@@ -1,0 +1,267 @@
+{
+  "documentId": "DOC-SYNTHETIC-VALID",
+  "documentName": "Synthetic Valid Design System Document",
+  "version": "2.2.0",
+  "pages": [
+    {
+      "id": "page-01",
+      "name": "01_Foundations"
+    },
+    {
+      "id": "page-02",
+      "name": "02_Components",
+      "children": [
+        {
+          "id": "comp-btn-master",
+          "name": "Button/Primary",
+          "type": "COMPONENT",
+          "width": 120,
+          "height": 40
+        },
+        {
+          "id": "comp-badge-master",
+          "name": "Badge/Status",
+          "type": "COMPONENT",
+          "width": 80,
+          "height": 24
+        }
+      ]
+    },
+    {
+      "id": "page-03",
+      "name": "03_Patterns",
+      "children": [
+        {
+          "id": "comp-row-master",
+          "name": "Table_Row",
+          "type": "COMPONENT",
+          "width": 1068,
+          "height": 48
+        }
+      ]
+    },
+    {
+      "id": "page-04",
+      "name": "04_Screens",
+      "children": [
+        {
+          "id": "screen-viewport-01",
+          "name": "Screen_Dashboard",
+          "type": "FRAME",
+          "role": "layout_viewport",
+          "layoutMode": "HORIZONTAL",
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900,
+          "padding": { "top": 0, "right": 0, "bottom": 0, "left": 0 },
+          "children": [
+            {
+              "id": "sidebar-frame-01",
+              "name": "Sidebar_Navigation",
+              "type": "FRAME",
+              "role": "layout_sidebar",
+              "layoutMode": "VERTICAL",
+              "x": 0,
+              "y": 0,
+              "width": 260,
+              "height": 900,
+              "padding": { "top": 24, "right": 16, "bottom": 24, "left": 16 },
+              "children": [
+                {
+                  "id": "nav-item-inst-1",
+                  "name": "Nav/Item_Dashboard",
+                  "type": "INSTANCE",
+                  "mainComponentId": "comp-nav-item",
+                  "x": 0,
+                  "y": 0,
+                  "width": 228,
+                  "height": 40
+                }
+              ]
+            },
+            {
+              "id": "main-content-frame-01",
+              "name": "Main_Content_Area",
+              "type": "FRAME",
+              "role": "layout_body",
+              "layoutMode": "VERTICAL",
+              "x": 260,
+              "y": 0,
+              "width": 1180,
+              "height": 900,
+              "padding": { "top": 32, "right": 32, "bottom": 32, "left": 32 },
+              "children": [
+                {
+                  "id": "table-card-container",
+                  "name": "Data_Table_Card",
+                  "type": "FRAME",
+                  "role": "layout_card",
+                  "layoutMode": "VERTICAL",
+                  "x": 0,
+                  "y": 0,
+                  "width": 1116,
+                  "height": 400,
+                  "padding": { "top": 24, "right": 24, "bottom": 24, "left": 24 },
+                  "children": [
+                    {
+                      "id": "table-grid-01",
+                      "name": "Data_Table_Grid",
+                      "type": "FRAME",
+                      "role": "table",
+                      "layoutMode": "VERTICAL",
+                      "x": 0,
+                      "y": 0,
+                      "width": 1068,
+                      "height": 300,
+                      "padding": { "top": 0, "right": 0, "bottom": 0, "left": 0 },
+                      "children": [
+                        {
+                          "id": "table-header-row",
+                          "name": "Table_Header",
+                          "type": "FRAME",
+                          "role": "table_header",
+                          "layoutMode": "HORIZONTAL",
+                          "x": 0,
+                          "y": 0,
+                          "width": 1068,
+                          "height": 44,
+                          "columns": [
+                            { "id": "th-col-1", "name": "Name", "x": 0, "width": 240 },
+                            { "id": "th-col-2", "name": "Status", "x": 240, "width": 220 },
+                            { "id": "th-col-3", "name": "Date", "x": 460, "width": 300 },
+                            { "id": "th-col-4", "name": "Actions", "x": 760, "width": 308 }
+                          ]
+                        },
+                        {
+                          "id": "table-data-row-1",
+                          "name": "Table_Row_Item_1",
+                          "type": "INSTANCE",
+                          "mainComponentId": "comp-row-master",
+                          "role": "table_row",
+                          "layoutMode": "HORIZONTAL",
+                          "x": 0,
+                          "y": 44,
+                          "width": 1068,
+                          "height": 48,
+                          "cells": [
+                            {
+                              "id": "td-1-1",
+                              "name": "Cell_Name",
+                              "x": 0,
+                              "width": 240,
+                              "text": "Enterprise Logistics Alpha",
+                              "fontSize": 14,
+                              "fontWeight": 500,
+                              "color": "#0F172A",
+                              "backgroundColor": "#FFFFFF",
+                              "opacity": 1.0
+                            },
+                            {
+                              "id": "td-1-2",
+                              "name": "Cell_Status",
+                              "x": 240,
+                              "width": 220,
+                              "type": "INSTANCE",
+                              "mainComponentId": "comp-badge-master",
+                              "text": "Verified",
+                              "fontSize": 12,
+                              "fontWeight": 600,
+                              "color": "#065F46",
+                              "backgroundColor": "#ECFDF5",
+                              "opacity": 1.0
+                            },
+                            {
+                              "id": "td-1-3",
+                              "name": "Cell_Date",
+                              "x": 460,
+                              "width": 300,
+                              "text": "2026-10-31",
+                              "fontSize": 14,
+                              "fontWeight": 400,
+                              "color": "#334155",
+                              "backgroundColor": "#FFFFFF",
+                              "opacity": 1.0
+                            },
+                            {
+                              "id": "td-1-4",
+                              "name": "Cell_Actions",
+                              "x": 760,
+                              "width": 308,
+                              "type": "INSTANCE",
+                              "mainComponentId": "comp-btn-master"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "table-data-row-2",
+                          "name": "Table_Row_Item_2",
+                          "type": "INSTANCE",
+                          "mainComponentId": "comp-row-master",
+                          "role": "table_row",
+                          "layoutMode": "HORIZONTAL",
+                          "x": 0,
+                          "y": 92,
+                          "width": 1068,
+                          "height": 48,
+                          "cells": [
+                            {
+                              "id": "td-2-1",
+                              "name": "Cell_Name",
+                              "x": 0,
+                              "width": 240,
+                              "text": "Central Dispatch Beta",
+                              "fontSize": 14,
+                              "fontWeight": 500,
+                              "color": "#0F172A",
+                              "backgroundColor": "#FFFFFF",
+                              "opacity": 1.0
+                            },
+                            {
+                              "id": "td-2-2",
+                              "name": "Cell_Status",
+                              "x": 240,
+                              "width": 220,
+                              "type": "INSTANCE",
+                              "mainComponentId": "comp-badge-master",
+                              "text": "Pending",
+                              "fontSize": 12,
+                              "fontWeight": 600,
+                              "color": "#92400E",
+                              "backgroundColor": "#FEF3C7",
+                              "opacity": 1.0
+                            },
+                            {
+                              "id": "td-2-3",
+                              "name": "Cell_Date",
+                              "x": 460,
+                              "width": 300,
+                              "text": "2026-10-30",
+                              "fontSize": 14,
+                              "fontWeight": 400,
+                              "color": "#334155",
+                              "backgroundColor": "#FFFFFF",
+                              "opacity": 1.0
+                            },
+                            {
+                              "id": "td-2-4",
+                              "name": "Cell_Actions",
+                              "x": 760,
+                              "width": 308,
+                              "type": "INSTANCE",
+                              "mainComponentId": "comp-btn-master"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

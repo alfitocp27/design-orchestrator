@@ -44,7 +44,7 @@
 |---|---|---|---|
 | **Palette / Mood** | Slate cool backdrop (`#F8FAFC`), crisp white cards, royal blue primary (`#1E40AF`) | Neutral warm canvas (`#FAF9F5`), ivory cards, emerald accent (`#059669`) | Light gray (`#F3F4F6`), high-contrast dark navy primary (`#0F172A`) |
 | **Typography** | Inter / Plus Jakarta Sans: crisp geometric sans, clear tabular numerals | Instrument Sans / Outfit: contemporary editorial sans | Roboto / System UI: utilitarian, compact scanability |
-| **Iconography** | 20 Ã— 20 px SVG, 1.5px clean outline (Zero Emojis) | 20 Ã— 20 px SVG, 1.75px rounded outline (Zero Emojis) | 18 Ã— 18 px SVG, 2.0px crisp sharp outline (Zero Emojis) |
+| **Iconography** | 20 × 20 px SVG, 1.5px clean outline (Zero Emojis) | 20 × 20 px SVG, 1.75px rounded outline (Zero Emojis) | 18 × 18 px SVG, 2.0px crisp sharp outline (Zero Emojis) |
 | **Density & Grid** | 8px grid, compact-comfortable padding | 8px grid, spacious padding, generous whitespace | 4px/8px grid, ultra-compact high information density |
 | **Elevation** | Subtle dual micro-shadows (`0 1px 2px rgba(...)`) | Soft diffused shadows, floating surface cards | 1px structural borders (`#E5E7EB`), flat elevation |
 | **PRD Alignment Rationale** | Highest operational scanability for high-volume review workflows; balances speed and clarity | Friendly and contemporary, but lower data density | Maximum data throughput, but potentially higher cognitive fatigue |
@@ -110,20 +110,20 @@
 - **Font Family**: Max 2 font families (1 Sans for UI, 1 Mono for data tables/numbers).
 - **Legibility Floor**: Minimum body text $13\text{px}$, minimum micro/caption $11\text{px}$.
 - **Typographic Scale**:
-  - `H1 (Headline 1)`: 48px / SemiBold (600) / Line Height 58px â€” Hero & Page Titles
-  - `H2 (Headline 2)`: 40px / SemiBold (600) / Line Height 48px â€” Section Banner
-  - `H3 (Headline 3)`: 32px / SemiBold (600) / Line Height 38px â€” Modal & Drawer Headers
-  - `H4 (Headline 4)`: 28px / SemiBold (600) / Line Height 34px â€” Card Headlines
-  - `H5 (Headline 5)`: 24px / SemiBold (600) / Line Height 28px â€” Subsection / Artboard Titles
-  - `S1 (Subtitle 1)`: 18px / SemiBold (600) / Line Height 28px â€” Lead paragraphs
-  - `S2 (Subtitle 2)`: 16px / SemiBold (600) / Line Height 24px â€” Card Subtitles
-  - `B1 (Body 1)`: 16px / Regular (400) / Line Height 24px â€” Primary reading body
-  - `B2 (Body 2 Medium)`: 16px / Medium (500) / Line Height 24px â€” Emphasized body text
-  - `B3 (Body 3)`: 14px / Regular (400) / Line Height 20px â€” Standard UI & data table cells
-  - `B4 (Body 4 Medium)`: 14px / Medium (500) / Line Height 20px â€” Emphasized table data
-  - `C1 (Caption 1)`: 12px / Regular (400) / Line Height 16px â€” Timestamps & metadata
-  - `C2 (Caption 2 Medium)`: 12px / Medium (500) / Line Height 16px â€” Status pill text & badges
-  - `C3 (Micro Caption)`: 10px / Medium (500) / Line Height 14px â€” Micro telemetry labels
+  - `H1 (Headline 1)`: 48px / SemiBold (600) / Line Height 58px — Hero & Page Titles
+  - `H2 (Headline 2)`: 40px / SemiBold (600) / Line Height 48px — Section Banner
+  - `H3 (Headline 3)`: 32px / SemiBold (600) / Line Height 38px — Modal & Drawer Headers
+  - `H4 (Headline 4)`: 28px / SemiBold (600) / Line Height 34px — Card Headlines
+  - `H5 (Headline 5)`: 24px / SemiBold (600) / Line Height 28px — Subsection / Artboard Titles
+  - `S1 (Subtitle 1)`: 18px / SemiBold (600) / Line Height 28px — Lead paragraphs
+  - `S2 (Subtitle 2)`: 16px / SemiBold (600) / Line Height 24px — Card Subtitles
+  - `B1 (Body 1)`: 16px / Regular (400) / Line Height 24px — Primary reading body
+  - `B2 (Body 2 Medium)`: 16px / Medium (500) / Line Height 24px — Emphasized body text
+  - `B3 (Body 3)`: 14px / Regular (400) / Line Height 20px — Standard UI & data table cells
+  - `B4 (Body 4 Medium)`: 14px / Medium (500) / Line Height 20px — Emphasized table data
+  - `C1 (Caption 1)`: 12px / Regular (400) / Line Height 16px — Timestamps & metadata
+  - `C2 (Caption 2 Medium)`: 12px / Medium (500) / Line Height 16px — Status pill text & badges
+  - `C3 (Micro Caption)`: 10px / Medium (500) / Line Height 14px — Micro telemetry labels
   - `Button Scale`: Giant (18px/lh:24), Large (16px/lh:20), Medium (14px/lh:16), Small (12px/lh:16), Tiny (10px/lh:12).
 
 ---
@@ -131,13 +131,13 @@
 ### 5.5 Elevation & Dual Drop Shadow Specimen
 - `elevation/subtle (100)`: Dual Layer:
   - Ambient: `0 1px 2px rgba(15, 23, 42, 0.04)`
-  - Direct: `0 1px 1px rgba(15, 23, 42, 0.02)` â€” Cards, sidebars, tables.
+  - Direct: `0 1px 1px rgba(15, 23, 42, 0.02)` — Cards, sidebars, tables.
 - `elevation/lifted (300)`: Dual Layer:
   - Ambient: `0 4px 6px -1px rgba(15, 23, 42, 0.07)`
-  - Direct: `0 2px 4px -2px rgba(15, 23, 42, 0.05)` â€” Hovered cards, context menus.
+  - Direct: `0 2px 4px -2px rgba(15, 23, 42, 0.05)` — Hovered cards, context menus.
 - `elevation/overlay (500)`: Dual Layer:
   - Ambient: `0 10px 25px -5px rgba(15, 23, 42, 0.10)`
-  - Direct: `0 6px 14px -6px rgba(15, 23, 42, 0.12)` â€” Dropdowns, modals, action sheets.
+  - Direct: `0 6px 14px -6px rgba(15, 23, 42, 0.12)` — Dropdowns, modals, action sheets.
 - `focus/ring`: Solid accent halo `0 0 0 3px rgba(30, 64, 175, 0.25)`.
 
 ---
@@ -148,12 +148,12 @@ All icons reside in `01_Foundations` / Central Icon Library drawn as native vect
 
 | Icon Name | Category | Node ID | Master Component ID | Bounding Box | Stroke / Fill |
 |---|---|---|---|---|---|
-| `arrow-left` | Navigation | `[id]` | `[id]` | 24 Ã— 24 px | 1.5px stroke, none |
-| `arrow-right`| Navigation | `[id]` | `[id]` | 24 Ã— 24 px | 1.5px stroke, none |
-| `search` | Actions | `[id]` | `[id]` | 20 Ã— 20 px | 1.5px stroke, none |
-| `filter` | Actions | `[id]` | `[id]` | 20 Ã— 20 px | 1.5px stroke, none |
-| `check` | Feedback | `[id]` | `[id]` | 20 Ã— 20 px | 2.0px stroke, none |
-| `alert-circle`| Feedback| `[id]` | `[id]` | 20 Ã— 20 px | 1.5px stroke, none |
+| `arrow-left` | Navigation | `[id]` | `[id]` | 24 × 24 px | 1.5px stroke, none |
+| `arrow-right`| Navigation | `[id]` | `[id]` | 24 × 24 px | 1.5px stroke, none |
+| `search` | Actions | `[id]` | `[id]` | 20 × 20 px | 1.5px stroke, none |
+| `filter` | Actions | `[id]` | `[id]` | 20 × 20 px | 1.5px stroke, none |
+| `check` | Feedback | `[id]` | `[id]` | 20 × 20 px | 2.0px stroke, none |
+| `alert-circle`| Feedback| `[id]` | `[id]` | 20 × 20 px | 1.5px stroke, none |
 
 ---
 
@@ -165,8 +165,8 @@ All icons reside in `01_Foundations` / Central Icon Library drawn as native vect
 | **Atom / Item** | `Nav/Item` | `[id]` | None (embeds nested `Icon` master) | `State=Selected/Inactive`, `Style=Line/Pill` |
 | **Atom / Item** | `List/Left_Item` | `[id]` | Embeds `Avatar` or `Icon` | `Content=Avatar+Text/Icon+Text` |
 | **Atom / Item** | `List/Right_Item`| `[id]` | Embeds `Badge` or `Icon` | `Content=Text+Icon/Badge+Icon` |
-| **Molecule / Group**| `Button Group (Group)` | `[id]` | Composes 2â€“5 linked instances of `Button Group (Item)` | `Amount=2..5`, `Size=Giant..Medium` |
-| **Molecule / Group**| `Navbar Bottom (Group)` | `[id]` | Composes 3â€“5 linked instances of `Nav/Item` | `Amount=3..5`, `Style=Line/Pill` |
+| **Molecule / Group**| `Button Group (Group)` | `[id]` | Composes 2–5 linked instances of `Button Group (Item)` | `Amount=2..5`, `Size=Giant..Medium` |
+| **Molecule / Group**| `Navbar Bottom (Group)` | `[id]` | Composes 3–5 linked instances of `Nav/Item` | `Amount=3..5`, `Style=Line/Pill` |
 | **Molecule / Group**| `List Row (5 Rows)` | `[id]` | Composes 5 linked instances of `List/Left_Item` + `List/Right_Item` | `State=Default` |
 | **Organism / Pattern**| `Card/KPI_Deck` | `[id]` | Composes `Badge/Status` + metrics + trend indicators | `Props: title, value, delta, unit` |
 | **Organism / Pattern**| `Table/Data_Grid` | `[id]` | Composes `Table/Row` (Header, Default, Alert) with locked columns | `Columns: 6, RowHeight: 44px` |

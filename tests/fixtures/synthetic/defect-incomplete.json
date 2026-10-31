@@ -1,0 +1,49 @@
+{
+  "documentId": "DOC-SYNTHETIC-DEFECT-INCOMPLETE",
+  "documentName": "Synthetic Incomplete / Unverifiable Document",
+  "version": "2.2.0",
+  "pages": [
+    {
+      "id": "page-04",
+      "name": "04_Screens",
+      "children": [
+        {
+          "id": "screen-viewport-01",
+          "name": "Screen_Dashboard",
+          "type": "FRAME",
+          "role": "layout_viewport",
+          "width": 1440,
+          "height": 900,
+          "children": [
+            {
+              "id": "unverifiable-card",
+              "name": "Card_Unresolved_Data",
+              "type": "FRAME",
+              "role": "layout_card",
+              "width": 400,
+              "height": 200,
+              "children": [
+                {
+                  "id": "text-missing-color",
+                  "name": "Text_With_Missing_Color_Data",
+                  "type": "TEXT",
+                  "text": "System metrics unavailable",
+                  "fontSize": 14,
+                  "color": null,
+                  "backgroundColor": null
+                },
+                {
+                  "id": "child-missing-bounds",
+                  "name": "Widget_Unknown_Bounds",
+                  "type": "FRAME",
+                  "x": null,
+                  "width": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

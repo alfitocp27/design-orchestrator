@@ -1,0 +1,44 @@
+{
+  "documentId": "DOC-SYNTHETIC-DEFECT-FAKE-COMPONENT",
+  "documentName": "Synthetic Fake Component Document",
+  "version": "2.2.0",
+  "pages": [
+    {
+      "id": "page-04",
+      "name": "04_Screens",
+      "children": [
+        {
+          "id": "screen-viewport-01",
+          "name": "Screen_Dashboard",
+          "type": "FRAME",
+          "role": "layout_viewport",
+          "width": 1440,
+          "height": 900,
+          "children": [
+            {
+              "id": "card-with-fake-button",
+              "name": "Card_Action_Panel",
+              "type": "FRAME",
+              "role": "layout_card",
+              "width": 400,
+              "height": 200,
+              "children": [
+                {
+                  "id": "fake-button-frame",
+                  "name": "Button/Primary_Submit",
+                  "type": "FRAME",
+                  "role": "button",
+                  "x": 20,
+                  "y": 50,
+                  "width": 140,
+                  "height": 44,
+                  "mainComponentId": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

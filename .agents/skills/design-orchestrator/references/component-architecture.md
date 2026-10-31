@@ -61,8 +61,8 @@ flowchart TD
     end
 
     subgraph L5 ["Level 5: Screens & Viewports"]
-        S1["Desktop Application Screens (1440 Ã— 900)"]
-        S2["Mobile Application Screens (390 Ã— 844)"]
+        S1["Desktop Application Screens (1440 × 900)"]
+        S2["Mobile Application Screens (390 × 844)"]
     end
 
     L1 --> L2
@@ -88,7 +88,7 @@ flowchart TD
 
 ## 3. Central Vector Icon Library & Instance Swapping
 
-Emojis (ðŸ“…, ðŸ”, âš™ï¸, ðŸ‘¤) are strictly prohibited in professional product UI. All iconography must be maintained in a **Central Vector Icon Library**:
+Emojis (📅, 🔍, ⚙️, 👤) are strictly prohibited in professional product UI. All iconography must be maintained in a **Central Vector Icon Library**:
 
 1. **Central Repository Structure**:
    - Located on page `01_Foundations` (or dedicated section in `02_Components`).
@@ -188,7 +188,7 @@ Rather than forcing components into a rigid 5-artboard layout or cramming everyt
 
 ### Artboard Organization Matrix:
 - **`Foundations` (Page 01)**:
-  - `Typography_Specimen`: Complete font scale specimens (`H1`â€“`H5`, `S1`â€“`S2`, `B1`â€“`B4`, `C1`â€“`C3`, Button scale) with px sizes, line heights, and sample strings.
+  - `Typography_Specimen`: Complete font scale specimens (`H1`–`H5`, `S1`–`S2`, `B1`–`B4`, `C1`–`C3`, Button scale) with px sizes, line heights, and sample strings.
   - `Palette_Specimen`: Color swatches displaying hex codes, semantic roles, contrast ratios, and token names.
   - `Shadow_Specimen`: Dual-elevation cards demonstrating ambient blur + key shadow pairs.
   - `Central_Icon_Hub`: Categorized grid of all master vector icons.
@@ -226,7 +226,7 @@ flowchart TD
     ST5 --> ST6["6. Permutation Stress (Label/Status/Size)"]
     ST6 --> ST7["7. Sizing & Overflow (Hug/Fill/Min-Max)"]
     ST7 --> ST8["8. Save & Reload Persistence"]
-    ST8 --> PASS["âœ… COMPONENT STRESS TEST PASSED"]
+    ST8 --> PASS["✅ COMPONENT STRESS TEST PASSED"]
 ```
 
 ### Test 1: Master-to-Instance Propagation
@@ -320,7 +320,7 @@ A fundamental principle of the Design Orchestrator is the **separation of mechan
 | - Native component types (COMPONENT, COMPONENT_SET, INSTANCE)                   |
 | - 3-tier variable binding resolution and alias integrity                        |
 | - Layout mode: auto-layout explicit (horizontal/vertical, padding, gaps)       |
-| - Alignment metrics: locked table column delta |Î”x| <= 1px                      |
+| - Alignment metrics: locked table column delta |Δx| <= 1px                      |
 | - Persistence across save/reload operations                                     |
 | -> STATUS: TECHNICAL_RUNTIME_PASS (Objective Binary Check Passed)               |
 +---------------------------------------------------------------------------------+

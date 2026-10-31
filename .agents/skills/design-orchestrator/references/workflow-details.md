@@ -25,7 +25,7 @@
 
 #### Mode 1: From Scratch (No PRD)
 - Default Anti-Slop mode to `DURING` automatically.
-- Pacing constraint: **Maximum 1â€“2 questions per turn**.
+- Pacing constraint: **Maximum 1–2 questions per turn**.
 - Consultative framing: Accompany every option with a concise explanation, highlight **1 primary recommendation** (`(Rekomendasi Utama)`), and state operational/UX reasoning.
 - Staging Priority:
   1. *Core System Needs & Problem Space* (primary operational modules, core workflows, pain points).
@@ -101,7 +101,7 @@ Synthesize findings into **2 to 3 genuinely differentiated visual concepts**:
 1. **Concept Matrix**: Detail color palette, typography pairing, iconography style, layout density, surface depth model, and functional PRD alignment.
 2. **Clear Primary Recommendation**: Highlight the direction that best satisfies user workflow throughput and Impeccable surface mode, stating explicit trade-offs.
 3. **Concept Blending**: Allow user to blend aspects across concepts.
-4. **ðŸ›‘ CONCEPT APPROVAL GATE (Hard Stop)**:
+4. **🛑 CONCEPT APPROVAL GATE (Hard Stop)**:
    - Present concepts to the user in chat.
    - Wait for explicit user approval before touching the FigCraft canvas.
 
@@ -129,7 +129,7 @@ Ensure pages or structured canvas sections exist:
 - `02_Components`: Atomic items and component sets organized into dedicated family artboards.
 - `03_Patterns`: Composite assemblies (forms, modals, data tables, navigation shells, `Instances_Showcase`).
 - `04_Screens`: Application viewports composed 100% of linked instances from approved components and patterns.
-- *(Optional)*: `00_Cover` (1600 Ã— 900 px presentation frame) and `00_Guidelines` (system overview and principles).
+- *(Optional)*: `00_Cover` (1600 × 900 px presentation frame) and `00_Guidelines` (system overview and principles).
 
 ### 3. Constructing Foundations (3-Tier Tokens & Central Icon Library)
 1. **3-Tier Variables Engine**:
@@ -154,7 +154,7 @@ Ensure pages or structured canvas sections exist:
    - Updating Tier 1 primitives cascades automatically across semantic and component aliases to linked instances.
    - If native variable persistence is unsupported in the current session, fall back gracefully to **FigCraft Styles** (`style.create`, `style.apply`) and deterministic token tables in `DESIGN.md`.
 2. **Foundations Specimen Boards on Canvas**:
-   - `Typography_Specimen`: Font scale specimens (`H1`â€“`H5`, `S1`â€“`S2`, `B1`â€“`B4`, `C1`â€“`C3`, Button scale) with px sizes and sample text.
+   - `Typography_Specimen`: Font scale specimens (`H1`–`H5`, `S1`–`S2`, `B1`–`B4`, `C1`–`C3`, Button scale) with px sizes and sample text.
    - `Palette_Specimen`: Swatch cards showing hex, token name, and contrast compliance.
    - `Shadow_Specimen`: Dual-elevation cards demonstrating ambient blur + key directional shadows.
 3. **Central Vector Icon Library (Zero Emojis)**:
@@ -217,7 +217,7 @@ Execute and log on canvas:
 5. **Save Primary Canvas**:
    `figcraft/save_file(path: "projects/<project-slug>/<project-slug>.figcraft")`
 
-### ðŸ›‘ DESIGN SYSTEM APPROVAL GATE (Mandatory Hard Stop)
+### 🛑 DESIGN SYSTEM APPROVAL GATE (Mandatory Hard Stop)
 - **DO NOT proceed to Stage 7 (`04_Screens`) under any circumstances.**
 - Update `SESSION_HANDOFF.md` with status `PENDING_USER_APPROVAL`.
 - Present the artboard screenshots, token architecture, and stress test results to the user.
@@ -239,7 +239,7 @@ Execute and log on canvas:
    - Ensure table headers and table rows share exact column widths:
      $$\Delta x = |x(C_{i, R_j}) - x(C_{i, \text{header}})| \le 1\text{px}$$
 4. **State Separation**:
-   - Build Populated State, Empty State, and responsive breakpoints (Desktop 1440 Ã— 900, Mobile 390 Ã— 844) as separate top-level frames in `04_Screens`.
+   - Build Populated State, Empty State, and responsive breakpoints (Desktop 1440 × 900, Mobile 390 × 844) as separate top-level frames in `04_Screens`.
 
 ---
 
