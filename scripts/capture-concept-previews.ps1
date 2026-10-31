@@ -17,7 +17,7 @@ if (-not (Test-Path $exportDir)) {
     New-Item -ItemType Directory -Path $exportDir -Force | Out-Null
 }
 
-$artifactDir = "C:\Users\AI-Server\.gemini\antigravity\brain\15df6e0f-695c-4b34-94a0-c07040b7d486"
+$artifactDir = if ($env:ARTIFACT_DIR) { $env:ARTIFACT_DIR } else { $exportDir }
 
 $concepts = @(
     @{ Name = "concept-1-monograph"; File = "concept-1-monograph.html" },

@@ -450,15 +450,16 @@ if ($screenPage) {
         $isStructuralContainer = ($name -match "^(Screen|Viewport|Sidebar|Main_Content|Page|Layout|Container|Column|Wrapper)") -or
                                  ($role -in @("layout_viewport", "layout_sidebar", "layout_body", "layout_card", "table"))
         
+        $targetCompId = if ($node.mainComponentId) { $node.mainComponentId } elseif ($node.mainComponent) { $node.mainComponent } else { $null }
         if ($isRepeatingControl -and -not $isStructuralContainer) {
             $auditResults.summary.totalChecks++
-            if ($node.type -eq "INSTANCE" -and $node.mainComponentId) {
+            if ($node.type -eq "INSTANCE" -and $targetCompId) {
                 $auditResults.summary.passedChecks++
                 $auditResults.componentChecks += [ordered]@{
                     nodeId          = $node.id
                     name            = $node.name
                     type            = $node.type
-                    mainComponentId = $node.mainComponentId
+                    mainComponentId = $targetCompId
                     status          = "PASS"
                 }
             } else {
