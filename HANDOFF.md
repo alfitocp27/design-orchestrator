@@ -9,8 +9,8 @@
 
 - **Current Version**: `v2.1.1` (Clean-Install Verification & Bootstrap Hardening)
 - **Repository**: `https://github.com/alfitocp27/design-orchestrator.git`
-- **Active Branch**: `feat/clean-install-verification`
-- **Readiness Status**: `TECHNICAL_RUNTIME_PASS / CLEAN_INSTALL_VERIFIED`
+- **Active Branch**: `main`
+- **Readiness Status**: `TECHNICAL_RUNTIME_PASS / CLEAN_INSTALL_VERIFIED / MERGED_TO_MAIN`
 - **Last Sync**: 2026-10-31
 
 ---
