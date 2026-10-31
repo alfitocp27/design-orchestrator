@@ -47,7 +47,7 @@ output_dir = os.path.abspath('$($OutputDir.Replace("\", "\\"))')
 doc_path = os.path.join(output_dir, 'native-design-system-test.figcraft')
 
 print('--- SUBTEST 1: Double Execution & Idempotency ---')
-client = FigCraftClient()
+client = FigCraftClient(mode='HEADLESS')
 try:
     engine = NativeDesignSystemEngine(client)
     # First execution pass
@@ -147,8 +147,7 @@ print('ALL 6 PYTHON RELIABILITY SUBTESTS PASSED.')
 $tempPy = Join-Path $env:TEMP "test_reliability_$((Get-Random)).py"
 try {
     $pyScript | Set-Content -Path $tempPy -Encoding UTF8
-    $output = & $pythonExe $tempPy 2>&1
-    Write-Host $output
+    & cmd.exe /c "`"$pythonExe`" `"$tempPy`""
     if ($LASTEXITCODE -ne 0) {
         Write-Error "Reliability test suite failed."
         exit 1

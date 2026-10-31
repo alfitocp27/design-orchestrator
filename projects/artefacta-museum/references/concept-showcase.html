@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artefacta -- Creative Direction Comparison Showcase</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0F172A;
+      color: #F8FAFC;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    header {
+      background: #1E293B;
+      border-bottom: 1px solid #334155;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .brand-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #F8FAFC;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .badge-pilot {
+      background: #2563EB;
+      color: #FFFFFF;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .nav-buttons {
+      display: flex;
+      gap: 8px;
+    }
+    .concept-btn {
+      background: #0F172A;
+      border: 1px solid #334155;
+      color: #94A3B8;
+      padding: 8px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .concept-btn:hover {
+      background: #334155;
+      color: #F8FAFC;
+    }
+    .concept-btn.active {
+      background: #C2410C;
+      color: #FFFFFF;
+      border-color: #C2410C;
+    }
+    .concept-btn.active-2 {
+      background: #18181B;
+      color: #FFFFFF;
+      border-color: #52525B;
+    }
+    .concept-btn.active-3 {
+      background: #0284C7;
+      color: #FFFFFF;
+      border-color: #0284C7;
+    }
+    .viewport-meta {
+      font-size: 12px;
+      color: #94A3B8;
+      font-family: monospace;
+    }
+    iframe {
+      width: 1440px;
+      height: 900px;
+      border: none;
+      background: #FFFFFF;
+      margin: 0 auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .canvas-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
+      padding: 20px;
+      background: #090D16;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand-title">
+      <span>ARTEFACTA</span>
+      <span class="badge-pilot">Concept Approval Gate (1440x900 Showcase)</span>
+    </div>
+    <div class="nav-buttons">
+      <button class="concept-btn active" onclick="loadConcept(1, this)">Concept 1: Curatorial Monograph (Recommended)</button>
+      <button class="concept-btn" onclick="loadConcept(2, this)">Concept 2: Modern Kunsthalle</button>
+      <button class="concept-btn" onclick="loadConcept(3, this)">Concept 3: Conservator Laboratory</button>
+    </div>
+    <div class="viewport-meta">Viewport: 1440 × 900 px (Desktop Native)</div>
+  </header>
+
+  <div class="canvas-container">
+    <iframe id="conceptFrame" src="concept-1-monograph.html"></iframe>
+  </div>
+
+  <script>
+    function loadConcept(num, btn) {
+      document.querySelectorAll('.concept-btn').forEach(b => {
+        b.className = 'concept-btn';
+      });
+      if (num === 1) {
+        btn.classList.add('active');
+        document.getElementById('conceptFrame').src = 'concept-1-monograph.html';
+      } else if (num === 2) {
+        btn.classList.add('active-2');
+        document.getElementById('conceptFrame').src = 'concept-2-kunsthalle.html';
+      } else if (num === 3) {
+        btn.classList.add('active-3');
+        document.getElementById('conceptFrame').src = 'concept-3-conservator.html';
+      }
+    }
+  </script>
+
+</body>
+</html>

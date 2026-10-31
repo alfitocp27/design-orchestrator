@@ -15,17 +15,45 @@ import time
 from typing import Dict, Any, List, Optional, Tuple, Union
 
 class FigCraftClient:
-    """Stdio JSON-RPC 2.0 client for FigCraft CLI MCP server with robust error handling."""
+    """Stdio JSON-RPC 2.0 client for FigCraft CLI MCP server with strict Dual-Mode support:
+    - 'ATTACHED': Connects to FigCraft Desktop via '--attach <port>' (default: 7979). Strict failure if port unreachable; ZERO silent fallback.
+    - 'HEADLESS': Runs standalone in-process engine session without GUI.
+    """
 
-    def __init__(self, binary_path: Optional[str] = None):
+    def __init__(self, binary_path: Optional[str] = None, mode: Optional[str] = None, port: int = 7979):
+        resolved_mode = (mode or os.environ.get("FIGCRAFT_MODE", "")).upper()
+        if not resolved_mode:
+            # Default to ATTACHED for interactive design; test runners explicitly specify HEADLESS
+            resolved_mode = "ATTACHED"
+
+        if resolved_mode not in ("ATTACHED", "HEADLESS"):
+            raise ValueError(f"Invalid FigCraft mode '{resolved_mode}'. Must be explicitly 'ATTACHED' or 'HEADLESS'.")
+
+        self.mode = resolved_mode
+        self.port = port
+
         if not binary_path:
             binary_path = self._find_binary()
         if not binary_path or not os.path.exists(binary_path):
             raise FileNotFoundError(f"FigCraft CLI binary not found at: {binary_path}")
 
         self.binary_path = binary_path
+
+        if self.mode == "ATTACHED":
+            if not self._is_port_open("127.0.0.1", self.port):
+                raise RuntimeError(
+                    f"FigCraft Attached Mode Error: FigCraft Desktop application not reachable on 127.0.0.1:{self.port}. "
+                    f"Refusing silent fallback to Headless Mode. Please launch FigCraft Desktop with '--control {self.port}' "
+                    "or explicitly specify mode='HEADLESS'."
+                )
+            cmd = [self.binary_path, "mcp", "--attach", str(self.port)]
+        elif self.mode == "HEADLESS":
+            cmd = [self.binary_path, "mcp"]
+        else:
+            raise ValueError(f"Unsupported mode: {self.mode}")
+
         self.proc = subprocess.Popen(
-            [self.binary_path, "mcp"],
+            cmd,
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
@@ -34,7 +62,18 @@ class FigCraftClient:
             encoding="utf-8"
         )
         self.req_id = 1
+        self.server_info: Dict[str, Any] = {}
+        self.instructions: str = ""
         self._init_session()
+
+    @staticmethod
+    def _is_port_open(host: str, port: int, timeout: float = 1.0) -> bool:
+        import socket
+        try:
+            with socket.create_connection((host, port), timeout=timeout):
+                return True
+        except (socket.timeout, ConnectionRefusedError, OSError):
+            return False
 
     def _find_binary(self) -> Optional[str]:
         candidates = [
@@ -81,13 +120,15 @@ class FigCraftClient:
                 time.sleep(0.1)
 
     def _init_session(self):
-        self.send("initialize", {
+        init_resp = self.send("initialize", {
             "protocolVersion": "2024-11-05",
             "capabilities": {},
             "clientInfo": {"name": "design-orchestrator-engine", "version": "2.2"}
         })
         self.proc.stdin.write(json.dumps({"jsonrpc": "2.0", "method": "notifications/initialized"}) + "\n")
         self.proc.stdin.flush()
+        self.server_info = init_resp.get("result", {}).get("serverInfo", {})
+        self.instructions = init_resp.get("result", {}).get("instructions", "")
 
     def call_tool(self, name: str, arguments: Dict[str, Any]) -> Any:
         res = self.send("tools/call", {"name": name, "arguments": arguments})
@@ -184,19 +225,31 @@ class NativeDesignSystemEngine:
     # Idempotency & Safety Primitives
     # -------------------------------------------------------------------------
 
-    def ensure_target_document(self, target_path: str, is_synthetic_test: bool = True):
-        """Validates active document identity and enforces document isolation."""
+    def ensure_target_document(self, target_path: str, is_synthetic_test: bool = True, force: bool = False):
+        """Validates active document identity and enforces document isolation with strict safety rules:
+        1. Aborts if active document has unsaved changes (dirty=True).
+        2. Aborts if active named document does not match target.
+        3. For Untitled documents, aborts if it contains user content.
+        """
         abs_target = os.path.abspath(target_path)
         doc = self.c.inspect_document(depth=1)
         active_path = doc.get("path")
+        is_dirty = doc.get("dirty", False)
+        doc_name = doc.get("name", "Untitled")
 
         if active_path:
             active_abs = os.path.abspath(active_path)
             if active_abs != abs_target:
-                if doc.get("dirty", False) and not is_synthetic_test:
+                # Switching away from an active document requires clean state unless forced
+                if is_dirty and not force:
                     raise RuntimeError(
-                        f"Active Document Safety Block: Open file '{active_path}' has unsaved changes. "
-                        "Aborting operation to prevent accidental corruption of user workspace."
+                        f"Active Document Safety Block: Active document '{doc_name}' has unsaved changes (dirty=True). "
+                        "Aborting operation to prevent accidental loss of user work."
+                    )
+                if not is_synthetic_test and not force:
+                    raise RuntimeError(
+                        f"Active Document Safety Block: Active file is '{active_path}', which does not match target '{abs_target}'. "
+                        "Aborting to prevent altering an unrelated project."
                     )
                 # If target exists, open it; otherwise save current canvas to target
                 if os.path.exists(abs_target):
@@ -204,7 +257,20 @@ class NativeDesignSystemEngine:
                 else:
                     self.c.save_file(abs_target)
         else:
-            # Untitled document: initialize by saving directly to target
+            # Untitled document: check if it has unsaved edits or existing layers
+            if is_dirty and not force and not is_synthetic_test:
+                raise RuntimeError(
+                    f"Active Document Safety Block: Active document '{doc_name}' has unsaved changes (dirty=True). "
+                    "Aborting operation to prevent accidental loss of user work."
+                )
+            pages = doc.get("pages", [])
+            total_children = sum(p.get("children", 0) for p in pages)
+            if total_children > 0 and not is_synthetic_test and not force:
+                raise RuntimeError(
+                    f"Active Document Safety Block: Active Untitled document contains {total_children} existing layers. "
+                    "Aborting to avoid overwriting user work."
+                )
+            # Safe clean canvas: initialize by saving directly to target
             self.c.save_file(abs_target)
 
     def get_or_create_collection(self, name: str, modes: Optional[List[str]] = None) -> str:
@@ -708,15 +774,31 @@ class NativeDesignSystemEngine:
 
 def main():
     output_dir = os.path.abspath("test-output")
-    if len(sys.argv) > 1:
-        output_dir = os.path.abspath(sys.argv[1])
+    mode = os.environ.get("FIGCRAFT_MODE", "HEADLESS")
+
+    args = sys.argv[1:]
+    clean_args = []
+    i = 0
+    while i < len(args):
+        if args[i] in ("--mode", "-m") and i + 1 < len(args):
+            mode = args[i + 1].upper()
+            i += 2
+        elif args[i].startswith("--mode="):
+            mode = args[i].split("=")[1].upper()
+            i += 1
+        else:
+            clean_args.append(args[i])
+            i += 1
+
+    if clean_args:
+        output_dir = os.path.abspath(clean_args[0])
 
     print("==========================================================")
-    print(" FigCraft Native Design System Engine (v2.2 Sprint 4)")
+    print(f" FigCraft Native Design System Engine (Mode: {mode})")
     print(f" Output Target: {output_dir}")
     print("==========================================================")
 
-    client = FigCraftClient()
+    client = FigCraftClient(mode=mode)
     try:
         engine = NativeDesignSystemEngine(client)
         summary = engine.execute_all(output_dir)

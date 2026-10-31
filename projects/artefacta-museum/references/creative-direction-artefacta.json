@@ -1,0 +1,180 @@
+{
+  "domain": "Museum Collection & Exhibition Management System",
+  "productName": "Artefacta: Museum Collection & Exhibition Management Platform",
+  "productTypology": "Scholarly Curatorial Workspace & Exhibition Planning System",
+  "targetAudience": "Museum curators, collection managers, conservators, and exhibition directors managing complex cultural archives and active loan rotations",
+  "operationalContext": "Curatorial desktop workstation, research libraries, and conservation lab environments requiring deep metadata inspection and visual documentation",
+  "surfaceMode": "Operate & Read",
+  "dataVisualizationNeeds": "Exhibition timeline planning Gantt, collection provenance distribution sparklines, climate telemetry stability dials (temp & RH%), locked column inventory matrix",
+  "antiSlopCompliance": {
+    "prohibitedPatternsChecked": ["generic purple neon glow", "unlabeled floating cards", "sterile grey monotonous slop", "decorative circular badges without purpose"],
+    "verdict": "COMPLIANT"
+  },
+  "concepts": [
+    {
+      "id": "concept-1",
+      "thematicName": "Curatorial Monograph (Recommended)",
+      "identityRationale": "Distinguished scholarly archival monograph bringing master reference book elegance to museum collection stewardship. Emphasizes humanistic typography, deep bibliographic provenance, and artifact plate dignity without sacrificing modern curatorial data density.",
+      "benchmarks": ["Rijksmuseum Collection Explorer", "British Museum Research Space", "Getty Research Portal"],
+      "typography": {
+        "headingFont": "EB Garamond",
+        "bodyFont": "Inter",
+        "monoFont": "JetBrains Mono",
+        "scaleRatio": "1.250 (Major Third - Editorial Archive)"
+      },
+      "color": {
+        "surfaceBase": "#FBFBF9",
+        "cardSurface": "#FFFFFF",
+        "primaryBrand": "#1E293B",
+        "secondaryNeutral": "#475569",
+        "textPrimary": "#0F172A",
+        "textSecondary": "#475569",
+        "borderSubtle": "#E2E2DC",
+        "statusSuccess": "#047857",
+        "statusWarning": "#B45309",
+        "statusDanger": "#B91C1C"
+      },
+      "layout": {
+        "columnGrid": "Asymmetrical 3-Column Split (280px taxonomy tree, 480px catalog list, 680px active dossier)",
+        "densityMode": "Compact Curatorial (36px catalog row height, 16px dossier padding)",
+        "gutterPx": 16,
+        "focalPoint": "Active artifact accession dossier with high-resolution plate and provenance timeline"
+      },
+      "surface": {
+        "elevationModel": "Tactile archival paper sheets with crisp 1px borders (#E2E2DC) and micro-elevation (0 1px 2px rgba(15,23,42,0.04))",
+        "borderRadii": "4px refined archival corners",
+        "borderStrokePx": 1
+      },
+      "iconography": {
+        "style": "Refined 1.5px monochrome vector outlines (Zero Emojis)",
+        "strokeWidth": "1.5px",
+        "geometry": "Geometric with subtle humanist terminals matching EB Garamond"
+      },
+      "dataVisualization": {
+        "primaryCharts": ["Accession date timeline histogram", "Conservation climate stability dials (18-22°C, 45-55% RH)"],
+        "colorRamp": ["#1E293B", "#C2410C", "#047857", "#B45309"],
+        "telemetryDensity": "Moderate (hourly environmental logging and status milestones)"
+      },
+      "accessibility": {
+        "wcagLevel": "WCAG 2.2 AAA text contrast (17.8:1 on card, 17.2:1 on base)",
+        "focusRing": "Solid 2px #1E293B with 2px offset",
+        "ambientLightNotes": "Optimized for museum study rooms and high-glare reading desks"
+      },
+      "uxTradeoffs": {
+        "strengths": "Exceptional reading comfort for lengthy provenance notes; authoritative scholarly atmosphere; dignified photography presentation",
+        "risks": "Requires crisp typography rendering; slightly less dense than a pure spreadsheet",
+        "operationalFit": "Highest fit for art historians, chief curators, and museum directors managing landmark collections"
+      }
+    },
+    {
+      "id": "concept-2",
+      "thematicName": "Modern Kunsthalle",
+      "identityRationale": "Contemporary European gallery and exhibition staging pavilion celebrating geometric precision, photographic primacy, and generous architectural negative space. Transforms collections management into a modern visual curation board.",
+      "benchmarks": ["Centre Pompidou Digital Archive", "Stedelijk Museum Inventory", "Art Basel Exhibition Director"],
+      "typography": {
+        "headingFont": "Plus Jakarta Sans",
+        "bodyFont": "Public Sans",
+        "monoFont": "IBM Plex Mono",
+        "scaleRatio": "1.200 (Minor Third - Contemporary Swiss)"
+      },
+      "color": {
+        "surfaceBase": "#F4F4F5",
+        "cardSurface": "#FFFFFF",
+        "primaryBrand": "#18181B",
+        "secondaryNeutral": "#52525B",
+        "textPrimary": "#09090B",
+        "textSecondary": "#52525B",
+        "borderSubtle": "#E4E4E7",
+        "statusSuccess": "#059669",
+        "statusWarning": "#D97706",
+        "statusDanger": "#DC2626"
+      },
+      "layout": {
+        "columnGrid": "Symmetrical Gallery Staging Grid (Top Exhibition Timeline Deck, Bottom Multi-Faceted Inventory Grid)",
+        "densityMode": "Balanced Gallery Modern (44px table rows, 20px card padding, generous negative space)",
+        "gutterPx": 20,
+        "focalPoint": "Exhibition spatial staging carousel and multi-angle artwork grid"
+      },
+      "surface": {
+        "elevationModel": "Floating white-cube planes: sharp 1px borders (#E4E4E7) over zinc canvas with soft key shadows (0 2px 4px rgba(0,0,0,0.05))",
+        "borderRadii": "6px contemporary architectural corners",
+        "borderStrokePx": 1
+      },
+      "iconography": {
+        "style": "Contemporary Swiss 1.75px linear icons with rounded terminals (Zero Emojis)",
+        "strokeWidth": "1.75px",
+        "geometry": "Stark geometric shapes matching Plus Jakarta Sans"
+      },
+      "dataVisualization": {
+        "charts": ["Exhibition rotation calendar Gantt matrix", "Gallery spatial capacity radial progress", "Acquisition velocity bars"],
+        "colorRamp": ["#18181B", "#2563EB", "#059669", "#D97706"],
+        "telemetryDensity": "Moderate (exhibition milestones and gallery capacity)"
+      },
+      "accessibility": {
+        "wcagLevel": "WCAG 2.2 AAA text contrast (19.4:1 on card, 18.1:1 on base)",
+        "focusRing": "Solid 2px #2563EB with 2px offset",
+        "ambientLightNotes": "Optimized for bright daylight gallery offices and presentation displays"
+      },
+      "uxTradeoffs": {
+        "strengths": "Visually arresting modern gallery aesthetic; outstanding visual clarity for contemporary art and photography",
+        "risks": "Lower row count per screen fold due to generous whitespace; requires scroll or pagination for large catalogs",
+        "operationalFit": "Best for modern art galleries, contemporary exhibition curators, and public cultural pavilions"
+      }
+    },
+    {
+      "id": "concept-3",
+      "thematicName": "Conservator Laboratory",
+      "identityRationale": "Forensic museum registrar and conservation laboratory cockpit built for object preservation, environmental telemetry, and rapid triage. Designed for technicians and registrars inspecting physical artifact decay, storage rack locations, and restoration treatments.",
+      "benchmarks": ["Smithsonian MCI Conservation Portal", "Getty Conservation Institute Database", "Museum Archive SCADA"],
+      "typography": {
+        "headingFont": "Space Grotesk",
+        "bodyFont": "Inter",
+        "monoFont": "Roboto Mono",
+        "scaleRatio": "1.125 (Major Second - High Density Technical)"
+      },
+      "color": {
+        "surfaceBase": "#0B0F17",
+        "cardSurface": "#1E293B",
+        "primaryBrand": "#0284C7",
+        "secondaryNeutral": "#94A3B8",
+        "textPrimary": "#F8FAFC",
+        "textSecondary": "#94A3B8",
+        "borderSubtle": "#334155",
+        "statusSuccess": "#10B981",
+        "statusWarning": "#F59E0B",
+        "statusDanger": "#EF4444"
+      },
+      "layout": {
+        "columnGrid": "Multi-Panel Docked Cockpit (Left specimen hierarchy tree, center dual-stage inspection stage, right docked telemetry rail)",
+        "densityMode": "High-Density Forensic (32px table rows, 12px compact padding)",
+        "gutterPx": 8,
+        "focalPoint": "Multispectral image inspection stage and live storage climate sensor telemetry"
+      },
+      "surface": {
+        "elevationModel": "Technical dark slate panels with recessed instrument wells and 1px crisp boundary lines (#334155)",
+        "borderRadii": "2px precision instrument corners",
+        "borderStrokePx": 1
+      },
+      "iconography": {
+        "style": "Technical 1.5px monospace-inspired vector icons with high-visibility accent fills (Zero Emojis)",
+        "strokeWidth": "1.5px",
+        "geometry": "Sharply angled technical terminals matching Space Grotesk"
+      },
+      "dataVisualization": {
+        "primaryCharts": ["Continuous climate telemetry time-series (temp, humidity, lux exposure)", "Conservation treatment backlog burndown", "Storage rack heatmaps"],
+        "colorRamp": ["#0284C7", "#10B981", "#F59E0B", "#EF4444"],
+        "telemetryDensity": "Continuous real-time sensor streaming (1 reading per minute)"
+      },
+      "accessibility": {
+        "wcagLevel": "WCAG 2.2 AAA text contrast (13.98:1 on card, 18.33:1 on base)",
+        "focusRing": "Solid 2px #0284C7 with 2px offset",
+        "ambientLightNotes": "Optimized for dark conservation inspection laboratories and UV analysis rooms"
+      },
+      "uxTradeoffs": {
+        "strengths": "Maximum operational throughput; rapid scanning of hundreds of artifacts; real-time environmental risk detection",
+        "risks": "High cognitive density; dark aesthetic is less suitable for general public or marketing curatorial presentations",
+        "operationalFit": "Best for conservators, registrars, art handlers, and collections care specialists"
+      }
+    }
+  ]
+}

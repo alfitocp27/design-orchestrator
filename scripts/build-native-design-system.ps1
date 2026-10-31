@@ -15,6 +15,8 @@
 [CmdletBinding()]
 param(
     [string]$OutputDir = "test-output",
+    [ValidateSet("Attached", "Headless")]
+    [string]$Mode = "Headless",
     [switch]$SkipQa
 )
 
@@ -24,6 +26,7 @@ $verifierPs1 = Join-Path $RepoRoot "scripts\verify-canvas.ps1"
 
 Write-Host "==========================================================" -ForegroundColor Cyan
 Write-Host " Design Orchestrator 2.2 -- Native Design System Engine" -ForegroundColor Cyan
+Write-Host " Mode: $Mode" -ForegroundColor Cyan
 Write-Host "==========================================================" -ForegroundColor Cyan
 
 # Locate real Python 3 binary (bypassing Windows Store stub)
@@ -56,8 +59,8 @@ if (-not (Test-Path $targetDir)) {
     New-Item -ItemType Directory -Path $targetDir -Force | Out-Null
 }
 
-Write-Host "Executing FigCraft Native Engine Recipes & 8-Point Stress Tests..." -ForegroundColor White
-& $realPython $enginePy $targetDir
+Write-Host "Executing FigCraft Native Engine Recipes & 8-Point Stress Tests (Mode: $Mode)..." -ForegroundColor White
+& $realPython $enginePy $targetDir --mode $Mode
 
 if ($LASTEXITCODE -ne 0) {
     throw "FAIL: FigCraft Native Design System Engine encountered an error (exit code $LASTEXITCODE)."

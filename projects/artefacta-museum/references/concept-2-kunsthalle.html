@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1440, height=900, initial-scale=1.0">
+  <title>Artefacta -- Concept 2: Modern Kunsthalle</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1440px;
+      height: 900px;
+      overflow: hidden;
+      background: #F4F4F5;
+      color: #09090B;
+      font-family: 'Public Sans', -apple-system, sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Minimalist Topbar */
+    header {
+      height: 60px;
+      background: #FFFFFF;
+      border-bottom: 1px solid #E4E4E7;
+      padding: 0 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .brand-block {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .brand-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #09090B;
+    }
+    .nav-tabs {
+      display: flex;
+      gap: 6px;
+    }
+    .nav-tab-btn {
+      background: transparent;
+      border: none;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 500;
+      color: #52525B;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-tab-btn.active {
+      background: #18181B;
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-primary-action {
+      background: #2563EB;
+      color: #FFFFFF;
+      border: none;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .search-filter-btn {
+      background: #F4F4F5;
+      color: #52525B;
+      border: 1px solid #E4E4E7;
+      padding: 8px 14px;
+      font-size: 13px;
+      border-radius: 6px;
+    }
+
+    /* Main Container */
+    main {
+      flex: 1;
+      padding: 24px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      overflow-y: auto;
+    }
+
+    /* Upper Deck: Exhibition Staging Banner */
+    .staging-deck {
+      background: #FFFFFF;
+      border: 1px solid #E4E4E7;
+      border-radius: 8px;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+      flex-shrink: 0;
+    }
+    .staging-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .staging-badge {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #2563EB;
+    }
+    .staging-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #09090B;
+    }
+    .staging-meta {
+      font-size: 13px;
+      color: #71717A;
+    }
+    .staging-progress-box {
+      width: 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .progress-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+    .progress-bar-bg {
+      height: 8px;
+      background: #F4F4F5;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: #2563EB;
+      width: 87.5%;
+    }
+
+    /* Grid Subhead & Filter Strip */
+    .catalog-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 4px;
+    }
+    .catalog-heading {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #09090B;
+    }
+    .view-toggle-group {
+      display: flex;
+      gap: 8px;
+    }
+    .toggle-btn {
+      padding: 6px 12px;
+      font-size: 12px;
+      border-radius: 6px;
+      border: 1px solid #E4E4E7;
+      background: #FFFFFF;
+      color: #52525B;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .toggle-btn.active {
+      background: #18181B;
+      color: #FFFFFF;
+      border-color: #18181B;
+    }
+
+    /* Symmetrical 3-Column Art Card Grid */
+    .art-card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .art-card {
+      background: #FFFFFF;
+      border: 1px solid #E4E4E7;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .art-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }
+    .art-card-image {
+      height: 200px;
+      background: #FAFAFA;
+      border-bottom: 1px solid #F4F4F5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .card-accession-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid #E4E4E7;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      padding: 3px 8px;
+      border-radius: 4px;
+      color: #52525B;
+    }
+    .card-body {
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+    .card-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #09090B;
+    }
+    .card-period {
+      font-size: 13px;
+      color: #71717A;
+    }
+    .card-footer {
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid #F4F4F5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .status-pill-kunsthalle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #059669;
+    }
+    .status-pill-review {
+      color: #D97706;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .action-link {
+      font-size: 12px;
+      font-weight: 600;
+      color: #2563EB;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Minimalist Topbar -->
+  <header>
+    <div class="brand-block">
+      <span class="brand-title">ARTEFACTA</span>
+      <div class="nav-tabs">
+        <button class="nav-tab-btn active">Collection Index</button>
+        <button class="nav-tab-btn">Exhibition Staging Deck</button>
+        <button class="nav-tab-btn">Conservation Status</button>
+        <button class="nav-tab-btn">Gallery Floorplans</button>
+      </div>
+    </div>
+    <div class="header-actions">
+      <div class="search-filter-btn">Filter: Classical & Mediterranean ▾</div>
+      <button class="btn-primary-action">+ Add Object to Staging</button>
+    </div>
+  </header>
+
+  <!-- Main Work Deck -->
+  <main>
+    <!-- Upper Deck: Staging Monitor -->
+    <section class="staging-deck">
+      <div class="staging-info">
+        <span class="staging-badge">Active Exhibition Staging Phase 3</span>
+        <h2 class="staging-title">Echoes of Antiquity: Form, Myth & Ritual</h2>
+        <div class="staging-meta">Pavilion 1 & Classical Rotunda • Opening Dec 14, 2026 • Curators: Vance & Moreau</div>
+      </div>
+      <div class="staging-progress-box">
+        <div class="progress-labels">
+          <span style="color: #71717A;">Staging Readiness</span>
+          <span style="font-weight: 600; color: #2563EB;">42 / 48 Objects</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Controls Strip -->
+    <div class="catalog-controls">
+      <div>
+        <span class="catalog-heading">Selected Artifacts for Pavilion 1</span>
+        <span style="font-size: 13px; color: #71717A; margin-left: 8px;">(6 Objects in Active Vitrine Rotation)</span>
+      </div>
+      <div class="view-toggle-group">
+        <button class="toggle-btn active">Grid Deck</button>
+        <button class="toggle-btn">Locked Table</button>
+      </div>
+    </div>
+
+    <!-- Symmetrical Art Card Grid (3 Columns) -->
+    <div class="art-card-grid">
+
+      <!-- Card 1 -->
+      <div class="art-card">
+        <div class="art-card-image">
+          <span class="card-accession-tag">ART-1884-092-B</span>
+          <!-- SVG Amphora -->
+          <svg width="110" height="150" viewBox="0 0 34 42" fill="none">
+            <path d="M11 4C11 4 13 2 17 2C21 2 23 4 23 4V7C23 7 28 9 29 16C30 22 28 32 23 36C21 38 19 39 17 39C15 39 13 38 11 36C6 32 4 22 5 16C6 9 11 7 11 7V4Z" fill="#C2410C" stroke="#7C2D12" stroke-width="1.2"/>
+            <path d="M12 14C7 14 6 22 10 24" stroke="#7C2D12" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M22 14C27 14 28 22 24 24" stroke="#7C2D12" stroke-width="1.2" stroke-linecap="round"/>
+            <rect x="13" y="14" width="8" height="14" fill="#18181B"/>
+            <path d="M13 39H21V41H13V39Z" fill="#7C2D12"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Attic Black-Figure Amphora</h3>
+          <div class="card-period">c. 530 BCE • Terracotta • Athens</div>
+          <div style="font-size: 12px; color: #52525B; margin-top: 4px;">Assigned to Case 12 (Gallery 4) • Loan clearance granted</div>
+          <div class="card-footer">
+            <span class="status-pill-kunsthalle">● Staged / Verified</span>
+            <a href="#" class="action-link">Inspect Dossier →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="art-card">
+        <div class="art-card-image">
+          <span class="card-accession-tag">ART-1891-014-C</span>
+          <!-- SVG Helmet -->
+          <svg width="120" height="140" viewBox="0 0 36 38" fill="none">
+            <path d="M6 22C6 11 11 4 18 4C25 4 30 11 30 22V31L26 29L23 20H13L10 29L6 31V22Z" fill="#0D9488" stroke="#115E59" stroke-width="1.5"/>
+            <path d="M18 4V16" stroke="#115E59" stroke-width="1.5"/>
+            <path d="M13 20L18 16L23 20" stroke="#115E59" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Corinthian Bronze Helmet</h3>
+          <div class="card-period">c. 650 BCE • Bronze Alloy • Peloponnese</div>
+          <div style="font-size: 12px; color: #52525B; margin-top: 4px;">Assigned to Central Plinth 02 • Micro-wax coating complete</div>
+          <div class="card-footer">
+            <span class="status-pill-kunsthalle">● Staged / Verified</span>
+            <a href="#" class="action-link">Inspect Dossier →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="art-card">
+        <div class="art-card-image">
+          <span class="card-accession-tag">ART-1904-008-A</span>
+          <!-- SVG Marble Idol -->
+          <svg width="80" height="150" viewBox="0 0 24 44" fill="none">
+            <ellipse cx="12" cy="8" rx="6" ry="7" fill="#E4E4E7" stroke="#71717A" stroke-width="1.5"/>
+            <path d="M9 15L6 22H18L15 15" fill="#E4E4E7" stroke="#71717A" stroke-width="1.5"/>
+            <path d="M8 22H16V36L14 42H10L8 36V22Z" fill="#E4E4E7" stroke="#71717A" stroke-width="1.5"/>
+            <path d="M12 6V11" stroke="#71717A" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Cycladic Marble Idol</h3>
+          <div class="card-period">c. 2500 BCE • Parian Marble • Cyclades</div>
+          <div style="font-size: 12px; color: #52525B; margin-top: 4px;">Special mount required • Conservation audit scheduled</div>
+          <div class="card-footer">
+            <span class="status-pill-review">● Mount Prep Needed</span>
+            <a href="#" class="action-link">Inspect Dossier →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

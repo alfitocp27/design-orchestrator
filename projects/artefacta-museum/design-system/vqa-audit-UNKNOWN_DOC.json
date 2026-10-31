@@ -1,0 +1,380 @@
+﻿{
+    "verifierVersion":  "2.2.0",
+    "evaluatedAt":  "2026-10-31T19:27:56Z",
+    "targetMode":  "Mock",
+    "documentId":  "UNKNOWN_DOC",
+    "documentName":  "artefacta-design-system.json",
+    "deterministicStatus":  "PASS",
+    "summary":  {
+                    "totalChecks":  44,
+                    "passedChecks":  44,
+                    "failedChecks":  0,
+                    "unverifiableChecks":  0,
+                    "p1Blockers":  0,
+                    "p2Majors":  0,
+                    "p3Minors":  0
+                },
+    "geometryChecks":  [
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  167,
+                               "childId":  168,
+                               "effectiveLimit":  "1440px",
+                               "childRight":  "1392px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  167,
+                               "childId":  171,
+                               "effectiveLimit":  "1440px",
+                               "childRight":  "1392px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  168,
+                               "childId":  169,
+                               "effectiveLimit":  "1344px",
+                               "childRight":  "1049px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  168,
+                               "childId":  170,
+                               "effectiveLimit":  "1344px",
+                               "childRight":  "595px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  171,
+                               "childId":  172,
+                               "effectiveLimit":  "1344px",
+                               "childRight":  "640px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  171,
+                               "childId":  185,
+                               "effectiveLimit":  "1344px",
+                               "childRight":  "1344px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  172,
+                               "childId":  173,
+                               "effectiveLimit":  "640px",
+                               "childRight":  "640px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  172,
+                               "childId":  179,
+                               "effectiveLimit":  "640px",
+                               "childRight":  "640px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  173,
+                               "childId":  174,
+                               "effectiveLimit":  "640px",
+                               "childRight":  "360px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  173,
+                               "childId":  175,
+                               "effectiveLimit":  "640px",
+                               "childRight":  "194px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  173,
+                               "childId":  177,
+                               "effectiveLimit":  "640px",
+                               "childRight":  "134px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  175,
+                               "childId":  176,
+                               "effectiveLimit":  "179px",
+                               "childRight":  "165px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  177,
+                               "childId":  178,
+                               "effectiveLimit":  "119px",
+                               "childRight":  "105px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  179,
+                               "childId":  180,
+                               "effectiveLimit":  "640px",
+                               "childRight":  "325px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  179,
+                               "childId":  181,
+                               "effectiveLimit":  "640px",
+                               "childRight":  "142px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  179,
+                               "childId":  183,
+                               "effectiveLimit":  "640px",
+                               "childRight":  "104px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  181,
+                               "childId":  182,
+                               "effectiveLimit":  "127px",
+                               "childRight":  "113px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  183,
+                               "childId":  184,
+                               "effectiveLimit":  "89px",
+                               "childRight":  "78px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  185,
+                               "childId":  186,
+                               "effectiveLimit":  "684px",
+                               "childRight":  "684px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  185,
+                               "childId":  195,
+                               "effectiveLimit":  "684px",
+                               "childRight":  "684px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  186,
+                               "childId":  187,
+                               "effectiveLimit":  "684px",
+                               "childRight":  "332px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  186,
+                               "childId":  188,
+                               "effectiveLimit":  "684px",
+                               "childRight":  "347px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  188,
+                               "childId":  189,
+                               "effectiveLimit":  "332px",
+                               "childRight":  "107px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  188,
+                               "childId":  190,
+                               "effectiveLimit":  "332px",
+                               "childRight":  "317px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  188,
+                               "childId":  191,
+                               "effectiveLimit":  "332px",
+                               "childRight":  "317px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  188,
+                               "childId":  192,
+                               "effectiveLimit":  "332px",
+                               "childRight":  "317px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  195,
+                               "childId":  196,
+                               "effectiveLimit":  "684px",
+                               "childRight":  "430px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  195,
+                               "childId":  197,
+                               "effectiveLimit":  "684px",
+                               "childRight":  "669px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  197,
+                               "childId":  198,
+                               "effectiveLimit":  "654px",
+                               "childRight":  "151px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  197,
+                               "childId":  199,
+                               "effectiveLimit":  "654px",
+                               "childRight":  "341px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  197,
+                               "childId":  200,
+                               "effectiveLimit":  "654px",
+                               "childRight":  "643px",
+                               "status":  "PASS"
+                           }
+                       ],
+    "contrastChecks":  [
+                           {
+                               "nodeId":  169,
+                               "textName":  "DS_Title",
+                               "fontSize":  "26px",
+                               "contrastRatio":  "14.12:1",
+                               "threshold":  "3:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  170,
+                               "textName":  "DS_Sub",
+                               "fontSize":  "13px",
+                               "contrastRatio":  "4.59:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  174,
+                               "textName":  "T1_Label",
+                               "fontSize":  "12px",
+                               "contrastRatio":  "14.63:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  176,
+                               "textName":  "Label",
+                               "fontSize":  "13px",
+                               "contrastRatio":  "14.63:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  178,
+                               "textName":  "Label",
+                               "fontSize":  "13px",
+                               "contrastRatio":  "14.63:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  180,
+                               "textName":  "T3_Label",
+                               "fontSize":  "12px",
+                               "contrastRatio":  "14.63:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  182,
+                               "textName":  "Label",
+                               "fontSize":  "13px",
+                               "contrastRatio":  "5.18:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  184,
+                               "textName":  "Text",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "5.91:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  187,
+                               "textName":  "T5_Label",
+                               "fontSize":  "12px",
+                               "contrastRatio":  "14.63:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  189,
+                               "textName":  "Card_Accession",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.76:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  190,
+                               "textName":  "Card_Title_Text",
+                               "fontSize":  "15px",
+                               "contrastRatio":  "14.63:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  191,
+                               "textName":  "Card_Sub",
+                               "fontSize":  "12px",
+                               "contrastRatio":  "4.76:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  196,
+                               "textName":  "T7_Label",
+                               "fontSize":  "12px",
+                               "contrastRatio":  "14.63:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           }
+                       ],
+    "componentChecks":  [
+
+                        ],
+    "findings":  [
+
+                 ],
+    "visualReviewNote":  "Deterministic QA verifies mathematical, geometric, and structural rules only. Visual craft, tonal depth, and perceptual harmony require Tier 2 Multimodal Visual Evaluation with human sign-off."
+}

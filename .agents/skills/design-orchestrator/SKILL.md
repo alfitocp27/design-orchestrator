@@ -54,6 +54,7 @@ Load only the specialized reference required for the current stage:
 21. **Non-Cloning & Adaptive Direction Mandate**: Never blindly clone reference UI kits. Adapt styling and density to specific project personas and domain constraints.
 22. **Text Overflow & Critical Information Preservation**: Text handling must NEVER obscure critical data. Use multi-line wrapping as default (`textAutoResize: "height"`, vertical auto-layout) and dynamic sizing (`sizingH: "hug"`). Truncation (`textAutoResize: "truncate"`) is restricted to auxiliary strings.
 23. **Dynamic Creative Direction & Archetype Synthesis**: Synthesize creative direction from the 7 domain intelligence facets across 10 mandatory dimensions. Produce 2–3 divergent concepts. **🛑 CONCEPT APPROVAL GATE**: Hard stop before canvas generation.
+24. **FigCraft Dual-Mode Architecture & Document Safety**: Support two explicit runtime modes: **`ATTACHED`** (interactive live design communicating with FigCraft Desktop on port 7979; zero silent fallback if desktop is closed) and **`HEADLESS`** (automated test suites and CI/CD pipelines operating independently via Stdio). Enforce strict document safety before write operations: verify active document path, dirty state (`dirty=False`), and layer existence on Untitled documents to prevent overwriting user work.
 
 ---
 
