@@ -7,66 +7,55 @@
 
 ## 1. Current Project State
 
-- **Current Version**: `v2.2-dev` (Final End-to-End Pilot Complete: Artefacta Collection Catalog & Dossier)
+- **Current Version**: `v2.2-dev` (Final Visual Quality Remediation & Pilot Verification Complete: Artefacta Collection Catalog & Dossier)
 - **Repository**: `https://github.com/alfitocp27/design-orchestrator.git`
 - **Active Branch**: `feat/orchestrator-v2.2`
-- **Readiness Status**: `PILOT_COMPLETE / 13_OF_13_TESTS_PASS / VQA_260_CHECKS_PASS / ZERO_P1_P2`
+- **Readiness Status**: `REMEDIATION_COMPLETE / 13_OF_13_TESTS_PASS / VQA_541_CHECKS_PASS / ZERO_P1_P2`
 - **Last Sync**: 2026-10-31
 
 ---
 
-## 2. Sprint 4 Milestones Achieved (2026-10-31)
+## 2. Final Visual Quality Remediation Milestones (2026-10-31)
 
-1. **Idempotent Native FigCraft Engine**:
-   - Refactored `scripts/figcraft_engine.py` with idempotent primitives:
-     * `get_or_create_collection`: Queries `variable.list()`; reuses existing collection IDs.
-     * `get_or_create_variable`: Queries `variable.list()`; reuses existing variable IDs and alias chains.
-     * `get_or_create_frame`: Queries existing nodes via `node.find`; reuses artboards without creating duplicates.
-     * `get_or_create_component`: Checks `component.list()`; prevents duplicate master components.
-     * `get_or_create_instance`: Checks container children; reuses existing linked instances.
-   - Verified across consecutive runs: **0 duplicate collections, 0 duplicate variables, 0 duplicate frames, 0 duplicate instances**.
+1. **Root-Cause Remediation of FigCraft Sub-Pixel Text Collapse**:
+   - Identified the root cause of the vertical text collision in Artefacta's `Artifact_Dossier_Title` and `Plate_Caption`:
+     FigCraft MCP interprets unitless floating-point values for `lineHeight` (such as `1.15` and `1.4`) as **literal pixels** (`1.15px` and `1.4px`), rather than CSS line-height multipliers.
+     This caused the 26px heading to have an internal bounding box height of `1.0px` and the 11px multiline caption to have `2.0px`, causing severe visual glyph collision with downstream siblings.
+   - Refactored `projects/artefacta-museum/scripts/build_artefacta_screen.py`:
+     * Changed `lineHeight` to `"Auto"`, immediately expanding the title bounding box to `34.0px` and the subtitle to `21.0px` with proper typography metrics.
+     * Restructured `Archival_Plate_Card` into an isolated `Plate_Media_Container` frame (`clip: True`) and a framed `Plate_Caption_Box` with discrete title and subtitle layers, eliminating text collisions and supporting clean media replacement.
+     * Standardized all synthetic sensor and mesh telemetry to explicit `[SIMULATED]` and `[DEMO]` annotations, upholding data integrity.
 
-2. **Active Document Safety & Isolation**:
-   - Implemented `ensure_target_document` in `figcraft_engine.py`:
-     * Inspects active document state via `inspect_document`.
-     * Intercepts dirty unsaved files to prevent accidental mutations on user projects.
-     * Enforces strictly scoped file operations inside target directory.
+2. **Automated VQA 2.0 Engine Upgrades (`scripts/verify-canvas.ps1`)**:
+   - Added **CHECK 2B (Sibling Collision & Bounding-Box Overlap Math)**:
+     Calculates 2D bounding-box intersection areas between non-absolute siblings in same container. Reports P1 blockers whenever horizontal overlap $\ge 10\text{px}$ and vertical overlap $\ge 1\text{px}$.
+   - Added **CHECK 3B (Collapsed Text Height & Line-Height Integrity)**:
+     * Line-Height Multiplier Integrity: Flags any numeric `lineHeight` between $0$ and $3.0$ as a P1 blocker, catching FigCraft literal sub-pixel parsing before canvas export.
+     * Collapsed Text Height: Verifies that text bounding boxes satisfy $H \ge 0.75 \times \text{fontSize} \times \text{lineCount}$. Flags any sub-pixel collapsed boxes as P1 blockers.
+   - Run against the remediated Artefacta screen tree (`projects/artefacta-museum/exports/artefacta-screen-tree.json`):
+     * **541 checks evaluated**: 541 PASS, 0 FAIL, 0 UNVERIFIABLE, **0 P1/P2 defects**.
 
-3. **Context Footprint Optimization & Progressive Disclosure**:
-   - Streamlined `SKILL.md`: Reduced lines from 174 to 95 (**45.4% reduction**), words from 2,251 to 1,342 (**40.4% reduction**), saving **~1,209 tokens** per invocation.
-   - Streamlined `references/workflow-details.md`: Reduced lines from 264 to 230 (**12.9% reduction**), eliminating duplicated component creation recipes.
-   - Implemented **Progressive Disclosure Reference Map**: Agents load only the specialized reference for their active stage, dropping context load from ~18,000+ tokens to ~3,500 tokens during targeted execution.
-   - Created reproducible measurement script `scripts/measure-context.ps1`.
+3. **Synthetic Defect Regression Testing Suite**:
+   - Authored `tests/fixtures/canvas/synthetic-text-overlap-defect.json`: Reproduces the exact text collapse defect (`lineHeight: 1.4, height: 2.0`).
+   - Authored `tests/fixtures/canvas/synthetic-text-overlap-fixed.json`: Validates clean separation and line-height resolution.
+   - Updated `tests/offline/test-verify-canvas.ps1`: Expanded from 6 to 8 test cases, strictly asserting that the defect fixture is caught as `FAIL` with concrete evidence while the fixed fixture produces `PASS` with zero false passes.
 
-4. **Runtime Command Audit & Parameter Rectification**:
-   - Audited 629 FigCraft MCP commands via `list_commands`.
-   - Identified and rectified unverified command names: replaced non-existent `node.delete` and `node.duplicate` with verified `edit.delete` and `edit.duplicate` across documentation and scripts.
-   - Enhanced `FigCraftClient.run_command` with error trapping, converting text-block command errors into structured `RuntimeError` exceptions.
-
-5. **8-Point Reliability & Regression Test Suite**:
-   - Implemented `tests/integration/test-engine-reliability.ps1` covering:
-     * *Subtest 1 (Idempotency)*: Double execution with zero duplicate collections/variables.
-     * *Subtest 2 (Master Mutation)*: Master cornerRadius mutation cleanly inherited by linked instance.
-     * *Subtest 3 (Responsive Layout)*: Desktop 1440px vs Mobile 390px nested auto-layout reflow.
-     * *Subtest 4 (State Resumption)*: Engine resumed on existing file without re-creating nodes.
-     * *Subtest 5 (Error Trapping)*: Controlled invalid command cleanly intercepted with RuntimeError.
-     * *Subtest 6 (Persistence)*: Binary `.figcraft` save and reload persistence verified.
-     * *Subtest 7 (Core Mode Independence)*: Zero FigCraft dependency in Core Mode verified.
-     * *Subtest 8 (Zero False PASS)*: NOT_VERIFIABLE documents strictly reported as NOT_VERIFIABLE, never PASS.
-
-6. **End-to-End Pilot Preparation**:
-   - Authored synthetic pilot benchmark specification: `tests/fixtures/pilot/synthetic-pilot-brief.json` (Biomedical Cold-Chain Logistics & Cryogenic Telemetry - *CryoVault*).
-   - Authored Standard Operating Procedure: `docs/end-to-end-pilot-protocol.md` defining strict human-in-the-loop gating at **🛑 CONCEPT APPROVAL GATE** and **🛑 DESIGN SYSTEM APPROVAL GATE**.
+4. **Multi-Viewport Adaptation Testing (`scripts/test_viewports.py`)**:
+   - Tested live canvas adaptation across 3 viewport resolutions:
+     * **1440x900 (Baseline Desktop)**: Root 1440px | Taxonomy Sidebar 250px | Catalog List 350px | Curatorial Dossier 840px. 100% proportional visual hierarchy.
+     * **1280x800 (Medium Desktop)**: Root 1280px. Columns retain fixed min allocations (1440px total), causing 160px horizontal overflow without responsive breakpoints.
+     * **1024x768 (Compact Desktop)**: Root 1024px. Columns retain 1440px allocation, requiring off-canvas sidebar drawer or 2-column master-detail toggle.
+   - Exported unselected screenshot proofs to `projects/artefacta-museum/exports/artefacta-screen-{1280x800,1024x768}.png`.
 
 ---
 
 ## 3. Test Suite & Health Verification
 
-All 12 tests pass deterministically (8 offline + 4 live integration):
+All 13 tests pass deterministically (8 offline + 5 live integration):
 ```
 ==========================================================
  TEST RUN SUMMARY (scripts/test-runner.ps1 -IncludeIntegration)
- Total: 12 | Passed: 12 | Failed: 0 | Skipped: 0
+ Total: 13 | Passed: 13 | Failed: 0 | Skipped: 0
 ==========================================================
   [PASS] test-creative-direction.ps1          (4 synthetic domains + defect detection)
   [PASS] test-encoding-hygiene.ps1            (Clean UTF-8, zero mojibake)
@@ -75,27 +64,21 @@ All 12 tests pass deterministically (8 offline + 4 live integration):
   [PASS] test-no-secrets.ps1                  (Zero personal paths or credentials)
   [PASS] test-skill-integrity.ps1             (6 reference runbooks present)
   [PASS] test-templates.ps1                   (Project blueprint verified)
-  [PASS] test-verify-canvas.ps1               (6 synthetic fixtures: deltaX, overflow, contrast, fake-component)
+  [PASS] test-verify-canvas.ps1               (8 synthetic fixtures: alignment, overflow, contrast, fake-component, text-overlap)
   [PASS] test-codebase-memory-live.ps1        (Live Stdio protocol handshake)
   [PASS] test-engine-reliability.ps1          (8 comprehensive reliability & fault tolerance tests)
   [PASS] test-figcraft-live.ps1               (Live Stdio protocol handshake)
+  [PASS] test-live-attached-canvas.ps1        (Live FigCraft Desktop Attached Mode & Dual-Mode Architecture)
   [PASS] test-native-design-system-live.ps1   (Live FigCraft 8-point stress test harness)
 ```
 - **Doctor Diagnostic**: Core Mode `[PASS]`, Full Mode `[CONNECTED]`.
-- **CodebaseMemoryMCP Graph**: 1,156 nodes, 1,562 edges (up-to-date full index).
+- **CodebaseMemoryMCP Graph**: 1,668 nodes, 2,399 edges (up-to-date full index).
 
 ---
 
-## 4. Next Steps for Final End-to-End Pilot
+## 4. Final Review & Release Preparation
 
-1. Await explicit user evaluation and approval of Sprint 4 deliverables.
-2. Execute the formal End-to-End Pilot on `cryovault-coldchain` per `docs/end-to-end-pilot-protocol.md`:
-   - Stage 1: Ingest `tests/fixtures/pilot/synthetic-pilot-brief.json`.
-   - Stage 2: Codebase schema check.
-   - Stage 3: Research palettes/fonts via UI/UX Pro Max.
-   - Stage 4: Synthesize 2 concepts $\rightarrow$ **🛑 STOP for User Approval**.
-   - Stage 5: Build native FigCraft design system + 8-point stress testing.
-   - Stage 6: Canvas QA $\rightarrow$ **🛑 STOP for User Approval**.
-   - Stage 7: Assemble Desktop & Mobile application screens with 100% linked instances.
-   - Stage 8: Canvas QA & unselected screenshot export.
-   - Stage 9: Tier 2 Human Visual & UX Craft Review.
+1. The Visual Quality Remediation is complete and verified on FigCraft Desktop (Port 7979).
+2. All offline and live integration tests pass (13/13).
+3. Changes committed and pushed to `feat/orchestrator-v2.2`.
+4. Work is halted for user review before merging to `main` or tagging releases.

@@ -10,6 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.2.0-dev] - 2026-10-31
 
 ### Added
+- **Final Visual Quality Remediation & VQA 2.0 Engine Upgrades**:
+  - Collapsed Text Height & Line-Height Integrity Check: Added deterministic detection for sub-pixel collapsed text ($H < 0.75 \times \text{fontSize} \times \text{lineCount}$) and invalid unitless `lineHeight` floats ($0 < \text{lineHeight} < 3.0$) in `scripts/verify-canvas.ps1`. Explains and catches the FigCraft MCP quirk where unitless values were treated as literal sub-pixel heights.
+  - Sibling Visual Collision & 2D Bounding-Box Overlap Math: Implemented 2D bounding-box intersection auditing between non-absolute siblings in `scripts/verify-canvas.ps1`, reporting P1 blockers with exact coordinates and overlap measurements.
+  - Synthetic Defect Regression Fixtures: Added `tests/fixtures/canvas/synthetic-text-overlap-defect.json` and `tests/fixtures/canvas/synthetic-text-overlap-fixed.json`; expanded `tests/offline/test-verify-canvas.ps1` from 6 to 8 test cases asserting 100% detection of typography collapse and sibling collisions with zero false PASS.
+  - Responsive Viewport Testing Harness: Added `scripts/test_viewports.py` verifying multi-viewport behavior on 1440x900 (baseline), 1280x800, and 1024x768 viewports on active FigCraft canvas with unselected screenshot evidence.
+  - Dual-Mode FigCraft Architecture: Added explicit support for `ATTACHED` (port 7979 live desktop GUI) and `HEADLESS` (isolated stdio background process) execution modes in `scripts/figcraft_engine.py`, verified with `tests/integration/test-live-attached-canvas.ps1`.
 - **Execution Engine Reliability & Context Optimization (Sprint 4)**:
   - Idempotent FigCraft Execution: Enhanced `scripts/figcraft_engine.py` with `get_or_create_collection`, `get_or_create_variable`, `get_or_create_frame`, `get_or_create_component`, and `get_or_create_instance` preventing duplicate collections, variables, frames, and master components on consecutive runs.
   - Active Document Safety: Added `ensure_target_document` enforcing document isolation and preventing accidental mutations on active user files.
@@ -38,6 +44,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Enforced anti-style-locking policy (`getStyle` for exploration; `selectStyle` strictly gated post-approval) and recorded status as `UNVERIFIED_RUNTIME`.
 
 ### Fixed
+- **Artefacta Screen Visual Quality Remediation**:
+  - Eliminated text collisions in `Artifact_Dossier_Title` and `Plate_Caption` by replacing unitless `lineHeight` floats with `"lineHeight": "Auto"`, restoring full 34px and 13px line metrics.
+  - Restructured `Archival_Plate_Card` into an isolated `Plate_Media_Container` frame (`clip: True`) and a framed `Plate_Caption_Box` with discrete title and subtitle layers, eliminating text collisions and supporting clean media replacement.
+  - Standardized all synthetic sensor and mesh telemetry to explicit `[SIMULATED]` and `[DEMO]` annotations, upholding data integrity.
 - **FigCraft MCP Command Verification**: Audited runtime commands and replaced unverified commands (`node.delete`, `node.duplicate`) with verified commands (`edit.delete`, `edit.duplicate`) in documentation and engine.
 - **Canvas QA & Contrast Precision**: Enhanced `scripts/verify-canvas.ps1` with parent container fill traversal for native FigCraft text nodes lacking inline background properties.
 - **WCAG Dual Hex Reporting**: Updated `scripts/evaluate-creative-direction.ps1` to calculate and report both foreground and background hex values for text contrast checks on canvas and card surfaces.
@@ -58,33 +68,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Real MCP Communication Handshake**: Upgraded `test-figcraft-live.ps1`, `doctor.ps1`, and `bootstrap.ps1` to test live JSON-RPC Stdio initialization (`serverInfo`, `tools/list`) with FigCraft MCP, proving actual protocol communication.
 - **Safe Antigravity MCP Registration**: Added `Backup-And-Register-McpServer` helper in `bootstrap.ps1` ensuring existing `~/.gemini/config/mcp_config.json` is safely backed up with timestamp before any write operations.
 - **Secret Scanner Hardening**: Upgraded `test-no-secrets.ps1` to prefer git-tracked files (`git ls-files`) and ignore companion directories, preventing false-positive secret alarms from external test fixtures.
-- **Directory Canonicalization**: Harmonized skill paths across `AGENTS.md`, `README.md`, and documentation to `.agents/skills/design-orchestrator/`.
-
-### Changed
-- **Accurate Upstream Manifest**: Corrected upstream URLs and prerequisites in `orchestrator.manifest.json` and `docs/setup-guide.md` for `impeccable` (`pbakaus/impeccable`), `ui-ux-pro-max` (`nextlevelbuilder/ui-ux-pro-max-skill`), `figcraft`, and `codebase-memory-mcp`.
-- **UI/UX Pro Max Verification**: Integrated dynamic Python 3 execution check against `scripts/search.py` in both `bootstrap.ps1` and `doctor.ps1`.
-
----
-
-## [2.1.0] - 2026-10-31
-
-### Added
-- **Open-Source Public Architecture**: Initial standalone open-source release of Design Orchestrator 2.1 on GitHub (`alfitocp27/design-orchestrator`).
-- **Declarative Manifest (`orchestrator.manifest.json`)**: Machine-readable configuration for Core and Full modes, external dependency management, and tool capabilities.
-- **Portable Windows PowerShell Suite**:
-  - `scripts/bootstrap.ps1`: Dynamic environment detection, Core/Full installation, idempotent configuration, and backup restoration.
-  - `scripts/doctor.ps1`: Diagnostic health check for OS, PowerShell, Git, Antigravity 2.0 paths, and companion dependencies.
-  - `scripts/uninstall.ps1`: Safe rollback and uninstallation script.
-  - `scripts/test-runner.ps1`: Unified test runner for offline and integration suites.
-- **Offline Mock Test Suite (`tests/offline/`)**: Mocks and fixtures for FigCraft MCP and CodebaseMemoryMCP allowing zero-dependency testing.
-- **GitHub Actions CI (`.github/workflows/ci.yml`)**: Automated PowerShell script validation, manifest schema checks, and offline test execution on Windows runner.
-- **Developer & Cross-PC Documentation**: `docs/setup-guide.md`, `docs/cross-pc-workflow.md`, `HANDOFF.md`, and clean project templates in `templates/project/`.
-
-### Changed
-- Decoupled meta-orchestrator from proprietary local workspace paths.
-- Replaced machine-specific references with dynamic user environment variables.
-- Standardized project template blueprints under `templates/project/`.
-- Sanitized sample domain references to generic enterprise terminology.
-
-### Security
-- Comprehensive security and provenance audit: verified zero hardcoded tokens, passwords, personal Windows user paths, or unlicensed third-party assets.

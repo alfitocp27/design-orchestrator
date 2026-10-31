@@ -326,6 +326,64 @@ foreach ($container in $containers) {
         }
     }
 }
+# --- CHECK 2B: Sibling Collision & Bounding-Box Overlap Math ---
+
+foreach ($container in $containers) {
+    $childrenWithBounds = @($container.children | Where-Object {
+        $_.x -ne $null -and $_.y -ne $null -and $_.width -ne $null -and $_.height -ne $null -and
+        (-not $_.isAbsolute)
+    })
+    
+    if ($childrenWithBounds.Count -gt 1) {
+        for ($i = 0; $i -lt $childrenWithBounds.Count; $i++) {
+            for ($j = $i + 1; $j -lt $childrenWithBounds.Count; $j++) {
+                $cA = $childrenWithBounds[$i]
+                $cB = $childrenWithBounds[$j]
+                
+                # Check collision between siblings where at least one is a TEXT element
+                $hasText = ($cA.type -eq "TEXT" -or $cA.text -ne $null -or $cB.type -eq "TEXT" -or $cB.text -ne $null)
+                if (-not $hasText) { continue }
+                
+                $auditResults.summary.totalChecks++
+                
+                $lA = [double]$cA.x; $rA = $lA + [double]$cA.width
+                $tA = [double]$cA.y; $bA = $tA + [double]$cA.height
+                
+                $lB = [double]$cB.x; $rB = $lB + [double]$cB.width
+                $tB = [double]$cB.y; $bB = $tB + [double]$cB.height
+                
+                $xOverlap = [Math]::Max(0.0, [Math]::Min($rA, $rB) - [Math]::Max($lA, $lB))
+                $yOverlap = [Math]::Max(0.0, [Math]::Min($bA, $bB) - [Math]::Max($tA, $tB))
+                
+                if ($xOverlap -ge 10.0 -and $yOverlap -ge 1.0) {
+                    $auditResults.summary.failedChecks++
+                    $auditResults.geometryChecks += [ordered]@{
+                        check       = "SiblingCollision"
+                        containerId = $container.id
+                        childA      = $cA.id
+                        childB      = $cB.id
+                        overlap     = "x:${xOverlap}px, y:${yOverlap}px"
+                        status      = "FAIL"
+                    }
+                    Add-AuditFinding -Category "Geometry/BoundingBoxCollision" -Priority "P1" -NodeId $cB.id `
+                        -Title ("Visual collision: sibling elements '{0}' and '{1}' overlap in container '{2}'" -f $cA.name, $cB.name, $container.name) `
+                        -Evidence ("Intersection bounds: xOverlap={0:F1}px, yOverlap={1:F1}px (A: [{2},{3},{4},{5}], B: [{6},{7},{8},{9}])" -f `
+                            $xOverlap, $yOverlap, $lA, $tA, $rA, $bA, $lB, $tB, $rB, $bB) `
+                        -Expected "Zero bounding box intersection between non-absolute siblings in same layout flow"
+                } else {
+                    $auditResults.summary.passedChecks++
+                    $auditResults.geometryChecks += [ordered]@{
+                        check       = "SiblingCollision"
+                        containerId = $container.id
+                        childA      = $cA.id
+                        childB      = $cB.id
+                        status      = "PASS"
+                    }
+                }
+            }
+        }
+    }
+}
 
 # --- CHECK 3: WCAG 2.2 Contrast & Typography Legibility ---
 
@@ -350,6 +408,65 @@ foreach ($textNode in $textNodes) {
             -Expected "fontSize >= 11px (micro) or >= 13px (body)"
         continue
     }
+
+    # 1B. Text Line-Height Multiplier Integrity & Sub-pixel Collapse Check
+    $textVal = $(if ($textNode.characters) { $textNode.characters } elseif ($textNode.text) { $textNode.text } else { "" })
+    $lineCount = 1
+    if ($textVal) {
+        $lineCount = [Math]::Max(1, ($textVal -split "\r?\n").Count)
+    }
+    
+    if ($textNode.lineHeight -ne $null) {
+        $auditResults.summary.totalChecks++
+        $lhVal = $textNode.lineHeight
+        $isNumeric = $false
+        $numLh = 0.0
+        if ($lhVal -is [ValueType] -or ($lhVal -is [string] -and $lhVal -match '^\d+(\.\d+)?$')) {
+            $numLh = [double]$lhVal
+            $isNumeric = $true
+        }
+        
+        if ($isNumeric -and $numLh -gt 0 -and $numLh -lt 3.0) {
+            $auditResults.summary.failedChecks++
+            Add-AuditFinding -Category "Visual/Typography" -Priority "P1" -NodeId $textNode.id `
+                -Title ("Text element '{0}' has invalid unitless lineHeight ({1})" -f $textNode.name, $numLh) `
+                -Evidence ("lineHeight = {0} is interpreted as literal pixels ({0}px) in FigCraft, causing text collapse" -f $numLh) `
+                -Expected "lineHeight must be 'Auto', percentage string (e.g. '140%'), or pixel value >= 10"
+        } else {
+            $auditResults.summary.passedChecks++
+        }
+    }
+    
+    if ($textNode.height -ne $null -and $fontSize -ge 10.0) {
+        $auditResults.summary.totalChecks++
+        $h = [double]$textNode.height
+        $expectedMinHeight = [Math]::Max(10.0, ($fontSize * 0.75 * $lineCount))
+        if ($h -lt ($expectedMinHeight - 0.5)) {
+            $auditResults.summary.failedChecks++
+            $auditResults.geometryChecks += [ordered]@{
+                check    = "TextBoundsCollapse"
+                nodeId   = $textNode.id
+                target   = $textNode.name
+                height   = "$($h)px"
+                expected = ">= $($expectedMinHeight)px"
+                status   = "FAIL"
+            }
+            Add-AuditFinding -Category "Geometry/TextBounds" -Priority "P1" -NodeId $textNode.id `
+                -Title ("Text element '{0}' collapsed height violates typographical bounds" -f $textNode.name) `
+                -Evidence ("height = {0:F1}px, fontSize = {1}px, lineCount = {2} (minimum expected = {3:F1}px)" -f $h, $fontSize, $lineCount, $expectedMinHeight) `
+                -Expected ("height >= 0.75 * fontSize * lineCount ({0:F1}px)" -f $expectedMinHeight)
+        } else {
+            $auditResults.summary.passedChecks++
+            $auditResults.geometryChecks += [ordered]@{
+                check    = "TextBoundsCollapse"
+                nodeId   = $textNode.id
+                target   = $textNode.name
+                height   = "$($h)px"
+                status   = "PASS"
+            }
+        }
+    }
+
     
     # 2. Contrast evaluation
     if (-not $fg -and $textNode.fills -and $textNode.fills.Count -gt 0) {

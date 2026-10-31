@@ -27,7 +27,7 @@
       "Create instance"
     ]
   },
-  "id": 4,
+  "id": 6,
   "images": 0,
   "kind": "design",
   "name": "artefacta-design-system",
@@ -98,7 +98,7 @@
                       "fontSize": 20.0,
                       "fontStyle": "Bold",
                       "height": 26.0,
-                      "id": 623,
+                      "id": 1077,
                       "letterSpacing": "8%",
                       "lineHeight": "Auto",
                       "name": "Logo_Wordmark",
@@ -128,7 +128,7 @@
                         }
                       ],
                       "height": 20.0,
-                      "id": 624,
+                      "id": 1078,
                       "name": "Divider_Line",
                       "sizing": {
                         "horizontal": "fixed",
@@ -157,7 +157,7 @@
                       "fontSize": 12.0,
                       "fontStyle": "Regular",
                       "height": 15.0,
-                      "id": 625,
+                      "id": 1079,
                       "letterSpacing": "0%",
                       "lineHeight": "Auto",
                       "name": "Dept_Subtitle",
@@ -175,7 +175,7 @@
                   ],
                   "clip": true,
                   "height": 26.0,
-                  "id": 622,
+                  "id": 1076,
                   "layout": {
                     "columnTracks": [],
                     "contentAlign": "auto",
@@ -237,7 +237,7 @@
                             }
                           ],
                           "height": 18.0,
-                          "id": 628,
+                          "id": 1082,
                           "name": "VectorPath",
                           "segments": 5,
                           "sizing": {
@@ -269,7 +269,7 @@
                         }
                       ],
                       "height": 54.0,
-                      "id": 627,
+                      "id": 1081,
                       "layout": {
                         "columnTracks": [],
                         "contentAlign": "auto",
@@ -329,7 +329,7 @@
                       "fontSize": 12.0,
                       "fontStyle": "Regular",
                       "height": 15.0,
-                      "id": 629,
+                      "id": 1083,
                       "letterSpacing": "0%",
                       "lineHeight": "Auto",
                       "name": "Search_Placeholder",
@@ -354,7 +354,7 @@
                     }
                   ],
                   "height": 36.0,
-                  "id": 626,
+                  "id": 1080,
                   "layout": {
                     "columnTracks": [],
                     "contentAlign": "auto",
@@ -420,7 +420,7 @@
                       "fontSize": 12.0,
                       "fontStyle": "Regular",
                       "height": 15.0,
-                      "id": 631,
+                      "id": 1085,
                       "letterSpacing": "0%",
                       "lineHeight": "Auto",
                       "name": "User_Curator_Badge",
@@ -461,7 +461,7 @@
                           "fontSize": 13.0,
                           "fontStyle": "Regular",
                           "height": 16.0,
-                          "id": 633,
+                          "id": 1087,
                           "letterSpacing": "0%",
                           "lineHeight": "Auto",
                           "name": "Label",
@@ -489,7 +489,7 @@
                         }
                       ],
                       "height": 32.0,
-                      "id": 632,
+                      "id": 1086,
                       "layout": {
                         "columnTracks": [],
                         "contentAlign": "auto",
@@ -526,7 +526,7 @@
                   ],
                   "clip": true,
                   "height": 32.0,
-                  "id": 630,
+                  "id": 1084,
                   "layout": {
                     "columnTracks": [],
                     "contentAlign": "auto",
@@ -567,7 +567,7 @@
                 }
               ],
               "height": 60.0,
-              "id": 621,
+              "id": 1075,
               "layout": {
                 "columnTracks": [],
                 "contentAlign": "auto",
@@ -633,7 +633,7 @@
                       "fontSize": 11.0,
                       "fontStyle": "Bold",
                       "height": 13.0,
-                      "id": 636,
+                      "id": 1090,
                       "letterSpacing": "6%",
                       "lineHeight": "Auto",
                       "name": "Sidebar_Sec1_Label",
@@ -682,7 +682,7 @@
                               "fontSize": 13.0,
                               "fontStyle": "Bold",
                               "height": 16.0,
-                              "id": 639,
+                              "id": 1093,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Facet_Label",
@@ -728,7 +728,7 @@
                                   "fontSize": 12.0,
                                   "fontStyle": "Regular",
                                   "height": 16.0,
-                                  "id": 641,
+                                  "id": 1095,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Count_Num",
@@ -756,7 +756,7 @@
                                 }
                               ],
                               "height": 20.0,
-                              "id": 640,
+                              "id": 1094,
                               "layout": {
                                 "columnTracks": [],
                                 "contentAlign": "auto",
@@ -798,7 +798,7 @@
                             }
                           ],
                           "height": 38.0,
-                          "id": 638,
+                          "id": 1092,
                           "layout": {
                             "columnTracks": [],
                             "contentAlign": "auto",
@@ -876,7 +876,7 @@
                               "fontSize": 13.0,
                               "fontStyle": "Regular",
                               "height": 16.0,
-                              "id": 643,
+                              "id": 1097,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Facet_Label",
@@ -920,7 +920,7 @@
                                   "fontSize": 12.0,
                                   "fontStyle": "Regular",
                                   "height": 16.0,
-                                  "id": 645,
+                                  "id": 1099,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Count_Num",
@@ -948,7 +948,7 @@
                                 }
                               ],
                               "height": 20.0,
-                              "id": 644,
+                              "id": 1098,
                               "layout": {
                                 "columnTracks": [],
                                 "contentAlign": "auto",
@@ -984,7 +984,7 @@
                           "clip": true,
                           "cornerRadius": 4.0,
                           "height": 38.0,
-                          "id": 642,
+                          "id": 1096,
                           "layout": {
                             "columnTracks": [],
                             "contentAlign": "auto",
@@ -1047,7 +1047,7 @@
                               "fontSize": 13.0,
                               "fontStyle": "Regular",
                               "height": 16.0,
-                              "id": 647,
+                              "id": 1101,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Facet_Label",
@@ -1091,7 +1091,7 @@
                                   "fontSize": 12.0,
                                   "fontStyle": "Regular",
                                   "height": 16.0,
-                                  "id": 649,
+                                  "id": 1103,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Count_Num",
@@ -1119,7 +1119,7 @@
                                 }
                               ],
                               "height": 20.0,
-                              "id": 648,
+                              "id": 1102,
                               "layout": {
                                 "columnTracks": [],
                                 "contentAlign": "auto",
@@ -1155,7 +1155,7 @@
                           "clip": true,
                           "cornerRadius": 4.0,
                           "height": 38.0,
-                          "id": 646,
+                          "id": 1100,
                           "layout": {
                             "columnTracks": [],
                             "contentAlign": "auto",
@@ -1218,7 +1218,7 @@
                               "fontSize": 13.0,
                               "fontStyle": "Regular",
                               "height": 16.0,
-                              "id": 651,
+                              "id": 1105,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Facet_Label",
@@ -1262,7 +1262,7 @@
                                   "fontSize": 12.0,
                                   "fontStyle": "Regular",
                                   "height": 16.0,
-                                  "id": 653,
+                                  "id": 1107,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Count_Num",
@@ -1290,7 +1290,7 @@
                                 }
                               ],
                               "height": 20.0,
-                              "id": 652,
+                              "id": 1106,
                               "layout": {
                                 "columnTracks": [],
                                 "contentAlign": "auto",
@@ -1326,7 +1326,7 @@
                           "clip": true,
                           "cornerRadius": 4.0,
                           "height": 38.0,
-                          "id": 650,
+                          "id": 1104,
                           "layout": {
                             "columnTracks": [],
                             "contentAlign": "auto",
@@ -1389,7 +1389,7 @@
                               "fontSize": 13.0,
                               "fontStyle": "Regular",
                               "height": 16.0,
-                              "id": 655,
+                              "id": 1109,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Facet_Label",
@@ -1433,7 +1433,7 @@
                                   "fontSize": 12.0,
                                   "fontStyle": "Regular",
                                   "height": 16.0,
-                                  "id": 657,
+                                  "id": 1111,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Count_Num",
@@ -1461,7 +1461,7 @@
                                 }
                               ],
                               "height": 20.0,
-                              "id": 656,
+                              "id": 1110,
                               "layout": {
                                 "columnTracks": [],
                                 "contentAlign": "auto",
@@ -1497,7 +1497,7 @@
                           "clip": true,
                           "cornerRadius": 4.0,
                           "height": 38.0,
-                          "id": 654,
+                          "id": 1108,
                           "layout": {
                             "columnTracks": [],
                             "contentAlign": "auto",
@@ -1537,7 +1537,7 @@
                       ],
                       "clip": true,
                       "height": 206.0,
-                      "id": 637,
+                      "id": 1091,
                       "layout": {
                         "columnTracks": [],
                         "contentAlign": "auto",
@@ -1584,7 +1584,7 @@
                         }
                       ],
                       "height": 1.0,
-                      "id": 658,
+                      "id": 1112,
                       "name": "Sidebar_Divider_1",
                       "sizing": {
                         "horizontal": "fill",
@@ -1613,7 +1613,7 @@
                       "fontSize": 11.0,
                       "fontStyle": "Bold",
                       "height": 13.0,
-                      "id": 659,
+                      "id": 1113,
                       "letterSpacing": "6%",
                       "lineHeight": "Auto",
                       "name": "Sidebar_Sec2_Label",
@@ -1662,7 +1662,7 @@
                               "fontSize": 12.0,
                               "fontStyle": "Regular",
                               "height": 15.0,
-                              "id": 662,
+                              "id": 1116,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Mat_Name",
@@ -1695,7 +1695,7 @@
                               "fontSize": 11.0,
                               "fontStyle": "Regular",
                               "height": 15.0,
-                              "id": 663,
+                              "id": 1117,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Mat_Count",
@@ -1713,7 +1713,7 @@
                           ],
                           "clip": true,
                           "height": 15.0,
-                          "id": 661,
+                          "id": 1115,
                           "layout": {
                             "columnTracks": [],
                             "contentAlign": "auto",
@@ -1771,7 +1771,7 @@
                               "fontSize": 12.0,
                               "fontStyle": "Regular",
                               "height": 15.0,
-                              "id": 665,
+                              "id": 1119,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Mat_Name",
@@ -1804,7 +1804,7 @@
                               "fontSize": 11.0,
                               "fontStyle": "Regular",
                               "height": 15.0,
-                              "id": 666,
+                              "id": 1120,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Mat_Count",
@@ -1822,7 +1822,7 @@
                           ],
                           "clip": true,
                           "height": 15.0,
-                          "id": 664,
+                          "id": 1118,
                           "layout": {
                             "columnTracks": [],
                             "contentAlign": "auto",
@@ -1880,7 +1880,7 @@
                               "fontSize": 12.0,
                               "fontStyle": "Regular",
                               "height": 15.0,
-                              "id": 668,
+                              "id": 1122,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Mat_Name",
@@ -1913,7 +1913,7 @@
                               "fontSize": 11.0,
                               "fontStyle": "Regular",
                               "height": 15.0,
-                              "id": 669,
+                              "id": 1123,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Mat_Count",
@@ -1931,7 +1931,7 @@
                           ],
                           "clip": true,
                           "height": 15.0,
-                          "id": 667,
+                          "id": 1121,
                           "layout": {
                             "columnTracks": [],
                             "contentAlign": "auto",
@@ -1966,7 +1966,7 @@
                       ],
                       "clip": true,
                       "height": 61.0,
-                      "id": 660,
+                      "id": 1114,
                       "layout": {
                         "columnTracks": [],
                         "contentAlign": "auto",
@@ -2013,7 +2013,7 @@
                         }
                       ],
                       "height": 1.0,
-                      "id": 670,
+                      "id": 1124,
                       "name": "Sidebar_Divider_2",
                       "sizing": {
                         "horizontal": "fill",
@@ -2042,7 +2042,7 @@
                       "fontSize": 11.0,
                       "fontStyle": "Bold",
                       "height": 13.0,
-                      "id": 671,
+                      "id": 1125,
                       "letterSpacing": "6%",
                       "lineHeight": "Auto",
                       "name": "Sidebar_Sec3_Label",
@@ -2091,7 +2091,7 @@
                               "fontSize": 12.0,
                               "fontStyle": "Regular",
                               "height": 15.0,
-                              "id": 674,
+                              "id": 1128,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Status_Name",
@@ -2124,7 +2124,7 @@
                               "fontSize": 11.0,
                               "fontStyle": "Regular",
                               "height": 15.0,
-                              "id": 675,
+                              "id": 1129,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Status_Count",
@@ -2142,7 +2142,7 @@
                           ],
                           "clip": true,
                           "height": 15.0,
-                          "id": 673,
+                          "id": 1127,
                           "layout": {
                             "columnTracks": [],
                             "contentAlign": "auto",
@@ -2200,7 +2200,7 @@
                               "fontSize": 12.0,
                               "fontStyle": "Regular",
                               "height": 15.0,
-                              "id": 677,
+                              "id": 1131,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Status_Name",
@@ -2233,7 +2233,7 @@
                               "fontSize": 11.0,
                               "fontStyle": "Regular",
                               "height": 15.0,
-                              "id": 678,
+                              "id": 1132,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Status_Count",
@@ -2251,7 +2251,7 @@
                           ],
                           "clip": true,
                           "height": 15.0,
-                          "id": 676,
+                          "id": 1130,
                           "layout": {
                             "columnTracks": [],
                             "contentAlign": "auto",
@@ -2309,7 +2309,7 @@
                               "fontSize": 12.0,
                               "fontStyle": "Regular",
                               "height": 15.0,
-                              "id": 680,
+                              "id": 1134,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Status_Name",
@@ -2342,7 +2342,7 @@
                               "fontSize": 11.0,
                               "fontStyle": "Regular",
                               "height": 15.0,
-                              "id": 681,
+                              "id": 1135,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Status_Count",
@@ -2360,7 +2360,7 @@
                           ],
                           "clip": true,
                           "height": 15.0,
-                          "id": 679,
+                          "id": 1133,
                           "layout": {
                             "columnTracks": [],
                             "contentAlign": "auto",
@@ -2395,7 +2395,7 @@
                       ],
                       "clip": true,
                       "height": 61.0,
-                      "id": 672,
+                      "id": 1126,
                       "layout": {
                         "columnTracks": [],
                         "contentAlign": "auto",
@@ -2429,14 +2429,14 @@
                     },
                     {
                       "absoluteBounds": {
-                        "height": 233.0,
+                        "height": 237.0,
                         "width": 225.0,
                         "x": 12.0,
                         "y": 577.0
                       },
                       "clip": true,
-                      "height": 233.0,
-                      "id": 682,
+                      "height": 237.0,
+                      "id": 1136,
                       "layout": {
                         "columnTracks": [],
                         "contentAlign": "auto",
@@ -2470,20 +2470,20 @@
                     },
                     {
                       "absoluteBounds": {
-                        "height": 54.0,
+                        "height": 50.0,
                         "width": 225.0,
                         "x": 12.0,
-                        "y": 826.0
+                        "y": 830.0
                       },
                       "children": [
                         {
                           "absoluteBounds": {
                             "height": 13.0,
-                            "width": 110.0,
-                            "x": 25.0,
-                            "y": 837.0
+                            "width": 185.0,
+                            "x": 23.0,
+                            "y": 839.0
                           },
-                          "characters": "Vitrine Mesh: Online",
+                          "characters": "Vitrine Mesh: Online [SIMULATED]",
                           "fills": [
                             {
                               "color": "#047857",
@@ -2494,7 +2494,7 @@
                           "fontSize": 11.0,
                           "fontStyle": "Bold",
                           "height": 13.0,
-                          "id": 684,
+                          "id": 1138,
                           "letterSpacing": "0%",
                           "lineHeight": "Auto",
                           "name": "Mesh_Status_Title",
@@ -2505,18 +2505,18 @@
                           "textAlign": "left",
                           "textAutoResize": "widthAndHeight",
                           "type": "TEXT",
-                          "width": 110.0,
-                          "x": 13.0,
-                          "y": 11.0
+                          "width": 185.0,
+                          "x": 11.0,
+                          "y": 9.0
                         },
                         {
                           "absoluteBounds": {
                             "height": 15.0,
                             "width": 198.0,
-                            "x": 25.0,
-                            "y": 854.0
+                            "x": 23.0,
+                            "y": 856.0
                           },
-                          "characters": "84 Sensors Sync \u2022 0.2s latency",
+                          "characters": "84 Sensors [DEMO] \u2022 0.2s cycle",
                           "fills": [
                             {
                               "color": "#475569",
@@ -2527,7 +2527,7 @@
                           "fontSize": 11.0,
                           "fontStyle": "Regular",
                           "height": 15.0,
-                          "id": 685,
+                          "id": 1139,
                           "letterSpacing": "0%",
                           "lineHeight": "Auto",
                           "name": "Mesh_Status_Sub",
@@ -2539,8 +2539,8 @@
                           "textAutoResize": "widthAndHeight",
                           "type": "TEXT",
                           "width": 198.0,
-                          "x": 13.0,
-                          "y": 28.0
+                          "x": 11.0,
+                          "y": 26.0
                         }
                       ],
                       "clip": true,
@@ -2551,8 +2551,8 @@
                           "type": "solid"
                         }
                       ],
-                      "height": 54.0,
-                      "id": 683,
+                      "height": 50.0,
+                      "id": 1137,
                       "layout": {
                         "columnTracks": [],
                         "contentAlign": "auto",
@@ -2564,10 +2564,10 @@
                         "mainAlign": "min",
                         "mode": "vertical",
                         "padding": [
+                          8.0,
                           10.0,
-                          12.0,
-                          10.0,
-                          12.0
+                          8.0,
+                          10.0
                         ],
                         "reverseZ": false,
                         "rowTracks": [],
@@ -2590,7 +2590,7 @@
                       "type": "FRAME",
                       "width": 225.0,
                       "x": 12.0,
-                      "y": 766.0
+                      "y": 770.0
                     }
                   ],
                   "clip": true,
@@ -2601,7 +2601,7 @@
                     }
                   ],
                   "height": 840.0,
-                  "id": 635,
+                  "id": 1089,
                   "layout": {
                     "columnTracks": [],
                     "contentAlign": "auto",
@@ -2681,7 +2681,7 @@
                           "fontSize": 12.0,
                           "fontStyle": "Bold",
                           "height": 15.0,
-                          "id": 688,
+                          "id": 1142,
                           "letterSpacing": "0%",
                           "lineHeight": "Auto",
                           "name": "Catalog_Title",
@@ -2714,7 +2714,7 @@
                           "fontSize": 11.0,
                           "fontStyle": "Regular",
                           "height": 15.0,
-                          "id": 689,
+                          "id": 1143,
                           "letterSpacing": "0%",
                           "lineHeight": "Auto",
                           "name": "Catalog_Count",
@@ -2732,7 +2732,7 @@
                       ],
                       "clip": true,
                       "height": 15.0,
-                      "id": 687,
+                      "id": 1141,
                       "layout": {
                         "columnTracks": [],
                         "contentAlign": "auto",
@@ -2790,7 +2790,7 @@
                           "fontSize": 11.0,
                           "fontStyle": "Regular",
                           "height": 13.0,
-                          "id": 691,
+                          "id": 1145,
                           "letterSpacing": "0%",
                           "lineHeight": "Auto",
                           "name": "Sort_Label",
@@ -2827,7 +2827,7 @@
                                 }
                               ],
                               "height": 18.0,
-                              "id": 693,
+                              "id": 1147,
                               "name": "VectorPath",
                               "segments": 6,
                               "sizing": {
@@ -2859,7 +2859,7 @@
                             }
                           ],
                           "height": 54.0,
-                          "id": 692,
+                          "id": 1146,
                           "layout": {
                             "columnTracks": [],
                             "contentAlign": "auto",
@@ -2911,7 +2911,7 @@
                         }
                       ],
                       "height": 68.0,
-                      "id": 690,
+                      "id": 1144,
                       "layout": {
                         "columnTracks": [],
                         "contentAlign": "auto",
@@ -2985,7 +2985,7 @@
                               "fontSize": 11.0,
                               "fontStyle": "Bold",
                               "height": 15.0,
-                              "id": 696,
+                              "id": 1150,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Card_Accession",
@@ -3023,7 +3023,7 @@
                               "fontSize": 15.0,
                               "fontStyle": "Bold",
                               "height": 20.0,
-                              "id": 697,
+                              "id": 1151,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Card_Title_Text",
@@ -3060,7 +3060,7 @@
                               "fontSize": 12.0,
                               "fontStyle": "Regular",
                               "height": 15.0,
-                              "id": 698,
+                              "id": 1152,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Card_Sub",
@@ -3112,7 +3112,7 @@
                                       "fontSize": 11.0,
                                       "fontStyle": "Regular",
                                       "height": 13.0,
-                                      "id": 701,
+                                      "id": 1155,
                                       "letterSpacing": "0%",
                                       "lineHeight": "Auto",
                                       "name": "Text",
@@ -3137,7 +3137,7 @@
                                     }
                                   ],
                                   "height": 23.0,
-                                  "id": 700,
+                                  "id": 1154,
                                   "layout": {
                                     "columnTracks": [],
                                     "contentAlign": "auto",
@@ -3182,7 +3182,7 @@
                               ],
                               "clip": true,
                               "height": 25.0,
-                              "id": 699,
+                              "id": 1153,
                               "layout": {
                                 "columnTracks": [],
                                 "contentAlign": "auto",
@@ -3224,7 +3224,7 @@
                             }
                           ],
                           "height": 119.0,
-                          "id": 695,
+                          "id": 1149,
                           "layout": {
                             "columnTracks": [],
                             "contentAlign": "auto",
@@ -3302,7 +3302,7 @@
                               "fontSize": 11.0,
                               "fontStyle": "Regular",
                               "height": 15.0,
-                              "id": 703,
+                              "id": 1157,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Card_Accession",
@@ -3338,7 +3338,7 @@
                               "fontSize": 15.0,
                               "fontStyle": "Regular",
                               "height": 20.0,
-                              "id": 704,
+                              "id": 1158,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Card_Title_Text",
@@ -3374,7 +3374,7 @@
                               "fontSize": 12.0,
                               "fontStyle": "Regular",
                               "height": 15.0,
-                              "id": 705,
+                              "id": 1159,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Card_Sub",
@@ -3426,7 +3426,7 @@
                                       "fontSize": 11.0,
                                       "fontStyle": "Regular",
                                       "height": 13.0,
-                                      "id": 708,
+                                      "id": 1162,
                                       "letterSpacing": "0%",
                                       "lineHeight": "Auto",
                                       "name": "Text",
@@ -3451,7 +3451,7 @@
                                     }
                                   ],
                                   "height": 23.0,
-                                  "id": 707,
+                                  "id": 1161,
                                   "layout": {
                                     "columnTracks": [],
                                     "contentAlign": "auto",
@@ -3499,7 +3499,7 @@
                               ],
                               "clip": true,
                               "height": 25.0,
-                              "id": 706,
+                              "id": 1160,
                               "layout": {
                                 "columnTracks": [],
                                 "contentAlign": "auto",
@@ -3541,7 +3541,7 @@
                             }
                           ],
                           "height": 119.0,
-                          "id": 702,
+                          "id": 1156,
                           "layout": {
                             "columnTracks": [],
                             "contentAlign": "auto",
@@ -3619,7 +3619,7 @@
                               "fontSize": 11.0,
                               "fontStyle": "Regular",
                               "height": 15.0,
-                              "id": 710,
+                              "id": 1164,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Card_Accession",
@@ -3655,7 +3655,7 @@
                               "fontSize": 15.0,
                               "fontStyle": "Regular",
                               "height": 20.0,
-                              "id": 711,
+                              "id": 1165,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Card_Title_Text",
@@ -3691,7 +3691,7 @@
                               "fontSize": 12.0,
                               "fontStyle": "Regular",
                               "height": 15.0,
-                              "id": 712,
+                              "id": 1166,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Card_Sub",
@@ -3743,7 +3743,7 @@
                                       "fontSize": 11.0,
                                       "fontStyle": "Regular",
                                       "height": 13.0,
-                                      "id": 715,
+                                      "id": 1169,
                                       "letterSpacing": "0%",
                                       "lineHeight": "Auto",
                                       "name": "Text",
@@ -3768,7 +3768,7 @@
                                     }
                                   ],
                                   "height": 23.0,
-                                  "id": 714,
+                                  "id": 1168,
                                   "layout": {
                                     "columnTracks": [],
                                     "contentAlign": "auto",
@@ -3813,7 +3813,7 @@
                               ],
                               "clip": true,
                               "height": 25.0,
-                              "id": 713,
+                              "id": 1167,
                               "layout": {
                                 "columnTracks": [],
                                 "contentAlign": "auto",
@@ -3855,7 +3855,7 @@
                             }
                           ],
                           "height": 119.0,
-                          "id": 709,
+                          "id": 1163,
                           "layout": {
                             "columnTracks": [],
                             "contentAlign": "auto",
@@ -3933,7 +3933,7 @@
                               "fontSize": 11.0,
                               "fontStyle": "Regular",
                               "height": 15.0,
-                              "id": 717,
+                              "id": 1171,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Card_Accession",
@@ -3969,7 +3969,7 @@
                               "fontSize": 15.0,
                               "fontStyle": "Regular",
                               "height": 20.0,
-                              "id": 718,
+                              "id": 1172,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Card_Title_Text",
@@ -4005,7 +4005,7 @@
                               "fontSize": 12.0,
                               "fontStyle": "Regular",
                               "height": 15.0,
-                              "id": 719,
+                              "id": 1173,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Card_Sub",
@@ -4057,7 +4057,7 @@
                                       "fontSize": 11.0,
                                       "fontStyle": "Regular",
                                       "height": 13.0,
-                                      "id": 722,
+                                      "id": 1176,
                                       "letterSpacing": "0%",
                                       "lineHeight": "Auto",
                                       "name": "Text",
@@ -4082,7 +4082,7 @@
                                     }
                                   ],
                                   "height": 23.0,
-                                  "id": 721,
+                                  "id": 1175,
                                   "layout": {
                                     "columnTracks": [],
                                     "contentAlign": "auto",
@@ -4130,7 +4130,7 @@
                               ],
                               "clip": true,
                               "height": 25.0,
-                              "id": 720,
+                              "id": 1174,
                               "layout": {
                                 "columnTracks": [],
                                 "contentAlign": "auto",
@@ -4172,7 +4172,7 @@
                             }
                           ],
                           "height": 119.0,
-                          "id": 716,
+                          "id": 1170,
                           "layout": {
                             "columnTracks": [],
                             "contentAlign": "auto",
@@ -4227,7 +4227,7 @@
                       ],
                       "clip": true,
                       "height": 506.0,
-                      "id": 694,
+                      "id": 1148,
                       "layout": {
                         "columnTracks": [],
                         "contentAlign": "auto",
@@ -4268,7 +4268,7 @@
                     }
                   ],
                   "height": 840.0,
-                  "id": 686,
+                  "id": 1140,
                   "layout": {
                     "columnTracks": [],
                     "contentAlign": "auto",
@@ -4324,7 +4324,7 @@
                   "children": [
                     {
                       "absoluteBounds": {
-                        "height": 157.0,
+                        "height": 190.0,
                         "width": 792.0,
                         "x": 624.0,
                         "y": 84.0
@@ -4356,7 +4356,7 @@
                               "fontSize": 11.0,
                               "fontStyle": "Bold",
                               "height": 15.0,
-                              "id": 726,
+                              "id": 1180,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Accession_Tag",
@@ -4397,7 +4397,7 @@
                                   "fontSize": 11.0,
                                   "fontStyle": "Regular",
                                   "height": 13.0,
-                                  "id": 728,
+                                  "id": 1182,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Text",
@@ -4422,7 +4422,7 @@
                                 }
                               ],
                               "height": 23.0,
-                              "id": 727,
+                              "id": 1181,
                               "layout": {
                                 "columnTracks": [],
                                 "contentAlign": "auto",
@@ -4467,7 +4467,7 @@
                           ],
                           "clip": true,
                           "height": 23.0,
-                          "id": 725,
+                          "id": 1179,
                           "layout": {
                             "columnTracks": [],
                             "contentAlign": "auto",
@@ -4501,7 +4501,7 @@
                         },
                         {
                           "absoluteBounds": {
-                            "height": 1.0,
+                            "height": 34.0,
                             "width": 311.0,
                             "x": 649.0,
                             "y": 140.0
@@ -4516,10 +4516,10 @@
                           "fontFamily": "EB Garamond",
                           "fontSize": 26.0,
                           "fontStyle": "Bold",
-                          "height": 1.0,
-                          "id": 729,
+                          "height": 34.0,
+                          "id": 1183,
                           "letterSpacing": "0%",
-                          "lineHeight": "1.15",
+                          "lineHeight": "Auto",
                           "name": "Artifact_Dossier_Title",
                           "sizing": {
                             "horizontal": "hug",
@@ -4537,7 +4537,7 @@
                             "height": 21.0,
                             "width": 477.0,
                             "x": 649.0,
-                            "y": 153.0
+                            "y": 186.0
                           },
                           "characters": "Attributed to the Antimenes Painter Workshop \u2022 Herakles and the Nemean Lion",
                           "fills": [
@@ -4550,7 +4550,7 @@
                           "fontSize": 16.0,
                           "fontStyle": "Italic",
                           "height": 21.0,
-                          "id": 730,
+                          "id": 1184,
                           "letterSpacing": "0%",
                           "lineHeight": "Auto",
                           "name": "Artifact_Dossier_Subtitle",
@@ -4563,14 +4563,14 @@
                           "type": "TEXT",
                           "width": 477.0,
                           "x": 25.0,
-                          "y": 69.0
+                          "y": 102.0
                         },
                         {
                           "absoluteBounds": {
                             "height": 34.0,
                             "width": 742.0,
                             "x": 649.0,
-                            "y": 186.0
+                            "y": 219.0
                           },
                           "children": [
                             {
@@ -4578,7 +4578,7 @@
                                 "height": 32.0,
                                 "width": 192.0,
                                 "x": 649.0,
-                                "y": 187.0
+                                "y": 220.0
                               },
                               "children": [
                                 {
@@ -4586,7 +4586,7 @@
                                     "height": 16.0,
                                     "width": 164.0,
                                     "x": 663.0,
-                                    "y": 195.0
+                                    "y": 228.0
                                   },
                                   "characters": "Generate Condition Report",
                                   "fills": [
@@ -4599,7 +4599,7 @@
                                   "fontSize": 13.0,
                                   "fontStyle": "Regular",
                                   "height": 16.0,
-                                  "id": 733,
+                                  "id": 1187,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Label",
@@ -4627,7 +4627,7 @@
                                 }
                               ],
                               "height": 32.0,
-                              "id": 732,
+                              "id": 1186,
                               "layout": {
                                 "columnTracks": [],
                                 "contentAlign": "auto",
@@ -4666,7 +4666,7 @@
                                 "height": 32.0,
                                 "width": 190.0,
                                 "x": 851.0,
-                                "y": 187.0
+                                "y": 220.0
                               },
                               "children": [
                                 {
@@ -4674,7 +4674,7 @@
                                     "height": 16.0,
                                     "width": 162.0,
                                     "x": 865.0,
-                                    "y": 195.0
+                                    "y": 228.0
                                   },
                                   "characters": "Request Vitrine Inspection",
                                   "fills": [
@@ -4687,7 +4687,7 @@
                                   "fontSize": 13.0,
                                   "fontStyle": "Regular",
                                   "height": 16.0,
-                                  "id": 735,
+                                  "id": 1189,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Label",
@@ -4715,7 +4715,7 @@
                                 }
                               ],
                               "height": 32.0,
-                              "id": 734,
+                              "id": 1188,
                               "layout": {
                                 "columnTracks": [],
                                 "contentAlign": "auto",
@@ -4754,7 +4754,7 @@
                                 "height": 34.0,
                                 "width": 197.0,
                                 "x": 1051.0,
-                                "y": 186.0
+                                "y": 219.0
                               },
                               "children": [
                                 {
@@ -4762,7 +4762,7 @@
                                     "height": 16.0,
                                     "width": 167.0,
                                     "x": 1066.0,
-                                    "y": 195.0
+                                    "y": 228.0
                                   },
                                   "characters": "Loan Record & Provenance",
                                   "fills": [
@@ -4775,7 +4775,7 @@
                                   "fontSize": 13.0,
                                   "fontStyle": "Regular",
                                   "height": 16.0,
-                                  "id": 737,
+                                  "id": 1191,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Label",
@@ -4803,7 +4803,7 @@
                                 }
                               ],
                               "height": 34.0,
-                              "id": 736,
+                              "id": 1190,
                               "layout": {
                                 "columnTracks": [],
                                 "contentAlign": "auto",
@@ -4848,7 +4848,7 @@
                           ],
                           "clip": true,
                           "height": 34.0,
-                          "id": 731,
+                          "id": 1185,
                           "layout": {
                             "columnTracks": [],
                             "contentAlign": "auto",
@@ -4878,7 +4878,7 @@
                           "type": "FRAME",
                           "width": 742.0,
                           "x": 25.0,
-                          "y": 102.0
+                          "y": 135.0
                         }
                       ],
                       "clip": true,
@@ -4889,8 +4889,8 @@
                           "type": "solid"
                         }
                       ],
-                      "height": 157.0,
-                      "id": 724,
+                      "height": 190.0,
+                      "id": 1178,
                       "layout": {
                         "columnTracks": [],
                         "contentAlign": "auto",
@@ -4935,15 +4935,15 @@
                         "height": 343.0,
                         "width": 792.0,
                         "x": 624.0,
-                        "y": 257.0
+                        "y": 290.0
                       },
                       "children": [
                         {
                           "absoluteBounds": {
-                            "height": 283.0,
+                            "height": 329.0,
                             "width": 330.0,
                             "x": 624.0,
-                            "y": 257.0
+                            "y": 290.0
                           },
                           "children": [
                             {
@@ -4951,7 +4951,7 @@
                                 "height": 13.0,
                                 "width": 202.0,
                                 "x": 641.0,
-                                "y": 274.0
+                                "y": 307.0
                               },
                               "characters": "ARCHIVAL VISUAL DOCUMENTATION",
                               "fills": [
@@ -4964,7 +4964,7 @@
                               "fontSize": 11.0,
                               "fontStyle": "Bold",
                               "height": 13.0,
-                              "id": 740,
+                              "id": 1194,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Plate_Sec_Title",
@@ -4982,144 +4982,251 @@
                             {
                               "absoluteBounds": {
                                 "height": 210.0,
-                                "width": 232.0,
+                                "width": 296.0,
                                 "x": 641.0,
-                                "y": 299.0
+                                "y": 332.0
                               },
                               "children": [
                                 {
                                   "absoluteBounds": {
-                                    "height": 15.0,
-                                    "width": 185.0,
-                                    "x": 654.0,
-                                    "y": 312.0
-                                  },
-                                  "characters": "SCHEMATIC VECTOR \u2022 SCALE 1:1",
-                                  "fills": [
-                                    {
-                                      "color": "#64748B",
-                                      "type": "solid"
-                                    }
-                                  ],
-                                  "fontFamily": "JetBrains Mono",
-                                  "fontSize": 11.0,
-                                  "fontStyle": "Regular",
-                                  "height": 15.0,
-                                  "id": 742,
-                                  "letterSpacing": "0%",
-                                  "lineHeight": "Auto",
-                                  "name": "Top_Badge",
-                                  "sizing": {
-                                    "horizontal": "hug",
-                                    "vertical": "hug"
-                                  },
-                                  "textAlign": "left",
-                                  "textAutoResize": "widthAndHeight",
-                                  "type": "TEXT",
-                                  "width": 185.0,
-                                  "x": 13.0,
-                                  "y": 13.0
-                                },
-                                {
-                                  "absoluteBounds": {
-                                    "height": 140.0,
-                                    "width": 208.0,
-                                    "x": 654.0,
-                                    "y": 334.0
+                                    "height": 210.0,
+                                    "width": 232.0,
+                                    "x": 673.0,
+                                    "y": 332.0
                                   },
                                   "children": [
                                     {
                                       "absoluteBounds": {
-                                        "height": 130.0,
-                                        "width": 81.43,
-                                        "x": 717.29,
-                                        "y": 339.0
+                                        "height": 15.0,
+                                        "width": 185.0,
+                                        "x": 686.0,
+                                        "y": 345.0
                                       },
+                                      "characters": "SCHEMATIC VECTOR \u2022 SCALE 1:1",
                                       "fills": [
                                         {
-                                          "color": "#1E293B",
+                                          "color": "#64748B",
                                           "type": "solid"
                                         }
                                       ],
-                                      "height": 130.0,
-                                      "id": 744,
-                                      "name": "Amphora_Path",
-                                      "segments": 7,
+                                      "fontFamily": "JetBrains Mono",
+                                      "fontSize": 11.0,
+                                      "fontStyle": "Regular",
+                                      "height": 15.0,
+                                      "id": 1197,
+                                      "letterSpacing": "0%",
+                                      "lineHeight": "Auto",
+                                      "name": "Top_Badge",
+                                      "sizing": {
+                                        "horizontal": "hug",
+                                        "vertical": "hug"
+                                      },
+                                      "textAlign": "left",
+                                      "textAutoResize": "widthAndHeight",
+                                      "type": "TEXT",
+                                      "width": 185.0,
+                                      "x": 13.0,
+                                      "y": 13.0
+                                    },
+                                    {
+                                      "absoluteBounds": {
+                                        "height": 140.0,
+                                        "width": 208.0,
+                                        "x": 686.0,
+                                        "y": 367.0
+                                      },
+                                      "childCount": 1,
+                                      "clip": true,
+                                      "height": 140.0,
+                                      "id": 1198,
+                                      "layout": {
+                                        "columnTracks": [],
+                                        "contentAlign": "auto",
+                                        "crossAlign": "center",
+                                        "crossGap": 10.0,
+                                        "gap": 0.0,
+                                        "gridColumns": 2,
+                                        "gridRows": 2,
+                                        "mainAlign": "center",
+                                        "mode": "vertical",
+                                        "padding": [
+                                          0.0,
+                                          0.0,
+                                          0.0,
+                                          0.0
+                                        ],
+                                        "reverseZ": false,
+                                        "rowTracks": [],
+                                        "strokesIncluded": true,
+                                        "wrap": false
+                                      },
+                                      "name": "Vector_Stage",
                                       "sizing": {
                                         "horizontal": "fixed",
                                         "vertical": "fixed"
                                       },
-                                      "strokeAlign": "center",
-                                      "strokeWeight": 2.0,
-                                      "strokes": [
+                                      "type": "FRAME",
+                                      "width": 208.0,
+                                      "x": 13.0,
+                                      "y": 35.0
+                                    },
+                                    {
+                                      "absoluteBounds": {
+                                        "height": 15.0,
+                                        "width": 172.0,
+                                        "x": 686.0,
+                                        "y": 514.0
+                                      },
+                                      "characters": "H. 42.4 cm \u2022 Diam. 28.1 cm",
+                                      "fills": [
                                         {
-                                          "color": "#C2410C",
+                                          "color": "#64748B",
                                           "type": "solid"
                                         }
                                       ],
-                                      "type": "VECTOR",
-                                      "vertices": 7,
-                                      "width": 81.43,
-                                      "x": 63.29,
-                                      "y": 5.0
+                                      "fontFamily": "JetBrains Mono",
+                                      "fontSize": 11.0,
+                                      "fontStyle": "Regular",
+                                      "height": 15.0,
+                                      "id": 1200,
+                                      "letterSpacing": "0%",
+                                      "lineHeight": "Auto",
+                                      "name": "Foot_Spec",
+                                      "sizing": {
+                                        "horizontal": "hug",
+                                        "vertical": "hug"
+                                      },
+                                      "textAlign": "left",
+                                      "textAutoResize": "widthAndHeight",
+                                      "type": "TEXT",
+                                      "width": 172.0,
+                                      "x": 13.0,
+                                      "y": 182.0
                                     }
                                   ],
                                   "clip": true,
-                                  "height": 140.0,
-                                  "id": 743,
+                                  "cornerRadius": 4.0,
+                                  "fills": [
+                                    {
+                                      "color": "#FAF9F6",
+                                      "type": "solid"
+                                    }
+                                  ],
+                                  "height": 210.0,
+                                  "id": 1196,
                                   "layout": {
                                     "columnTracks": [],
                                     "contentAlign": "auto",
-                                    "crossAlign": "center",
+                                    "crossAlign": "min",
                                     "crossGap": 10.0,
                                     "gap": 0.0,
                                     "gridColumns": 2,
                                     "gridRows": 2,
-                                    "mainAlign": "center",
+                                    "mainAlign": "spaceBetween",
                                     "mode": "vertical",
                                     "padding": [
-                                      0.0,
-                                      0.0,
-                                      0.0,
-                                      0.0
+                                      12.0,
+                                      12.0,
+                                      12.0,
+                                      12.0
                                     ],
                                     "reverseZ": false,
                                     "rowTracks": [],
                                     "strokesIncluded": true,
                                     "wrap": false
                                   },
-                                  "name": "Vector_Stage",
+                                  "mainComponent": 124,
+                                  "mainComponentName": "Media/Archival_Vector_Plate_Master",
+                                  "name": "Media/Archival_Vector_Plate_Master",
                                   "sizing": {
                                     "horizontal": "fixed",
                                     "vertical": "fixed"
                                   },
-                                  "type": "FRAME",
-                                  "width": 208.0,
-                                  "x": 13.0,
-                                  "y": 35.0
-                                },
-                                {
-                                  "absoluteBounds": {
-                                    "height": 15.0,
-                                    "width": 172.0,
-                                    "x": 654.0,
-                                    "y": 481.0
-                                  },
-                                  "characters": "H. 42.4 cm \u2022 Diam. 28.1 cm",
-                                  "fills": [
+                                  "strokeAlign": "inside",
+                                  "strokeWeight": 1.0,
+                                  "strokes": [
                                     {
-                                      "color": "#64748B",
+                                      "color": "#E2E2DC",
                                       "type": "solid"
                                     }
                                   ],
-                                  "fontFamily": "JetBrains Mono",
+                                  "type": "INSTANCE",
+                                  "width": 232.0,
+                                  "x": 32.0,
+                                  "y": 0.0
+                                }
+                              ],
+                              "clip": true,
+                              "cornerRadius": 4.0,
+                              "fills": [
+                                {
+                                  "color": "#F8FAFC",
+                                  "type": "solid"
+                                }
+                              ],
+                              "height": 210.0,
+                              "id": 1195,
+                              "layout": {
+                                "columnTracks": [],
+                                "contentAlign": "auto",
+                                "crossAlign": "center",
+                                "crossGap": 10.0,
+                                "gap": 0.0,
+                                "gridColumns": 2,
+                                "gridRows": 2,
+                                "mainAlign": "center",
+                                "mode": "vertical",
+                                "padding": [
+                                  0.0,
+                                  0.0,
+                                  0.0,
+                                  0.0
+                                ],
+                                "reverseZ": false,
+                                "rowTracks": [],
+                                "strokesIncluded": true,
+                                "wrap": false
+                              },
+                              "name": "Plate_Media_Container",
+                              "sizing": {
+                                "horizontal": "fill",
+                                "vertical": "hug"
+                              },
+                              "type": "FRAME",
+                              "width": 296.0,
+                              "x": 17.0,
+                              "y": 42.0
+                            },
+                            {
+                              "absoluteBounds": {
+                                "height": 48.0,
+                                "width": 296.0,
+                                "x": 641.0,
+                                "y": 554.0
+                              },
+                              "children": [
+                                {
+                                  "absoluteBounds": {
+                                    "height": 13.0,
+                                    "width": 225.0,
+                                    "x": 652.0,
+                                    "y": 563.0
+                                  },
+                                  "characters": "Plate VII: Obverse View \u2022 8K Multispectral",
+                                  "fills": [
+                                    {
+                                      "color": "#1E293B",
+                                      "type": "solid"
+                                    }
+                                  ],
+                                  "fontFamily": "Inter",
                                   "fontSize": 11.0,
-                                  "fontStyle": "Regular",
-                                  "height": 15.0,
-                                  "id": 745,
+                                  "fontStyle": "Bold",
+                                  "height": 13.0,
+                                  "id": 1202,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
-                                  "name": "Foot_Spec",
+                                  "name": "Plate_Caption_Heading",
                                   "sizing": {
                                     "horizontal": "hug",
                                     "vertical": "hug"
@@ -5127,92 +5234,90 @@
                                   "textAlign": "left",
                                   "textAutoResize": "widthAndHeight",
                                   "type": "TEXT",
-                                  "width": 172.0,
-                                  "x": 13.0,
-                                  "y": 182.0
+                                  "width": 225.0,
+                                  "x": 11.0,
+                                  "y": 9.0
+                                },
+                                {
+                                  "absoluteBounds": {
+                                    "height": 13.0,
+                                    "width": 226.0,
+                                    "x": 652.0,
+                                    "y": 580.0
+                                  },
+                                  "characters": "Heritage Archive \u2022 Accession 1928 [DEMO]",
+                                  "fills": [
+                                    {
+                                      "color": "#64748B",
+                                      "type": "solid"
+                                    }
+                                  ],
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11.0,
+                                  "fontStyle": "Regular",
+                                  "height": 13.0,
+                                  "id": 1203,
+                                  "letterSpacing": "0%",
+                                  "lineHeight": "Auto",
+                                  "name": "Plate_Caption_Sub",
+                                  "sizing": {
+                                    "horizontal": "hug",
+                                    "vertical": "hug"
+                                  },
+                                  "textAlign": "left",
+                                  "textAutoResize": "widthAndHeight",
+                                  "type": "TEXT",
+                                  "width": 226.0,
+                                  "x": 11.0,
+                                  "y": 26.0
                                 }
                               ],
                               "clip": true,
                               "cornerRadius": 4.0,
                               "fills": [
                                 {
-                                  "color": "#FAF9F6",
+                                  "color": "#F8FAFC",
                                   "type": "solid"
                                 }
                               ],
-                              "height": 210.0,
-                              "id": 741,
+                              "height": 48.0,
+                              "id": 1201,
                               "layout": {
                                 "columnTracks": [],
                                 "contentAlign": "auto",
                                 "crossAlign": "min",
                                 "crossGap": 10.0,
-                                "gap": 0.0,
+                                "gap": 4.0,
                                 "gridColumns": 2,
                                 "gridRows": 2,
-                                "mainAlign": "spaceBetween",
+                                "mainAlign": "min",
                                 "mode": "vertical",
                                 "padding": [
-                                  12.0,
-                                  12.0,
-                                  12.0,
-                                  12.0
+                                  8.0,
+                                  10.0,
+                                  8.0,
+                                  10.0
                                 ],
                                 "reverseZ": false,
                                 "rowTracks": [],
                                 "strokesIncluded": true,
                                 "wrap": false
                               },
-                              "mainComponent": 124,
-                              "mainComponentName": "Media/Archival_Vector_Plate_Master",
-                              "name": "Media/Archival_Vector_Plate_Master",
+                              "name": "Plate_Caption_Box",
                               "sizing": {
-                                "horizontal": "fixed",
-                                "vertical": "fixed"
+                                "horizontal": "fill",
+                                "vertical": "hug"
                               },
                               "strokeAlign": "inside",
                               "strokeWeight": 1.0,
                               "strokes": [
                                 {
-                                  "color": "#E2E2DC",
+                                  "color": "#E2E8F0",
                                   "type": "solid"
                                 }
                               ],
-                              "type": "INSTANCE",
-                              "width": 232.0,
-                              "x": 17.0,
-                              "y": 42.0
-                            },
-                            {
-                              "absoluteBounds": {
-                                "height": 2.0,
-                                "width": 272.0,
-                                "x": 641.0,
-                                "y": 521.0
-                              },
-                              "characters": "Plate VII: Obverse View \u2022 8K Multispectral Imaging\nMuseum Heritage Register \u2022 Sealed Accession 1928",
-                              "fills": [
-                                {
-                                  "color": "#64748B",
-                                  "type": "solid"
-                                }
-                              ],
-                              "fontFamily": "Inter",
-                              "fontSize": 11.0,
-                              "fontStyle": "Regular",
-                              "height": 2.0,
-                              "id": 746,
-                              "letterSpacing": "0%",
-                              "lineHeight": "1.4",
-                              "name": "Plate_Caption",
-                              "sizing": {
-                                "horizontal": "hug",
-                                "vertical": "hug"
-                              },
-                              "textAlign": "left",
-                              "textAutoResize": "widthAndHeight",
-                              "type": "TEXT",
-                              "width": 272.0,
+                              "type": "FRAME",
+                              "width": 296.0,
                               "x": 17.0,
                               "y": 264.0
                             }
@@ -5225,8 +5330,8 @@
                               "type": "solid"
                             }
                           ],
-                          "height": 283.0,
-                          "id": 739,
+                          "height": 329.0,
+                          "id": 1193,
                           "layout": {
                             "columnTracks": [],
                             "contentAlign": "auto",
@@ -5271,7 +5376,7 @@
                             "height": 343.0,
                             "width": 446.0,
                             "x": 970.0,
-                            "y": 257.0
+                            "y": 290.0
                           },
                           "children": [
                             {
@@ -5279,7 +5384,7 @@
                                 "height": 13.0,
                                 "width": 255.0,
                                 "x": 991.0,
-                                "y": 274.0
+                                "y": 307.0
                               },
                               "characters": "CURATORIAL SPECIFICATIONS & PROVENANCE",
                               "fills": [
@@ -5292,7 +5397,7 @@
                               "fontSize": 11.0,
                               "fontStyle": "Bold",
                               "height": 13.0,
-                              "id": 748,
+                              "id": 1205,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Specs_Sec_Title",
@@ -5312,7 +5417,7 @@
                                 "height": 48.0,
                                 "width": 404.0,
                                 "x": 991.0,
-                                "y": 295.0
+                                "y": 328.0
                               },
                               "children": [
                                 {
@@ -5320,7 +5425,7 @@
                                     "height": 15.0,
                                     "width": 140.0,
                                     "x": 992.0,
-                                    "y": 304.23
+                                    "y": 337.23
                                   },
                                   "characters": "CULTURE / PERIOD",
                                   "fills": [
@@ -5333,7 +5438,7 @@
                                   "fontSize": 11.0,
                                   "fontStyle": "Regular",
                                   "height": 15.0,
-                                  "id": 750,
+                                  "id": 1207,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Field_Label",
@@ -5356,7 +5461,7 @@
                                     "height": 32.0,
                                     "width": 262.0,
                                     "x": 1132.0,
-                                    "y": 302.0
+                                    "y": 335.0
                                   },
                                   "characters": "Archaic Greek (Attica, Athens) \u2022 c. 530 BCE",
                                   "fills": [
@@ -5369,7 +5474,7 @@
                                   "fontSize": 13.0,
                                   "fontStyle": "Regular",
                                   "height": 32.0,
-                                  "id": 751,
+                                  "id": 1208,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Field_Value",
@@ -5390,7 +5495,7 @@
                               ],
                               "clip": true,
                               "height": 48.0,
-                              "id": 749,
+                              "id": 1206,
                               "layout": {
                                 "columnTracks": [],
                                 "contentAlign": "auto",
@@ -5443,7 +5548,7 @@
                                 "height": 48.0,
                                 "width": 404.0,
                                 "x": 991.0,
-                                "y": 351.0
+                                "y": 384.0
                               },
                               "children": [
                                 {
@@ -5451,7 +5556,7 @@
                                     "height": 15.0,
                                     "width": 140.0,
                                     "x": 992.0,
-                                    "y": 360.23
+                                    "y": 393.23
                                   },
                                   "characters": "MEDIUM / TECHNIQUE",
                                   "fills": [
@@ -5464,7 +5569,7 @@
                                   "fontSize": 11.0,
                                   "fontStyle": "Regular",
                                   "height": 15.0,
-                                  "id": 753,
+                                  "id": 1210,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Field_Label",
@@ -5487,7 +5592,7 @@
                                     "height": 32.0,
                                     "width": 262.0,
                                     "x": 1132.0,
-                                    "y": 358.0
+                                    "y": 391.0
                                   },
                                   "characters": "Terracotta, black-figure technique with incised detail",
                                   "fills": [
@@ -5500,7 +5605,7 @@
                                   "fontSize": 13.0,
                                   "fontStyle": "Regular",
                                   "height": 32.0,
-                                  "id": 754,
+                                  "id": 1211,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Field_Value",
@@ -5521,7 +5626,7 @@
                               ],
                               "clip": true,
                               "height": 48.0,
-                              "id": 752,
+                              "id": 1209,
                               "layout": {
                                 "columnTracks": [],
                                 "contentAlign": "auto",
@@ -5574,7 +5679,7 @@
                                 "height": 48.0,
                                 "width": 404.0,
                                 "x": 991.0,
-                                "y": 407.0
+                                "y": 440.0
                               },
                               "children": [
                                 {
@@ -5582,7 +5687,7 @@
                                     "height": 15.0,
                                     "width": 140.0,
                                     "x": 992.0,
-                                    "y": 416.23
+                                    "y": 449.23
                                   },
                                   "characters": "DIMENSIONS / SCALE",
                                   "fills": [
@@ -5595,7 +5700,7 @@
                                   "fontSize": 11.0,
                                   "fontStyle": "Regular",
                                   "height": 15.0,
-                                  "id": 756,
+                                  "id": 1213,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Field_Label",
@@ -5618,7 +5723,7 @@
                                     "height": 32.0,
                                     "width": 262.0,
                                     "x": 1132.0,
-                                    "y": 414.0
+                                    "y": 447.0
                                   },
                                   "characters": "H: 45.2 cm \u2022 Diam: 29.8 cm \u2022 Weight: 4.82 kg",
                                   "fills": [
@@ -5631,7 +5736,7 @@
                                   "fontSize": 13.0,
                                   "fontStyle": "Regular",
                                   "height": 32.0,
-                                  "id": 757,
+                                  "id": 1214,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Field_Value",
@@ -5652,7 +5757,7 @@
                               ],
                               "clip": true,
                               "height": 48.0,
-                              "id": 755,
+                              "id": 1212,
                               "layout": {
                                 "columnTracks": [],
                                 "contentAlign": "auto",
@@ -5705,7 +5810,7 @@
                                 "height": 48.0,
                                 "width": 404.0,
                                 "x": 991.0,
-                                "y": 463.0
+                                "y": 496.0
                               },
                               "children": [
                                 {
@@ -5713,7 +5818,7 @@
                                     "height": 15.0,
                                     "width": 140.0,
                                     "x": 992.0,
-                                    "y": 472.23
+                                    "y": 505.23
                                   },
                                   "characters": "PROVENANCE CHAIN",
                                   "fills": [
@@ -5726,7 +5831,7 @@
                                   "fontSize": 11.0,
                                   "fontStyle": "Regular",
                                   "height": 15.0,
-                                  "id": 759,
+                                  "id": 1216,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Field_Label",
@@ -5749,7 +5854,7 @@
                                     "height": 32.0,
                                     "width": 262.0,
                                     "x": 1132.0,
-                                    "y": 470.0
+                                    "y": 503.0
                                   },
                                   "characters": "Excavated Vulci (1828) \u2022 Lucien Bonaparte Coll. \u2022 Acquired 1928",
                                   "fills": [
@@ -5762,7 +5867,7 @@
                                   "fontSize": 13.0,
                                   "fontStyle": "Regular",
                                   "height": 32.0,
-                                  "id": 760,
+                                  "id": 1217,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Field_Value",
@@ -5783,7 +5888,7 @@
                               ],
                               "clip": true,
                               "height": 48.0,
-                              "id": 758,
+                              "id": 1215,
                               "layout": {
                                 "columnTracks": [],
                                 "contentAlign": "auto",
@@ -5836,7 +5941,7 @@
                                 "height": 64.0,
                                 "width": 404.0,
                                 "x": 991.0,
-                                "y": 519.0
+                                "y": 552.0
                               },
                               "children": [
                                 {
@@ -5844,7 +5949,7 @@
                                     "height": 15.0,
                                     "width": 140.0,
                                     "x": 992.0,
-                                    "y": 528.23
+                                    "y": 561.23
                                   },
                                   "characters": "CURATORIAL NOTES",
                                   "fills": [
@@ -5857,7 +5962,7 @@
                                   "fontSize": 11.0,
                                   "fontStyle": "Regular",
                                   "height": 15.0,
-                                  "id": 762,
+                                  "id": 1219,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Field_Label",
@@ -5880,7 +5985,7 @@
                                     "height": 48.0,
                                     "width": 262.0,
                                     "x": 1132.0,
-                                    "y": 526.0
+                                    "y": 559.0
                                   },
                                   "characters": "Herakles wrestling the Nemean Lion flanked by Athena and Iolaos. Reverse shows chariot departure.",
                                   "fills": [
@@ -5893,7 +5998,7 @@
                                   "fontSize": 13.0,
                                   "fontStyle": "Regular",
                                   "height": 48.0,
-                                  "id": 763,
+                                  "id": 1220,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Field_Value",
@@ -5914,7 +6019,7 @@
                               ],
                               "clip": true,
                               "height": 64.0,
-                              "id": 761,
+                              "id": 1218,
                               "layout": {
                                 "columnTracks": [],
                                 "contentAlign": "auto",
@@ -5972,7 +6077,7 @@
                             }
                           ],
                           "height": 343.0,
-                          "id": 747,
+                          "id": 1204,
                           "layout": {
                             "columnTracks": [],
                             "contentAlign": "auto",
@@ -6015,7 +6120,7 @@
                       ],
                       "clip": true,
                       "height": 343.0,
-                      "id": 738,
+                      "id": 1192,
                       "layout": {
                         "columnTracks": [],
                         "contentAlign": "auto",
@@ -6045,14 +6150,14 @@
                       "type": "FRAME",
                       "width": 792.0,
                       "x": 24.0,
-                      "y": 197.0
+                      "y": 230.0
                     },
                     {
                       "absoluteBounds": {
                         "height": 153.0,
                         "width": 792.0,
                         "x": 624.0,
-                        "y": 616.0
+                        "y": 649.0
                       },
                       "children": [
                         {
@@ -6060,17 +6165,17 @@
                             "height": 15.0,
                             "width": 750.0,
                             "x": 645.0,
-                            "y": 633.0
+                            "y": 666.0
                           },
                           "children": [
                             {
                               "absoluteBounds": {
                                 "height": 13.0,
-                                "width": 322.0,
+                                "width": 397.0,
                                 "x": 645.0,
-                                "y": 634.0
+                                "y": 667.0
                               },
-                              "characters": "MICROCLIMATE TELEMETRY (VITRINE VG-04 \u2022 GALLERY III)",
+                              "characters": "MICROCLIMATE TELEMETRY (VITRINE VG-04 \u2022 GALLERY III) [SIMULATED]",
                               "fills": [
                                 {
                                   "color": "#64748B",
@@ -6081,7 +6186,7 @@
                               "fontSize": 11.0,
                               "fontStyle": "Bold",
                               "height": 13.0,
-                              "id": 766,
+                              "id": 1223,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Climate_Title",
@@ -6092,18 +6197,18 @@
                               "textAlign": "left",
                               "textAutoResize": "widthAndHeight",
                               "type": "TEXT",
-                              "width": 322.0,
+                              "width": 397.0,
                               "x": 0.0,
                               "y": 1.0
                             },
                             {
                               "absoluteBounds": {
                                 "height": 15.0,
-                                "width": 297.0,
-                                "x": 1098.0,
-                                "y": 633.0
+                                "width": 350.0,
+                                "x": 1045.0,
+                                "y": 666.0
                               },
-                              "characters": "\u25cf Live Sensor Stream (0.2s refresh) \u2022 Nominal",
+                              "characters": "\u25cf SIMULATED SENSOR STREAM (Demo 0.2s cycle) \u2022 Nominal",
                               "fills": [
                                 {
                                   "color": "#047857",
@@ -6114,7 +6219,7 @@
                               "fontSize": 11.0,
                               "fontStyle": "Regular",
                               "height": 15.0,
-                              "id": 767,
+                              "id": 1224,
                               "letterSpacing": "0%",
                               "lineHeight": "Auto",
                               "name": "Stream_Status",
@@ -6125,14 +6230,14 @@
                               "textAlign": "left",
                               "textAutoResize": "widthAndHeight",
                               "type": "TEXT",
-                              "width": 297.0,
-                              "x": 453.0,
+                              "width": 350.0,
+                              "x": 400.0,
                               "y": 0.0
                             }
                           ],
                           "clip": true,
                           "height": 15.0,
-                          "id": 765,
+                          "id": 1222,
                           "layout": {
                             "columnTracks": [],
                             "contentAlign": "auto",
@@ -6169,7 +6274,7 @@
                             "height": 92.0,
                             "width": 750.0,
                             "x": 645.0,
-                            "y": 660.0
+                            "y": 693.0
                           },
                           "children": [
                             {
@@ -6177,7 +6282,7 @@
                                 "height": 92.0,
                                 "width": 178.5,
                                 "x": 645.0,
-                                "y": 660.0
+                                "y": 693.0
                               },
                               "children": [
                                 {
@@ -6185,7 +6290,7 @@
                                     "height": 13.0,
                                     "width": 104.0,
                                     "x": 662.0,
-                                    "y": 675.0
+                                    "y": 708.0
                                   },
                                   "characters": "Vitrine Temperature",
                                   "fills": [
@@ -6198,7 +6303,7 @@
                                   "fontSize": 11.0,
                                   "fontStyle": "Regular",
                                   "height": 13.0,
-                                  "id": 770,
+                                  "id": 1227,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Meter_Label",
@@ -6221,7 +6326,7 @@
                                     "height": 24.0,
                                     "width": 65.0,
                                     "x": 662.0,
-                                    "y": 694.0
+                                    "y": 727.0
                                   },
                                   "characters": "20.4\u00b0C",
                                   "fills": [
@@ -6234,7 +6339,7 @@
                                   "fontSize": 18.0,
                                   "fontStyle": "Regular",
                                   "height": 24.0,
-                                  "id": 771,
+                                  "id": 1228,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Meter_Value",
@@ -6258,7 +6363,7 @@
                                     "height": 13.0,
                                     "width": 100.0,
                                     "x": 662.0,
-                                    "y": 724.0
+                                    "y": 757.0
                                   },
                                   "characters": "Target: 19.0\u201321.5\u00b0C",
                                   "fills": [
@@ -6271,7 +6376,7 @@
                                   "fontSize": 11.0,
                                   "fontStyle": "Regular",
                                   "height": 13.0,
-                                  "id": 772,
+                                  "id": 1229,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Meter_Sub",
@@ -6299,7 +6404,7 @@
                                 }
                               ],
                               "height": 92.0,
-                              "id": 769,
+                              "id": 1226,
                               "layout": {
                                 "columnTracks": [],
                                 "contentAlign": "auto",
@@ -6346,7 +6451,7 @@
                                 "height": 92.0,
                                 "width": 178.5,
                                 "x": 835.5,
-                                "y": 660.0
+                                "y": 693.0
                               },
                               "children": [
                                 {
@@ -6354,7 +6459,7 @@
                                     "height": 13.0,
                                     "width": 91.0,
                                     "x": 852.5,
-                                    "y": 675.0
+                                    "y": 708.0
                                   },
                                   "characters": "Relative Humidity",
                                   "fills": [
@@ -6367,7 +6472,7 @@
                                   "fontSize": 11.0,
                                   "fontStyle": "Regular",
                                   "height": 13.0,
-                                  "id": 774,
+                                  "id": 1231,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Meter_Label",
@@ -6390,7 +6495,7 @@
                                     "height": 24.0,
                                     "width": 87.0,
                                     "x": 852.5,
-                                    "y": 694.0
+                                    "y": 727.0
                                   },
                                   "characters": "48.2% RH",
                                   "fills": [
@@ -6403,7 +6508,7 @@
                                   "fontSize": 18.0,
                                   "fontStyle": "Regular",
                                   "height": 24.0,
-                                  "id": 775,
+                                  "id": 1232,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Meter_Value",
@@ -6427,7 +6532,7 @@
                                     "height": 13.0,
                                     "width": 101.0,
                                     "x": 852.5,
-                                    "y": 724.0
+                                    "y": 757.0
                                   },
                                   "characters": "Target: 45\u201355% RH",
                                   "fills": [
@@ -6440,7 +6545,7 @@
                                   "fontSize": 11.0,
                                   "fontStyle": "Regular",
                                   "height": 13.0,
-                                  "id": 776,
+                                  "id": 1233,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Meter_Sub",
@@ -6468,7 +6573,7 @@
                                 }
                               ],
                               "height": 92.0,
-                              "id": 773,
+                              "id": 1230,
                               "layout": {
                                 "columnTracks": [],
                                 "contentAlign": "auto",
@@ -6515,7 +6620,7 @@
                                 "height": 92.0,
                                 "width": 178.5,
                                 "x": 1026.0,
-                                "y": 660.0
+                                "y": 693.0
                               },
                               "children": [
                                 {
@@ -6523,7 +6628,7 @@
                                     "height": 13.0,
                                     "width": 103.0,
                                     "x": 1043.0,
-                                    "y": 675.0
+                                    "y": 708.0
                                   },
                                   "characters": "Luminous Exposure",
                                   "fills": [
@@ -6536,7 +6641,7 @@
                                   "fontSize": 11.0,
                                   "fontStyle": "Regular",
                                   "height": 13.0,
-                                  "id": 778,
+                                  "id": 1235,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Meter_Label",
@@ -6559,7 +6664,7 @@
                                     "height": 24.0,
                                     "width": 87.0,
                                     "x": 1043.0,
-                                    "y": 694.0
+                                    "y": 727.0
                                   },
                                   "characters": "48.0 Lux",
                                   "fills": [
@@ -6572,7 +6677,7 @@
                                   "fontSize": 18.0,
                                   "fontStyle": "Regular",
                                   "height": 24.0,
-                                  "id": 779,
+                                  "id": 1236,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Meter_Value",
@@ -6596,7 +6701,7 @@
                                     "height": 13.0,
                                     "width": 105.0,
                                     "x": 1043.0,
-                                    "y": 724.0
+                                    "y": 757.0
                                   },
                                   "characters": "Threshold: < 50 Lux",
                                   "fills": [
@@ -6609,7 +6714,7 @@
                                   "fontSize": 11.0,
                                   "fontStyle": "Regular",
                                   "height": 13.0,
-                                  "id": 780,
+                                  "id": 1237,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Meter_Sub",
@@ -6637,7 +6742,7 @@
                                 }
                               ],
                               "height": 92.0,
-                              "id": 777,
+                              "id": 1234,
                               "layout": {
                                 "columnTracks": [],
                                 "contentAlign": "auto",
@@ -6684,7 +6789,7 @@
                                 "height": 92.0,
                                 "width": 178.5,
                                 "x": 1216.5,
-                                "y": 660.0
+                                "y": 693.0
                               },
                               "children": [
                                 {
@@ -6692,7 +6797,7 @@
                                     "height": 13.0,
                                     "width": 67.0,
                                     "x": 1233.5,
-                                    "y": 675.0
+                                    "y": 708.0
                                   },
                                   "characters": "UV Radiance",
                                   "fills": [
@@ -6705,7 +6810,7 @@
                                   "fontSize": 11.0,
                                   "fontStyle": "Regular",
                                   "height": 13.0,
-                                  "id": 782,
+                                  "id": 1239,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Meter_Label",
@@ -6728,7 +6833,7 @@
                                     "height": 24.0,
                                     "width": 87.0,
                                     "x": 1233.5,
-                                    "y": 694.0
+                                    "y": 727.0
                                   },
                                   "characters": "12 \u03bcW/lm",
                                   "fills": [
@@ -6741,7 +6846,7 @@
                                   "fontSize": 18.0,
                                   "fontStyle": "Regular",
                                   "height": 24.0,
-                                  "id": 783,
+                                  "id": 1240,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Meter_Value",
@@ -6765,7 +6870,7 @@
                                     "height": 13.0,
                                     "width": 119.0,
                                     "x": 1233.5,
-                                    "y": 724.0
+                                    "y": 757.0
                                   },
                                   "characters": "Threshold: < 75 \u03bcW/lm",
                                   "fills": [
@@ -6778,7 +6883,7 @@
                                   "fontSize": 11.0,
                                   "fontStyle": "Regular",
                                   "height": 13.0,
-                                  "id": 784,
+                                  "id": 1241,
                                   "letterSpacing": "0%",
                                   "lineHeight": "Auto",
                                   "name": "Meter_Sub",
@@ -6806,7 +6911,7 @@
                                 }
                               ],
                               "height": 92.0,
-                              "id": 781,
+                              "id": 1238,
                               "layout": {
                                 "columnTracks": [],
                                 "contentAlign": "auto",
@@ -6851,7 +6956,7 @@
                           ],
                           "clip": true,
                           "height": 92.0,
-                          "id": 768,
+                          "id": 1225,
                           "layout": {
                             "columnTracks": [],
                             "contentAlign": "auto",
@@ -6893,7 +6998,7 @@
                         }
                       ],
                       "height": 153.0,
-                      "id": 764,
+                      "id": 1221,
                       "layout": {
                         "columnTracks": [],
                         "contentAlign": "auto",
@@ -6931,7 +7036,7 @@
                       "type": "FRAME",
                       "width": 792.0,
                       "x": 24.0,
-                      "y": 556.0
+                      "y": 589.0
                     }
                   ],
                   "clip": true,
@@ -6942,7 +7047,7 @@
                     }
                   ],
                   "height": 840.0,
-                  "id": 723,
+                  "id": 1177,
                   "layout": {
                     "columnTracks": [],
                     "contentAlign": "auto",
@@ -6983,7 +7088,7 @@
                 }
               ],
               "height": 840.0,
-              "id": 634,
+              "id": 1088,
               "layout": {
                 "columnTracks": [],
                 "contentAlign": "auto",
@@ -7024,7 +7129,7 @@
             }
           ],
           "height": 900.0,
-          "id": 620,
+          "id": 1074,
           "layout": {
             "columnTracks": [],
             "contentAlign": "auto",

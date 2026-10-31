@@ -109,4 +109,33 @@ if (-not $compFinding) {
 }
 Write-Host ("     PASS: Fake component caught: {0}" -f $compFinding.title) -ForegroundColor Green
 
-Write-Host "PASS: All 6 automated verifier test cases verified with zero false PASS." -ForegroundColor Green
+
+# --- Test Case 7: Text Overlap & Collapsed Height Defect Fixture ---
+Write-Host "  -> Case 7: Text Overlap & Collapsed Height Defect..." -ForegroundColor DarkGray
+$canvasDir = Join-Path (Split-Path $fixturesDir -Parent) "canvas"
+$overlapDefectFile = Join-Path $canvasDir "synthetic-text-overlap-defect.json"
+$resOverlapDefect = & $verifierScript -DocumentPath $overlapDefectFile -Mode Mock
+if ($resOverlapDefect.deterministicStatus -ne "FAIL") {
+    throw ("FAIL Case 7: Expected deterministicStatus 'FAIL', got '{0}'" -f $resOverlapDefect.deterministicStatus)
+}
+$collisionFinding = $resOverlapDefect.findings | Where-Object { $_.category -eq "Geometry/BoundingBoxCollision" }
+$collapseFinding = $resOverlapDefect.findings | Where-Object { $_.category -eq "Geometry/TextBounds" }
+$lhFinding = $resOverlapDefect.findings | Where-Object { $_.category -eq "Visual/Typography" }
+if (-not $collisionFinding -or -not $collapseFinding -or -not $lhFinding) {
+    throw "FAIL Case 7: Expected BoundingBoxCollision, TextBounds, and Typography findings not reported!"
+}
+Write-Host ("     PASS: Overlap and collapsed height defects caught (P1 blockers: {0})" -f $resOverlapDefect.summary.p1Blockers) -ForegroundColor Green
+
+# --- Test Case 8: Text Overlap Fixed Fixture ---
+Write-Host "  -> Case 8: Text Overlap Fixed Document..." -ForegroundColor DarkGray
+$overlapFixedFile = Join-Path $canvasDir "synthetic-text-overlap-fixed.json"
+$resOverlapFixed = & $verifierScript -DocumentPath $overlapFixedFile -Mode Mock
+if ($resOverlapFixed.deterministicStatus -ne "PASS") {
+    throw ("FAIL Case 8: Expected deterministicStatus 'PASS', got '{0}'" -f $resOverlapFixed.deterministicStatus)
+}
+if ($resOverlapFixed.summary.p1Blockers -ne 0 -or $resOverlapFixed.summary.p2Majors -ne 0) {
+    throw ("FAIL Case 8: Expected 0 P1/P2 defects on fixed fixture, got P1={0}, P2={1}" -f $resOverlapFixed.summary.p1Blockers, $resOverlapFixed.summary.p2Majors)
+}
+Write-Host "     PASS: Text overlap fixed fixture passed with 0 P1/P2 defects." -ForegroundColor Green
+
+Write-Host "PASS: All 8 automated verifier test cases verified with zero false PASS." -ForegroundColor Green

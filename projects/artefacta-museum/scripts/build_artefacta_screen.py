@@ -506,7 +506,7 @@ def build_artefacta_screen():
                 "strokeWeight": 1,
                 "layout": "vertical",
                 "gap": 4,
-                "padding": [10, 12, 10, 12],
+                "padding": [8, 10, 8, 10],
                 "sizingH": "fill",
                 "sizingV": "hug",
             }
@@ -515,13 +515,13 @@ def build_artefacta_screen():
             node_type="text",
             name="Mesh_Status_Title",
             parent=telemetry_box,
-            props={"characters": "Vitrine Mesh: Online", "fontFamily": "Inter", "fontSize": 11, "fontStyle": "Bold", "fill": "#047857"}
+            props={"characters": "Vitrine Mesh: Online [SIMULATED]", "fontFamily": "Inter", "fontSize": 11, "fontStyle": "Bold", "fill": "#047857"}
         )
         client.create_node(
             node_type="text",
             name="Mesh_Status_Sub",
             parent=telemetry_box,
-            props={"characters": "84 Sensors Sync • 0.2s latency", "fontFamily": "JetBrains Mono", "fontSize": 11, "fill": "#475569"}
+            props={"characters": "84 Sensors [DEMO] • 0.2s cycle", "fontFamily": "JetBrains Mono", "fontSize": 11, "fill": "#475569"}
         )
 
         time.sleep(0.4)
@@ -782,7 +782,7 @@ def build_artefacta_screen():
                 "fontSize": 26,
                 "fontStyle": "Bold",
                 "fill": "#0F172A",
-                "lineHeight": 1.15,
+                "lineHeight": "Auto",
             }
         )
 
@@ -874,19 +874,68 @@ def build_artefacta_screen():
             props={"characters": "ARCHIVAL VISUAL DOCUMENTATION", "fontFamily": "Inter", "fontSize": 11, "fontStyle": "Bold", "fill": "#64748B"}
         )
 
-        # Embedded linked instance of Media/Archival_Vector_Plate_Master
-        client.run_command("instance.create", {"component": PLATE_MASTER, "parent": plate_card})
+        # Dedicated Plate Media Container frame to support media replacement without breaking auto layout
+        plate_media_container = client.create_node(
+            node_type="frame",
+            name="Plate_Media_Container",
+            parent=plate_card,
+            props={
+                "layout": "vertical",
+                "mainAlign": "center",
+                "crossAlign": "center",
+                "fill": "#F8FAFC",
+                "cornerRadius": 4,
+                "sizingH": "fill",
+                "sizingV": "hug",
+                "clip": True,
+            }
+        )["id"]
+
+        # Embedded linked instance of Media/Archival_Vector_Plate_Master inside container
+        client.run_command("instance.create", {"component": PLATE_MASTER, "parent": plate_media_container})
+
+        # Dedicated Plate Caption Block with clean spacing and clear layout
+        caption_box = client.create_node(
+            node_type="frame",
+            name="Plate_Caption_Box",
+            parent=plate_card,
+            props={
+                "layout": "vertical",
+                "gap": 4,
+                "fill": "#F8FAFC",
+                "stroke": "#E2E8F0",
+                "strokeWeight": 1,
+                "cornerRadius": 4,
+                "padding": [8, 10, 8, 10],
+                "sizingH": "fill",
+                "sizingV": "hug",
+            }
+        )["id"]
 
         client.create_node(
             node_type="text",
-            name="Plate_Caption",
-            parent=plate_card,
+            name="Plate_Caption_Heading",
+            parent=caption_box,
             props={
-                "characters": "Plate VII: Obverse View • 8K Multispectral Imaging\nMuseum Heritage Register • Sealed Accession 1928",
+                "characters": "Plate VII: Obverse View • 8K Multispectral",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontStyle": "Bold",
+                "fill": "#1E293B",
+                "lineHeight": "Auto",
+            }
+        )
+
+        client.create_node(
+            node_type="text",
+            name="Plate_Caption_Sub",
+            parent=caption_box,
+            props={
+                "characters": "Heritage Archive • Accession 1928 [DEMO]",
                 "fontFamily": "Inter",
                 "fontSize": 11,
                 "fill": "#64748B",
-                "lineHeight": 1.4,
+                "lineHeight": "Auto",
             }
         )
 
@@ -976,14 +1025,14 @@ def build_artefacta_screen():
             node_type="text",
             name="Climate_Title",
             parent=cl_hdr,
-            props={"characters": "MICROCLIMATE TELEMETRY (VITRINE VG-04 • GALLERY III)", "fontFamily": "Inter", "fontSize": 11, "fontStyle": "Bold", "fill": "#64748B"}
+            props={"characters": "MICROCLIMATE TELEMETRY (VITRINE VG-04 • GALLERY III) [SIMULATED]", "fontFamily": "Inter", "fontSize": 11, "fontStyle": "Bold", "fill": "#64748B"}
         )
 
         client.create_node(
             node_type="text",
             name="Stream_Status",
             parent=cl_hdr,
-            props={"characters": "● Live Sensor Stream (0.2s refresh) • Nominal", "fontFamily": "JetBrains Mono", "fontSize": 11, "fill": "#047857"}
+            props={"characters": "● SIMULATED SENSOR STREAM (Demo 0.2s cycle) • Nominal", "fontFamily": "JetBrains Mono", "fontSize": 11, "fill": "#047857"}
         )
 
         # 4 Climate Gauges Row using linked instances of Meter/Climate_Gauge_Master

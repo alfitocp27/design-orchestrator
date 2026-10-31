@@ -1,0 +1,79 @@
+{
+  "documentId": "DOC-SYNTHETIC-FIXED-TEXT-OVERLAP",
+  "documentName": "Synthetic Text Overlap Fixed Document",
+  "version": "2.2.0",
+  "pages": [
+    {
+      "id": "page-04",
+      "name": "04_Screens",
+      "children": [
+        {
+          "id": "screen-viewport-01",
+          "name": "Screen_Curatorial_Dossier",
+          "type": "FRAME",
+          "role": "layout_viewport",
+          "width": 1440,
+          "height": 900,
+          "children": [
+            {
+              "id": "card-archival-documentation",
+              "name": "Archival_Plate_Card",
+              "type": "FRAME",
+              "role": "layout_card",
+              "x": 420,
+              "y": 120,
+              "width": 330,
+              "height": 380,
+              "backgroundColor": "#FFFFFF",
+              "padding": { "top": 16, "right": 16, "bottom": 16, "left": 16 },
+              "children": [
+                {
+                  "id": "plate-media-vector",
+                  "name": "Media/Archival_Vector_Plate_Master",
+                  "type": "INSTANCE",
+                  "mainComponentId": "comp-plate-vector",
+                  "x": 16,
+                  "y": 48,
+                  "width": 298,
+                  "height": 180
+                },
+                {
+                  "id": "plate-caption-clean",
+                  "name": "Plate_Caption",
+                  "type": "TEXT",
+                  "text": "Plate VII: Obverse View • 8K Multispectral Imaging\nMuseum Heritage Register • Sealed Accession 1928",
+                  "characters": "Plate VII: Obverse View • 8K Multispectral Imaging\nMuseum Heritage Register • Sealed Accession 1928",
+                  "fontSize": 11,
+                  "fontWeight": 400,
+                  "lineHeight": "Auto",
+                  "x": 16,
+                  "y": 236,
+                  "width": 298,
+                  "height": 32.0,
+                  "color": "#64748B",
+                  "backgroundColor": "#FFFFFF"
+                },
+                {
+                  "id": "plate-meta-footnote",
+                  "name": "Plate_Meta_Footnote",
+                  "type": "TEXT",
+                  "text": "Registration Index: G-04 / Class A Conservation Priority",
+                  "characters": "Registration Index: G-04 / Class A Conservation Priority",
+                  "fontSize": 11,
+                  "fontWeight": 400,
+                  "lineHeight": "Auto",
+                  "x": 16,
+                  "y": 274,
+                  "width": 298,
+                  "height": 18.0,
+                  "color": "#64748B",
+                  "backgroundColor": "#FFFFFF"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
