@@ -7,81 +7,92 @@
 
 ## 1. Current Project State
 
-- **Current Version**: `v2.1.1` (Clean-Install Verification & Bootstrap Hardening)
+- **Current Version**: `v2.2-dev` (Final Visual Quality Remediation & Pilot Verification Complete: Artefacta Collection Catalog & Dossier)
 - **Repository**: `https://github.com/alfitocp27/design-orchestrator.git`
-- **Active Branch**: `main`
-- **Readiness Status**: `TECHNICAL_RUNTIME_PASS / CLEAN_INSTALL_VERIFIED / MERGED_TO_MAIN`
+- **Active Branch**: `feat/orchestrator-v2.2`
+- **Readiness Status**: `REMEDIATION_COMPLETE / 13_OF_13_TESTS_PASS / VQA_541_CHECKS_PASS / ZERO_P1_P2`
 - **Last Sync**: 2026-10-31
 
 ---
 
-## 2. Clean-Install Verification & Milestones (2026-10-31)
+## 2. Final Visual Quality Remediation Milestones (2026-10-31)
 
-1. **Clean Installation & Environment Audit**:
-   - Performed clean-install verification on Windows 11 with fresh Antigravity 2.0.
-   - Core Mode verified 100% offline with zero external dependencies.
-   - All 5 offline tests (`test-manifest.ps1`, `test-mock-orchestration.ps1`, `test-no-secrets.ps1`, `test-skill-integrity.ps1`, `test-templates.ps1`) pass.
-   - Integration test `test-figcraft-live.ps1` upgraded and passes with real Stdio JSON-RPC communication proof.
+1. **Root-Cause Remediation of FigCraft Sub-Pixel Text Collapse**:
+   - Identified the root cause of the vertical text collision in Artefacta's `Artifact_Dossier_Title` and `Plate_Caption`:
+     FigCraft MCP interprets unitless floating-point values for `lineHeight` (such as `1.15` and `1.4`) as **literal pixels** (`1.15px` and `1.4px`), rather than CSS line-height multipliers.
+     This caused the 26px heading to have an internal bounding box height of `1.0px` and the 11px multiline caption to have `2.0px`, causing severe visual glyph collision with downstream siblings.
+   - Refactored `projects/artefacta-museum/scripts/build_artefacta_screen.py`:
+     * Changed `lineHeight` to `"Auto"`, immediately expanding the title bounding box to `34.0px` and the subtitle to `21.0px` with proper typography metrics.
+     * Restructured `Archival_Plate_Card` into an isolated `Plate_Media_Container` frame (`clip: True`) and a framed `Plate_Caption_Box` with discrete title and subtitle layers, eliminating text collisions and supporting clean media replacement.
+     * Standardized all synthetic sensor and mesh telemetry to explicit `[SIMULATED]` and `[DEMO]` annotations, upholding data integrity.
 
-2. **Full Mode Dependencies Setup & Runtime Proof**:
-   - **FigCraft MCP**: Status `[CONNECTED]` & `[VERIFIED]`.
-     - Binary detected at `%LOCALAPPDATA%\Programs\ArtCraft\FigCraft\figcraft-cli.exe`.
-     - Active GUI application verified (PID: 32880).
-     - Stdio JSON-RPC initialization handshake passed. Registered in `~/.gemini/config/mcp_config.json`.
-     - Read-only tool call proof: `list_commands(filter: "align")` executed with 15 commands returned.
-   - **CodebaseMemoryMCP**: Status `[VERIFIED]`.
-     - Official npm package `codebase-memory-mcp` registered in `~/.gemini/config/mcp_config.json`.
-     - Stdio JSON-RPC initialization handshake verified via `npx -y codebase-memory-mcp`.
-     - Read-only tool call proof: `list_projects` executed successfully returning graph state.
-   - **Anti-Slop**: Status `[VERIFIED]`.
-     - Installed via official installer `npx -y antislop-ai --mode during`.
-     - Global preference active in `%APPDATA%\antislop\settings.json` (`{"mode":"during"}`).
-     - Workspace skill discovered at `.agents\skills\antislop\SKILL.md`.
-   - **UI/UX Pro Max**: Status `[INSTALLED]` / `[VERIFIED]`.
-     - Real Python 3.12.10 installed via winget (`Python.Python.3.12`).
-     - Cloned from `nextlevelbuilder/ui-ux-pro-max-skill` to `.agents\skills\ui-ux-pro-max\`.
-     - Verified search CLI execution: `python search.py "enterprise operational table" --design-system --json` returned valid design system JSON.
-   - **Impeccable**: Status `[INSTALLED]`.
-     - Cloned from `pbakaus/impeccable` to `.agents\skills\impeccable\`.
-     - Craft floor guidance and playbooks discovered and verified.
+2. **Automated VQA 2.0 Engine Upgrades (`scripts/verify-canvas.ps1`)**:
+   - Added **CHECK 2B (Sibling Collision & Bounding-Box Overlap Math)**:
+     Calculates 2D bounding-box intersection areas between non-absolute siblings in same container. Reports P1 blockers whenever horizontal overlap $\ge 10\text{px}$ and vertical overlap $\ge 1\text{px}$.
+   - Added **CHECK 3B (Collapsed Text Height & Line-Height Integrity)**:
+     * Line-Height Multiplier Integrity: Flags any numeric `lineHeight` between $0$ and $3.0$ as a P1 blocker, catching FigCraft literal sub-pixel parsing before canvas export.
+     * Collapsed Text Height: Verifies that text bounding boxes satisfy $H \ge 0.75 \times \text{fontSize} \times \text{lineCount}$. Flags any sub-pixel collapsed boxes as P1 blockers.
+   - Run against the remediated Artefacta screen tree (`projects/artefacta-museum/exports/artefacta-screen-tree.json`):
+     * **541 checks evaluated**: 541 PASS, 0 FAIL, 0 UNVERIFIABLE, **0 P1/P2 defects**.
 
-3. **Portable Bootstrap & Diagnostics Hardening**:
-   - Fixed Windows 11 App Execution Alias bug in `doctor.ps1` and `bootstrap.ps1` by scanning real Python directories and validating exit codes.
-   - Added automated dynamic CodebaseMemoryMCP detection, registration, and Stdio handshake in `bootstrap.ps1` and `doctor.ps1`.
-   - Added real Stdio MCP JSON-RPC protocol handshake verification into `doctor.ps1`, `bootstrap.ps1`, `test-figcraft-live.ps1`, and `test-codebase-memory-live.ps1`.
-   - Added `Backup-And-Register-McpServer` in `bootstrap.ps1` ensuring zero unbacked Antigravity configuration modifications.
-   - Hardened `test-no-secrets.ps1` to prefer git-tracked files (`git ls-files`) and ignore companion directories.
-   - Added `.agents/skills/{ui-ux-pro-max,impeccable,antislop,anti-slop}` to `.gitignore` to prevent vendoring third-party assets into this open-source repository while enabling native local agent discovery.
+3. **Synthetic Defect Regression Testing Suite**:
+   - Authored `tests/fixtures/canvas/synthetic-text-overlap-defect.json`: Reproduces the exact text collapse defect (`lineHeight: 1.4, height: 2.0`).
+   - Authored `tests/fixtures/canvas/synthetic-text-overlap-fixed.json`: Validates clean separation and line-height resolution.
+   - Updated `tests/offline/test-verify-canvas.ps1`: Expanded from 6 to 8 test cases, strictly asserting that the defect fixture is caught as `FAIL` with concrete evidence while the fixed fixture produces `PASS` with zero false passes.
+
+4. **Multi-Viewport Adaptation Testing (`scripts/test_viewports.py`)**:
+   - Tested live canvas adaptation across 3 viewport resolutions:
+     * **1440x900 (Baseline Desktop)**: Root 1440px | Taxonomy Sidebar 250px | Catalog List 350px | Curatorial Dossier 840px. 100% proportional visual hierarchy.
+     * **1280x800 (Medium Desktop)**: Root 1280px. Columns retain fixed min allocations (1440px total), causing 160px horizontal overflow without responsive breakpoints.
+     * **1024x768 (Compact Desktop)**: Root 1024px. Columns retain 1440px allocation, requiring off-canvas sidebar drawer or 2-column master-detail toggle.
+   - Exported unselected screenshot proofs to `projects/artefacta-museum/exports/artefacta-screen-{1280x800,1024x768}.png`.
 
 ---
 
-## 3. Immediate Next Steps on Fresh / Home PC
+## 3. Test Suite & Health Verification
 
-1. **Clone repository**:
-   ```powershell
-   git clone https://github.com/alfitocp27/design-orchestrator.git
-   cd design-orchestrator
-   ```
-2. **Run bootstrapper**:
-   ```powershell
-   # Core Mode (Zero external tools):
-   .\scripts\bootstrap.ps1 -Mode Core
-
-   # Or Full Production Mode (Audits and configures companions):
-   .\scripts\bootstrap.ps1 -Mode Full
-   ```
-3. **Run doctor diagnostic**:
-   ```powershell
-   .\scripts\doctor.ps1
-   ```
-4. **Run test suite**:
-   ```powershell
-   .\scripts\test-runner.ps1 -IncludeIntegration
-   ```
+All 13 tests pass deterministically (8 offline + 5 live integration):
+```
+==========================================================
+ TEST RUN SUMMARY (scripts/test-runner.ps1 -IncludeIntegration)
+ Total: 13 | Passed: 13 | Failed: 0 | Skipped: 0
+==========================================================
+  [PASS] test-creative-direction.ps1          (4 synthetic domains + defect detection)
+  [PASS] test-encoding-hygiene.ps1            (Clean UTF-8, zero mojibake)
+  [PASS] test-manifest.ps1                    (orchestrator + needmcp manifests valid)
+  [PASS] test-mock-orchestration.ps1          (Offline mock pipeline verified)
+  [PASS] test-no-secrets.ps1                  (Zero personal paths or credentials)
+  [PASS] test-skill-integrity.ps1             (6 reference runbooks present)
+  [PASS] test-templates.ps1                   (Project blueprint verified)
+  [PASS] test-verify-canvas.ps1               (8 synthetic fixtures: alignment, overflow, contrast, fake-component, text-overlap)
+  [PASS] test-codebase-memory-live.ps1        (Live Stdio protocol handshake)
+  [PASS] test-engine-reliability.ps1          (8 comprehensive reliability & fault tolerance tests)
+  [PASS] test-figcraft-live.ps1               (Live Stdio protocol handshake)
+  [PASS] test-live-attached-canvas.ps1        (Live FigCraft Desktop Attached Mode & Dual-Mode Architecture)
+  [PASS] test-native-design-system-live.ps1   (Live FigCraft 8-point stress test harness)
+```
+- **Doctor Diagnostic**: Core Mode `[PASS]`, Full Mode `[CONNECTED]`.
+- **CodebaseMemoryMCP Graph**: 1,668 nodes, 2,399 edges (up-to-date full index).
 
 ---
 
-## 4. Known Considerations & Future Backlog
+## 4. Final Review & Release Preparation
 
-- **Python 3.x Prerequisite**: To enable UI/UX Pro Max on a clean Windows 11 PC, install official Python (`winget install --id Python.Python.3.12 -e`) to bypass the Windows Store alias.
-- **Antigravity MCP Registration**: Once approved by the user, register FigCraft in `~/.gemini/config/mcp_config.json` using `bootstrap.ps1 -Mode Full -Force` (with automatic backup).
+1. The Visual Quality Remediation is complete and verified on FigCraft Desktop (Port 7979).
+2. All offline and live integration tests pass (13/13).
+3. Changes committed and pushed to `feat/orchestrator-v2.2`.
+4. Work is halted for user review before merging to `main` or tagging releases.
+
+---
+
+## 5. Post-v2.2 Development Backlog (v2.3+)
+
+The following architectural enhancements are intentionally deferred to the post-v2.2 backlog:
+1. **Responsive Viewport Breakpoints**:
+   - **1280×800 (Medium Desktop)**: Off-canvas taxonomy drawer or top toolbar filter toggle to reclaim 250px.
+   - **1024×768 (Compact Desktop / Tablet)**: Two-column master-detail layout with tab switching.
+   - **390×844 (Mobile Device)**: Single-column stacked layout with bottom navigation drawer.
+2. **NeedMCP Live Production Activation**:
+   - Status remains `UNVERIFIED_RUNTIME`. Requires active API key authentication and live Stdio/HTTP handshake testing before moving to `VERIFIED`.
+3. **Automated Vector-to-Raster Asset Pipeline**:
+   - Automated conversion and optimization of high-resolution photographic archival media.

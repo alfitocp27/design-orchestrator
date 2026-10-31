@@ -1,0 +1,85 @@
+{
+  "pilotId": "PILOT-CRYOVAULT-2026-v2.2",
+  "projectSlug": "cryovault-coldchain",
+  "domain": "Biomedical Cold-Chain Logistics & Cryogenic Telemetry",
+  "productName": "CryoVault BioLogistics Monitor",
+  "readinessStatus": "PREPARED_FOR_EXECUTION",
+  "scope": "End-to-End Orchestrator v2.2 Controlled Pilot Validation",
+  "metadata": {
+    "version": "2.2.0",
+    "createdAt": "2026-10-31T18:50:00Z",
+    "classification": "Synthetic Benchmark Specification",
+    "governance": "Human-in-the-Loop Gating Mandatory"
+  },
+  "businessContext": {
+    "systemGoal": "Real-time temperature excursion monitoring, IoT dry-ice shipment telemetry, and regulatory 21 CFR Part 11 chain-of-custody compliance for mRNA vaccines and biological specimens.",
+    "primaryUserRoles": [
+      {
+        "role": "Logistics Dispatcher",
+        "fluency": "High",
+        "environment": "Dual-monitor ops desk under fluorescent lighting",
+        "primaryWorkflow": "Fleet-wide excursion triage, courier rerouting, temperature alert verification"
+      },
+      {
+        "role": "Field Cryo Courier",
+        "fluency": "Moderate",
+        "environment": "Mobile in transit, direct sunlight, sterile dock receiving",
+        "primaryWorkflow": "QR shipment handoff, dry-ice seal inspection, sensor check-in"
+      }
+    ],
+    "mandatoryDataFields": [
+      "Shipment ID (UUID)",
+      "Specimen Category (mRNA, Stem Cells, Plasma)",
+      "Target Temp Zone (-80°C Ultra-Low, -20°C Frozen, +4°C Chilled)",
+      "Live Internal Sensor (°C)",
+      "Battery Reserve (%)",
+      "GPS Geofence Status",
+      "Tamper Seal Status",
+      "Custodian Sign-off Timestamp"
+    ]
+  },
+  "acceptanceCriteria": {
+    "stage1_Discovery": {
+      "mode": "Mode 2 (PRD-Driven)",
+      "rule": "Zero redundant questions asked; requirements mapped into REQUIREMENTS_MAP.md"
+    },
+    "stage2_CodebaseAnalysis": {
+      "tool": "codebase-memory-mcp",
+      "rule": "Check domain enums, status workflows, and token architectures"
+    },
+    "stage3_VisualResearch": {
+      "tool": "ui-ux-pro-max",
+      "rule": "Extract minimum 2 distinct palette candidates and 2 verified font pairings"
+    },
+    "stage4_CreativeDirection": {
+      "rule": "Formulate 2 structurally divergent concepts across all 10 mandatory dimensions",
+      "wcagFloor": 4.5,
+      "gate": "🛑 CONCEPT APPROVAL GATE: Mandatory user review and explicit sign-off in chat. Auto-approval prohibited."
+    },
+    "stage5_NativeDesignSystem": {
+      "engine": "scripts/figcraft_engine.py",
+      "recipes": "All 7 native execution recipes (3-tier tokens, icon vectors, master atoms, variant sets, linked instances, auto-layout, composite pattern)",
+      "stressTesting": "8-Point Component Stress Testing Protocol (All 8 tests must achieve PASS with zero false claims)"
+    },
+    "stage6_DesignSystemApprovalGate": {
+      "gate": "🛑 DESIGN SYSTEM APPROVAL GATE: Mandatory user review of unselected component sheet screenshot. Auto-approval prohibited."
+    },
+    "stage7_ApplicationScreens": {
+      "viewports": [
+        { "name": "Desktop Ops Console", "width": 1440, "height": 900 },
+        { "name": "Courier Mobile Scan", "width": 390, "height": 844 }
+      ],
+      "componentIntegrity": "100% of interactive and repeated controls must be INSTANCE nodes. Layout containers must be FRAME with Auto Layout.",
+      "lockedColumns": "|delta_x| <= 1.0px across table header and all data rows",
+      "zeroDataLoss": "Text wrapping as default; truncation only permitted on secondary hashes/paths"
+    },
+    "stage8_AutomatedQA": {
+      "verifier": "scripts/verify-canvas.ps1",
+      "requiredStatus": "PASS (P1: 0, P2: 0, Incomplete: 0)",
+      "unselectedScreenshot": "Export unselected canvas screenshot to exports/"
+    },
+    "stage9_VisualReview": {
+      "humanSignOff": "Subjective craft and aesthetic hierarchy evaluated via Tier 2 Multimodal Review. Deterministic PASS does not bypass Human Sign-Off."
+    }
+  }
+}

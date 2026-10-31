@@ -1,0 +1,44 @@
+{
+  "documentId": "DOC-SYNTHETIC-DEFECT-CONTRAST",
+  "documentName": "Synthetic WCAG Contrast Failure Document",
+  "version": "2.2.0",
+  "pages": [
+    {
+      "id": "page-04",
+      "name": "04_Screens",
+      "children": [
+        {
+          "id": "screen-viewport-01",
+          "name": "Screen_Dashboard",
+          "type": "FRAME",
+          "role": "layout_viewport",
+          "width": 1440,
+          "height": 900,
+          "children": [
+            {
+              "id": "card-low-contrast",
+              "name": "Card_Alert",
+              "type": "FRAME",
+              "role": "layout_card",
+              "width": 400,
+              "height": 200,
+              "backgroundColor": "#FFFFFF",
+              "children": [
+                {
+                  "id": "text-unreadable-body",
+                  "name": "Text_Warning_Description",
+                  "type": "TEXT",
+                  "text": "Critical operational deviation observed on sector 4.",
+                  "fontSize": 14,
+                  "fontWeight": 400,
+                  "color": "#94A3B8",
+                  "backgroundColor": "#FFFFFF"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

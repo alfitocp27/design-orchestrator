@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1440, height=900, initial-scale=1.0">
+  <title>Artefacta -- Concept 3: Conservator Laboratory</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;600&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1440px;
+      height: 900px;
+      overflow: hidden;
+      background: #0B0F17;
+      color: #F8FAFC;
+      font-family: 'Inter', -apple-system, sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Studio Header */
+    header {
+      height: 54px;
+      background: #0F172A;
+      border-bottom: 1px solid #334155;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: #0284C7;
+      letter-spacing: -0.01em;
+    }
+    .telemetry-badge {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 10px;
+      background: #064E3B;
+      color: #34D399;
+      border: 1px solid #059669;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+    .live-status-pill {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 11px;
+      color: #94A3B8;
+      background: #1E293B;
+      padding: 4px 12px;
+      border-radius: 4px;
+      border: 1px solid #334155;
+    }
+
+    /* Main Multi-Panel Cockpit */
+    .cockpit-grid {
+      display: grid;
+      grid-template-columns: 260px 1fr 320px;
+      flex: 1;
+      height: calc(900px - 54px);
+    }
+
+    /* Left Panel: Storage Hierarchy */
+    .panel-storage {
+      background: #0F172A;
+      border-right: 1px solid #334155;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow-y: auto;
+    }
+    .panel-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: #94A3B8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .rack-card {
+      background: #1E293B;
+      border: 1px solid #334155;
+      border-radius: 4px;
+      padding: 10px 12px;
+      cursor: pointer;
+      margin-bottom: 6px;
+    }
+    .rack-card.active {
+      border-left: 3px solid #0284C7;
+      background: #172554;
+    }
+    .rack-id {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      color: #F8FAFC;
+    }
+    .rack-detail {
+      font-size: 11px;
+      color: #94A3B8;
+      margin-top: 2px;
+    }
+    .rack-temp-tag {
+      font-size: 10px;
+      color: #34D399;
+      margin-top: 4px;
+      display: inline-block;
+    }
+
+    /* Center Stage: Multispectral Inspection Stage & Density Table */
+    .panel-stage {
+      background: #0B0F17;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow-y: auto;
+    }
+    .stage-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #0F172A;
+      border: 1px solid #334155;
+      padding: 10px 16px;
+      border-radius: 4px;
+    }
+    .specimen-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #F8FAFC;
+    }
+    .zoom-tool {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 11px;
+      color: #0284C7;
+      background: #1E293B;
+      padding: 3px 10px;
+      border-radius: 3px;
+    }
+
+    /* Multispectral Split View */
+    .split-inspection-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      height: 240px;
+    }
+    .spectral-view-box {
+      background: #1E293B;
+      border: 1px solid #334155;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    .spectral-label {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background: rgba(11, 15, 23, 0.85);
+      font-family: 'Roboto Mono', monospace;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 2px;
+      color: #F8FAFC;
+    }
+    .spectral-image-canvas {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Diagnostic Callout */
+    .diagnostic-callout {
+      background: #1E293B;
+      border: 1px solid #334155;
+      border-left: 3px solid #F59E0B;
+      border-radius: 4px;
+      padding: 12px 16px;
+      font-size: 12px;
+      line-height: 1.5;
+      color: #CBD5E1;
+    }
+
+    /* Compact Operational Table (32px Row Height) */
+    .table-container {
+      background: #0F172A;
+      border: 1px solid #334155;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .compact-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    .compact-table th {
+      background: #1E293B;
+      padding: 8px 12px;
+      text-align: left;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      color: #94A3B8;
+      border-bottom: 1px solid #334155;
+    }
+    .compact-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #1E293B;
+      font-family: 'Roboto Mono', monospace;
+      color: #E2E8F0;
+    }
+    .pill-health-nominal {
+      background: #064E3B;
+      color: #34D399;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 10px;
+      font-weight: 600;
+    }
+    .pill-health-review {
+      background: #78350F;
+      color: #FCD34D;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    /* Right Panel: Environmental Telemetry & Treatment Queue */
+    .panel-telemetry {
+      background: #0F172A;
+      border-left: 1px solid #334155;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow-y: auto;
+    }
+    .telemetry-card {
+      background: #1E293B;
+      border: 1px solid #334155;
+      border-radius: 4px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .telemetry-value-large {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 24px;
+      font-weight: 700;
+      color: #10B981;
+    }
+    .sparkline-svg {
+      width: 100%;
+      height: 48px;
+      margin-top: 4px;
+    }
+    .queue-item {
+      background: #1E293B;
+      border: 1px solid #334155;
+      border-radius: 4px;
+      padding: 10px;
+      font-size: 11px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Studio Header -->
+  <header>
+    <div class="brand-group">
+      <span class="brand-title">ARTEFACTA // CONSERVATION OS</span>
+      <span class="telemetry-badge">TELEMETRY ENGINE ONLINE</span>
+    </div>
+    <div class="live-status-pill">
+      LIVE SENSORS: VAULT 03 [20.4°C • 48.2% RH • 0.00 LUX]
+    </div>
+  </header>
+
+  <!-- Cockpit Grid -->
+  <div class="cockpit-grid">
+
+    <!-- Left Panel: Storage Location Tree -->
+    <aside class="panel-storage">
+      <div class="panel-title">Storage Locations (Vault Clusters)</div>
+      
+      <div class="rack-card active">
+        <div class="rack-id">Vault 03 / Bay B / Shelf 04</div>
+        <div class="rack-detail">42 Objects • Classical Earthenware</div>
+        <div class="rack-temp-tag">● 20.4°C / 48.2% RH (Nominal)</div>
+      </div>
+
+      <div class="rack-card">
+        <div class="rack-id">Vault 03 / Bay B / Shelf 05</div>
+        <div class="rack-detail">38 Objects • Greek Bronze Alloys</div>
+        <div class="rack-temp-tag">● 20.3°C / 42.1% RH (Nominal)</div>
+      </div>
+
+      <div class="rack-card">
+        <div class="rack-id">Vault 01 / Bay A / Shelf 01</div>
+        <div class="rack-detail">14 Objects • Gold Repoussé & Silver</div>
+        <div class="rack-temp-tag">● 19.8°C / 38.0% RH (Nominal)</div>
+      </div>
+
+      <div class="rack-card">
+        <div class="rack-id">Gallery 04 / Vitrine 12-B</div>
+        <div class="rack-detail">1 Object (Amphora ART-1884-092-B)</div>
+        <div class="rack-temp-tag">● Vitrine Climate Controlled</div>
+      </div>
+    </aside>
+
+    <!-- Center Stage: Multispectral & Inspection -->
+    <section class="panel-stage">
+      <div class="stage-header">
+        <span class="specimen-title">SPECIMEN INSPECTION: ART-1884-092-B [Attic Black-Figure Amphora]</span>
+        <span class="zoom-tool">Multispectral Lens: 24×</span>
+      </div>
+
+      <!-- Split Multispectral Image View -->
+      <div class="split-inspection-grid">
+        <div class="spectral-view-box">
+          <span class="spectral-label">BAND A: 550nm VISIBLE SPECTRUM</span>
+          <div class="spectral-image-canvas">
+            <!-- SVG Amphora in Visible Spectrum -->
+            <svg width="120" height="160" viewBox="0 0 34 42" fill="none">
+              <path d="M11 4C11 4 13 2 17 2C21 2 23 4 23 4V7C23 7 28 9 29 16C30 22 28 32 23 36C21 38 19 39 17 39C15 39 13 38 11 36C6 32 4 22 5 16C6 9 11 7 11 7V4Z" fill="#C2410C" stroke="#7C2D12" stroke-width="1.2"/>
+              <rect x="13" y="14" width="8" height="14" fill="#0F172A"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="spectral-view-box">
+          <span class="spectral-label" style="color: #60A5FA;">BAND B: 365nm UV FLUORESCENCE (SURFACE INTEGRITY)</span>
+          <div class="spectral-image-canvas">
+            <!-- SVG Amphora in UV Spectrum with repair highlight -->
+            <svg width="120" height="160" viewBox="0 0 34 42" fill="none">
+              <path d="M11 4C11 4 13 2 17 2C21 2 23 4 23 4V7C23 7 28 9 29 16C30 22 28 32 23 36C21 38 19 39 17 39C15 39 13 38 11 36C6 32 4 22 5 16C6 9 11 7 11 7V4Z" fill="#1E1B4B" stroke="#4338CA" stroke-width="1.2"/>
+              <!-- Ancient repair pin highlight in fluorescent cyan -->
+              <circle cx="12" cy="18" r="4" fill="#06B6D4" stroke="#FFFFFF" stroke-width="1"/>
+              <text x="18" y="20" fill="#67E8F9" font-size="5" font-family="monospace">Pb-Clamp</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Diagnostic Callout -->
+      <div class="diagnostic-callout">
+        <strong style="color: #F8FAFC;">Spectroscopic Assessment:</strong> Ancient lead repair clamp on left handle juncture remains chemically stable with no active oxidation. Trace calcite encrustation near foot is inert. Cleaned surface shows no synthetic adhesive modern intrusion. Status: Display cleared.
+      </div>
+
+      <!-- High-Density Locked Column Table -->
+      <div class="table-container">
+        <table class="compact-table">
+          <thead>
+            <tr>
+              <th>ACCESSION</th>
+              <th>SPECIMEN NAME</th>
+              <th>MATERIAL</th>
+              <th>LOCATION</th>
+              <th>HEALTH</th>
+              <th>ACTION</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ART-1884-092-B</td>
+              <td style="font-family: 'Inter', sans-serif; font-weight: 600;">Attic Black-Figure Amphora</td>
+              <td>Terracotta</td>
+              <td>Vault 03 / Shelf 04</td>
+              <td><span class="pill-health-nominal">NOMINAL</span></td>
+              <td><span style="color: #0284C7; cursor: pointer;">Open File</span></td>
+            </tr>
+            <tr>
+              <td>ART-1891-014-C</td>
+              <td style="font-family: 'Inter', sans-serif; font-weight: 600;">Corinthian Bronze Helmet</td>
+              <td>Bronze Alloy</td>
+              <td>Vault 03 / Shelf 05</td>
+              <td><span class="pill-health-nominal">NOMINAL</span></td>
+              <td><span style="color: #0284C7; cursor: pointer;">Open File</span></td>
+            </tr>
+            <tr>
+              <td>ART-1904-008-A</td>
+              <td style="font-family: 'Inter', sans-serif; font-weight: 600;">Cycladic Marble Idol</td>
+              <td>Parian Marble</td>
+              <td>Lab Bench 02</td>
+              <td><span class="pill-health-review">REVIEW</span></td>
+              <td><span style="color: #F59E0B; cursor: pointer;">Triage</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Right Panel: Telemetry & Queue -->
+    <aside class="panel-telemetry">
+      <div class="panel-title">Environmental Telemetry</div>
+
+      <div class="telemetry-card">
+        <div style="font-size: 11px; color: #94A3B8;">Ambient Temp (24h Trend)</div>
+        <div class="telemetry-value-large">20.4°C <span style="font-size: 12px; color: #94A3B8;">(±0.2°C)</span></div>
+        <svg class="sparkline-svg" viewBox="0 0 100 30" fill="none">
+          <path d="M0 15 Q25 12 50 16 T100 14" stroke="#10B981" stroke-width="2"/>
+          <line x1="0" y1="5" x2="100" y2="5" stroke="#334155" stroke-dasharray="2 2"/>
+          <line x1="0" y1="25" x2="100" y2="25" stroke="#334155" stroke-dasharray="2 2"/>
+        </svg>
+      </div>
+
+      <div class="telemetry-card">
+        <div style="font-size: 11px; color: #94A3B8;">Relative Humidity (RH%)</div>
+        <div class="telemetry-value-large">48.2% <span style="font-size: 12px; color: #94A3B8;">(Nominal)</span></div>
+        <div style="font-size: 10px; color: #94A3B8; margin-top: 4px;">Target Band: 45.0%–55.0% • Zero Excursions</div>
+      </div>
+
+      <div class="panel-title" style="margin-top: 6px;">Conservation Queue</div>
+      <div class="queue-item">
+        <div style="font-weight: 600; color: #F59E0B;">ART-1904-008-A (Cycladic Idol)</div>
+        <div style="color: #94A3B8;">Mount inspection & structural stabilization</div>
+      </div>
+      <div class="queue-item">
+        <div style="font-weight: 600; color: #0284C7;">ART-1922-104-D (Gold Goblet)</div>
+        <div style="color: #94A3B8;">Micro-ultrasonic rinse & lacquer re-coat</div>
+      </div>
+    </aside>
+
+  </div>
+
+</body>
+</html>

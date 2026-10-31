@@ -1,0 +1,2098 @@
+﻿{
+    "verifierVersion":  "2.2.0",
+    "evaluatedAt":  "2026-10-31T20:22:39Z",
+    "targetMode":  "Mock",
+    "documentId":  "UNKNOWN_DOC",
+    "documentName":  "artefacta-screen-tree.json",
+    "deterministicStatus":  "PASS",
+    "summary":  {
+                    "totalChecks":  260,
+                    "passedChecks":  260,
+                    "failedChecks":  0,
+                    "unverifiableChecks":  0,
+                    "p1Blockers":  0,
+                    "p2Majors":  0,
+                    "p3Minors":  0
+                },
+    "geometryChecks":  [
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  620,
+                               "childId":  621,
+                               "effectiveLimit":  "1440px",
+                               "childRight":  "1440px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  620,
+                               "childId":  634,
+                               "effectiveLimit":  "1440px",
+                               "childRight":  "1440px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  621,
+                               "childId":  622,
+                               "effectiveLimit":  "1440px",
+                               "childRight":  "407px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  621,
+                               "childId":  626,
+                               "effectiveLimit":  "1440px",
+                               "childRight":  "965.5px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  621,
+                               "childId":  630,
+                               "effectiveLimit":  "1440px",
+                               "childRight":  "1416px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  622,
+                               "childId":  623,
+                               "effectiveLimit":  "383px",
+                               "childRight":  "130px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  622,
+                               "childId":  624,
+                               "effectiveLimit":  "383px",
+                               "childRight":  "147px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  622,
+                               "childId":  625,
+                               "effectiveLimit":  "383px",
+                               "childRight":  "383px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  626,
+                               "childId":  627,
+                               "effectiveLimit":  "460px",
+                               "childRight":  "69px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  626,
+                               "childId":  629,
+                               "effectiveLimit":  "460px",
+                               "childRight":  "369px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  627,
+                               "childId":  628,
+                               "effectiveLimit":  "54px",
+                               "childRight":  "36px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  630,
+                               "childId":  631,
+                               "effectiveLimit":  "352px",
+                               "childRight":  "179px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  630,
+                               "childId":  632,
+                               "effectiveLimit":  "352px",
+                               "childRight":  "352px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  632,
+                               "childId":  633,
+                               "effectiveLimit":  "157px",
+                               "childRight":  "143px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  634,
+                               "childId":  635,
+                               "effectiveLimit":  "1440px",
+                               "childRight":  "250px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  634,
+                               "childId":  686,
+                               "effectiveLimit":  "1440px",
+                               "childRight":  "600px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  634,
+                               "childId":  723,
+                               "effectiveLimit":  "1440px",
+                               "childRight":  "1440px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  635,
+                               "childId":  636,
+                               "effectiveLimit":  "250px",
+                               "childRight":  "155px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  635,
+                               "childId":  637,
+                               "effectiveLimit":  "250px",
+                               "childRight":  "237px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  635,
+                               "childId":  658,
+                               "effectiveLimit":  "250px",
+                               "childRight":  "237px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  635,
+                               "childId":  659,
+                               "effectiveLimit":  "250px",
+                               "childRight":  "117px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  635,
+                               "childId":  660,
+                               "effectiveLimit":  "250px",
+                               "childRight":  "237px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  635,
+                               "childId":  670,
+                               "effectiveLimit":  "250px",
+                               "childRight":  "237px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  635,
+                               "childId":  671,
+                               "effectiveLimit":  "250px",
+                               "childRight":  "149px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  635,
+                               "childId":  672,
+                               "effectiveLimit":  "250px",
+                               "childRight":  "237px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  635,
+                               "childId":  682,
+                               "effectiveLimit":  "250px",
+                               "childRight":  "237px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  635,
+                               "childId":  683,
+                               "effectiveLimit":  "250px",
+                               "childRight":  "237px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  637,
+                               "childId":  638,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "225px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  637,
+                               "childId":  642,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "225px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  637,
+                               "childId":  646,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "225px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  637,
+                               "childId":  650,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "225px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  637,
+                               "childId":  654,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "225px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  638,
+                               "childId":  639,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "166px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  638,
+                               "childId":  640,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "218px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  640,
+                               "childId":  641,
+                               "effectiveLimit":  "52px",
+                               "childRight":  "44px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  642,
+                               "childId":  643,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "175px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  642,
+                               "childId":  644,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "213px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  644,
+                               "childId":  645,
+                               "effectiveLimit":  "38px",
+                               "childRight":  "30px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  646,
+                               "childId":  647,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "161px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  646,
+                               "childId":  648,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "213px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  648,
+                               "childId":  649,
+                               "effectiveLimit":  "52px",
+                               "childRight":  "44px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  650,
+                               "childId":  651,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "183px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  650,
+                               "childId":  652,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "221px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  652,
+                               "childId":  653,
+                               "effectiveLimit":  "38px",
+                               "childRight":  "30px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  654,
+                               "childId":  655,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "168px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  654,
+                               "childId":  656,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "213px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  656,
+                               "childId":  657,
+                               "effectiveLimit":  "38px",
+                               "childRight":  "30px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  660,
+                               "childId":  661,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "225px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  660,
+                               "childId":  664,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "225px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  660,
+                               "childId":  667,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "225px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  661,
+                               "childId":  662,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "137px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  661,
+                               "childId":  663,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "225px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  664,
+                               "childId":  665,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "128px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  664,
+                               "childId":  666,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "225px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  667,
+                               "childId":  668,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "134px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  667,
+                               "childId":  669,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "225px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  672,
+                               "childId":  673,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "225px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  672,
+                               "childId":  676,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "225px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  672,
+                               "childId":  679,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "225px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  673,
+                               "childId":  674,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "124px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  673,
+                               "childId":  675,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "225px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  676,
+                               "childId":  677,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "113px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  676,
+                               "childId":  678,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "225px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  679,
+                               "childId":  680,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "88px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  679,
+                               "childId":  681,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "225px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  683,
+                               "childId":  684,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "123px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  683,
+                               "childId":  685,
+                               "effectiveLimit":  "225px",
+                               "childRight":  "211px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  686,
+                               "childId":  687,
+                               "effectiveLimit":  "350px",
+                               "childRight":  "337px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  686,
+                               "childId":  690,
+                               "effectiveLimit":  "350px",
+                               "childRight":  "337px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  686,
+                               "childId":  694,
+                               "effectiveLimit":  "350px",
+                               "childRight":  "337px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  687,
+                               "childId":  688,
+                               "effectiveLimit":  "325px",
+                               "childRight":  "104px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  687,
+                               "childId":  689,
+                               "effectiveLimit":  "325px",
+                               "childRight":  "325px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  690,
+                               "childId":  691,
+                               "effectiveLimit":  "325px",
+                               "childRight":  "160px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  690,
+                               "childId":  692,
+                               "effectiveLimit":  "325px",
+                               "childRight":  "312px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  692,
+                               "childId":  693,
+                               "effectiveLimit":  "54px",
+                               "childRight":  "37px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  694,
+                               "childId":  695,
+                               "effectiveLimit":  "325px",
+                               "childRight":  "325px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  694,
+                               "childId":  702,
+                               "effectiveLimit":  "325px",
+                               "childRight":  "325px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  694,
+                               "childId":  709,
+                               "effectiveLimit":  "325px",
+                               "childRight":  "325px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  694,
+                               "childId":  716,
+                               "effectiveLimit":  "325px",
+                               "childRight":  "325px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  695,
+                               "childId":  696,
+                               "effectiveLimit":  "325px",
+                               "childRight":  "90px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  695,
+                               "childId":  697,
+                               "effectiveLimit":  "325px",
+                               "childRight":  "310px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  695,
+                               "childId":  698,
+                               "effectiveLimit":  "325px",
+                               "childRight":  "310px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  695,
+                               "childId":  699,
+                               "effectiveLimit":  "325px",
+                               "childRight":  "310px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  699,
+                               "childId":  700,
+                               "effectiveLimit":  "293px",
+                               "childRight":  "96px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  700,
+                               "childId":  701,
+                               "effectiveLimit":  "96px",
+                               "childRight":  "85px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  702,
+                               "childId":  703,
+                               "effectiveLimit":  "325px",
+                               "childRight":  "88px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  702,
+                               "childId":  704,
+                               "effectiveLimit":  "325px",
+                               "childRight":  "310px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  702,
+                               "childId":  705,
+                               "effectiveLimit":  "325px",
+                               "childRight":  "310px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  702,
+                               "childId":  706,
+                               "effectiveLimit":  "325px",
+                               "childRight":  "310px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  706,
+                               "childId":  707,
+                               "effectiveLimit":  "295px",
+                               "childRight":  "113px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  707,
+                               "childId":  708,
+                               "effectiveLimit":  "113px",
+                               "childRight":  "102px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  709,
+                               "childId":  710,
+                               "effectiveLimit":  "325px",
+                               "childRight":  "88px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  709,
+                               "childId":  711,
+                               "effectiveLimit":  "325px",
+                               "childRight":  "310px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  709,
+                               "childId":  712,
+                               "effectiveLimit":  "325px",
+                               "childRight":  "310px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  709,
+                               "childId":  713,
+                               "effectiveLimit":  "325px",
+                               "childRight":  "310px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  713,
+                               "childId":  714,
+                               "effectiveLimit":  "295px",
+                               "childRight":  "96px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  714,
+                               "childId":  715,
+                               "effectiveLimit":  "96px",
+                               "childRight":  "85px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  716,
+                               "childId":  717,
+                               "effectiveLimit":  "325px",
+                               "childRight":  "95px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  716,
+                               "childId":  718,
+                               "effectiveLimit":  "325px",
+                               "childRight":  "310px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  716,
+                               "childId":  719,
+                               "effectiveLimit":  "325px",
+                               "childRight":  "310px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  716,
+                               "childId":  720,
+                               "effectiveLimit":  "325px",
+                               "childRight":  "310px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  720,
+                               "childId":  721,
+                               "effectiveLimit":  "295px",
+                               "childRight":  "89px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  721,
+                               "childId":  722,
+                               "effectiveLimit":  "89px",
+                               "childRight":  "78px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  723,
+                               "childId":  724,
+                               "effectiveLimit":  "840px",
+                               "childRight":  "816px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  723,
+                               "childId":  738,
+                               "effectiveLimit":  "840px",
+                               "childRight":  "816px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  723,
+                               "childId":  764,
+                               "effectiveLimit":  "840px",
+                               "childRight":  "816px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  724,
+                               "childId":  725,
+                               "effectiveLimit":  "792px",
+                               "childRight":  "767px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  724,
+                               "childId":  729,
+                               "effectiveLimit":  "792px",
+                               "childRight":  "336px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  724,
+                               "childId":  730,
+                               "effectiveLimit":  "792px",
+                               "childRight":  "502px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  724,
+                               "childId":  731,
+                               "effectiveLimit":  "792px",
+                               "childRight":  "767px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  725,
+                               "childId":  726,
+                               "effectiveLimit":  "742px",
+                               "childRight":  "330px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  725,
+                               "childId":  727,
+                               "effectiveLimit":  "742px",
+                               "childRight":  "742px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  727,
+                               "childId":  728,
+                               "effectiveLimit":  "96px",
+                               "childRight":  "85px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  731,
+                               "childId":  732,
+                               "effectiveLimit":  "742px",
+                               "childRight":  "192px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  731,
+                               "childId":  734,
+                               "effectiveLimit":  "742px",
+                               "childRight":  "392px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  731,
+                               "childId":  736,
+                               "effectiveLimit":  "742px",
+                               "childRight":  "599px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  732,
+                               "childId":  733,
+                               "effectiveLimit":  "192px",
+                               "childRight":  "178px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  734,
+                               "childId":  735,
+                               "effectiveLimit":  "190px",
+                               "childRight":  "176px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  736,
+                               "childId":  737,
+                               "effectiveLimit":  "197px",
+                               "childRight":  "182px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  738,
+                               "childId":  739,
+                               "effectiveLimit":  "792px",
+                               "childRight":  "330px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  738,
+                               "childId":  747,
+                               "effectiveLimit":  "792px",
+                               "childRight":  "792px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  739,
+                               "childId":  740,
+                               "effectiveLimit":  "330px",
+                               "childRight":  "219px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  739,
+                               "childId":  741,
+                               "effectiveLimit":  "330px",
+                               "childRight":  "249px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  739,
+                               "childId":  746,
+                               "effectiveLimit":  "330px",
+                               "childRight":  "289px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  741,
+                               "childId":  742,
+                               "effectiveLimit":  "232px",
+                               "childRight":  "198px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  741,
+                               "childId":  743,
+                               "effectiveLimit":  "232px",
+                               "childRight":  "221px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  741,
+                               "childId":  745,
+                               "effectiveLimit":  "232px",
+                               "childRight":  "185px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  743,
+                               "childId":  744,
+                               "effectiveLimit":  "208px",
+                               "childRight":  "144.72px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  747,
+                               "childId":  748,
+                               "effectiveLimit":  "446px",
+                               "childRight":  "276px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  747,
+                               "childId":  749,
+                               "effectiveLimit":  "446px",
+                               "childRight":  "425px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  747,
+                               "childId":  752,
+                               "effectiveLimit":  "446px",
+                               "childRight":  "425px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  747,
+                               "childId":  755,
+                               "effectiveLimit":  "446px",
+                               "childRight":  "425px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  747,
+                               "childId":  758,
+                               "effectiveLimit":  "446px",
+                               "childRight":  "425px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  747,
+                               "childId":  761,
+                               "effectiveLimit":  "446px",
+                               "childRight":  "425px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  749,
+                               "childId":  750,
+                               "effectiveLimit":  "404px",
+                               "childRight":  "141px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  749,
+                               "childId":  751,
+                               "effectiveLimit":  "404px",
+                               "childRight":  "403px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  752,
+                               "childId":  753,
+                               "effectiveLimit":  "404px",
+                               "childRight":  "141px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  752,
+                               "childId":  754,
+                               "effectiveLimit":  "404px",
+                               "childRight":  "403px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  755,
+                               "childId":  756,
+                               "effectiveLimit":  "404px",
+                               "childRight":  "141px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  755,
+                               "childId":  757,
+                               "effectiveLimit":  "404px",
+                               "childRight":  "403px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  758,
+                               "childId":  759,
+                               "effectiveLimit":  "404px",
+                               "childRight":  "141px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  758,
+                               "childId":  760,
+                               "effectiveLimit":  "404px",
+                               "childRight":  "403px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  761,
+                               "childId":  762,
+                               "effectiveLimit":  "404px",
+                               "childRight":  "141px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  761,
+                               "childId":  763,
+                               "effectiveLimit":  "404px",
+                               "childRight":  "403px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  764,
+                               "childId":  765,
+                               "effectiveLimit":  "792px",
+                               "childRight":  "771px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  764,
+                               "childId":  768,
+                               "effectiveLimit":  "792px",
+                               "childRight":  "771px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  765,
+                               "childId":  766,
+                               "effectiveLimit":  "750px",
+                               "childRight":  "322px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  765,
+                               "childId":  767,
+                               "effectiveLimit":  "750px",
+                               "childRight":  "750px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  768,
+                               "childId":  769,
+                               "effectiveLimit":  "750px",
+                               "childRight":  "178.5px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  768,
+                               "childId":  773,
+                               "effectiveLimit":  "750px",
+                               "childRight":  "369px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  768,
+                               "childId":  777,
+                               "effectiveLimit":  "750px",
+                               "childRight":  "559.5px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  768,
+                               "childId":  781,
+                               "effectiveLimit":  "750px",
+                               "childRight":  "750px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  769,
+                               "childId":  770,
+                               "effectiveLimit":  "178.5px",
+                               "childRight":  "121px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  769,
+                               "childId":  771,
+                               "effectiveLimit":  "178.5px",
+                               "childRight":  "82px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  769,
+                               "childId":  772,
+                               "effectiveLimit":  "178.5px",
+                               "childRight":  "117px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  773,
+                               "childId":  774,
+                               "effectiveLimit":  "178.5px",
+                               "childRight":  "108px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  773,
+                               "childId":  775,
+                               "effectiveLimit":  "178.5px",
+                               "childRight":  "104px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  773,
+                               "childId":  776,
+                               "effectiveLimit":  "178.5px",
+                               "childRight":  "118px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  777,
+                               "childId":  778,
+                               "effectiveLimit":  "178.5px",
+                               "childRight":  "120px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  777,
+                               "childId":  779,
+                               "effectiveLimit":  "178.5px",
+                               "childRight":  "104px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  777,
+                               "childId":  780,
+                               "effectiveLimit":  "178.5px",
+                               "childRight":  "122px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  781,
+                               "childId":  782,
+                               "effectiveLimit":  "178.5px",
+                               "childRight":  "84px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  781,
+                               "childId":  783,
+                               "effectiveLimit":  "178.5px",
+                               "childRight":  "104px",
+                               "status":  "PASS"
+                           },
+                           {
+                               "check":  "ContainerBoundary",
+                               "containerId":  781,
+                               "childId":  784,
+                               "effectiveLimit":  "178.5px",
+                               "childRight":  "136px",
+                               "status":  "PASS"
+                           }
+                       ],
+    "contrastChecks":  [
+                           {
+                               "nodeId":  623,
+                               "textName":  "Logo_Wordmark",
+                               "fontSize":  "20px",
+                               "contrastRatio":  "17.85:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  625,
+                               "textName":  "Dept_Subtitle",
+                               "fontSize":  "12px",
+                               "contrastRatio":  "6.96:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  629,
+                               "textName":  "Search_Placeholder",
+                               "fontSize":  "12px",
+                               "contrastRatio":  "5.71:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  631,
+                               "textName":  "User_Curator_Badge",
+                               "fontSize":  "12px",
+                               "contrastRatio":  "14.48:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  633,
+                               "textName":  "Label",
+                               "fontSize":  "13px",
+                               "contrastRatio":  "5.18:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  636,
+                               "textName":  "Sidebar_Sec1_Label",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.52:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  639,
+                               "textName":  "Facet_Label",
+                               "fontSize":  "13px",
+                               "contrastRatio":  "14.58:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  641,
+                               "textName":  "Count_Num",
+                               "fontSize":  "12px",
+                               "contrastRatio":  "9.15:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  643,
+                               "textName":  "Facet_Label",
+                               "fontSize":  "13px",
+                               "contrastRatio":  "13.89:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  645,
+                               "textName":  "Count_Num",
+                               "fontSize":  "12px",
+                               "contrastRatio":  "9.15:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  647,
+                               "textName":  "Facet_Label",
+                               "fontSize":  "13px",
+                               "contrastRatio":  "13.89:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  649,
+                               "textName":  "Count_Num",
+                               "fontSize":  "12px",
+                               "contrastRatio":  "9.15:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  651,
+                               "textName":  "Facet_Label",
+                               "fontSize":  "13px",
+                               "contrastRatio":  "13.89:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  653,
+                               "textName":  "Count_Num",
+                               "fontSize":  "12px",
+                               "contrastRatio":  "9.15:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  655,
+                               "textName":  "Facet_Label",
+                               "fontSize":  "13px",
+                               "contrastRatio":  "13.89:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  657,
+                               "textName":  "Count_Num",
+                               "fontSize":  "12px",
+                               "contrastRatio":  "9.15:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  659,
+                               "textName":  "Sidebar_Sec2_Label",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.52:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  662,
+                               "textName":  "Mat_Name",
+                               "fontSize":  "12px",
+                               "contrastRatio":  "13.89:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  663,
+                               "textName":  "Mat_Count",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.52:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  665,
+                               "textName":  "Mat_Name",
+                               "fontSize":  "12px",
+                               "contrastRatio":  "13.89:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  666,
+                               "textName":  "Mat_Count",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.52:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  668,
+                               "textName":  "Mat_Name",
+                               "fontSize":  "12px",
+                               "contrastRatio":  "13.89:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  669,
+                               "textName":  "Mat_Count",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.52:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  671,
+                               "textName":  "Sidebar_Sec3_Label",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.52:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  674,
+                               "textName":  "Status_Name",
+                               "fontSize":  "12px",
+                               "contrastRatio":  "5.21:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  675,
+                               "textName":  "Status_Count",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.52:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  677,
+                               "textName":  "Status_Name",
+                               "fontSize":  "12px",
+                               "contrastRatio":  "4.77:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  678,
+                               "textName":  "Status_Count",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.52:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  680,
+                               "textName":  "Status_Name",
+                               "fontSize":  "12px",
+                               "contrastRatio":  "6.15:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  681,
+                               "textName":  "Status_Count",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.52:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  684,
+                               "textName":  "Mesh_Status_Title",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.85:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  685,
+                               "textName":  "Mesh_Status_Sub",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "6.7:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  688,
+                               "textName":  "Catalog_Title",
+                               "fontSize":  "12px",
+                               "contrastRatio":  "13.89:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  689,
+                               "textName":  "Catalog_Count",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.52:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  691,
+                               "textName":  "Sort_Label",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.76:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  696,
+                               "textName":  "Card_Accession",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "5.18:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  697,
+                               "textName":  "Card_Title_Text",
+                               "fontSize":  "15px",
+                               "contrastRatio":  "14.63:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  698,
+                               "textName":  "Card_Sub",
+                               "fontSize":  "12px",
+                               "contrastRatio":  "4.76:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  701,
+                               "textName":  "Text",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "5.21:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  703,
+                               "textName":  "Card_Accession",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.52:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  704,
+                               "textName":  "Card_Title_Text",
+                               "fontSize":  "15px",
+                               "contrastRatio":  "13.89:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  705,
+                               "textName":  "Card_Sub",
+                               "fontSize":  "12px",
+                               "contrastRatio":  "4.52:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  708,
+                               "textName":  "Text",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.84:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  710,
+                               "textName":  "Card_Accession",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.52:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  711,
+                               "textName":  "Card_Title_Text",
+                               "fontSize":  "15px",
+                               "contrastRatio":  "13.89:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  712,
+                               "textName":  "Card_Sub",
+                               "fontSize":  "12px",
+                               "contrastRatio":  "4.52:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  715,
+                               "textName":  "Text",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "5.21:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  717,
+                               "textName":  "Card_Accession",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.52:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  718,
+                               "textName":  "Card_Title_Text",
+                               "fontSize":  "15px",
+                               "contrastRatio":  "13.89:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  719,
+                               "textName":  "Card_Sub",
+                               "fontSize":  "12px",
+                               "contrastRatio":  "4.52:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  722,
+                               "textName":  "Text",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "5.91:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  726,
+                               "textName":  "Accession_Tag",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "5.18:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  728,
+                               "textName":  "Text",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "5.21:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  729,
+                               "textName":  "Artifact_Dossier_Title",
+                               "fontSize":  "26px",
+                               "contrastRatio":  "17.85:1",
+                               "threshold":  "3:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  730,
+                               "textName":  "Artifact_Dossier_Subtitle",
+                               "fontSize":  "16px",
+                               "contrastRatio":  "7.58:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  733,
+                               "textName":  "Label",
+                               "fontSize":  "13px",
+                               "contrastRatio":  "14.63:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  735,
+                               "textName":  "Label",
+                               "fontSize":  "13px",
+                               "contrastRatio":  "5.18:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  737,
+                               "textName":  "Label",
+                               "fontSize":  "13px",
+                               "contrastRatio":  "14.63:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  740,
+                               "textName":  "Plate_Sec_Title",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.76:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  742,
+                               "textName":  "Top_Badge",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.52:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  745,
+                               "textName":  "Foot_Spec",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.52:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  746,
+                               "textName":  "Plate_Caption",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.76:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  748,
+                               "textName":  "Specs_Sec_Title",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.76:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  750,
+                               "textName":  "Field_Label",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.76:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  751,
+                               "textName":  "Field_Value",
+                               "fontSize":  "13px",
+                               "contrastRatio":  "14.63:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  753,
+                               "textName":  "Field_Label",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.76:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  754,
+                               "textName":  "Field_Value",
+                               "fontSize":  "13px",
+                               "contrastRatio":  "14.63:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  756,
+                               "textName":  "Field_Label",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.76:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  757,
+                               "textName":  "Field_Value",
+                               "fontSize":  "13px",
+                               "contrastRatio":  "14.63:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  759,
+                               "textName":  "Field_Label",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.76:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  760,
+                               "textName":  "Field_Value",
+                               "fontSize":  "13px",
+                               "contrastRatio":  "14.63:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  762,
+                               "textName":  "Field_Label",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.76:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  763,
+                               "textName":  "Field_Value",
+                               "fontSize":  "13px",
+                               "contrastRatio":  "14.63:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  766,
+                               "textName":  "Climate_Title",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.76:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  767,
+                               "textName":  "Stream_Status",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "5.48:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  770,
+                               "textName":  "Meter_Label",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.52:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  771,
+                               "textName":  "Meter_Value",
+                               "fontSize":  "18px",
+                               "contrastRatio":  "5.21:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  772,
+                               "textName":  "Meter_Sub",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.52:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  774,
+                               "textName":  "Meter_Label",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.52:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  775,
+                               "textName":  "Meter_Value",
+                               "fontSize":  "18px",
+                               "contrastRatio":  "5.21:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  776,
+                               "textName":  "Meter_Sub",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.52:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  778,
+                               "textName":  "Meter_Label",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.52:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  779,
+                               "textName":  "Meter_Value",
+                               "fontSize":  "18px",
+                               "contrastRatio":  "5.21:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  780,
+                               "textName":  "Meter_Sub",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.52:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  782,
+                               "textName":  "Meter_Label",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.52:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  783,
+                               "textName":  "Meter_Value",
+                               "fontSize":  "18px",
+                               "contrastRatio":  "5.21:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           },
+                           {
+                               "nodeId":  784,
+                               "textName":  "Meter_Sub",
+                               "fontSize":  "11px",
+                               "contrastRatio":  "4.52:1",
+                               "threshold":  "4.5:1",
+                               "status":  "PASS"
+                           }
+                       ],
+    "componentChecks":  [
+                            {
+                                "nodeId":  632,
+                                "name":  "ButtonSet",
+                                "type":  "INSTANCE",
+                                "mainComponentId":  88,
+                                "status":  "PASS"
+                            },
+                            {
+                                "nodeId":  700,
+                                "name":  "BadgeSet",
+                                "type":  "INSTANCE",
+                                "mainComponentId":  96,
+                                "status":  "PASS"
+                            },
+                            {
+                                "nodeId":  707,
+                                "name":  "BadgeSet",
+                                "type":  "INSTANCE",
+                                "mainComponentId":  98,
+                                "status":  "PASS"
+                            },
+                            {
+                                "nodeId":  714,
+                                "name":  "BadgeSet",
+                                "type":  "INSTANCE",
+                                "mainComponentId":  96,
+                                "status":  "PASS"
+                            },
+                            {
+                                "nodeId":  721,
+                                "name":  "BadgeSet",
+                                "type":  "INSTANCE",
+                                "mainComponentId":  100,
+                                "status":  "PASS"
+                            },
+                            {
+                                "nodeId":  727,
+                                "name":  "BadgeSet",
+                                "type":  "INSTANCE",
+                                "mainComponentId":  96,
+                                "status":  "PASS"
+                            },
+                            {
+                                "nodeId":  732,
+                                "name":  "ButtonSet",
+                                "type":  "INSTANCE",
+                                "mainComponentId":  84,
+                                "status":  "PASS"
+                            },
+                            {
+                                "nodeId":  734,
+                                "name":  "ButtonSet",
+                                "type":  "INSTANCE",
+                                "mainComponentId":  88,
+                                "status":  "PASS"
+                            },
+                            {
+                                "nodeId":  736,
+                                "name":  "ButtonSet",
+                                "type":  "INSTANCE",
+                                "mainComponentId":  90,
+                                "status":  "PASS"
+                            }
+                        ],
+    "findings":  [
+
+                 ],
+    "visualReviewNote":  "Deterministic QA verifies mathematical, geometric, and structural rules only. Visual craft, tonal depth, and perceptual harmony require Tier 2 Multimodal Visual Evaluation with human sign-off."
+}

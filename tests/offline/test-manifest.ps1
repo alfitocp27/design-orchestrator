@@ -36,4 +36,21 @@ if (-not $json.dependencies."design-orchestrator") {
     throw "FAIL: design-orchestrator core dependency missing in manifest"
 }
 
-Write-Host "PASS: Manifest schema and modes are valid." -ForegroundColor Green
+# Optional integration manifest validation
+$needMcpManifest = Join-Path $RepoRoot "integrations\needmcp\needmcp.manifest.json"
+if (Test-Path $needMcpManifest) {
+    $needRaw = Get-Content $needMcpManifest -Raw
+    $needData = $needRaw | ConvertFrom-Json
+    if ($needData.name -ne "needmcp") {
+        throw "FAIL: NeedMCP manifest name must be 'needmcp'"
+    }
+    if ($needData.verifiedTools.Count -ne 6) {
+        throw "FAIL: NeedMCP manifest must declare exactly 6 verified tools"
+    }
+    $sel = $needData.verifiedTools | Where-Object { $_.name -eq "selectStyle" }
+    if (-not $sel -or -not $sel.gated) {
+        throw "FAIL: selectStyle must be gated in NeedMCP manifest"
+    }
+}
+
+Write-Host "PASS: Manifest schema, modes, and integration manifests are valid." -ForegroundColor Green

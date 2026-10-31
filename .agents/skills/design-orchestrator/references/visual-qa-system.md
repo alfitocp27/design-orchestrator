@@ -14,7 +14,7 @@
 > 3. An agent must **never report `0 P1/P2` or declare `PASS`** if visible defects remain in unselected exported screenshots (color clashes, unreadable text, overlapping labels, border collisions, or dead whitespace).
 > 4. **Zero Macro Glancing Rule**: Never evaluate an artboard solely from a macro full-canvas zoom. High-density areas (action clusters, table action columns, drawer overlays, nested badges) must be inspected at local resolution to detect edge collisions, sub-pixel clipping, and rogue bounding-box strokes.
 > 5. If an automated check was not possible, it must be reported honestly as `NOT VERIFIED`. Never disguise unverified criteria as passed.
-> 6. Aesthetic and creative ratings must include concrete visual comparisons and rationaleâ€”never claim "premium quality" simply because a checklist was filled.
+> 6. Aesthetic and creative ratings must include concrete visual comparisons and rationale—never claim "premium quality" simply because a checklist was filled.
 
 ---
 
@@ -26,7 +26,7 @@ The verification engine strictly separates **deterministic technical tests** fro
 flowchart LR
     subgraph TIER1["Tier 1: Automated Technical Verification (Deterministik)"]
         A1["Node & Auto-Layout Structure"]
-        A2["Column Math (Î”x â‰¤ 1px)"]
+        A2["Column Math (Δx ≤ 1px)"]
         A3["WCAG 2.2 Contrast Math"]
         A4["Native Component Linkage"]
         A5["Save & Reload Persistence"]

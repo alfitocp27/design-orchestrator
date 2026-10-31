@@ -3,165 +3,93 @@ name: design-orchestrator
 description: Use when orchestrating end-to-end UI/UX product design workflows combining discovery, codebase analysis, design intelligence, direction, native FigCraft execution, multi-dimensional visual quality assurance, and objective verification. Coordinates UI/UX Pro Max, Impeccable, Anti-Slop, FigCraft MCP, and CodebaseMemoryMCP with rigorous geometric and visual validation.
 ---
 
-# Design Orchestrator 2.1
+# Design Orchestrator 2.2
 
-Design Orchestrator 2.1 is the unified meta-skill for end-to-end interface and product design in Antigravity. Informed by professional UI Kit architectures and real-world design systems, it bridges consultative discovery, visual reference intelligence, creative direction, native FigCraft execution, atomic component hierarchies, 3-tier design token engines, and the **4-Dimensional Visual Quality Assurance (VQA) 2.0** verification engine.
+Design Orchestrator 2.2 is the unified meta-skill for end-to-end interface and product design in Antigravity. It coordinates consultative discovery, visual reference intelligence, dynamic creative direction, native FigCraft execution, 3-tier design tokens, atomic component hierarchies, and the **4-Dimensional Visual Quality Assurance (VQA) 2.0** verification engine.
 
 > [!IMPORTANT]
-> **System Readiness Status**: `TECHNICAL_RUNTIME_PASS / READY_FOR_CONTROLLED_PILOT`  
-> *Technical runtime mechanics (3-tier variable cascade, save/reload persistence, boolean properties, auto-layout flex, and multi-page linked instances) are 100% verified. Premium visual craft quality is subject to multimodal VQA 2.0 and requires end-to-end evaluation in controlled pilot projects.*
+> **Readiness Status**: `TECHNICAL_RUNTIME_PASS / READY_FOR_CONTROLLED_PILOT`  
+> Technical runtime mechanics (3-tier variable cascade, save/reload persistence, idempotent recipes, and multi-page linked instances) are 100% verified. Aesthetic craft quality requires multimodal VQA 2.0 evaluation and human approval at the hard stops.
 
 ---
 
-## 1. Core Principles
+## 1. Progressive Disclosure Reference Map
 
-1. **Evidence-Based QA (Zero False PASS & Tiered Verification)**:
-   - Executing FigCraft commands or taking screenshots is NOT proof of correct design.
-   - Bounding box math ($\Delta x = 0$) alone is NOT proof of visual harmony.
-   - **PASS** is granted ONLY when both Tier 1 (Automated Technical Verification) and Tier 2 (Multimodal Visual Evaluation) succeed with ZERO P1/P2 defects, supported by clean screenshots and the 8-Point Stress Test.
-   - Defect severity is classified strictly by **actual user impact** (P1 Blocker, P2 Major Degradation, P3 Cosmetic Polish). Subjective aesthetic nuances must never be marked as P1.
-2. **Native Reusable Components vs. Page Layout Shells**:
-   - **Reusable UI Elements**: All repeating controls, atoms, molecules, and operational patterns (`Button`, `Badge`, `Input`, `Navbar`, `Table/Row`, `Card`) **MUST** use native linked instances (`instance.create`). Plain frames mimicking components are strictly prohibited.
-   - **Page Composition & Layout Shells**: Page viewports, grid columns, main body wrappers, and sidebar layout shells **MUST** use native **Frames with Auto Layout** (`node.create {type: "frame", props: {layout: "vertical" | "horizontal"}}`). Never attempt to wrap an entire page into a rigid component instance.
-   - **Atomic Component Progression**: Components follow Item (Atom) $\rightarrow$ Group (Molecule) $\rightarrow$ Pattern (Organism). Groups MUST compose linked instances of their atomic items.
-   - Every reusable component must pass the **8-Point Component Stress Testing Protocol**.
-3. **Domain-Driven Modular Artboard Architecture**:
-   - Cramming all components onto a single artboard is strictly prohibited.
-   - The number of component artboards must be **adaptive to product domain scope and complexity**, never rigidly restricted to an arbitrary fixed number:
-     * *Focused / Utility Products*: 3–4 dedicated artboards (e.g. `Actions_Inputs`, `Navigation_Feedback`, `Data_Display`, `Instances_Showcase`).
-     * *Enterprise / Multi-Workflow Suites*: 5 to 10+ dedicated artboards organized by component family (e.g. `Actions_Buttons`, `Selection_Controls`, `Form_Inputs`, `Navigation_Bars`, `Feedback_Indicators`, `Data_Tables`, `Overlays_Modals`, `Domain_Operational`, `Composite_Patterns`, `Instances_Showcase`).
-   - **Spatial Cleanliness & Title Header Standard**: Each component family artboard must feature a standardized title header card matching the artboard width, providing name, category, and functional spec. Variant labels must maintain $\ge 24\text{px}$ clearance outside purple `COMPONENT_SET` bounding boxes.
-4. **Creative Direction, Tactile Depth & Anti-Monotony**:
-   - Reject generic AI templates (purple glows, radial orbs, skeleton cards) WITHOUT falling into sterile, lifeless grey defaults.
-   - Anti-Slop serves as a **quality guardrail**, NOT a stylistic straightjacket that forces all designs to be flat or heavy border-first.
-   - Implement proportional depth: soft structural boundaries (`#E2E8F0` or `#E5E7EB`) layered with tactile micro-elevation (`0 1px 2px rgba(0,0,0,0.05)` and hover lift `0 4px 6px -1px rgba(0,0,0,0.08)`). Where applicable, adopt **Dual Layered Elevation** (ambient soft blur + key directional shadow).
-   - Maintain clear visual rhythm, intentional typographic contrast, and deliberate surface modes (`Operate`, `Persuade`, `Read`, `Experience`).
-5. **Semantic Color Harmony & Brand Dominance**:
-   - The primary brand action color must dominate the canvas.
-   - Secondary or status colors (such as cyan, amber, or purple) are strictly forbidden from being placed as icons or accents directly on top of primary button backgrounds.
-   - Semantic color roles (Success = Emerald, Progress = Sky Blue, Warning = Amber, Danger = Crimson, Neutral = Slate) must be strictly maintained across all components.
-   - Avoid "status color flood": status fills must be subtle background tints, never blinding full-saturation containers.
-6. **Icon State & Color Inheritance Matrix**:
-   - Vector icons must strictly inherit color based on the parent component state (e.g. Primary button default/hover = white `#FFFFFF`, disabled = muted slate `#94A3B8`).
-   - Never allow an icon to retain an arbitrary color that clashes with its container.
-7. **Central Vector Icon Library & Instance Swapping**:
-   - Strictly ban emojis (📅, 🔍, ⚙️, 👤) across all product UI elements.
-   - Build a **Central Vector Icon Library** with crisp SVG vector paths (`vector.create`) in `01_Foundations` using standard bounding boxes ($20 \times 20\text{px}$ or $24 \times 24\text{px}$) and consistent stroke weight ($1.5\text{px}$ or $2.0\text{px}$).
-   - Components requiring icons embed nested linked instances of icon masters, supporting native instance swapping (`instance.swap`) and boolean property toggles (`Icon Left`, `Icon Right`).
-8. **Legibility Floor & Typography Scale**:
-   - Minimum body text: $13\text{px}-14\text{px}$.
-   - Minimum micro/caption text: $11\text{px}-12\text{px}$.
-   - Never shrink typography below $11\text{px}$ merely to squeeze content into table rows.
-   - Establish dedicated typographic scales for Display/Headings (`H1`–`H5`), Subtitles (`S1`–`S2`), Body text (`B1`–`B4`), Captions (`C1`–`C3`), and Buttons (`Giant`–`Tiny`).
-9. **Design System First & Clear Document Partitioning (Mandatory Hard Stop)**:
-   - Primary design documents must partition concerns clearly:
-     * `01_Foundations`: Design tokens, specimen boards (Typography, Colors, Shadows), and Central Vector Icon Library.
-     * `02_Components`: Atomic items and component sets organized into family artboards.
-     * `03_Patterns`: Composite assemblies (forms, modals, data tables, navigation shells).
-     * `04_Screens`: Application viewports composed 100% of linked instances from approved components and patterns.
-     * *(Optional)*: `00_Cover` (presentation hero frame) and `00_Guidelines` (usage principles and system overview).
-   - **🛑 DESIGN SYSTEM APPROVAL GATE**: The agent MUST STOP and wait for explicit user approval before proceeding to build application screens or dashboards in `04_Screens`.
-10. **Strict State Separation**:
-    - Populated, empty, loading, and error states must never be collaged together into the same viewport.
-    - Empty states must be delivered as dedicated frames or variant views.
-11. **Single Source of Truth Per Project (`projects/<slug>/DESIGN.md`)**:
-    - Exactly one `DESIGN.md` inside each project folder holds all tokens, creative direction, color harmony rules, icon state matrices, component property registers, and VQA logs.
-12. **Domain Realism & Data Integrity**:
-    - All metrics, KPIs, and labels must be logical and reflect real domain physics (e.g. real units `Kg`, `Orang`, valid dates, realistic deltas). Fake marketing claims (e.g. "99.9% AI accuracy") are prohibited. All placeholder data must be tagged `[SIMULASI]`.
-13. **Locked Column Grid Precision**:
-    - In tabular views, every row must share identical column widths and horizontal anchors ($x$) to guarantee geometric alignment across header and rows ($\Delta x \le 1\text{px}$).
-14. **Multi-Project Scoping & Document Isolation**:
-    - Every design project is self-contained in `projects/<project-slug>/`.
-    - Agents must explicitly open primary files via `figcraft/open_file`, verify identity via `figcraft/inspect_document`, and maintain all screens in the primary `.figcraft` document.
-15. **PRD-Driven Functional Truth & Traceability**:
-    - The PRD is the authoritative functional source of truth; `DESIGN.md` is the visual source of truth.
-    - In PRD-Driven Mode, agents must read documents in read-only mode, never re-ask questions answered in the PRD, systematically map requirements in `REQUIREMENTS_MAP.md`, and report any conflict without silent modification.
-16. **Visual Reference Research & Privacy**:
-    - Curate 3 to 5 real-world benchmarks using Mobbin MCP, `browser-use`, or UI/UX Pro Max. Verify links without hallucination.
-    - Strictly protect confidentiality: NEVER send proprietary PRD text, company data, or PII to external platforms.
-17. **Natural Consultative Discovery Protocol**:
-    - Default Anti-Slop mode to `DURING` automatically.
-    - Turn Pacing Constraint: Maximum **1–2 questions per turn**.
-    - Consultative Framing: Accompany every option with a concise explanation, highlight **1 primary recommendation**, and explain operational/UX reasoning.
-    - Staging Priority: System Needs first, Target Users & Roles second, Information Architecture & Surface Mode third. Settle functional foundations before discussing visual styling.
-18. **3-Tier Design Tokens & Native Variables Engine**:
-    - Structure tokens systematically across 3 tiers:
-      * **Tier 1 (Primitives)**: Raw foundational values (`Spacing/0..6`, `Color/Brand/50..900`, `Color/Neutral/50..900`).
-      * **Tier 2 (Semantic Tokens)**: Contextual aliases (`text-primary`, `surface-card`, `border-subtle`, `radius-md`).
-      * **Tier 3 (Component Tokens)**: Component-scoped assignments (`button-primary-bg`, `table-row-hover-bg`).
-    - Use native FigCraft variable collections (`variable.createCollection`, `variable.create`) and bindings (`variable.bind`) whenever supported. Provide structured markdown and style fallbacks when variable persistence is limited.
-19. **Figma Import Fidelity Awareness**:
-    - Distinguish between **data structure import success** and **visual rendering fidelity**.
-    - Never assume that imported styles, variants, or properties are 100% compatible or visually accurate merely because the node tree exists in FigCraft.
-    - Treat external Figma files and templates as **architectural references** for taxonomy, structure, and reusability patterns, NOT as visual assets to clone.
-    - Explicitly verify native FigCraft capabilities before enforcing them as mandatory rules; document fallbacks and limitations for any unsupported or partially supported features.
-20. **Component Specifications, States & Reusability Testing**:
-    - Every component family must include explicit specifications: variants (Size, Style, Type), interactive states (Default, Hover, Focus, Active, Disabled, Error), component properties (text, boolean, instanceSwap), and practical usage examples.
-    - No component is production-ready without passing the 8-Point Stress Test and verified linked instances.
-21. **Non-Cloning & Adaptive Direction Mandate**:
-    - Never blindly replicate the entire visual identity, color scheme, or full component catalogue of a reference template.
-    - Selectively adapt components, density, and styling to match the specific domain requirements, personas, and approved Stage 4 creative direction of the project.
-22. **Text Overflow & Critical Information Preservation**:
-    - **Zero Critical Data Loss Law**: Text overflow handling must **NEVER** hide, truncate, or obscure critical operational data (e.g. monetary figures, KPI metrics, legal/approval status, employee identities, dates, or system error alerts).
-    - **Adaptive Hierarchy**:
-      * *Wrapping & Multi-line Expansion*: Default mechanism for headers, descriptions, cards, table cells with critical info, and notification alerts (`textAutoResize: "height"`, parent frame `wrap: true` or vertical auto-layout).
-      * *Adaptive Sizing*: Utilize `sizingH: "hug"` or responsive flex when container space allows dynamic growth.
-      * *Secondary Detail Clues*: When narrow spatial constraints demand a compact badge or truncated control, always provide complete unabbreviated data via detail drawers, modals, or secondary expansion affordances.
-      * *Native Ellipsis Truncation*: Setting `textAutoResize: "truncate"` is strictly permitted ONLY on secondary/auxiliary strings (e.g. lengthy URL paths, secondary email handles in compact tables, supplementary log remarks) where truncation does not compromise operational decisions.
+Load only the specialized reference required for the current stage:
+
+| Stage & Scope | Responsibility | Reference File to Read |
+|---|---|---|
+| **Discovery & Scoping (Stage 1)** | PRD ingestion, consultative interviews, project routing | [references/workflow-details.md](references/workflow-details.md) |
+| **Codebase Analysis (Stage 2)** | Codebase graph querying, token discovery, tool precedence | [references/conflict-resolution.md](references/conflict-resolution.md) |
+| **Research & Direction (Stage 3–4)** | 7-facet intelligence, 10 mandatory dimensions, divergence | [references/creative-direction.md](references/creative-direction.md) |
+| **Native Design System (Stage 5)** | 3-tier tokens, vector icons, master components, 8-point stress test | [references/component-architecture.md](references/component-architecture.md) |
+| **Canvas Quality Assurance (Stage 6, 8)** | 4-Dimensional VQA 2.0, WCAG 2.2 contrast, geometry verification | [references/visual-qa-system.md](references/visual-qa-system.md) |
+| **Application Screens (Stage 7)** | Reusable linked instances, locked columns, responsive reflow | [references/component-architecture.md](references/component-architecture.md) |
+| **Project Design System Scaffold** | Single source of truth blueprint for `projects/<slug>/DESIGN.md` | [references/design-template.md](references/design-template.md) |
 
 ---
 
-## 2. Component Activation Matrix
+## 2. Core Principles
 
-| Component | Responsibility & Stage | Activation Trigger | Primary Tool / Command |
+1. **Evidence-Based QA & Zero False PASS**: Executing commands or taking screenshots is NOT proof of correct design. PASS requires 0 P1/P2 defects across Tier 1 (Technical Integrity) and Tier 2 (Visual Quality). Results labeled `UNKNOWN` or `NOT_VERIFIABLE` must NEVER be declared PASS.
+2. **Native Reusable Components vs. Page Layout Shells**: All repeating UI controls (`Button`, `Badge`, `Input`, `Table/Row`, `Card`) **MUST** be native linked instances (`INSTANCE`). Structural page viewports, columns, and body containers **MUST** be native Frames with Auto Layout (`FRAME`). Never wrap an entire page into a rigid component.
+3. **Domain-Driven Modular Artboard Architecture**: Adapt artboards to product scope (3–4 for utility apps; 5–10+ for enterprise suites). Every artboard requires a title header card matching its width and $\ge 24\text{px}$ clearance above component sets.
+4. **Creative Direction, Tactile Depth & Anti-Monotony**: Reject generic AI purple glows and sterile grey defaults. Layer soft structural boundaries (`#E2E8F0`) with tactile micro-elevation and clear surface modes (`Operate`, `Persuade`, `Read`, `Experience`).
+5. **Semantic Color Harmony & Brand Dominance**: The primary brand color must dominate the canvas. Accent and status colors are strictly forbidden on primary button backgrounds. Status fills must be subtle tints, never blinding full-saturation floods.
+6. **Icon State & Color Inheritance Matrix**: Vector icons must inherit stroke/fill colors from their parent container state (e.g. white on primary button, muted slate on disabled).
+7. **Central Vector Icon Library & Instance Swapping**: Emojis (📅, 🔍, ⚙️, 👤) are strictly banned. Maintain crisp SVG vector paths (`20x20` or `24x24px`, stroke $1.5-2.0\text{px}$) with `fill: "none"` in `01_Foundations`. Controls embed nested linked instances.
+8. **Legibility Floor & Typography Scale**: Minimum body text is $13-14\text{px}$; minimum micro/caption text is $11-12\text{px}$. Never shrink typography below $11\text{px}$ to fit table rows. Maintain distinct scales for Headings, Body, Captions, and Buttons.
+9. **Design System First & Mandatory Approval Gate**: Partition documents into `01_Foundations`, `02_Components`, `03_Patterns`, and `04_Screens`. **🛑 DESIGN SYSTEM APPROVAL GATE**: Stop and wait for explicit user approval before designing screens.
+10. **Strict State Separation**: Populated, empty, loading, and error states must never be collaged into the same viewport.
+11. **Single Source of Truth (`projects/<slug>/DESIGN.md`)**: Exactly one `DESIGN.md` per project holds all tokens, creative direction, icon state matrices, component property registers, and VQA logs.
+12. **Domain Realism & Data Integrity**: All metrics, KPIs, and labels must reflect realistic domain physics and units. Tag all placeholder data with `[SIMULASI]`.
+13. **Locked Column Grid Precision**: In tabular views, headers and rows must share identical column widths and horizontal anchors ($|\Delta x| \le 1\text{px}$).
+14. **Multi-Project Scoping & Document Isolation**: Every project is self-contained in `projects/<project-slug>/`. Inspect and open the primary `.figcraft` file explicitly to prevent accidental mutations on external files.
+15. **PRD-Driven Functional Truth**: The PRD is the authoritative functional source. Never re-ask questions answered in the PRD; systematically map requirements in `REQUIREMENTS_MAP.md`.
+16. **Visual Reference Research & Privacy**: Curate 3–5 verified benchmarks via Mobbin, UI/UX Pro Max, or browser research. Never send confidential PRD text or PII to external platforms.
+17. **Natural Consultative Discovery Protocol**: Maximum 1–2 questions per turn with consultative framing and 1 primary recommendation. Resolve system needs and user roles before discussing visual styling.
+18. **3-Tier Design Tokens & Native Variables**: Structure tokens across Tier 1 (Primitives), Tier 2 (Semantic Aliases), and Tier 3 (Component Tokens). Bind via `variable.bind`.
+19. **Figma Import Fidelity Awareness**: Distinguish data structure import from visual rendering fidelity. external Figma files are architectural references, not assets to clone. Always inspect unselected screenshots.
+20. **Component Specifications & 8-Point Stress Testing**: Every critical component must pass the 8-Point Component Stress Testing Protocol (Propagation, Overrides, Variants, Icons, Content Stress, Permutations, Sizing, Save/Reload).
+21. **Non-Cloning & Adaptive Direction Mandate**: Never blindly clone reference UI kits. Adapt styling and density to specific project personas and domain constraints.
+22. **Text Overflow & Critical Information Preservation**: Text handling must NEVER obscure critical data. Use multi-line wrapping as default (`textAutoResize: "height"`, vertical auto-layout) and dynamic sizing (`sizingH: "hug"`). Truncation (`textAutoResize: "truncate"`) is restricted to auxiliary strings.
+23. **Dynamic Creative Direction & Archetype Synthesis**: Synthesize creative direction from the 7 domain intelligence facets across 10 mandatory dimensions. Produce 2–3 divergent concepts. **🛑 CONCEPT APPROVAL GATE**: Hard stop before canvas generation.
+24. **FigCraft Dual-Mode Architecture & Document Safety**: Support two explicit runtime modes: **`ATTACHED`** (interactive live design communicating with FigCraft Desktop on port 7979; zero silent fallback if desktop is closed) and **`HEADLESS`** (automated test suites and CI/CD pipelines operating independently via Stdio). Enforce strict document safety before write operations: verify active document path, dirty state (`dirty=False`), and layer existence on Untitled documents to prevent overwriting user work.
+
+---
+
+## 3. Component Activation Matrix
+
+| Component | Responsibility | Activation Trigger | Primary Command / Tool |
 |---|---|---|---|
-| **Anti-Slop** | Quality Guardrail (R-01 to R-40, contrast, em-dash, affordance) | Always active (Default `DURING`) | Rule audit against evidence; Purpose-Gate logging in `DESIGN.md` |
-| **Impeccable** | Visual Direction, Craft Floor, Surface Mode & Cognitive Density | Stage 1 (Brief) & Stage 6/8 (Craft Audit) | Evaluate typography scale, whitespace balance, micro-elevation, surface mode |
-| **UI/UX Pro Max** | Design Intelligence, Palettes, Typography Pairings & Tokens | Stage 3 (Research) & Stage 4 (Concepts) | `python .agents/skills/ui-ux-pro-max/scripts/search.py "<query>" --design-system --json` |
-| **CodebaseMemoryMCP** | Codebase Analysis, Schema Truth, Status Enums & Workflows | Stage 2 (Codebase Analysis) | `call_mcp_tool(codebase-memory-mcp, search_graph / get_code_snippet)` |
-| **Mobbin / browser-use** | Visual Reference Research & Real-World UI Benchmarking | Stage 3 (Visual Reference Research) | `call_mcp_tool(mobbin_mobbin, search_screens)` / `browser-use` CLI |
-| **FigCraft MCP** | Native Canvas Execution, Geometry Math, Stress Tests & Exports | Stage 5 through Stage 9 | `open_file`, `inspect_document`, `run_command`, `batch`, `file.exportLayers` |
+| **Anti-Slop** | Quality Guardrail (R-01 to R-40, contrast, affordance) | Always active (Default `DURING`) | Rule audit against evidence; log in `DESIGN.md` |
+| **Impeccable** | Visual Direction, Craft Floor, Surface Mode & Density | Stage 1 (Brief) & Stage 6/8 (Audit) | Evaluate typography scale, whitespace, micro-elevation |
+| **UI/UX Pro Max** | Design Intelligence, Palettes, Font Pairings & Tokens | Stage 3 (Research) & Stage 4 (Concepts) | `python .agents/skills/ui-ux-pro-max/scripts/search.py "<query>" --design-system --json` |
+| **CodebaseMemoryMCP** | Codebase Analysis, Schema Truth, Status Enums | Stage 2 (Codebase Analysis) | `call_mcp_tool(codebase-memory-mcp, search_graph / get_code_snippet)` |
+| **Mobbin / browser-use** | Visual Reference Research & UI Benchmarking | Stage 3 (Visual Research) | `call_mcp_tool(mobbin_mobbin, search_screens)` / `browser-use` CLI |
+| **NeedMCP (Optional)** | Secondary Cloud Style Benchmark | Stage 3/4 Exploration (`getStyle`) | `call_mcp_tool(needmcp, getStyle)` / `UNVERIFIED_RUNTIME` if unconfigured |
+| **FigCraft MCP** | Native Canvas Execution, Stress Tests & Exports | Stage 5 through Stage 9 | `open_file`, `inspect_document`, `run_command`, `screenshot`, `save_file` |
 
 ---
 
-## 3. Design System First Orchestration Workflow
+## 4. Orchestration Workflow & Approval Gates
 
 ```mermaid
 flowchart TD
-    S1["1. Discovery: Mode 1 (Scratch) vs Mode 2 (PRD-Driven)"] --> S2{"Codebase Relevan?"}
-    S2 -- "Ada di MCP / Repo" --> S2A["2. Codebase Analysis (CodebaseMemoryMCP)"]
-    S2 -- "Tidak Ada" --> S3["3. Visual Reference Research (Mobbin, browser-use, UI/UX Pro Max)"]
+    S1["1. Discovery: Mode 1 (Scratch) vs Mode 2 (PRD)"] --> S2{"Codebase Relevan?"}
+    S2 -- "Ada" --> S2A["2. Codebase Analysis (CodebaseMemoryMCP)"]
+    S2 -- "Tidak Ada" --> S3["3. Visual Reference Research (Mobbin, UI/UX Pro Max)"]
     S2A --> S3
-    S3 --> S4["4. Creative Direction & Visual Consultation (2-3 Konsep, 1 Rekomendasi)"]
-    S4 --> GATE_C["🛑 CONCEPT APPROVAL GATE (Hard Stop)"]
-    GATE_C -->|Konsep Disetujui| S5["5. Native Design System First"]
-    
-    subgraph DS_BUILD ["Stage 5: Design System Engineering"]
-        S5A["5.1 Foundations: 3-Tier Tokens, Specimen Boards & Central Vector Icons"]
-        S5B["5.2 Components: Atomic Items (Atoms) & Component Sets with Properties"]
-        S5C["5.3 Patterns: Composite Groups & Assemblies using Linked Instances"]
-        S5D["5.4 Component Family Artboards with Title Cards & Specs"]
-        S5A --> S5B --> S5C --> S5D
-    end
-    
-    S5 --> DS_BUILD
-    DS_BUILD --> S5T["5.5 Eksekusi 8-Point Component Stress Testing Protocol"]
-    S5T --> S6["6. Design System VQA 2.0 (4 Verification Dimensions)"]
-    S6 --> S6C{"VQA 2.0 Lolos 100%?"}
-    S6C -- "Ada Defek" --> S5
-    S6C -- "Lolos (0 P1/P2)" --> GATE_DS["🛑 DESIGN SYSTEM APPROVAL GATE (Mandatory Hard Stop)"]
-    GATE_DS -->|Disetujui Pengguna| S7["7. Application Screens (04_Screens, 100% Linked Instances)"]
-    S7 --> S8["8. Screen VQA 2.0 (4 Dimensi & Remediasi Max 3 Iterasi)"]
+    S3 --> S4["4. Creative Direction Synthesis (2-3 Konsep Berbeda)"]
+    S4 --> GATE_C["🛑 CONCEPT APPROVAL GATE (User Sign-Off Required)"]
+    GATE_C -->|Disetujui| S5["5. Native Design System (3-Tier Tokens, Icons, Atoms, Variants)"]
+    S5 --> S5T["5.5 Eksekusi 8-Point Component Stress Testing Protocol"]
+    S5T --> S6["6. Design System VQA 2.0 (Tier 1 Technical & Tier 2 Visual QA)"]
+    S6 --> GATE_DS["🛑 DESIGN SYSTEM APPROVAL GATE (User Sign-Off Required)"]
+    GATE_DS -->|Disetujui| S7["7. Application Screens (100% Linked Instances & Auto Layout)"]
+    S7 --> S8["8. Screen VQA 2.0 (Geometry, Contrast, Anti-Slop Audit)"]
     S8 --> S9["9. Delivery, Cross-Session Continuity & Registry Update"]
 ```
 
----
-
-## Detailed References
-
-- [Creative Direction & Visual Reference Intelligence](references/creative-direction.md)
-- [FigCraft Native Component Engineering & Stress Testing](references/component-architecture.md)
-- [Visual Quality Assurance (VQA) 2.0: The 4-Dimensional Verification System](references/visual-qa-system.md)
-- [Tool Harmonization & Precedence Matrix](references/conflict-resolution.md)
-- [Workflow Payloads & Tool Invocations Runbook](references/workflow-details.md)
-- [Unified Single DESIGN.md Template](references/design-template.md)
+> [!CAUTION]
+> **Mandatory Stop Rule**: An agent must NEVER automatically approve concepts or design systems on behalf of the user in production mode. Wait for explicit human confirmation at both **🛑 CONCEPT APPROVAL GATE** and **🛑 DESIGN SYSTEM APPROVAL GATE**.

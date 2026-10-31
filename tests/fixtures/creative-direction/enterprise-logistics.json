@@ -1,0 +1,125 @@
+{
+  "domain": "Enterprise Operations",
+  "productName": "AeroDispatch Fleet Telemetry & Freight Routing System",
+  "productTypology": "High-Density Operations Workbench",
+  "targetAudience": "Freight dispatchers and night-shift logistics coordinators managing 400+ simultaneous vehicles",
+  "operationalContext": "Multi-monitor dispatch workstation, 12-hour shifts, continuous real-time telemetry streaming",
+  "surfaceMode": "Operate",
+  "dataVisualizationNeeds": "Live GPS route tracking, multi-series vehicle battery/fuel telemetry, locked column dispatch triage grid",
+  "antiSlopCompliance": {
+    "prohibitedPatternsChecked": ["mesh gradient", "glowing card", "neon border", "floating card without anchor"],
+    "verdict": "COMPLIANT"
+  },
+  "concepts": [
+    {
+      "id": "concept-1",
+      "thematicName": "Precision Operations (Recommended)",
+      "identityRationale": "Utilitarian, crisp, high-density command center tailored for continuous dispatch triage. Emphasizes instant tabular scanability and status clarity over decorative whitespace.",
+      "benchmarks": ["Linear dispatch triage", "Flexport freight workbench", "Bloomberg logistics grid"],
+      "typography": {
+        "headingFont": "Inter",
+        "bodyFont": "Inter",
+        "monoFont": "JetBrains Mono",
+        "scaleRatio": "1.125 (Major Second - Dense)"
+      },
+      "color": {
+        "surfaceBase": "#F8FAFC",
+        "cardSurface": "#FFFFFF",
+        "primaryBrand": "#2563EB",
+        "secondaryNeutral": "#64748B",
+        "textPrimary": "#0F172A",
+        "textSecondary": "#475569",
+        "borderSubtle": "#E2E8F0",
+        "statusSuccess": "#059669",
+        "statusWarning": "#D97706",
+        "statusDanger": "#DC2626"
+      },
+      "layout": {
+        "columnGrid": "12-column responsive grid with fixed 260px collapsible dispatch tree",
+        "densityMode": "Compact Operate (36px table row height, 8px base grid)",
+        "gutterPx": 8,
+        "focalPoint": "Active vehicle status triage table and GPS anomaly alert bar"
+      },
+      "surface": {
+        "elevationModel": "Border-first with 1px structural borders (#E2E8F0) and dual micro-shadows (0 1px 2px rgba(15,23,42,0.04))",
+        "borderRadii": "4px sharp technical corners",
+        "borderStrokePx": 1
+      },
+      "iconography": {
+        "style": "Clean geometric vector outline (Zero Emojis)",
+        "strokeWidth": "1.5px",
+        "geometry": "Matching Inter typography terminal angles"
+      },
+      "dataVisualization": {
+        "primaryCharts": ["Line chart with anomaly detection highlights", "Sparkline vehicle fuel efficiency"],
+        "colorRamp": ["#2563EB", "#059669", "#D97706", "#DC2626"],
+        "telemetryDensity": "High (up to 1,000 telemetry points per minute)"
+      },
+      "accessibility": {
+        "wcagLevel": "WCAG 2.2 AAA text contrast (14.8:1 on card)",
+        "focusRing": "Solid 2px #2563EB with 2px offset",
+        "ambientLightNotes": "Optimized for glare-free daytime office lighting"
+      },
+      "uxTradeoffs": {
+        "strengths": "Maximum operational throughput; dispatchers can triage 40 vehicles per screen without scrolling",
+        "risks": "Requires onboarding for novice operators due to dense information grouping",
+        "operationalFit": "Highest fit for experienced coordinators handling high-volume dispatches"
+      }
+    },
+    {
+      "id": "concept-2",
+      "thematicName": "Tactile Night-Shift Command",
+      "identityRationale": "Dark slate high-contrast environment engineered specifically for night-shift operators. Minimizes pupil fatigue and draws sharp eye focus to urgent route bottlenecks via vibrant amber/emerald alerts.",
+      "benchmarks": ["Grafana operational NOC", "SpaceX telemetry console", "FlightRadar24 pro"],
+      "typography": {
+        "headingFont": "Plus Jakarta Sans",
+        "bodyFont": "Plus Jakarta Sans",
+        "monoFont": "Fira Code",
+        "scaleRatio": "1.125 (Major Second - Dense)"
+      },
+      "color": {
+        "surfaceBase": "#0B0F17",
+        "cardSurface": "#151D2A",
+        "primaryBrand": "#38BDF8",
+        "secondaryNeutral": "#94A3B8",
+        "textPrimary": "#F8FAFC",
+        "textSecondary": "#94A3B8",
+        "borderSubtle": "#243042",
+        "statusSuccess": "#10B981",
+        "statusWarning": "#F59E0B",
+        "statusDanger": "#EF4444"
+      },
+      "layout": {
+        "columnGrid": "Asymmetrical 3-pane workbench (Fleet Map 50%, Telemetry Stream 30%, Alert Queue 20%)",
+        "densityMode": "High-Density Technical (40px row height)",
+        "gutterPx": 12,
+        "focalPoint": "Real-time vehicle map tile and critical route deviation drawer"
+      },
+      "surface": {
+        "elevationModel": "Pure border-defined surfaces with zero ambient blur (1px solid #243042)",
+        "borderRadii": "6px uniform rounded corners",
+        "borderStrokePx": 1
+      },
+      "iconography": {
+        "style": "Technical vector outline with reinforced contrast",
+        "strokeWidth": "1.75px",
+        "geometry": "Monoline vectors with crisp optical alignment"
+      },
+      "dataVisualization": {
+        "primaryCharts": ["Real-time GPS vector stream", "Multi-series line chart with alert threshold bands"],
+        "colorRamp": ["#38BDF8", "#10B981", "#F59E0B", "#EF4444"],
+        "telemetryDensity": "Streaming real-time at 60fps canvas"
+      },
+      "accessibility": {
+        "wcagLevel": "WCAG 2.2 AAA text contrast (14.2:1 on dark card)",
+        "focusRing": "High-contrast 2px #38BDF8 halo",
+        "ambientLightNotes": "Engineered for 24/7 dark control room settings"
+      },
+      "uxTradeoffs": {
+        "strengths": "Zero eye fatigue during 8-hour night monitoring; critical alerts pop immediately",
+        "risks": "Reduced readability in brightly lit mobile field scenarios",
+        "operationalFit": "Ideal for centralized dispatch operations centers"
+      }
+    }
+  ]
+}

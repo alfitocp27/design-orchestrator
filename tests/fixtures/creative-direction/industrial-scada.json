@@ -1,0 +1,125 @@
+{
+  "domain": "Industrial Engineering",
+  "productName": "VoltGrid SCADA Substation & High-Voltage Transmission Monitor",
+  "productTypology": "Critical Infrastructure SCADA Control Console",
+  "targetAudience": "Electrical grid engineers and substation safety officers monitoring 150kV transformers",
+  "operationalContext": "Mission-critical control room, high stress during grid faults, zero room for ambiguous visual states",
+  "surfaceMode": "Operate",
+  "dataVisualizationNeeds": "Real-time voltage/current sinewaves, transformer thermal heatmaps, multi-feeder breaker trip states",
+  "antiSlopCompliance": {
+    "prohibitedPatternsChecked": ["mesh gradient", "glowing card", "neon border", "floating card without anchor"],
+    "verdict": "COMPLIANT"
+  },
+  "concepts": [
+    {
+      "id": "concept-1",
+      "thematicName": "High-Voltage Telemetry Console (Recommended)",
+      "identityRationale": "Ultra-focused, high-contrast dark industrial console adhering to IEC 60870-5 and ISA-101 high-performance HMI standards. Uses muted neutral surfaces with high-visibility safety color coding exclusively for operational anomalies.",
+      "benchmarks": ["Schneider EcoStruxure SCADA", "Siemens Spectrum Power", "ABB Ability System 800xA"],
+      "typography": {
+        "headingFont": "Roboto",
+        "bodyFont": "Roboto",
+        "monoFont": "JetBrains Mono",
+        "scaleRatio": "1.125 (Major Second - High Density)"
+      },
+      "color": {
+        "surfaceBase": "#0F172A",
+        "cardSurface": "#1E293B",
+        "primaryBrand": "#E2E8F0",
+        "secondaryNeutral": "#64748B",
+        "textPrimary": "#FFFFFF",
+        "textSecondary": "#94A3B8",
+        "borderSubtle": "#334155",
+        "statusSuccess": "#10B981",
+        "statusWarning": "#F59E0B",
+        "statusDanger": "#EF4444"
+      },
+      "layout": {
+        "columnGrid": "Rigid 16-column grid with persistent top-level alarm banner and 4-quadrant busbar matrix",
+        "densityMode": "Ultra-Dense Industrial (32px row height, 4px grid)",
+        "gutterPx": 6,
+        "focalPoint": "Substation breaker single-line diagram and alarm queue"
+      },
+      "surface": {
+        "elevationModel": "Flat border-first architecture (1px solid #334155), zero decorative drop shadows",
+        "borderRadii": "2px crisp industrial corners",
+        "borderStrokePx": 1
+      },
+      "iconography": {
+        "style": "Standardized ISA-101 industrial electrical schematic symbols",
+        "strokeWidth": "2.0px",
+        "geometry": "Strictly geometric angles for circuit breakers and transformers"
+      },
+      "dataVisualization": {
+        "primaryCharts": ["Real-time 50Hz waveform oscilloscope", "Transformer thermal distribution bar"],
+        "colorRamp": ["#E2E8F0", "#10B981", "#F59E0B", "#EF4444"],
+        "telemetryDensity": "Mission-critical high-throughput streaming (100ms refresh rate)"
+      },
+      "accessibility": {
+        "wcagLevel": "WCAG 2.2 AAA text contrast (15.8:1 white on dark slate)",
+        "focusRing": "High-visibility 3px solid #F59E0B safety ring",
+        "ambientLightNotes": "Complies with ISO 11064 ergonomic requirements for control room display stations"
+      },
+      "uxTradeoffs": {
+        "strengths": "Absolute visual clarity; zero ambiguity during electrical emergency triages",
+        "risks": "Requires professional engineering certification to interpret symbol topology",
+        "operationalFit": "100% compliant with high-performance HMI guidelines for electrical dispatchers"
+      }
+    },
+    {
+      "id": "concept-2",
+      "thematicName": "Daylight Field Maintenance Console",
+      "identityRationale": "High-contrast daylight slate interface engineered for rugged tablets deployed in outdoor substations and field repair trucks. Emphasizes oversized touch targets and extreme outdoor readability.",
+      "benchmarks": ["Panasonic Toughbook HMI", "Trimble outdoor survey suite", "Caterpillar equipment monitor"],
+      "typography": {
+        "headingFont": "Inter",
+        "bodyFont": "Inter",
+        "monoFont": "Source Code Pro",
+        "scaleRatio": "1.200 (Minor Third - Touch Readable)"
+      },
+      "color": {
+        "surfaceBase": "#F1F5F9",
+        "cardSurface": "#FFFFFF",
+        "primaryBrand": "#0F172A",
+        "secondaryNeutral": "#475569",
+        "textPrimary": "#090D16",
+        "textSecondary": "#334155",
+        "borderSubtle": "#CBD5E1",
+        "statusSuccess": "#059669",
+        "statusWarning": "#D97706",
+        "statusDanger": "#DC2626"
+      },
+      "layout": {
+        "columnGrid": "Chunked 6-column modular card layout for rapid glove-friendly tapping",
+        "densityMode": "Touch Operational (52px control height)",
+        "gutterPx": 12,
+        "focalPoint": "Selected feeder circuit safety lock and isolator switch status"
+      },
+      "surface": {
+        "elevationModel": "Deep structural boundaries with 2px borders (#94A3B8) and tactile pressed states",
+        "borderRadii": "8px impact-resistant rounded corners",
+        "borderStrokePx": 2
+      },
+      "iconography": {
+        "style": "Heavy-stroke industrial tactile icons with filled active states",
+        "strokeWidth": "2.5px",
+        "geometry": "Bold high-visibility contours visible in direct sun glare"
+      },
+      "dataVisualization": {
+        "primaryCharts": ["Analog dial gauge with danger threshold markings", "Step-by-step lockout checklist"],
+        "colorRamp": ["#0F172A", "#059669", "#D97706", "#DC2626"],
+        "telemetryDensity": "Filtered operational states with focus on breaker physical position"
+      },
+      "accessibility": {
+        "wcagLevel": "WCAG 2.2 AAA text contrast (18.2:1 dark on pure white)",
+        "focusRing": "High-contrast 4px solid #0F172A halo",
+        "ambientLightNotes": "Guarantees full sunlight readability (>5000 nits tablet screens)"
+      },
+      "uxTradeoffs": {
+        "strengths": "Extreme readability in harsh field lighting; glove-compatible interaction",
+        "risks": "Fewer simultaneous data streams visible per screen",
+        "operationalFit": "Best for field technicians inspecting switchyards and circuit breakers"
+      }
+    }
+  ]
+}

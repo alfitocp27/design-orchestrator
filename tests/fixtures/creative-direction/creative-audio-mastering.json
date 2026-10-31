@@ -1,0 +1,125 @@
+{
+  "domain": "Creative Tools & Audio Engineering",
+  "productName": "AuraMaster Pro Waveform Synthesis & Dynamic Spectral Suite",
+  "productTypology": "Professional Digital Audio Workstation (DAW) Plugin",
+  "targetAudience": "Professional mastering engineers, sound designers, and electronic music producers",
+  "operationalContext": "Acoustically treated studio, calibrated 4K monitors, multi-hour listening sessions, low ambient light",
+  "surfaceMode": "Operate",
+  "dataVisualizationNeeds": "Real-time FFT audio spectrum analyzer, stereo correlation goniometer, parametric EQ curve, LUFS loudness meter",
+  "antiSlopCompliance": {
+    "prohibitedPatternsChecked": ["mesh gradient", "glowing card", "neon border", "floating card without anchor"],
+    "verdict": "COMPLIANT"
+  },
+  "concepts": [
+    {
+      "id": "concept-1",
+      "thematicName": "Obsidian Studio Console (Recommended)",
+      "identityRationale": "Dark, immersive, ultra-precise studio workbench inspired by premium hardware mastering gear (e.g. Manley, Weiss). Eliminates screen glare to keep engineer focus on acoustic fidelity and microscopic frequency adjustments.",
+      "benchmarks": ["FabFilter Pro-Q 3", "iZotope Ozone 11", "Universal Audio LUNA"],
+      "typography": {
+        "headingFont": "Geist Sans",
+        "bodyFont": "Geist Sans",
+        "monoFont": "Geist Mono",
+        "scaleRatio": "1.125 (Major Second - Precision)"
+      },
+      "color": {
+        "surfaceBase": "#0A0D14",
+        "cardSurface": "#121722",
+        "primaryBrand": "#38BDF8",
+        "secondaryNeutral": "#64748B",
+        "textPrimary": "#F1F5F9",
+        "textSecondary": "#94A3B8",
+        "borderSubtle": "#1E293B",
+        "statusSuccess": "#22C55E",
+        "statusWarning": "#EAB308",
+        "statusDanger": "#EF4444"
+      },
+      "layout": {
+        "columnGrid": "Modular rack chassis (Upper: Spectral Display 60%, Lower: Parametric Band Controls 40%)",
+        "densityMode": "Compact Precision Workbench (36px knob/slider strip)",
+        "gutterPx": 8,
+        "focalPoint": "Real-time interactive frequency response curve and dynamic bell filters"
+      },
+      "surface": {
+        "elevationModel": "Recessed dark chassis with subtle metallic 1px borders (#1E293B) and tactile rotary detents",
+        "borderRadii": "4px machined corners",
+        "borderStrokePx": 1
+      },
+      "iconography": {
+        "style": "Ultra-fine vector audio symbols (Zero Emojis)",
+        "strokeWidth": "1.25px",
+        "geometry": "Matching Geist Mono technical metrics"
+      },
+      "dataVisualization": {
+        "primaryCharts": ["Interactive 60fps FFT spectrum curve", "True Peak / LUFS multi-segment LED meter"],
+        "colorRamp": ["#38BDF8", "#22C55E", "#EAB308", "#EF4444"],
+        "telemetryDensity": "Real-time continuous audio frequency processing at 60fps"
+      },
+      "accessibility": {
+        "wcagLevel": "WCAG 2.2 AAA text contrast (14.5:1 on studio chassis)",
+        "focusRing": "High-contrast 2px solid #38BDF8 focus ring",
+        "ambientLightNotes": "Designed specifically for dim mixing studio ambient lighting (20–50 lux)"
+      },
+      "uxTradeoffs": {
+        "strengths": "Maximum signal precision; engineers can adjust 0.1dB gain increments effortlessly",
+        "risks": "Requires professional audio engineering knowledge to operate parametric bands",
+        "operationalFit": "Gold standard for mastering engineers and post-production houses"
+      }
+    },
+    {
+      "id": "concept-2",
+      "thematicName": "Minimalist Bauhaus Audio Lab",
+      "identityRationale": "Bauhaus-inspired tactile sound design lab. Emphasizes geometric purity, high-contrast monochrome knobs, and stark typography reminiscent of legendary Swiss industrial hi-fi equipment (Braun / Dieter Rams).",
+      "benchmarks": ["Teenage Engineering OP-1", "Braun Audio 1", "Ableton Live 12"],
+      "typography": {
+        "headingFont": "Space Grotesk",
+        "bodyFont": "Inter",
+        "monoFont": "Space Mono",
+        "scaleRatio": "1.200 (Minor Third - Geometric)"
+      },
+      "color": {
+        "surfaceBase": "#E2E8F0",
+        "cardSurface": "#FFFFFF",
+        "primaryBrand": "#EA580C",
+        "secondaryNeutral": "#475569",
+        "textPrimary": "#0F172A",
+        "textSecondary": "#334155",
+        "borderSubtle": "#CBD5E1",
+        "statusSuccess": "#16A34A",
+        "statusWarning": "#CA8A04",
+        "statusDanger": "#DC2626"
+      },
+      "layout": {
+        "columnGrid": "Asymmetrical 12-column grid with bold modular rotary tiles and stark white parameter cards",
+        "densityMode": "Balanced Geometric (44px controls)",
+        "gutterPx": 16,
+        "focalPoint": "Oversized dynamic frequency dial and warm orange master gain fader"
+      },
+      "surface": {
+        "elevationModel": "Tactile surface panels with 1.5px structural borders (#CBD5E1) and crisp matte finishes",
+        "borderRadii": "6px Bauhaus geometric corners",
+        "borderStrokePx": 1.5
+      },
+      "iconography": {
+        "style": "Stark geometric vector glyphs",
+        "strokeWidth": "2.0px",
+        "geometry": "Pure circles, triangles, and squares reflecting Bauhaus design"
+      },
+      "dataVisualization": {
+        "primaryCharts": ["Monochrome vector waveform oscilloscope", "Minimalist circular phase meter"],
+        "colorRamp": ["#EA580C", "#0F172A", "#16A34A", "#DC2626"],
+        "telemetryDensity": "Cleaned harmonic frequency curves with focus on aesthetic simplicity"
+      },
+      "accessibility": {
+        "wcagLevel": "WCAG 2.2 AAA text contrast (15.2:1 dark on white card)",
+        "focusRing": "Bold 3px solid #EA580C halo",
+        "ambientLightNotes": "Optimized for well-lit boutique production studios and design workshops"
+      },
+      "uxTradeoffs": {
+        "strengths": "Iconic, memorable design identity; extremely intuitive and inviting for electronic artists",
+        "risks": "Less space for 32-band micro-surgical EQ graphs",
+        "operationalFit": "Best for music producers, beatmakers, and creative synthesizer sound designers"
+      }
+    }
+  ]
+}

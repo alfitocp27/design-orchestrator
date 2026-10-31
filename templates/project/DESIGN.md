@@ -37,20 +37,24 @@
 
 ## 4. Visual Consultation Concepts & Concept Sign-Off
 
-*2 to 3 differentiated visual directions evaluated before canvas design system construction. Must include one clear recommended direction.*
+*2 to 3 structurally and visually differentiated directions evaluated across 10 mandatory dimensions before canvas design system construction. Includes one clear recommended direction.*
 
-### Concept Options Matrix
-| Dimension | Concept 1 (Recommended): Technical Precision | Concept 2: Modern Editorial Clean | Concept 3: High-Density Swiss |
+### Concept Options Matrix (10 Mandatory Dimensions)
+| Dimension | Concept 1 (Recommended): [Thematic Name] | Concept 2: [Thematic Name] | Concept 3: [Thematic Name] |
 |---|---|---|---|
-| **Palette / Mood** | Slate cool backdrop (`#F8FAFC`), crisp white cards, royal blue primary (`#1E40AF`) | Neutral warm canvas (`#FAF9F5`), ivory cards, emerald accent (`#059669`) | Light gray (`#F3F4F6`), high-contrast dark navy primary (`#0F172A`) |
-| **Typography** | Inter / Plus Jakarta Sans: crisp geometric sans, clear tabular numerals | Instrument Sans / Outfit: contemporary editorial sans | Roboto / System UI: utilitarian, compact scanability |
-| **Iconography** | 20 × 20 px SVG, 1.5px clean outline (Zero Emojis) | 20 × 20 px SVG, 1.75px rounded outline (Zero Emojis) | 18 × 18 px SVG, 2.0px crisp sharp outline (Zero Emojis) |
-| **Density & Grid** | 8px grid, compact-comfortable padding | 8px grid, spacious padding, generous whitespace | 4px/8px grid, ultra-compact high information density |
-| **Elevation** | Subtle dual micro-shadows (`0 1px 2px rgba(...)`) | Soft diffused shadows, floating surface cards | 1px structural borders (`#E5E7EB`), flat elevation |
-| **PRD Alignment Rationale** | Highest operational scanability for high-volume review workflows; balances speed and clarity | Friendly and contemporary, but lower data density | Maximum data throughput, but potentially higher cognitive fatigue |
+| **1. Identity & Rationale** | [Core philosophy, personality, and operational rationale] | [Alternative aesthetic philosophy and user fit] | [High-contrast or specialized technical philosophy] |
+| **2. Benchmarks / Precedents** | [Real-world references: e.g. Linear, Bloomberg, Stripe] | [e.g. Notion, Apple Human Interface, Coursera] | [e.g. Grafana, Ableton Live, GitHub] |
+| **3. Typography Pairing** | [Headings + Body + Tabular Mono, scale ratio] | [Headings + Body + Tabular Mono, scale ratio] | [Headings + Body + Tabular Mono, scale ratio] |
+| **4. Color & WCAG Ratios** | [Base canvas, card surface, primary brand, status tokens, contrast >= 4.5:1] | [Warm/neutral canvas, distinct primary, contrast >= 4.5:1] | [High-contrast slate/dark, vibrant status, contrast >= 7:1] |
+| **5. Layout & Spatial Grid** | [Column grid, margins, gutters, visual focal points] | [Spacious layout, breathing room, clear narrative flow] | [Multi-pane workbench, compact data grid] |
+| **6. Surface & Elevation** | [Layering model, border-first vs shadow, radii scale] | [Diffuse ambient elevation, rounded corners] | [Crisp 1px borders, zero blur, sharp geometric corners] |
+| **7. Iconography & Accents** | [Vector stroke weight, outline/duotone, visual weight] | [Rounded vector outline, friendly geometry] | [Crisp mono-weight vector outline, high precision] |
+| **8. Data Visualization** | [Primary charts: time-series line, status badges, gauges] | [Summary metric cards, donut charts, trend indicators] | [Real-time telemetry line, anomaly bands, dense tables] |
+| **9. Accessibility** | [WCAG 2.2 AA compliance notes, focus ring model] | [High contrast text, large tap targets, reduced motion] | [WCAG AAA contrast, ambient lighting optimization] |
+| **10. UX Trade-Offs** | [Strengths, limitations, and operational balance] | [Visual warmth vs. data density trade-off] | [Data density vs. cognitive fatigue trade-off] |
 
 ### Visual Concept Sign-Off (Hard Gate)
-- **Selected Concept**: `Concept 1 (Technical Precision)` <!-- Concept 1 | Concept 2 | Concept 3 | Custom Blended -->
+- **Selected Concept**: `Concept 1 ([Thematic Name])` <!-- Concept 1 | Concept 2 | Concept 3 | Custom Blended -->
 - **User Approval Date**: [YYYY-MM-DD]
 - **User Customization Notes**: [e.g., Use Concept 1 colors with Concept 3 ultra-compact table density]
 - **Approval Status**: `APPROVED` <!-- PENDING | APPROVED -->

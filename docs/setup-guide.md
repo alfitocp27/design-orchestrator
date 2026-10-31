@@ -107,21 +107,30 @@ If you want live FigCraft canvas manipulation, design intelligence, and codebase
    ```
    *Upstream: [miqdadbadjuber/anti-slop](https://github.com/miqdadbadjuber/anti-slop)*
 
-2. **FigCraft MCP (Live Canvas Execution)**:
-   - Install FigCraft (desktop app or CLI). FigCraft CLI installs at `%LOCALAPPDATA%\Programs\ArtCraft\FigCraft\figcraft-cli.exe`.
-   - FigCraft serves MCP natively over Stdio using `figcraft-cli mcp` (both headless and attached to an active window).
+2. **FigCraft MCP (Live Canvas Execution & Dual-Mode Architecture)**:
+   - Install FigCraft (desktop app and CLI). FigCraft CLI installs at `%LOCALAPPDATA%\Programs\ArtCraft\FigCraft\figcraft-cli.exe`.
+   - **Dual-Mode Architecture**:
+     * **`ATTACHED` Mode**: Used for interactive design sessions where modifications reflect in real time on the FigCraft desktop application. Requires launching FigCraft Desktop with `--control 7979`:
+       ```powershell
+       & "$env:LOCALAPPDATA\Programs\ArtCraft\FigCraft\figcraft.exe" --control 7979
+       ```
+       If FigCraft Desktop is not running or port 7979 is unreachable, the engine **strictly fails with a descriptive error** and refuses silent fallback to headless mode.
+     * **`HEADLESS` Mode**: Used for automated test suites, CI/CD, and offline verification fixtures. Runs independently via stdio (`figcraft-cli.exe mcp`) with zero desktop GUI dependencies.
    - Register in `~/.gemini/config/mcp_config.json`:
      ```json
      {
        "mcpServers": {
          "figcraft": {
            "command": "%LOCALAPPDATA%\\Programs\\ArtCraft\\FigCraft\\figcraft-cli.exe",
-           "args": ["mcp"]
+           "args": ["mcp", "--attach", "7979"]
          }
        }
      }
      ```
-     *(Or let `.\scripts\bootstrap.ps1 -Mode Full` register it with automatic configuration backup).*
+   - **Document Safety Protections**:
+     * Inspects active document dirty state (`dirty=False`) before modifying or switching documents.
+     * Prevents clobbering unsaved user work or modifying unrelated open files.
+     * Protects Untitled documents with existing layers from being automatically overwritten.
 
 3. **UI/UX Pro Max (Design Intelligence)**:
    - Ensure Python 3.x is installed: `winget install --id Python.Python.3.12 -e`.
