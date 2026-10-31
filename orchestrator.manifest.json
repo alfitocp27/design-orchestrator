@@ -37,7 +37,8 @@
         "ui-ux-pro-max",
         "impeccable",
         "codebase-memory-mcp",
-        "mobbin_mobbin"
+        "mobbin_mobbin",
+        "needmcp"
       ],
       "capabilities": [
         "discovery_interview",
@@ -106,6 +107,18 @@
       "upstream": "mobbin-plugin",
       "description": "Mobbin visual screen reference and benchmark exploration MCP server.",
       "manualInstructions": "Install mobbin plugin from Antigravity Plugin Marketplace if real-world mobile/web screenshots are needed."
+    },
+    "needmcp": {
+      "type": "mcp",
+      "category": "optional-cloud-mcp",
+      "version": "1.7.0",
+      "status": "UNVERIFIED_RUNTIME",
+      "upstream": "https://needmcp.com",
+      "transport": "http",
+      "endpoint": "https://needmcp.com/mcp",
+      "manifest": "integrations/needmcp/needmcp.manifest.json",
+      "description": "Optional cloud MCP design system service providing curated styles and atomic component specs.",
+      "manualInstructions": "Set NEEDMCP_API_KEY environment variable or run 'npx needmcp setup'. Gated: selectStyle only after human sign-off."
     }
   }
 }

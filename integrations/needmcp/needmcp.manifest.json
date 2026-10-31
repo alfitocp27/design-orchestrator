@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "needmcp",
+  "version": "1.7.0",
+  "displayName": "NeedMCP Cloud Design System Integration",
+  "type": "optional-cloud-mcp",
+  "provider": "Ruang Kula Indonesia",
+  "homepage": "https://needmcp.com",
+  "documentation": "https://docs.needmcp.com",
+  "license": "ISC",
+  "status": "UNVERIFIED_RUNTIME",
+  "transport": {
+    "type": "http",
+    "endpoint": "https://needmcp.com/mcp",
+    "authMethod": "Bearer",
+    "authHeader": "X-API-Key",
+    "envVariable": "NEEDMCP_API_KEY"
+  },
+  "rateLimits": {
+    "freeTier": "500 requests/day",
+    "headers": ["x-ratelimit-limit", "x-ratelimit-remaining"],
+    "handlingOn429": "Graceful fallback to local UI/UX Pro Max and Impeccable"
+  },
+  "antiStyleLockingPolicy": {
+    "explorationTool": "getStyle",
+    "explorationStage": "Stage 3 & Stage 4 (multi-concept formulation)",
+    "lockingTool": "selectStyle",
+    "lockingPermitted": "Post-Stage 4 Concept Approval Gate ONLY upon explicit human sign-off"
+  },
+  "verifiedTools": [
+    {
+      "name": "getStyles",
+      "description": "Discover and list available design theme slugs from NeedMCP library.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "query": { "type": "string", "description": "Optional search term for themes." }
+        }
+      },
+      "executionType": "read-only",
+      "allowedStages": ["Stage 3", "Stage 4"],
+      "gated": false
+    },
+    {
+      "name": "getStyle",
+      "description": "Retrieve color palette, font pairings, border radii, and token definitions for a specific theme slug.",
+      "parameters": {
+        "type": "object",
+        "required": ["slug"],
+        "properties": {
+          "slug": { "type": "string", "description": "Theme slug to inspect." }
+        }
+      },
+      "executionType": "read-only",
+      "allowedStages": ["Stage 3", "Stage 4"],
+      "gated": false
+    },
+    {
+      "name": "getDesignSystem",
+      "description": "Retrieve structural design system rules, spacing scale, elevation profiles, and layout tokens.",
+      "parameters": {
+        "type": "object",
+        "required": ["slug"],
+        "properties": {
+          "slug": { "type": "string", "description": "Theme slug." }
+        }
+      },
+      "executionType": "read-only",
+      "allowedStages": ["Stage 4", "Stage 5"],
+      "gated": false
+    },
+    {
+      "name": "getComponents",
+      "description": "Retrieve structural component specifications and atomic layout recipes.",
+      "parameters": {
+        "type": "object",
+        "required": ["slug"],
+        "properties": {
+          "slug": { "type": "string", "description": "Theme slug." },
+          "category": { "type": "string", "description": "Component category (e.g. buttons, inputs, cards)." }
+        }
+      },
+      "executionType": "read-only",
+      "allowedStages": ["Stage 5"],
+      "gated": false
+    },
+    {
+      "name": "selectStyle",
+      "description": "Lock the active session to a single selected theme slug. Strictly prohibited prior to human approval.",
+      "parameters": {
+        "type": "object",
+        "required": ["slug"],
+        "properties": {
+          "slug": { "type": "string", "description": "Approved theme slug to activate." }
+        }
+      },
+      "executionType": "mutating-session",
+      "allowedStages": ["Post-Stage 4 Sign-Off Only"],
+      "gated": true
+    },
+    {
+      "name": "sendFeedback",
+      "description": "Submit user feedback or issue report to NeedMCP service.",
+      "parameters": {
+        "type": "object",
+        "required": ["message"],
+        "properties": {
+          "message": { "type": "string", "description": "Feedback message content." },
+          "type": { "type": "string", "description": "Feedback category." }
+        }
+      },
+      "executionType": "write-only",
+      "allowedStages": ["Ad-hoc"],
+      "gated": false
+    }
+  ],
+  "degradationPolicy": {
+    "tier1_authenticated": "NeedMCP theme data acts as secondary external reference; UI/UX Pro Max and Impeccable provide primary domain tokens; FigCraft renders native canvas nodes.",
+    "tier2_rate_limited": "Pause remote queries; immediately switch to local Archetypes and UI/UX Pro Max palettes without interrupting design flow.",
+    "tier3_offline_or_unauthenticated": "Zero network calls made. Full Mode and Core Mode continue using local design intelligence with 100% feature availability."
+  },
+  "securityGuardrails": {
+    "zeroSecrets": "Never commit API keys or auth headers to git repository.",
+    "zeroAssetVendoring": "Never store proprietary NeedMCP CSS, token bundles, or components in repository source tree.",
+    "zeroPiiTransmission": "Never pass user requirements, proprietary domain data, or PII into NeedMCP query arguments.",
+    "coreModeIndependence": "Core Mode and offline test suites never invoke NeedMCP or require external network access."
+  }
+}
