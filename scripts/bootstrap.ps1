@@ -23,7 +23,8 @@ param(
 
     [switch]$NonInteractive,
     [switch]$Force,
-    [switch]$InstallAntiSlop
+    [switch]$InstallAntiSlop,
+    [switch]$InstallCodebaseMemory
 )
 
 $ErrorActionPreference = "Stop"
@@ -291,23 +292,50 @@ if ($npxCmd) {
 }
 
 # 4.2 UI/UX Pro Max (Manual / Guided Clone)
+$pythonCmd = Get-Command python -ErrorAction SilentlyContinue
+$pyCandidates = @(
+    $(if ($pythonCmd) { $pythonCmd.Source }),
+    (Join-Path $env:LOCALAPPDATA "Programs\Python\Python312\python.exe"),
+    (Join-Path $env:LOCALAPPDATA "Programs\Python\Python311\python.exe"),
+    (Join-Path $env:ProgramFiles "Python312\python.exe"),
+    (Join-Path $env:ProgramFiles "Python311\python.exe")
+) | Where-Object { $_ -and (Test-Path $_) }
+
+$realPythonPath = $null
+$realPythonVer = $null
+foreach ($cand in $pyCandidates) {
+    try {
+        $pyOut = (& $cand --version 2>&1 | Out-String).Trim()
+        if ($LASTEXITCODE -eq 0 -and $pyOut -match "Python\s+3\.\d+") {
+            $realPythonPath = $cand
+            $realPythonVer = $pyOut
+            break
+        }
+    } catch {}
+    $global:LASTEXITCODE = 0
+}
+
 $uiuxSkill = Join-Path $RepoRoot ".agents\skills\ui-ux-pro-max"
-if (Test-Path $uiuxSkill) {
+$uiuxSearch = Join-Path $RepoRoot ".agents\skills\ui-ux-pro-max\scripts\search.py"
+
+if ((Test-Path $uiuxSkill) -and (Test-Path $uiuxSearch) -and $realPythonPath) {
+    $uiuxVerified = $false
+    try {
+        $testOut = (& $realPythonPath $uiuxSearch "test" --json 2>$null | Out-String)
+        if ($LASTEXITCODE -eq 0 -and $testOut -match "design_system") {
+            $uiuxVerified = $true
+        }
+    } catch {}
+    $global:LASTEXITCODE = 0
+    if ($uiuxVerified) {
+        Write-Log "VERIFIED" "UI/UX Pro Max search engine active and verified via Python."
+    } else {
+        Write-Log "INSTALLED" "UI/UX Pro Max skill and scripts present."
+    }
+} elseif (Test-Path $uiuxSkill) {
     Write-Log "INSTALLED" ("UI/UX Pro Max skill detected at {0}" -f $uiuxSkill)
 } else {
-    $pythonCmd = Get-Command python -ErrorAction SilentlyContinue
-    $hasRealPython = $false
-    if ($pythonCmd) {
-        try {
-            $pyOut = (& python --version 2>&1 | Out-String).Trim()
-            if ($LASTEXITCODE -eq 0 -and $pyOut -match "Python\s+3") {
-                $hasRealPython = $true
-            }
-        } catch {}
-        $global:LASTEXITCODE = 0
-    }
-
-    if (-not $hasRealPython) {
+    if (-not $realPythonPath) {
         Write-Log "INFO" "UI/UX Pro Max requires Python 3.x (Windows Store alias stub or Python missing)."
         Write-Log "INFO" "Install Python 3: winget install --id Python.Python.3.12 -e"
     } else {
@@ -324,8 +352,10 @@ try {
     $hasImpeccableGlobal = Test-Path $impeccableGlobal -ErrorAction SilentlyContinue
 } catch {}
 
-if ($hasImpeccableGlobal -or (Test-Path $impeccableLocal)) {
-    Write-Log "CONFIGURED" "Impeccable craft skill verified."
+if ($hasImpeccableGlobal) {
+    Write-Log "CONFIGURED" "Impeccable craft skill verified in global config."
+} elseif (Test-Path $impeccableLocal) {
+    Write-Log "INSTALLED" "Impeccable craft skill detected in workspace (.agents\skills\impeccable)."
 } else {
     Write-Log "INFO" "Impeccable craft skill not found. Upstream: https://github.com/pbakaus/impeccable"
 }
@@ -413,10 +443,71 @@ if ($figcraftProc) {
 }
 
 $codebaseProc = Get-Process | Where-Object { $_.ProcessName -match "codebase-memory-mcp" } | Select-Object -First 1
+$codebaseConfigured = $false
+try {
+    if (Test-Path $mcpConfigPath -ErrorAction SilentlyContinue) {
+        $rawMcp = Get-Content $mcpConfigPath -Raw -ErrorAction SilentlyContinue
+        if ($rawMcp) {
+            $parsedMcp = $rawMcp | ConvertFrom-Json
+            if ($parsedMcp.mcpServers."codebase-memory-mcp" -or $parsedMcp.mcpServers."codebase-memory") {
+                $codebaseConfigured = $true
+            }
+        }
+    }
+} catch {}
+
+$codebaseVerified = $false
+if ($npxCmd) {
+    try {
+        $initPayload = '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"bootstrapper","version":"1.0"}}}'
+        $pinfo = New-Object System.Diagnostics.ProcessStartInfo
+        $pinfo.FileName = "cmd.exe"
+        $pinfo.Arguments = "/c npx -y codebase-memory-mcp"
+        $pinfo.RedirectStandardInput = $true
+        $pinfo.RedirectStandardOutput = $true
+        $pinfo.RedirectStandardError = $true
+        $pinfo.UseShellExecute = $false
+        $p = [System.Diagnostics.Process]::Start($pinfo)
+        $p.StandardInput.WriteLine($initPayload)
+        Start-Sleep -Milliseconds 1200
+        $resp = $p.StandardOutput.ReadLine()
+        $p.Kill()
+        if ($resp -match '"name":"codebase-memory-mcp"') {
+            $codebaseVerified = $true
+        }
+    } catch {}
+    $global:LASTEXITCODE = 0
+}
+
+if ($codebaseConfigured) {
+    if ($codebaseVerified) {
+        Write-Log "VERIFIED" "CodebaseMemoryMCP Stdio MCP handshake passed and configured in Antigravity."
+    } else {
+        Write-Log "CONFIGURED" "CodebaseMemoryMCP registered in Antigravity mcp_config.json."
+    }
+} else {
+    Write-Log "DETECTED" "CodebaseMemoryMCP can be registered via npx codebase-memory-mcp."
+    $shouldRegisterCodebase = $false
+    if ($Force -or $InstallCodebaseMemory) {
+        $shouldRegisterCodebase = $true
+    } elseif (-not $NonInteractive) {
+        $resp = Read-Host "Would you like to register CodebaseMemoryMCP in Antigravity mcp_config.json? (Y/N)"
+        if ($resp -match "^[yY]") {
+            $shouldRegisterCodebase = $true
+        }
+    }
+    if ($shouldRegisterCodebase) {
+        Backup-And-Register-McpServer -ServerName "codebase-memory-mcp" -CommandPath "cmd.exe" -ArgsList @("/c", "npx", "-y", "codebase-memory-mcp")
+        if ($codebaseVerified) {
+            Write-Log "VERIFIED" "CodebaseMemoryMCP Stdio communication verified."
+        }
+    } else {
+        Write-Log "SKIP" "CodebaseMemoryMCP registration skipped (Use -Force or -InstallCodebaseMemory)."
+    }
+}
+
 if ($codebaseProc) {
     Write-Log "CONNECTED" ("CodebaseMemoryMCP process actively running (PID: {0})." -f $codebaseProc.Id)
-} else {
-    Write-Log "INFO" "CodebaseMemoryMCP is not running (Optional for schema queries)."
 }
 
 Write-Log "INFO" "=========================================================="

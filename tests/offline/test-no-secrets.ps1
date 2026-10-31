@@ -21,8 +21,34 @@ $bannedPatterns = @(
 
 $violations = @()
 
-Get-ChildItem -Path $RepoRoot -Recurse -File | Where-Object {
-    $_.FullName -notmatch "\\\.git\\" -and
+# Prefer tracked repository files to avoid false violations in git-ignored external dependencies
+$filesToScan = @()
+$gitCmd = Get-Command git -ErrorAction SilentlyContinue
+if ($gitCmd) {
+    try {
+        $tracked = (& git -C $RepoRoot ls-files 2>$null)
+        if ($LASTEXITCODE -eq 0 -and $tracked) {
+            $filesToScan = $tracked | ForEach-Object { 
+                $full = Join-Path $RepoRoot $_
+                if (Test-Path $full -PathType Leaf) { Get-Item $full }
+            } | Where-Object { $_ -ne $null }
+        }
+    } catch {}
+    $global:LASTEXITCODE = 0
+}
+
+if ($filesToScan.Count -eq 0) {
+    $filesToScan = Get-ChildItem -Path $RepoRoot -Recurse -File | Where-Object {
+        $_.FullName -notmatch "\\\.git\\" -and
+        $_.FullName -notmatch "\\tests\\offline\\test-no-secrets\.ps1" -and
+        $_.FullName -notmatch "\\\.agents\\skills\\(impeccable|ui-ux-pro-max|anti-slop|antislop)\\" -and
+        $_.FullName -notmatch "\\node_modules\\" -and
+        $_.FullName -notmatch "\\__pycache__\\" -and
+        $_.FullName -notmatch "\\\.system_generated\\"
+    }
+}
+
+$filesToScan | Where-Object {
     $_.FullName -notmatch "\\tests\\offline\\test-no-secrets\.ps1"
 } | ForEach-Object {
     $filePath = $_.FullName
@@ -40,7 +66,7 @@ Get-ChildItem -Path $RepoRoot -Recurse -File | Where-Object {
 
 if ($violations.Count -gt 0) {
     $violations | ForEach-Object { Write-Host $_ -ForegroundColor Red }
-    throw "FAIL: Found $($violations.Count) security/privacy violation(s)!"
+    throw "FAIL: Found $($violations.Count) security/privacy violation(s) in repository files!"
 }
 
 Write-Host "PASS: Clean security and privacy audit. Zero personal paths or secrets found." -ForegroundColor Green

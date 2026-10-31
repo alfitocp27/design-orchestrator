@@ -23,21 +23,35 @@
    - All 5 offline tests (`test-manifest.ps1`, `test-mock-orchestration.ps1`, `test-no-secrets.ps1`, `test-skill-integrity.ps1`, `test-templates.ps1`) pass.
    - Integration test `test-figcraft-live.ps1` upgraded and passes with real Stdio JSON-RPC communication proof.
 
-2. **Full Mode Dependencies Audit & Discovery**:
-   - **FigCraft MCP**: Status `[INSTALLED]`, `[CONNECTED]`, `[VERIFIED]`.
-     - Binary detected dynamically at `%LOCALAPPDATA%\Programs\ArtCraft\FigCraft\figcraft-cli.exe`.
-     - Stdio MCP server (`figcraft-cli mcp`) tested with live JSON-RPC `initialize` and `tools/list` handshake. Verified 19 native tools.
-   - **Anti-Slop**: Status `[DETECTED]`. Node.js / npx `v24.22.1` available; ready for installation via `npx antislop-ai --mode during`.
-   - **UI/UX Pro Max**: Status `[NOT_INSTALLED]`. Requires real Python 3.x (Windows Store alias stub detected). Upstream: `https://github.com/nextlevelbuilder/ui-ux-pro-max-skill`.
-   - **Impeccable**: Status `[NOT_INSTALLED]`. Optional craft floor skill. Upstream: `https://github.com/pbakaus/impeccable`.
-   - **CodebaseMemoryMCP**: Status `[NOT_INSTALLED]`. Optional schema authority. Upstream: `https://github.com/DeusData/codebase-memory-mcp`.
+2. **Full Mode Dependencies Setup & Runtime Proof**:
+   - **FigCraft MCP**: Status `[CONNECTED]` & `[VERIFIED]`.
+     - Binary detected at `%LOCALAPPDATA%\Programs\ArtCraft\FigCraft\figcraft-cli.exe`.
+     - Active GUI application verified (PID: 32880).
+     - Stdio JSON-RPC initialization handshake passed. Registered in `~/.gemini/config/mcp_config.json`.
+     - Read-only tool call proof: `list_commands(filter: "align")` executed with 15 commands returned.
+   - **CodebaseMemoryMCP**: Status `[VERIFIED]`.
+     - Official npm package `codebase-memory-mcp` registered in `~/.gemini/config/mcp_config.json`.
+     - Stdio JSON-RPC initialization handshake verified via `npx -y codebase-memory-mcp`.
+     - Read-only tool call proof: `list_projects` executed successfully returning graph state.
+   - **Anti-Slop**: Status `[VERIFIED]`.
+     - Installed via official installer `npx -y antislop-ai --mode during`.
+     - Global preference active in `%APPDATA%\antislop\settings.json` (`{"mode":"during"}`).
+     - Workspace skill discovered at `.agents\skills\antislop\SKILL.md`.
+   - **UI/UX Pro Max**: Status `[INSTALLED]` / `[VERIFIED]`.
+     - Real Python 3.12.10 installed via winget (`Python.Python.3.12`).
+     - Cloned from `nextlevelbuilder/ui-ux-pro-max-skill` to `.agents\skills\ui-ux-pro-max\`.
+     - Verified search CLI execution: `python search.py "enterprise operational table" --design-system --json` returned valid design system JSON.
+   - **Impeccable**: Status `[INSTALLED]`.
+     - Cloned from `pbakaus/impeccable` to `.agents\skills\impeccable\`.
+     - Craft floor guidance and playbooks discovered and verified.
 
 3. **Portable Bootstrap & Diagnostics Hardening**:
-   - Fixed Windows 11 App Execution Alias bug in `doctor.ps1` where `Get-Command python` falsely claimed Python was detected.
-   - Implemented dynamic FigCraft CLI path resolution across standard Windows installation directories.
-   - Added real Stdio MCP JSON-RPC protocol handshake verification into `doctor.ps1`, `bootstrap.ps1`, and `tests/integration/test-figcraft-live.ps1`.
-   - Added `Backup-And-Register-McpServer` in `bootstrap.ps1` to guarantee zero unbacked Antigravity configuration modifications.
-   - Corrected canonical directory references in `AGENTS.md` and `README.md` to `.agents/skills/design-orchestrator/`.
+   - Fixed Windows 11 App Execution Alias bug in `doctor.ps1` and `bootstrap.ps1` by scanning real Python directories and validating exit codes.
+   - Added automated dynamic CodebaseMemoryMCP detection, registration, and Stdio handshake in `bootstrap.ps1` and `doctor.ps1`.
+   - Added real Stdio MCP JSON-RPC protocol handshake verification into `doctor.ps1`, `bootstrap.ps1`, `test-figcraft-live.ps1`, and `test-codebase-memory-live.ps1`.
+   - Added `Backup-And-Register-McpServer` in `bootstrap.ps1` ensuring zero unbacked Antigravity configuration modifications.
+   - Hardened `test-no-secrets.ps1` to prefer git-tracked files (`git ls-files`) and ignore companion directories.
+   - Added `.agents/skills/{ui-ux-pro-max,impeccable,antislop,anti-slop}` to `.gitignore` to prevent vendoring third-party assets into this open-source repository while enabling native local agent discovery.
 
 ---
 
